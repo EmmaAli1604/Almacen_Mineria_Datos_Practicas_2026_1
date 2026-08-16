@@ -1,21 +1,507 @@
 ---
 title: "Práctica 1"
-subtitle: "Descripción breve de la práctica"
-author: "Tu nombre"
+subtitle: "SQL Avanzado"
+author: "Emma Alicia Jiménez Sánchez"
 date: today
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    progress: true
+    transition: slide
+    background-transition: fade
+    incremental: false
+    code-line-numbers: true
+    highlight-style: github
+    css: styles.css
+    footer: "Práctica 1 · SQL Avanzado"
+    smaller: false
 ---
 
 ## Objetivo
 
-Describe aquí el objetivo de la práctica.
+::: {.fragment .fade-up}
+El objetivo de esta práctica es repasar, consolidar y evaluar las habilidades de diseño, escritura y optimización de consultas en SQL mediante la resolución de cuatro problemas con niveles de complejidad progresivos (Fácil, Medio y Difícil) en la plataforma LeetCode.
+:::
+
+::: {.fragment .fade-up}
+Se hará especial énfasis en la validez funcional de las soluciones y en la eficiencia computacional de los queries implementados.
+:::
+
+## Conceptos Principales
+
+::: {.incremental}
+- Funciones de ventana
+- Expresiones de tabla comunes (CTEs)
+- CTEs recursivas
+- Optimización de consultas (EXPLAIN / Query Plan)
+- Objetos avanzados de programación
+:::
+
+# Funciones de ventana {background-color="#2c3e50"}
+
+## Función de ventana
+
+Son funciones SQL que realizan cálculos sobre el conjunto de filas relacionadas con la fila actual (ventana).
+
+::: {.fragment}
+Por ejemplo, calcular una suma acumulada:
+:::
+
+::: {.fragment}
+| Fecha | Ventas | Suma Acumulada |
+|---|---|---|
+| 2023-10-01 | 4,241 | 4,241 |
+| 2023-10-02 | 2,389 | 6,630 |
+| 2023-10-03 | 1,580 | 8,210 |
+| 2023-10-04 | 3,395 | 11,605 |
+| 2023-10-05 | 1,265 | 12,870 |
+:::
+
+## Cómo se desliza la ventana {.smaller}
+
+::: {.fragment .fade-right}
+**Calculando la fila actual**
+
+La ventana para la suma acumulada del `2023-10-04` incluye la fila actual y todas las filas anteriores.
+
+*Cálculo:* 4,241 + 2,389 + 1,580 + 3,395 = **11,605**
+:::
+
+::: {.fragment .fade-right}
+**Avanzando a la siguiente**
+
+Cuando pasamos a la fila siguiente, la ventana también se desplaza. Ahora incluirá todas las filas anteriores y la fila actual.
+
+*Nuevo cálculo:* 11,605 + 1,265 = **12,870**
+:::
+
+## Sintaxis
+
+```sql
+SELECT column_1,
+       column_2,
+       <window_function> OVER(PARTITION BY … ORDER BY … <window_frame>) AS column_alias
+FROM table;
+```
+
+::: {.fragment}
+La cláusula `OVER()` es el corazón de cualquier función de ventana.
+:::
+
+## Componentes de `OVER()` {.smaller}
+
+::: {.incremental}
+- **`<window_function>`:** la operación matemática o lógica que vas a realizar.
+- **`OVER (...)`:** convierte tu función en una "función de ventana".
+- **`PARTITION BY ...`** *(opcional)*: divide los datos en subgrupos o "particiones" independientes.
+- **`ORDER BY ...`** *(opcional)*: define en qué orden se evaluarán las filas *dentro de cada partición*.
+- **`<window_frame>`** *(opcional)*: define los límites exactos de tu ventana relativos a la fila evaluada.
+- **`AS column_alias`:** el nombre de la nueva columna calculada.
+:::
+
+## Funciones de Ventana: Agregación
+
+::: {.incremental}
+- **`COUNT()`** — cuenta el número de filas dentro de una ventana.
+- **`SUM()`** — totaliza valores dentro de una ventana.
+- **`AVG()`** — calcula la media de los valores dentro de una ventana.
+- **`MIN()`** — encuentra el valor más pequeño dentro de una ventana.
+- **`MAX()`** — encuentra el valor más grande dentro de una ventana.
+:::
+
+## Funciones de Ventana: Clasificación
+
+::: {.incremental}
+- **`ROW_NUMBER()`** — clasifica valores secuencialmente, con diferentes rangos para los valores empatados.
+- **`RANK()`** — usa el mismo rango para empates; omite el siguiente rango después de un empate *(1, 2, 2, 4)*.
+- **`DENSE_RANK()`** — usa el mismo rango para empates; no omite el rango siguiente *(1, 2, 2, 3, 4)*.
+:::
+
+## Funciones de Ventana: Analíticas
+
+::: {.incremental}
+- **`LEAD()`** — obtiene datos a partir de un desplazamiento definido **después** de la fila actual.
+- **`LAG()`** — obtiene datos de un desplazamiento definido **antes** de la fila actual.
+:::
+
+## Ejemplo {.smaller}
+
+Tenemos la tabla `empleados`. Queremos saber quién es el mejor pagado de cada departamento, asignando una posición (ranking) según su salario.
+
+| id | nombre | departamento | salario |
+|---|---|---|---|
+| 1 | Sofía | TI | 9000 |
+| 2 | Carlos | TI | 8000 |
+| 3 | Marta | TI | 8000 |
+| 4 | Ana | Ventas | 5000 |
+| 5 | Luis | Ventas | 3000 |
+
+## La Solución: Query con Función de Ventana {.smaller}
+
+Usaremos `RANK()` combinada con la cláusula `OVER()`:
+
+```sql
+SELECT 
+    nombre, 
+    departamento, 
+    salario, 
+    RANK() OVER(
+        PARTITION BY departamento 
+        ORDER BY salario DESC
+    ) AS ranking_depto
+FROM empleados;
+```
+
+::: {.fragment}
+> **`PARTITION BY departamento`** crea ventanas separadas para 'TI' y 'Ventas'.
+> **`ORDER BY salario DESC`** ordena los salarios de mayor a menor dentro de cada ventana.
+:::
+
+## El Resultado {.smaller}
+
+::: {.columns}
+::: {.column width="55%"}
+| nombre | depto | salario | ranking |
+|---|---|---|---|
+| Sofía | TI | 9000 | 1 |
+| Carlos | TI | 8000 | 2 |
+| Marta | TI | 8000 | 2 |
+| Ana | Ventas | 5000 | 1 |
+| Luis | Ventas | 3000 | 2 |
+:::
+
+::: {.column width="45%"}
+::: {.fragment .fade-left}
+A diferencia de `GROUP BY`, la función de ventana devuelve **todas las filas** originales, con una nueva columna de cálculo dinámico.
+:::
+
+::: {.fragment .fade-left}
+💡 Carlos y Marta empatan en 8000 y `RANK()` les asigna a ambos el puesto **2**.
+:::
+:::
+:::
+
+# CTEs {background-color="#2c3e50"}
+
+## CTE: Expresiones de Tabla Comunes
+
+Permiten definir una subconsulta con nombre, reutilizable dentro de la consulta principal.
+
+```sql
+WITH cte_name AS (
+   SELECT
+     column1,
+     column2, …
+   FROM table …
+)
+SELECT …
+FROM cte_name, …;
+```
+
+## Ejemplo: salario por encima del promedio {.smaller}
+
+Queremos saber qué personas ganan por encima del promedio de su departamento.
+
+| id | nombre | departamento | salario |
+|---|---|---|---|
+| 1 | Ana | Ventas | 5000 |
+| 2 | Luis | Ventas | 3000 |
+| 3 | Carlos | TI | 8000 |
+| 4 | Marta | TI | 7000 |
+| 5 | Sofía | TI | 9000 |
+
+::: {.fragment}
+*(El promedio en Ventas es 4000 y en TI es 8000).*
+:::
+
+## La Solución: Query con CTE {.smaller}
+
+```sql
+WITH PromedioDepto AS (
+    -- 1. La CTE calcula el salario promedio por departamento
+    SELECT 
+        departamento, 
+        AVG(salario) AS salario_promedio
+    FROM empleados
+    GROUP BY departamento
+)
+-- 2. La consulta principal usa la CTE como si fuera una tabla real
+SELECT 
+    e.nombre, e.departamento, e.salario, p.salario_promedio
+FROM empleados e
+JOIN PromedioDepto p ON e.departamento = p.departamento
+WHERE e.salario > p.salario_promedio;
+```
+
+## El Resultado {.smaller}
+
+| nombre | departamento | salario | promedio |
+|---|---|---|---|
+| Ana | Ventas | 5000 | 4000 |
+| Sofía | TI | 9000 | 8000 |
+
+<br>
+
+::: {.fragment .fade-up}
+> 💡 **¿Por qué usar una CTE?** Podríamos resolverlo con subconsultas anidadas, pero la CTE hace que el código sea más limpio, lógico y fácil de leer paso a paso.
+:::
+
+## CTEs Recursivas
+
+::: {.fragment .fade-up}
+Una CTE recursiva hace referencia a sí misma dentro del `SELECT`, creando un bucle.
+:::
+
+::: {.fragment .fade-up}
+Se utilizan para recorrer estructuras de datos jerárquicas, como organigramas o redes.
+:::
+
+## Sintaxis {.smaller}
+
+Requiere la palabra `RECURSIVE` y se compone de: **ancla**, **`UNION`** y **miembro recursivo**.
+
+```sql
+WITH RECURSIVE cte_name AS (
+    -- 1. Consulta Ancla (caso base)
+    SELECT column_1, column_2
+    FROM table_name
+    WHERE condition
+
+    UNION ALL
+
+    -- 2. Consulta Recursiva (referencia a cte_name)
+    SELECT t.column_1, t.column_2
+    FROM table_name t
+    JOIN cte_name c ON t.parent_column = c.column_1
+)
+SELECT * FROM cte_name;
+```
+
+## Ejemplo: Jerarquía de una Empresa {.smaller}
+
+Cada persona tiene un jefe (`jefe_id`), excepto la CEO, con valor `NULL`.
+
+| id | nombre | jefe_id | puesto |
+|---|---|---|---|
+| 1 | Elena | NULL | CEO |
+| 2 | Roberto | 1 | Director TI |
+| 3 | Laura | 2 | Desarrolladora |
+| 4 | Tomás | 3 | Becario |
+
+::: {.fragment}
+**Objetivo:** ver la jerarquía completa por nivel (Nivel 1 = CEO, Nivel 2 = Director, etc.).
+:::
+
+## La Solución: Query Recursiva {.smaller}
+
+```sql
+WITH RECURSIVE Jerarquia AS (
+    -- 1. Ancla: empezamos por la CEO (nivel más alto)
+    SELECT id, nombre, jefe_id, 1 AS nivel
+    FROM empleados
+    WHERE jefe_id IS NULL
+    
+    UNION ALL
+    
+    -- 2. Recursividad: buscamos a quienes reportan al nivel anterior
+    SELECT e.id, e.nombre, e.jefe_id, j.nivel + 1
+    FROM empleados e
+    JOIN Jerarquia j ON e.jefe_id = j.id
+)
+SELECT nombre, nivel FROM Jerarquia;
+```
+
+## El Resultado {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+| nombre | nivel |
+|---|---|
+| Elena | 1 |
+| Roberto | 2 |
+| Laura | 3 |
+| Tomás | 4 |
+:::
+
+::: {.column width="50%"}
+::: {.fragment .fade-left}
+El motor ejecutó el caso base (Elena). En el primer bucle encontró a Roberto (nivel 2), luego a Laura (nivel 3), y así hasta que nadie reportó a Tomás.
+:::
+:::
+:::
+
+# Optimización de consultas {background-color="#2c3e50"}
+
+## El Proceso de Optimización de Consultas
+
+::: {.fragment .fade-up}
+Optimizar código SQL no se trata de adivinar, sino de seguir un **método científico**.
+:::
+
+::: {.fragment .fade-up}
+Este es el flujo de trabajo estándar en la industria de datos para transformar una consulta lenta en una eficiente.
+:::
+
+## 1. Identificar y Entender
+
+Antes de tocar una sola línea de código, debes entender el contexto.
+
+::: {.incremental}
+- **Entender el objetivo:** ¿qué intentaba lograr el autor original? A veces es más rápido replantear la lógica desde cero que emparchar una consulta mal diseñada.
+- **Identificar el cuello de botella:** ¿el problema es el tiempo de ejecución, el alto consumo de CPU, o que bloquea otras transacciones?
+- **Revisar la volumetría:** ¿estás consultando una tabla de 1,000 registros o de 500 millones? Las estrategias cambian según el tamaño de los datos.
+:::
+
+## 2. Analizar el Plan de Ejecución {.smaller}
+
+Nunca optimices a ciegas.
+
+::: {.fragment .fade-up}
+**`EXPLAIN`** o **`EXPLAIN ANALYZE`** muestra el *plan de ejecución* que el motor va a usar para resolver una consulta: qué índices utiliza, en qué orden accede a las tablas y qué método de join aplica.
+:::
+
+::: {.fragment .fade-up}
+Sirve para detectar *table scans* innecesarios, elegir mejores índices y reescribir consultas costosas antes de llevarlas a producción.
+:::
+
+::: {.fragment .fade-up}
+```sql
+EXPLAIN
+SELECT nombre, salario
+FROM empleados
+WHERE departamento = 'TI';
+```
+:::
+
+## Red Flags en el Plan de Ejecución
+
+::: {.incremental}
+- **Full Table Scans** — escaneos completos de tabla.
+- **Nested Loops** muy grandes — bucles anidados costosos.
+- Uso de **memoria temporal en disco** en lugar de en RAM.
+:::
+
+## 3. Revisar Índices y Estructura
+
+El código SQL puede ser perfecto, pero sin la estructura física adecuada, seguirá siendo lento.
+
+::: {.incremental}
+- **Revisa las llaves:** ¿las columnas usadas en `JOIN`, `WHERE` y `ORDER BY` están indexadas?
+- **Tipos de datos:** ¿estás comparando un texto (`VARCHAR`) con un número (`INT`)? Las conversiones implícitas destruyen el rendimiento.
+- **Equilibrio:** los índices aceleran la lectura (`SELECT`), pero ralentizan la escritura (`INSERT`/`UPDATE`). No crees índices "por si acaso".
+:::
+
+## 4. Refactorizar el Código
+
+::: {.incremental}
+- Sustituye subconsultas complejas por **CTEs** para mejorar la legibilidad y ejecución.
+- Mueve los filtros `WHERE` lo más "arriba" posible para reducir el volumen de datos antes de los `JOIN`s.
+- Asegúrate de que tus filtros sean **sargables** (no apliques funciones matemáticas o de texto directamente sobre la columna en la cláusula `WHERE`).
+- Elimina `SELECT *` y `DISTINCT` innecesarios.
+:::
+
+## 5. Pruebas y Benchmarking
+
+El último paso es validar con datos duros que tu nueva versión es mejor.
+
+::: {.incremental}
+- **Mide el antes y el después:** ejecuta ambas consultas y compara sus tiempos de respuesta y su costo en el plan de ejecución.
+- **Limpia la caché:** vacía la caché de la base de datos antes de probar. Ejecutar la misma consulta dos veces da falsos positivos, porque la segunda siempre es más rápida al tener los datos en memoria.
+- **Implementa:** si los resultados son sólidos, la consulta está lista para producción.
+:::
+
+## Fuente
+
+::: {.fragment}
+DataCamp — [Optimización de consultas SQL](https://www.datacamp.com/es/blog/sql-query-optimization)
+:::
+
+# Objetos avanzados de programación {background-color="#2c3e50"}
+
+## Objetos avanzados de programación
+
+::: {.incremental}
+- **Vistas (`VIEW`)** — consultas guardadas que se comportan como tablas virtuales.
+- **Procedimientos almacenados** — bloques de lógica SQL reutilizable, con parámetros.
+- **Funciones definidas por el usuario (UDF)** — cálculos personalizados reutilizables en `SELECT`.
+- **Triggers** — lógica que se ejecuta automáticamente ante eventos (`INSERT`, `UPDATE`, `DELETE`).
+:::
+
+
+
+# Desarrollo {background-color="#2c3e50"}
 
 ## Desarrollo
 
-```{python}
-#| echo: true
-print("Hola, esta es la práctica 1")
-```
+A continuación se presentan los cuatro ejercicios seleccionados para el repaso avanzado de SQL. Cada uno deberá codificarse y probarse directamente en LeetCode utilizando el motor relacional de su elección (MySQL, PostgreSQL o MS SQL Server).
 
-## Conclusiones
+## Ejercicio 1: Combine Two Tables {.smaller}
 
-Escribe tus conclusiones aquí.
+**Nivel:** Fácil
+
+::: {.fragment .fade-up}
+**Enfoque:** uso correcto de combinaciones externas (*Outer Joins*).
+:::
+
+::: {.fragment .fade-up}
+**Descripción:** dadas las tablas *Person* y *Address*, el script debe reportar el primer nombre, apellido, ciudad y estado de cada persona. Si la dirección de un ID de persona no está presente en *Address*, se reporta como `null`.
+:::
+
+::: {.fragment .fade-up}
+**Link:** [leetcode.com/problems/combine-two-tables](https://leetcode.com/problems/combine-two-tables/description/)
+:::
+
+## Ejercicio 2: Second Highest Salary {.smaller}
+
+**Nivel:** Medio
+
+::: {.fragment .fade-up}
+**Enfoque:** subconsultas, manejo de valores vacíos y cláusulas de filtrado condicional.
+:::
+
+::: {.fragment .fade-up}
+**Descripción:** encontrar el segundo salario más alto de la tabla *Employee*. Si no existe, la consulta debe retornar `null` en una sola columna.
+:::
+
+::: {.fragment .fade-up}
+**Link:** [leetcode.com/problems/second-highest-salary](https://leetcode.com/problems/second-highest-salary/description/)
+:::
+
+## Ejercicio 3: Consecutive Numbers {.smaller}
+
+**Nivel:** Medio
+
+::: {.fragment .fade-up}
+**Enfoque:** funciones de ventana analíticas (`LEAD`/`LAG`) o combinaciones múltiples sobre la misma tabla (*Self-JOINs*).
+:::
+
+::: {.fragment .fade-up}
+**Descripción:** encontrar todos los números que aparecen al menos tres veces consecutivas de manera ininterrumpida dentro de la tabla *Logs*.
+:::
+
+::: {.fragment .fade-up}
+**Link:** [leetcode.com/problems/consecutive-numbers](https://leetcode.com/problems/consecutive-numbers/description/)
+:::
+
+## Ejercicio 4: Department Top Three Salaries {.smaller}
+
+**Nivel:** Difícil
+
+::: {.fragment .fade-up}
+**Enfoque:** expresiones de tabla comunes (CTEs) y funciones de ventana avanzadas de clasificación.
+:::
+
+::: {.fragment .fade-up}
+**Descripción:** una empresa considera "alto asalariado" a un empleado si su salario está entre los tres primeros salarios únicos de su departamento. Escriba una consulta para encontrar a esos empleados en cada departamento.
+:::
+
+::: {.fragment .fade-up}
+**Link:** [leetcode.com/problems/department-top-three-salaries](https://leetcode.com/problems/department-top-three-salaries/description/)
+:::
+
+## ¡Gracias! {background-color="#2c3e50"}
+
+::: {.fragment}
+Preguntas y comentarios son bienvenidos.
+:::
