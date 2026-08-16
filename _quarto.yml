@@ -1,0 +1,34 @@
+project:
+  type: website
+  output-dir: docs        # GitHub Pages puede servir directo desde /docs
+
+website:
+  title: "Mis Prácticas"
+  description: "Colección de prácticas del curso"
+  page-navigation: true
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inicio
+    right:
+      - icon: github
+        href: https://github.com/TU-USUARIO/TU-REPO
+  sidebar:
+    style: docked
+    search: true
+    contents:
+      - index.qmd
+      - section: "Prácticas"
+        contents:
+          - practica-01/practica-01.qmd
+          - practica-02/practica-02.qmd
+          - practica-03/practica-03.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    number-sections: false
+    code-fold: true
+    code-tools: true

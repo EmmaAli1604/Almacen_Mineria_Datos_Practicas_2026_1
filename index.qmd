@@ -1,0 +1,11 @@
+---
+title: "Prácticas"
+---
+
+Bienvenido/a. Aquí encontrarás el listado de prácticas del curso, cada una en su propia carpeta.
+
+## Índice
+
+- [Práctica 1](practica-01/practica-01.qmd)
+- [Práctica 2](practica-02/practica-02.qmd)
+- [Práctica 3](practica-03/practica-03.qmd)

@@ -1,0 +1,18 @@
+---
+title: "Práctica 2"
+subtitle: "Descripción breve de la práctica"
+author: "Tu nombre"
+date: today
+---
+
+## Objetivo
+
+Describe aquí el objetivo de la práctica.
+
+## Desarrollo
+
+Contenido de la práctica 2.
+
+## Conclusiones
+
+Escribe tus conclusiones aquí.
