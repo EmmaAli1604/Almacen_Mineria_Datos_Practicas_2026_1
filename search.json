@@ -1,0 +1,552 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Prácticas",
+    "section": "",
+    "text": "Bienvenido/a. Aquí encontrarás el listado de prácticas del curso, cada una en su propia carpeta.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#índice",
+    "href": "index.html#índice",
+    "title": "Prácticas",
+    "section": "Índice",
+    "text": "Índice\n\nPráctica 1\nPráctica 2\nPráctica 3",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html",
+    "href": "practica-02/practica-02.html",
+    "title": "Práctica 2",
+    "section": "",
+    "text": "Describe aquí el objetivo de la práctica.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#objetivo",
+    "href": "practica-02/practica-02.html#objetivo",
+    "title": "Práctica 2",
+    "section": "",
+    "text": "Describe aquí el objetivo de la práctica.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#desarrollo",
+    "href": "practica-02/practica-02.html#desarrollo",
+    "title": "Práctica 2",
+    "section": "Desarrollo",
+    "text": "Desarrollo\nContenido de la práctica 2.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#conclusiones",
+    "href": "practica-02/practica-02.html#conclusiones",
+    "title": "Práctica 2",
+    "section": "Conclusiones",
+    "text": "Conclusiones\nEscribe tus conclusiones aquí.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html",
+    "href": "practica-03/practica-03.html",
+    "title": "Práctica 3",
+    "section": "",
+    "text": "Describe aquí el objetivo de la práctica.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#objetivo",
+    "href": "practica-03/practica-03.html#objetivo",
+    "title": "Práctica 3",
+    "section": "",
+    "text": "Describe aquí el objetivo de la práctica.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#desarrollo",
+    "href": "practica-03/practica-03.html#desarrollo",
+    "title": "Práctica 3",
+    "section": "Desarrollo",
+    "text": "Desarrollo\nContenido de la práctica 3.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#conclusiones",
+    "href": "practica-03/practica-03.html#conclusiones",
+    "title": "Práctica 3",
+    "section": "Conclusiones",
+    "text": "Conclusiones\nEscribe tus conclusiones aquí.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#objetivo",
+    "href": "practica-01/practica-01.html#objetivo",
+    "title": "Práctica 1",
+    "section": "Objetivo",
+    "text": "Objetivo\n\nEl objetivo de esta práctica es repasar, consolidar y evaluar las habilidades de diseño, escritura y optimización de consultas en SQL mediante la resolución de cuatro problemas con niveles de complejidad progresivos (Fácil, Medio y Difícil) en la plataforma LeetCode.\n\n\nSe hará especial énfasis en la validez funcional de las soluciones y en la eficiencia computacional de los queries implementados.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#conceptos-principales",
+    "href": "practica-01/practica-01.html#conceptos-principales",
+    "title": "Práctica 1",
+    "section": "Conceptos Principales",
+    "text": "Conceptos Principales\n\nFunciones de ventana\nExpresiones de tabla comunes (CTEs)\nCTEs recursivas\nOptimización de consultas (EXPLAIN / Query Plan)\nObjetos avanzados de programación",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#función-de-ventana",
+    "href": "practica-01/practica-01.html#función-de-ventana",
+    "title": "Práctica 1",
+    "section": "Función de ventana",
+    "text": "Función de ventana\nSon funciones SQL que realizan cálculos sobre el conjunto de filas relacionadas con la fila actual (ventana).\n\nPor ejemplo, calcular una suma acumulada:\n\n\n\n\n\nFecha\nVentas\nSuma Acumulada\n\n\n\n\n2023-10-01\n4,241\n4,241\n\n\n2023-10-02\n2,389\n6,630\n\n\n2023-10-03\n1,580\n8,210\n\n\n2023-10-04\n3,395\n11,605\n\n\n2023-10-05\n1,265\n12,870",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#cómo-se-desliza-la-ventana",
+    "href": "practica-01/practica-01.html#cómo-se-desliza-la-ventana",
+    "title": "Práctica 1",
+    "section": "Cómo se desliza la ventana",
+    "text": "Cómo se desliza la ventana\n\nCalculando la fila actual\nLa ventana para la suma acumulada del 2023-10-04 incluye la fila actual y todas las filas anteriores.\nCálculo: 4,241 + 2,389 + 1,580 + 3,395 = 11,605\n\n\nAvanzando a la siguiente\nCuando pasamos a la fila siguiente, la ventana también se desplaza. Ahora incluirá todas las filas anteriores y la fila actual.\nNuevo cálculo: 11,605 + 1,265 = 12,870",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#sintaxis",
+    "href": "practica-01/practica-01.html#sintaxis",
+    "title": "Práctica 1",
+    "section": "Sintaxis",
+    "text": "Sintaxis\nSELECT column_1,\n       column_2,\n       &lt;window_function&gt; OVER(PARTITION BY … ORDER BY … &lt;window_frame&gt;) AS column_alias\nFROM table;\n\nLa cláusula OVER() es el corazón de cualquier función de ventana.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#componentes-de-over",
+    "href": "practica-01/practica-01.html#componentes-de-over",
+    "title": "Práctica 1",
+    "section": "Componentes de OVER()",
+    "text": "Componentes de OVER()\n\n&lt;window_function&gt;: la operación matemática o lógica que vas a realizar.\nOVER (...): convierte tu función en una “función de ventana”.\nPARTITION BY ... (opcional): divide los datos en subgrupos o “particiones” independientes.\nORDER BY ... (opcional): define en qué orden se evaluarán las filas dentro de cada partición.\n&lt;window_frame&gt; (opcional): define los límites exactos de tu ventana relativos a la fila evaluada.\nAS column_alias: el nombre de la nueva columna calculada.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#funciones-de-ventana-agregación",
+    "href": "practica-01/practica-01.html#funciones-de-ventana-agregación",
+    "title": "Práctica 1",
+    "section": "Funciones de Ventana: Agregación",
+    "text": "Funciones de Ventana: Agregación\n\nCOUNT() — cuenta el número de filas dentro de una ventana.\nSUM() — totaliza valores dentro de una ventana.\nAVG() — calcula la media de los valores dentro de una ventana.\nMIN() — encuentra el valor más pequeño dentro de una ventana.\nMAX() — encuentra el valor más grande dentro de una ventana.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#funciones-de-ventana-clasificación",
+    "href": "practica-01/practica-01.html#funciones-de-ventana-clasificación",
+    "title": "Práctica 1",
+    "section": "Funciones de Ventana: Clasificación",
+    "text": "Funciones de Ventana: Clasificación\n\nROW_NUMBER() — clasifica valores secuencialmente, con diferentes rangos para los valores empatados.\nRANK() — usa el mismo rango para empates; omite el siguiente rango después de un empate (1, 2, 2, 4).\nDENSE_RANK() — usa el mismo rango para empates; no omite el rango siguiente (1, 2, 2, 3, 4).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#funciones-de-ventana-analíticas",
+    "href": "practica-01/practica-01.html#funciones-de-ventana-analíticas",
+    "title": "Práctica 1",
+    "section": "Funciones de Ventana: Analíticas",
+    "text": "Funciones de Ventana: Analíticas\n\nLEAD() — obtiene datos a partir de un desplazamiento definido después de la fila actual.\nLAG() — obtiene datos de un desplazamiento definido antes de la fila actual.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejemplo",
+    "href": "practica-01/practica-01.html#ejemplo",
+    "title": "Práctica 1",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nTenemos la tabla empleados. Queremos saber quién es el mejor pagado de cada departamento, asignando una posición (ranking) según su salario.\n\n\n\nid\nnombre\ndepartamento\nsalario\n\n\n\n\n1\nSofía\nTI\n9000\n\n\n2\nCarlos\nTI\n8000\n\n\n3\nMarta\nTI\n8000\n\n\n4\nAna\nVentas\n5000\n\n\n5\nLuis\nVentas\n3000",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#la-solución-query-con-función-de-ventana",
+    "href": "practica-01/practica-01.html#la-solución-query-con-función-de-ventana",
+    "title": "Práctica 1",
+    "section": "La Solución: Query con Función de Ventana",
+    "text": "La Solución: Query con Función de Ventana\nUsaremos RANK() combinada con la cláusula OVER():\nSELECT \n    nombre, \n    departamento, \n    salario, \n    RANK() OVER(\n        PARTITION BY departamento \n        ORDER BY salario DESC\n    ) AS ranking_depto\nFROM empleados;\n\n\nPARTITION BY departamento crea ventanas separadas para ‘TI’ y ‘Ventas’. ORDER BY salario DESC ordena los salarios de mayor a menor dentro de cada ventana.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#el-resultado",
+    "href": "practica-01/practica-01.html#el-resultado",
+    "title": "Práctica 1",
+    "section": "El Resultado",
+    "text": "El Resultado\n\n\n\n\n\nnombre\ndepto\nsalario\nranking\n\n\n\n\nSofía\nTI\n9000\n1\n\n\nCarlos\nTI\n8000\n2\n\n\nMarta\nTI\n8000\n2\n\n\nAna\nVentas\n5000\n1\n\n\nLuis\nVentas\n3000\n2\n\n\n\n\n\nA diferencia de GROUP BY, la función de ventana devuelve todas las filas originales, con una nueva columna de cálculo dinámico.\n\n\n💡 Carlos y Marta empatan en 8000 y RANK() les asigna a ambos el puesto 2.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#cte-expresiones-de-tabla-comunes",
+    "href": "practica-01/practica-01.html#cte-expresiones-de-tabla-comunes",
+    "title": "Práctica 1",
+    "section": "CTE: Expresiones de Tabla Comunes",
+    "text": "CTE: Expresiones de Tabla Comunes\nPermiten definir una subconsulta con nombre, reutilizable dentro de la consulta principal.\nWITH cte_name AS (\n   SELECT\n     column1,\n     column2, …\n   FROM table …\n)\nSELECT …\nFROM cte_name, …;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejemplo-salario-por-encima-del-promedio",
+    "href": "practica-01/practica-01.html#ejemplo-salario-por-encima-del-promedio",
+    "title": "Práctica 1",
+    "section": "Ejemplo: salario por encima del promedio",
+    "text": "Ejemplo: salario por encima del promedio\nQueremos saber qué personas ganan por encima del promedio de su departamento.\n\n\n\nid\nnombre\ndepartamento\nsalario\n\n\n\n\n1\nAna\nVentas\n5000\n\n\n2\nLuis\nVentas\n3000\n\n\n3\nCarlos\nTI\n8000\n\n\n4\nMarta\nTI\n7000\n\n\n5\nSofía\nTI\n9000\n\n\n\n\n(El promedio en Ventas es 4000 y en TI es 8000).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#la-solución-query-con-cte",
+    "href": "practica-01/practica-01.html#la-solución-query-con-cte",
+    "title": "Práctica 1",
+    "section": "La Solución: Query con CTE",
+    "text": "La Solución: Query con CTE\nWITH PromedioDepto AS (\n    -- 1. La CTE calcula el salario promedio por departamento\n    SELECT \n        departamento, \n        AVG(salario) AS salario_promedio\n    FROM empleados\n    GROUP BY departamento\n)\n-- 2. La consulta principal usa la CTE como si fuera una tabla real\nSELECT \n    e.nombre, e.departamento, e.salario, p.salario_promedio\nFROM empleados e\nJOIN PromedioDepto p ON e.departamento = p.departamento\nWHERE e.salario &gt; p.salario_promedio;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#el-resultado-1",
+    "href": "practica-01/practica-01.html#el-resultado-1",
+    "title": "Práctica 1",
+    "section": "El Resultado",
+    "text": "El Resultado\n\n\n\nnombre\ndepartamento\nsalario\npromedio\n\n\n\n\nAna\nVentas\n5000\n4000\n\n\nSofía\nTI\n9000\n8000\n\n\n\n\n\n\n💡 ¿Por qué usar una CTE? Podríamos resolverlo con subconsultas anidadas, pero la CTE hace que el código sea más limpio, lógico y fácil de leer paso a paso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ctes-recursivas",
+    "href": "practica-01/practica-01.html#ctes-recursivas",
+    "title": "Práctica 1",
+    "section": "CTEs Recursivas",
+    "text": "CTEs Recursivas\n\nUna CTE recursiva hace referencia a sí misma dentro del SELECT, creando un bucle.\n\n\nSe utilizan para recorrer estructuras de datos jerárquicas, como organigramas o redes.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#sintaxis-1",
+    "href": "practica-01/practica-01.html#sintaxis-1",
+    "title": "Práctica 1",
+    "section": "Sintaxis",
+    "text": "Sintaxis\nRequiere la palabra RECURSIVE y se compone de: ancla, UNION y miembro recursivo.\nWITH RECURSIVE cte_name AS (\n    -- 1. Consulta Ancla (caso base)\n    SELECT column_1, column_2\n    FROM table_name\n    WHERE condition\n\n    UNION ALL\n\n    -- 2. Consulta Recursiva (referencia a cte_name)\n    SELECT t.column_1, t.column_2\n    FROM table_name t\n    JOIN cte_name c ON t.parent_column = c.column_1\n)\nSELECT * FROM cte_name;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejemplo-jerarquía-de-una-empresa",
+    "href": "practica-01/practica-01.html#ejemplo-jerarquía-de-una-empresa",
+    "title": "Práctica 1",
+    "section": "Ejemplo: Jerarquía de una Empresa",
+    "text": "Ejemplo: Jerarquía de una Empresa\nCada persona tiene un jefe (jefe_id), excepto la CEO, con valor NULL.\n\n\n\nid\nnombre\njefe_id\npuesto\n\n\n\n\n1\nElena\nNULL\nCEO\n\n\n2\nRoberto\n1\nDirector TI\n\n\n3\nLaura\n2\nDesarrolladora\n\n\n4\nTomás\n3\nBecario\n\n\n\n\nObjetivo: ver la jerarquía completa por nivel (Nivel 1 = CEO, Nivel 2 = Director, etc.).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#la-solución-query-recursiva",
+    "href": "practica-01/practica-01.html#la-solución-query-recursiva",
+    "title": "Práctica 1",
+    "section": "La Solución: Query Recursiva",
+    "text": "La Solución: Query Recursiva\nWITH RECURSIVE Jerarquia AS (\n    -- 1. Ancla: empezamos por la CEO (nivel más alto)\n    SELECT id, nombre, jefe_id, 1 AS nivel\n    FROM empleados\n    WHERE jefe_id IS NULL\n    \n    UNION ALL\n    \n    -- 2. Recursividad: buscamos a quienes reportan al nivel anterior\n    SELECT e.id, e.nombre, e.jefe_id, j.nivel + 1\n    FROM empleados e\n    JOIN Jerarquia j ON e.jefe_id = j.id\n)\nSELECT nombre, nivel FROM Jerarquia;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#el-resultado-2",
+    "href": "practica-01/practica-01.html#el-resultado-2",
+    "title": "Práctica 1",
+    "section": "El Resultado",
+    "text": "El Resultado\n\n\n\n\n\nnombre\nnivel\n\n\n\n\nElena\n1\n\n\nRoberto\n2\n\n\nLaura\n3\n\n\nTomás\n4\n\n\n\n\n\nEl motor ejecutó el caso base (Elena). En el primer bucle encontró a Roberto (nivel 2), luego a Laura (nivel 3), y así hasta que nadie reportó a Tomás.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#el-proceso-de-optimización-de-consultas",
+    "href": "practica-01/practica-01.html#el-proceso-de-optimización-de-consultas",
+    "title": "Práctica 1",
+    "section": "El Proceso de Optimización de Consultas",
+    "text": "El Proceso de Optimización de Consultas\n\nOptimizar código SQL no se trata de adivinar, sino de seguir un método científico.\n\n\nEste es el flujo de trabajo estándar en la industria de datos para transformar una consulta lenta en una eficiente.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#identificar-y-entender",
+    "href": "practica-01/practica-01.html#identificar-y-entender",
+    "title": "Práctica 1",
+    "section": "1. Identificar y Entender",
+    "text": "1. Identificar y Entender\nAntes de tocar una sola línea de código, debes entender el contexto.\n\nEntender el objetivo: ¿qué intentaba lograr el autor original? A veces es más rápido replantear la lógica desde cero que emparchar una consulta mal diseñada.\nIdentificar el cuello de botella: ¿el problema es el tiempo de ejecución, el alto consumo de CPU, o que bloquea otras transacciones?\nRevisar la volumetría: ¿estás consultando una tabla de 1,000 registros o de 500 millones? Las estrategias cambian según el tamaño de los datos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#analizar-el-plan-de-ejecución",
+    "href": "practica-01/practica-01.html#analizar-el-plan-de-ejecución",
+    "title": "Práctica 1",
+    "section": "2. Analizar el Plan de Ejecución",
+    "text": "2. Analizar el Plan de Ejecución\nNunca optimices a ciegas.\n\nEXPLAIN o EXPLAIN ANALYZE muestra el plan de ejecución que el motor va a usar para resolver una consulta: qué índices utiliza, en qué orden accede a las tablas y qué método de join aplica.\n\n\nSirve para detectar table scans innecesarios, elegir mejores índices y reescribir consultas costosas antes de llevarlas a producción.\n\n\nEXPLAIN\nSELECT nombre, salario\nFROM empleados\nWHERE departamento = 'TI';",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#red-flags-en-el-plan-de-ejecución",
+    "href": "practica-01/practica-01.html#red-flags-en-el-plan-de-ejecución",
+    "title": "Práctica 1",
+    "section": "Red Flags en el Plan de Ejecución",
+    "text": "Red Flags en el Plan de Ejecución\n\nFull Table Scans — escaneos completos de tabla.\nNested Loops muy grandes — bucles anidados costosos.\nUso de memoria temporal en disco en lugar de en RAM.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#revisar-índices-y-estructura",
+    "href": "practica-01/practica-01.html#revisar-índices-y-estructura",
+    "title": "Práctica 1",
+    "section": "3. Revisar Índices y Estructura",
+    "text": "3. Revisar Índices y Estructura\nEl código SQL puede ser perfecto, pero sin la estructura física adecuada, seguirá siendo lento.\n\nRevisa las llaves: ¿las columnas usadas en JOIN, WHERE y ORDER BY están indexadas?\nTipos de datos: ¿estás comparando un texto (VARCHAR) con un número (INT)? Las conversiones implícitas destruyen el rendimiento.\nEquilibrio: los índices aceleran la lectura (SELECT), pero ralentizan la escritura (INSERT/UPDATE). No crees índices “por si acaso”.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#refactorizar-el-código",
+    "href": "practica-01/practica-01.html#refactorizar-el-código",
+    "title": "Práctica 1",
+    "section": "4. Refactorizar el Código",
+    "text": "4. Refactorizar el Código\n\nSustituye subconsultas complejas por CTEs para mejorar la legibilidad y ejecución.\nMueve los filtros WHERE lo más “arriba” posible para reducir el volumen de datos antes de los JOINs.\nAsegúrate de que tus filtros sean sargables (no apliques funciones matemáticas o de texto directamente sobre la columna en la cláusula WHERE).\nElimina SELECT * y DISTINCT innecesarios.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#pruebas-y-benchmarking",
+    "href": "practica-01/practica-01.html#pruebas-y-benchmarking",
+    "title": "Práctica 1",
+    "section": "5. Pruebas y Benchmarking",
+    "text": "5. Pruebas y Benchmarking\nEl último paso es validar con datos duros que tu nueva versión es mejor.\n\nMide el antes y el después: ejecuta ambas consultas y compara sus tiempos de respuesta y su costo en el plan de ejecución.\nLimpia la caché: vacía la caché de la base de datos antes de probar. Ejecutar la misma consulta dos veces da falsos positivos, porque la segunda siempre es más rápida al tener los datos en memoria.\nImplementa: si los resultados son sólidos, la consulta está lista para producción.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#fuente",
+    "href": "practica-01/practica-01.html#fuente",
+    "title": "Práctica 1",
+    "section": "Fuente",
+    "text": "Fuente\n\nDataCamp — Optimización de consultas SQL",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#objetos-avanzados-de-programación-1",
+    "href": "practica-01/practica-01.html#objetos-avanzados-de-programación-1",
+    "title": "Práctica 1",
+    "section": "Objetos avanzados de programación",
+    "text": "Objetos avanzados de programación\n\nVistas (VIEW) — consultas guardadas que se comportan como tablas virtuales.\nProcedimientos almacenados — bloques de lógica SQL reutilizable, con parámetros.\nFunciones definidas por el usuario (UDF) — cálculos personalizados reutilizables en SELECT.\nTriggers — lógica que se ejecuta automáticamente ante eventos (INSERT, UPDATE, DELETE).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#desarrollo-1",
+    "href": "practica-01/practica-01.html#desarrollo-1",
+    "title": "Práctica 1",
+    "section": "Desarrollo",
+    "text": "Desarrollo\nA continuación se presentan los cuatro ejercicios seleccionados para el repaso avanzado de SQL. Cada uno deberá codificarse y probarse directamente en LeetCode utilizando el motor relacional de su elección (MySQL, PostgreSQL o MS SQL Server).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejercicio-1-combine-two-tables",
+    "href": "practica-01/practica-01.html#ejercicio-1-combine-two-tables",
+    "title": "Práctica 1",
+    "section": "Ejercicio 1: Combine Two Tables",
+    "text": "Ejercicio 1: Combine Two Tables\nNivel: Fácil\n\nEnfoque: uso correcto de combinaciones externas (Outer Joins).\n\n\nDescripción: dadas las tablas Person y Address, el script debe reportar el primer nombre, apellido, ciudad y estado de cada persona. Si la dirección de un ID de persona no está presente en Address, se reporta como null.\n\n\nLink: leetcode.com/problems/combine-two-tables",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejercicio-2-second-highest-salary",
+    "href": "practica-01/practica-01.html#ejercicio-2-second-highest-salary",
+    "title": "Práctica 1",
+    "section": "Ejercicio 2: Second Highest Salary",
+    "text": "Ejercicio 2: Second Highest Salary\nNivel: Medio\n\nEnfoque: subconsultas, manejo de valores vacíos y cláusulas de filtrado condicional.\n\n\nDescripción: encontrar el segundo salario más alto de la tabla Employee. Si no existe, la consulta debe retornar null en una sola columna.\n\n\nLink: leetcode.com/problems/second-highest-salary",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejercicio-3-consecutive-numbers",
+    "href": "practica-01/practica-01.html#ejercicio-3-consecutive-numbers",
+    "title": "Práctica 1",
+    "section": "Ejercicio 3: Consecutive Numbers",
+    "text": "Ejercicio 3: Consecutive Numbers\nNivel: Medio\n\nEnfoque: funciones de ventana analíticas (LEAD/LAG) o combinaciones múltiples sobre la misma tabla (Self-JOINs).\n\n\nDescripción: encontrar todos los números que aparecen al menos tres veces consecutivas de manera ininterrumpida dentro de la tabla Logs.\n\n\nLink: leetcode.com/problems/consecutive-numbers",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejercicio-4-department-top-three-salaries",
+    "href": "practica-01/practica-01.html#ejercicio-4-department-top-three-salaries",
+    "title": "Práctica 1",
+    "section": "Ejercicio 4: Department Top Three Salaries",
+    "text": "Ejercicio 4: Department Top Three Salaries\nNivel: Difícil\n\nEnfoque: expresiones de tabla comunes (CTEs) y funciones de ventana avanzadas de clasificación.\n\n\nDescripción: una empresa considera “alto asalariado” a un empleado si su salario está entre los tres primeros salarios únicos de su departamento. Escriba una consulta para encontrar a esos empleados en cada departamento.\n\n\nLink: leetcode.com/problems/department-top-three-salaries",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#gracias",
+    "href": "practica-01/practica-01.html#gracias",
+    "title": "Práctica 1",
+    "section": "¡Gracias!",
+    "text": "¡Gracias!\n\nPreguntas y comentarios son bienvenidos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  }
+]
