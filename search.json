@@ -1,75 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Prácticas",
-    "section": "",
-    "text": "Bienvenido/a. Aquí encontrarás el listado de prácticas del curso de Almacenes y Mineria de datos, cada práctica una en su propia carpeta. Este curso es impartido por la profesora Jessica Santizo Galicia, como ayudante teorico Diego Antonio Villalba González y ayudante de laboratorio Emma Alicia Jiménez Sánchez",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#índice",
-    "href": "index.html#índice",
-    "title": "Prácticas",
-    "section": "Índice",
-    "text": "Índice\n\nPráctica 1\nPráctica 2\nPráctica 3",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html",
-    "href": "practica-02/practica-02.html",
-    "title": "Práctica 2",
-    "section": "",
-    "text": "Describe aquí el objetivo de la práctica.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#objetivo",
-    "href": "practica-02/practica-02.html#objetivo",
-    "title": "Práctica 2",
-    "section": "",
-    "text": "Describe aquí el objetivo de la práctica.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#desarrollo",
-    "href": "practica-02/practica-02.html#desarrollo",
-    "title": "Práctica 2",
-    "section": "Desarrollo",
-    "text": "Desarrollo\nContenido de la práctica 2.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#conclusiones",
-    "href": "practica-02/practica-02.html#conclusiones",
-    "title": "Práctica 2",
-    "section": "Conclusiones",
-    "text": "Conclusiones\nEscribe tus conclusiones aquí.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
     "objectID": "practica-03/practica-03.html",
     "href": "practica-03/practica-03.html",
     "title": "Práctica 3",
@@ -535,6 +465,124 @@
       "Inicio",
       "Prácticas",
       "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Prácticas",
+    "section": "",
+    "text": "Bienvenido/a. Aquí encontrarás el listado de prácticas del curso de Almacenes y Mineria de datos, cada práctica una en su propia carpeta. Este curso es impartido por la profesora Jessica Santizo Galicia, como ayudante teorico Diego Antonio Villalba González y ayudante de laboratorio Emma Alicia Jiménez Sánchez",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#índice",
+    "href": "index.html#índice",
+    "title": "Prácticas",
+    "section": "Índice",
+    "text": "Índice\n\nPráctica 1\nPráctica 2\nPráctica 3",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#objetivo",
+    "href": "practica-02/practica-02.html#objetivo",
+    "title": "Práctica 2",
+    "section": "Objetivo",
+    "text": "Objetivo\nEl objetivo de esta práctica es que el alumno aplique los conceptos de modelado dimensional (hechos, dimensiones, granularidad y jerarquías) mediante el diseño e implementación de un Data Warehouse en la plataforma Google BigQuery. Se construirá el mismo modelo de negocio bajo dos enfoques de modelado distintos, Esquema Estrella y Esquema Copo de Nieve, con el fin de comparar su estructura, su facilidad de consulta y su rendimiento dentro de un motor analítico en la nube.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#componentes-principales",
+    "href": "practica-02/practica-02.html#componentes-principales",
+    "title": "Práctica 2",
+    "section": "Componentes Principales",
+    "text": "Componentes Principales",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#hechos",
+    "href": "practica-02/practica-02.html#hechos",
+    "title": "Práctica 2",
+    "section": "Hechos",
+    "text": "Hechos",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#dimensiones",
+    "href": "practica-02/practica-02.html#dimensiones",
+    "title": "Práctica 2",
+    "section": "Dimensiones",
+    "text": "Dimensiones",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#esquema-estrella",
+    "href": "practica-02/practica-02.html#esquema-estrella",
+    "title": "Práctica 2",
+    "section": "Esquema Estrella",
+    "text": "Esquema Estrella",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#esquema-copo-de-nieve",
+    "href": "practica-02/practica-02.html#esquema-copo-de-nieve",
+    "title": "Práctica 2",
+    "section": "Esquema Copo de Nieve",
+    "text": "Esquema Copo de Nieve",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#google-bigquery",
+    "href": "practica-02/practica-02.html#google-bigquery",
+    "title": "Práctica 2",
+    "section": "Google BigQuery",
+    "text": "Google BigQuery",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#desarrollo",
+    "href": "practica-02/practica-02.html#desarrollo",
+    "title": "Práctica 2",
+    "section": "Desarrollo",
+    "text": "Desarrollo",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
     ]
   }
 ]
