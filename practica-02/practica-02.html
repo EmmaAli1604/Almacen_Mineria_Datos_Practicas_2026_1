@@ -6,11 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-5a1953863e1f72ef3b996ef827f01ca7.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Emma Alicia Jiménez Sánchez">
-  <meta name="dcterms.date" content="2026-08-18">
+  <meta name="dcterms.date" content="2026-08-24">
   <title>Mis Prácticas – Práctica 2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -35,8 +35,74 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #e1e4e8; background-color: #24292e; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #e1e4e8; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #f97583; } /* Attribute */
+    code span.bn { color: #79b8ff; } /* BaseN */
+    code span.bu { color: #f97583; } /* BuiltIn */
+    code span.cf { color: #f97583; } /* ControlFlow */
+    code span.ch { color: #9ecbff; } /* Char */
+    code span.cn { color: #79b8ff; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #f97583; } /* DataType */
+    code span.dv { color: #79b8ff; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #f97583; font-weight: bold; } /* Extension */
+    code span.fl { color: #79b8ff; } /* Float */
+    code span.fu { color: #b392f0; } /* Function */
+    code span.im { color: #9ecbff; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #f97583; } /* Keyword */
+    code span.op { color: #e1e4e8; } /* Operator */
+    code span.ot { color: #b392f0; } /* Other */
+    code span.pp { color: #f97583; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #79b8ff; } /* SpecialChar */
+    code span.ss { color: #9ecbff; } /* SpecialString */
+    code span.st { color: #9ecbff; } /* String */
+    code span.va { color: #ffab70; } /* Variable */
+    code span.vs { color: #9ecbff; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ce599bbac41cbca6ad956b8cafd1a012.css">
   <link rel="stylesheet" href="styles.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -130,7 +196,7 @@
     }
   </style>
 </head>
-<body class="quarto-light">
+<body class="quarto-dark">
   <div class="reveal">
     <div class="slides">
 
@@ -146,35 +212,584 @@ Emma Alicia Jiménez Sánchez
 </div>
 </div>
 
-  <p class="date">2026-08-18</p>
+  <p class="date">2026-08-24</p>
 </section>
 <section id="objetivo" class="slide level2">
 <h2>Objetivo</h2>
-<p>El objetivo de esta práctica es que el alumno aplique los conceptos de modelado dimensional (hechos, dimensiones, granularidad y jerarquías) mediante el diseño e implementación de un Data Warehouse en la plataforma Google BigQuery. Se construirá el mismo modelo de negocio bajo dos enfoques de modelado distintos, Esquema Estrella y Esquema Copo de Nieve, con el fin de comparar su estructura, su facilidad de consulta y su rendimiento dentro de un motor analítico en la nube.</p>
+<div class="highlight-box">
+<p>El objetivo de esta práctica es que el alumno aplique los conceptos de modelado dimensional (hechos, dimensiones, granularidad y jerarquías) mediante el diseño e implementación de un Data Warehouse en la plataforma Google BigQuery.</p>
+</div>
 </section>
-<section id="componentes-principales" class="slide level2">
-<h2>Componentes Principales</h2>
+<section id="qué-es-google-bigquery" class="slide level2 smaller">
+<h2>¿Qué es Google BigQuery?</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li class="fragment">Es un data warehouse totalmente gestionado y <strong>serverless</strong> desarrollado por Google para almacenar y analizar datos a gran escala</li>
+<li class="fragment">Ayuda a administrar y analizar tus datos con funciones integradas como el aprendizaje automático, la búsqueda, el análisis geoespacial y la inteligencia empresarial</li>
+<li class="fragment">Proporciona una manera uniforme de trabajar con datos estructurados y no estructurados.</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/big_query.png" class="fragment fade-up quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
 </section>
-<section id="hechos" class="slide level2">
-<h2>Hechos</h2>
+<section id="nube-vs.-on-premise" class="slide level2 smaller">
+<h2>Nube vs.&nbsp;On-premise</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p><strong>On-premise:</strong> Servidores físicos de la propia empresa. Implica altos costos iniciales, requiere un equipo experto para gestionarlo y una planificación rigurosa para crecer con la demanda, debido a la rigidez al escalar recursos en centros de datos tradicionales.</p>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p><strong>Nube:</strong> gestionada y alojada por un proveedor de servicios cloud, como Google BigQuery, Amazon Redshift o Snowflake.</p>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/meme_aws.jpg" class="fragment fade-up quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
 </section>
-<section id="dimensiones" class="slide level2">
-<h2>Dimensiones</h2>
+<section id="on-premise" class="slide level2 smaller">
+<h2>On-premise</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/docker.jpg" class="fragment fade-up quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:55%;">
+<div class="fragment fade-up">
+<p><em>Ventajas</em></p>
+<ul>
+<li class="fragment">Control total sobre hardware y datos</li>
+<li class="fragment">No depende de conexión a internet</li>
+<li class="fragment">Cumplimiento normativo más sencillo en sectores muy regulados</li>
+</ul>
+<p><em>Desventajas</em></p>
+<ul>
+<li class="fragment">Altos costos iniciales (CAPEX)</li>
+<li class="fragment">Requiere equipo experto para su gestión</li>
+<li class="fragment">Escalar es lento y rígido</li>
+<li class="fragment">Todo esta cargo de la empresa</li>
+</ul>
+</div>
+</div></div>
 </section>
-<section id="esquema-estrella" class="slide level2">
-<h2>Esquema Estrella</h2>
+<section id="nube" class="slide level2 smaller">
+<h2>Nube</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="fragment fade-up">
+<p><em>Ventajas</em></p>
+<ul>
+<li class="fragment">Escala y aprovecha la flexibilidad del entorno cloud</li>
+<li class="fragment">Mayor velocidad y rendimiento</li>
+<li class="fragment">Precios flexibles, pago por uso (OPEX) y reduce costos operativos</li>
+</ul>
+<p><em>Desventajas</em></p>
+<ul>
+<li class="fragment">Dependencia del proveedor (<em>vendor lock-in</em>)</li>
+<li class="fragment">Requiere conexión a internet estable</li>
+<li class="fragment">Consideraciones de seguridad y soberanía de datos</li>
+<li class="fragment">Los costos pueden crecer si no se optimiza el uso</li>
+</ul>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/aws_caida.jpg" class="fragment fade-up quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
 </section>
-<section id="esquema-copo-de-nieve" class="slide level2">
-<h2>Esquema Copo de Nieve</h2>
+<section id="cómo-funciona-bigquery" class="slide level2">
+<h2>¿Cómo funciona BigQuery?</h2>
+<ul>
+<li class="fragment">Separa el motor de cómputo del almacenamiento, de modo que cada uno puede escalar por separado</li>
+<li class="fragment">Resultado: puedes consultar terabytes en segundos y petabytes en minutos</li>
+</ul>
+<div class="fragment custom-fade">
+<p>Cuando BigQuery ejecuta una consulta, el motor distribuye el trabajo en paralelo, escanea las tablas relevantes en almacenamiento, combina los resultados y devuelve el conjunto final de datos.</p>
+</div>
 </section>
-<section id="google-bigquery" class="slide level2">
-<h2>Google BigQuery</h2>
+<section id="funciones-clave-de-bigquery-en-2026" class="slide level2 smaller">
+<h2>Funciones clave de BigQuery en 2026</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><strong>BigQuery ML</strong> — Crea, entrena y despliega modelos de machine learning usando SQL</li>
+<li class="fragment"><strong>Gemini en BigQuery</strong> — Asistencia con IA para escribir consultas, entender esquemas y generar insights en lenguaje natural</li>
+<li class="fragment"><strong>BigQuery Studio</strong> — Un espacio de trabajo unificado para SQL, notebooks de Python y Spark dentro de la consola de BigQuery</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><strong>Consultas federadas</strong> — Consulta datos en Cloud SQL, Cloud Storage, Bigtable y otras fuentes sin moverlos a BigQuery</li>
+<li class="fragment"><strong>BigQuery Omni</strong> — Ejecuta analítica de BigQuery sobre datos almacenados en AWS o Azure sin copiarlos a Google Cloud</li>
+<li class="fragment"><strong>Data Studio</strong> — Permite crear dashboards automatizados que resumen la data</li>
+</ul>
+</div></div>
 </section>
-<section id="desarrollo" class="slide level2">
-<h2>Desarrollo</h2>
+<section id="base-de-datos-relacional-data-warehouse" class="slide level2">
+<h2>Base de datos relacional –&gt; Data Warehouse</h2>
+<div style="font-size: 0.75em;">
+<ul>
+<li class="fragment">Una base de datos relacional (<strong>OLTP</strong>) está normalizada para garantizar integridad y evitar redundancia en transacciones día a día.</li>
+<li class="fragment">Un <strong>Data Warehouse</strong> (OLAP) busca lo contrario: velocidad de consulta y facilidad de análisis, aunque implique redundancia.</li>
+</ul>
+<div class="fragment fade-up">
+<p>Para hacer esta transición existen dos metodologías clásicas de modelado, que difieren en el <strong>orden</strong> en que se construye el warehouse y en el <strong>nivel de normalización</strong> del modelo final: la de <strong>Ralph Kimball</strong> y la de <strong>Bill Inmon</strong>.</p>
+</div>
+</div>
+</section>
+<section id="kimball-vs.-inmon" class="slide level2 smaller">
+<h2>Kimball vs.&nbsp;Inmon</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="fragment fade-up">
+<p><strong>Ralph Kimball — Enfoque “Bottom-Up”</strong></p>
+<p>Se construyen primero <strong>data marts</strong> dimensionales por proceso de negocio, modelados como esquemas estrella o copo de nieve. El Data Warehouse general emerge de la unión de estos data marts mediante un <em>bus de dimensiones conformadas</em>.</p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Bill Inmon — Enfoque “Top-Down”</strong></p>
+<p>Se construye primero un <strong>Data Warehouse corporativo</strong> único que integra los datos de toda la organización. A partir de él se derivan <strong>data marts</strong> departamentales para consumo analítico.</p>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/capas.jpg" class="fragment fade-up quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="kimball-vs.-inmon-comparación" class="slide level2 smaller">
+<h2>Kimball vs.&nbsp;Inmon: comparación</h2>
+<div class="fragment fade-up">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criterio</th>
+<th>Kimball</th>
+<th>Inmon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Enfoque</td>
+<td>Bottom-Up (de los data marts al DW)</td>
+<td>Top-Down (del DW a los data marts)</td>
+</tr>
+<tr class="even">
+<td>Modelo de datos</td>
+<td>Dimensional (estrella / copo de nieve)</td>
+<td>Relacional normalizado (3FN)</td>
+</tr>
+<tr class="odd">
+<td>Tiempo de implementación</td>
+<td>Más rápido, entregas incrementales</td>
+<td>Más lento, requiere visión global primero</td>
+</tr>
+<tr class="even">
+<td>Redundancia de datos</td>
+<td>Mayor (desnormalizado)</td>
+<td>Menor (normalizado)</td>
+</tr>
+<tr class="odd">
+<td>Consultas analíticas</td>
+<td>Más simples y rápidas</td>
+<td>Requieren más <code>JOIN</code>s</td>
+</tr>
+<tr class="even">
+<td>Ideal para</td>
+<td>Proyectos ágiles, por departamento</td>
+<td>Organizaciones grandes, gobierno de datos estricto</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="por-qué-kimball-es-la-más-usada-en-la-industria" class="slide level2 smaller">
+<h2>¿Por qué Kimball es la más usada en la industria?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment fade-up">
+<p>Aunque ambas metodologías son válidas, en la práctica <strong>Kimball predomina</strong> sobre Inmon en la mayoría de los proyectos actuales, por razones directamente ligadas a la tabla anterior:</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-up">
+<ul>
+<li class="fragment"><strong>Entregas incrementales</strong></li>
+<li class="fragment"><strong>Menor costo y tiempo inicial</strong></li>
+<li class="fragment"><strong>Se adapta mejor a metodologías ágiles</strong></li>
+</ul>
+</div>
+</div></div>
+<div class="fragment fade-up">
+<p>Por estas razones, en esta práctica se utiliza el enfoque de <strong>Kimball</strong>: se modela un único proceso de negocio (ventas) directamente como esquema estrella y copo de nieve, sin necesidad de construir primero un Data Warehouse corporativo normalizado.</p>
+</div>
+</section>
+<section id="metodología-de-kimball-los-4-pasos" class="slide level2 smaller">
+<h2>Metodología de Kimball: los 4 pasos</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment fade-up">
+<p><strong>Paso 1 · Seleccionar el proceso de negocio</strong></p>
+<p>Elegir el proceso operativo que se quiere analizar. Suele corresponder a una tabla transaccional central de la base relacional.</p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Paso 2 · Declarar la granularidad</strong></p>
+<p>Definir qué representa <strong>cada renglón</strong> de la tabla de hechos. Toda decisión posterior depende de este nivel de detalle.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-up">
+<p><strong>Paso 3 · Identificar las dimensiones</strong></p>
+<p>Detectar el contexto que describe al hecho: quién, qué, cuándo, dónde. Suelen salir de las tablas “maestras” o de catálogo de la base relacional.</p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Paso 4 · Identificar los hechos</strong></p>
+<p>Detectar las métricas numéricas y aditivas del proceso.</p>
+</div>
+</div></div>
+</section>
+<section id="del-modelo-relacional-al-dimensional" class="slide level2 smaller">
+<h2>Del modelo relacional al dimensional</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment fade-up">
+<ol type="1">
+<li class="fragment"><strong>Analizar</strong> el modelo entidad-relación fuente y detectar tablas transaccionales (hechos) vs.&nbsp;tablas de catálogo (dimensiones)</li>
+<li class="fragment"><strong>Extraer</strong> los datos de la base relacional (proceso <em>Extract</em>)</li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-up">
+<ol start="3" type="1">
+<li class="fragment"><strong>Transformar</strong>: desnormalizar, limpiar, generar claves sustitutas (<em>surrogate keys</em>) y resolver jerarquías</li>
+<li class="fragment"><strong>Cargar</strong> (<em>Load</em>) las tablas de hechos y dimensiones ya transformadas en el Data Warehouse (BigQuery)</li>
+</ol>
+</div>
+</div></div>
+</section>
+<section id="etl-vs.-elt" class="slide level2 smaller">
+<h2>ETL vs.&nbsp;ELT</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/ETL_ELT.jpg" class="fragment fade-up quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:70%;">
+<div class="fragment fade-up">
+<p><strong>ETL — Extract, Transform, Load</strong></p>
+<p>Los datos se extraen de la fuente, se <strong>transforman en un servidor intermedio</strong> (limpieza, desnormalización, cálculo de métricas, generación de claves sustitutas) y <strong>después</strong> se cargan ya listos en el Data Warehouse.</p>
+</div>
+<div class="fragment fade-up">
+<p><strong>ELT — Extract, Load, Transform</strong></p>
+<p>Los datos se extraen de la fuente y se <strong>cargan crudos</strong> directamente en el Data Warehouse. La transformación ocurre <strong>después, dentro del propio motor</strong> del warehouse, usando su poder de cómputo (SQL, dbt, BigQuery ML, etc.).</p>
+</div>
+</div></div>
+</section>
+<section id="etl-vs.-elt-1" class="slide level2 smaller">
+<h2>ETL vs.&nbsp;ELT</h2>
+<div class="fragment fade-up" style="font-size: 65%;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criterio</th>
+<th>ETL</th>
+<th>ELT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Orden del proceso</td>
+<td>Extraer → Transformar → Cargar</td>
+<td>Extraer → Cargar → Transformar</td>
+</tr>
+<tr class="even">
+<td>Dónde se transforma</td>
+<td>Servidor/motor intermedio dedicado</td>
+<td>Dentro del propio Data Warehouse</td>
+</tr>
+<tr class="odd">
+<td>Velocidad de carga</td>
+<td>Más lenta (espera la transformación)</td>
+<td>Más rápida (carga datos crudos de inmediato)</td>
+</tr>
+<tr class="even">
+<td>Escalabilidad de la transformación</td>
+<td>Limitada por el servidor ETL</td>
+<td>Aprovecha el cómputo elástico de la nube</td>
+</tr>
+<tr class="odd">
+<td>Datos crudos disponibles</td>
+<td>No siempre se conservan</td>
+<td>Sí, siempre quedan en el warehouse</td>
+</tr>
+<tr class="even">
+<td>Flexibilidad de análisis</td>
+<td>Baja</td>
+<td>Alta</td>
+</tr>
+<tr class="odd">
+<td>Infraestructura necesaria</td>
+<td>Servidor ETL adicional</td>
+<td>Solo el Data Warehouse + herramienta de transformación</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="por-qué-hoy-se-usa-más-elt" class="slide level2 smaller">
+<h2>¿Por qué hoy se usa más ELT?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment fade-up">
+<p><strong>1. Cómputo elástico en la nube</strong> Motores como BigQuery o Snowflake procesan volúmenes masivos en segundos.</p>
+</div>
+<div class="fragment fade-up">
+<p><strong>2. Almacenamiento ultra barato</strong> Guardar todo el historial de datos crudos cuesta centavos.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-up">
+<p><strong>3. Preservación del dato crudo</strong> Permite re-procesar o auditar la información sin perder nada.</p>
+</div>
+<div class="fragment fade-up">
+<p><strong>4. Flexibilidad para Big Data</strong> Soporta datos no estructurados (JSON, logs, eventos) sin esquemas previos.</p>
+</div>
+</div></div>
+<div class="fragment fade-up">
+<p><strong>5. Ecosistema moderno (SQL + dbt)</strong> Transforma directamente en el warehouse usando solo SQL versionado y modular.</p>
+</div>
+</section>
+<section id="esquema-final" class="slide level2 center" data-background-color="#1a0b2e" style="text-align: center; color: #ff4d9d;">
+<h2>Esquema final</h2>
+</section>
+<section id="algoritmo-esquema-estrella" class="slide level2 smaller">
+<h2>Algoritmo Esquema Estrella</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment fade-up">
+<p><strong>1. Crear tabla de hechos (<code>fact_*</code>)</strong> Define la granularidad del proceso. Guarda únicamente métricas numéricas y llaves foráneas.</p>
+</div>
+<p><br>
+</p>
+<div class="fragment fade-up">
+<p><strong>2. Desnormalizar dimensiones (<code>dim_*</code>)</strong> Aplane la información en una sola tabla por contexto (ej. <em>producto + categoría + departamento</em>).</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-up">
+<p><strong>Paso 3 · Generar claves sustitutas</strong> Crea llaves sintéticas (<em>surrogate keys</em>) en las dimensiones y vincúlalas a la tabla de hechos.</p>
+</div>
+<p><br>
+</p>
+<div class="fragment fade-up">
+<p><strong>Paso 4 · Un solo nivel de JOIN</strong> Conecta <code>fact_*</code> directamente con cada <code>dim_*</code> para lograr consultas simples y ultrarrápidas.</p>
+</div>
+</div></div>
+</section>
+<section id="algoritmo-esquema-copo-de-nieve" class="slide level2 smaller">
+<h2>Algoritmo Esquema Copo de Nieve</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment fade-up">
+<p><strong>Paso 1 · Mantener tabla de hechos (<code>fact_*</code>)</strong> Se conserva el mismo diseño base del esquema estrella.</p>
+</div>
+<p><br>
+</p>
+<div class="fragment fade-up">
+<p><strong>Paso 2 · Normalizar dimensiones</strong> Divide en subdimensiones según sus niveles jerárquicos (ej. <em>producto → categoría → departamento</em>).</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment fade-up">
+<p><strong>Paso 3 · Enlazar subdimensiones</strong> Vincula cada nivel con la siguiente subdimensión usando claves sustitutas en cadena.</p>
+</div>
+<p><br>
+</p>
+<div class="fragment fade-up">
+<p><strong>Paso 4 · Resultado final</strong> Reduce la redundancia de datos a costa de consultas con más <code>JOIN</code>s y mayor complejidad.</p>
+</div>
+</div></div>
+</section>
+<section id="estrella-vs.-copo-de-nieve-cuál-elegir" class="slide level2 smaller">
+<h2>Estrella vs.&nbsp;Copo de Nieve: ¿cuál elegir?</h2>
+<div class="fragment fade-up">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criterio</th>
+<th>Estrella</th>
+<th>Copo de Nieve</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Normalización de dimensiones</td>
+<td>Ninguna (desnormalizado)</td>
+<td>Parcial/total (normalizado)</td>
+</tr>
+<tr class="even">
+<td>Complejidad de las consultas</td>
+<td>Baja (pocos <code>JOIN</code>s)</td>
+<td>Mayor (<code>JOIN</code>s encadenados)</td>
+</tr>
+<tr class="odd">
+<td>Rendimiento de lectura</td>
+<td>Generalmente más rápido</td>
+<td>Puede ser más lento</td>
+</tr>
+<tr class="even">
+<td>Espacio en disco</td>
+<td>Mayor (redundancia)</td>
+<td>Menor (sin redundancia)</td>
+</tr>
+<tr class="odd">
+<td>Mantenimiento de jerarquías</td>
+<td>Más difícil</td>
+<td>Más fácil</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="esquemas" class="slide level2">
+<h2>Esquemas</h2>
+
+<img data-src="img/esquema_copo_nieve.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section>
+<section id="desarrollo" class="title-slide slide level1 center">
+<h1>Desarrollo</h1>
+<p>Para esta práctica se ha seleccionado el dataset público <code>bigquery-public-data.thelook_ecommerce</code>.</p>
+<p>Se debe de modelar de forma natural un proceso de negocio transaccional, a partir del cual se pueden derivar tanto la tabla de hechos como sus dimensiones.</p>
+</section>
+<section id="paso-1-preparación-del-entorno-de-trabajo" class="slide level2 smaller">
+<h2>Paso 1: Preparación del entorno de trabajo</h2>
+<ol type="1">
+<li class="fragment">Ingresar a la consola de BigQuery: <a href="https://console.cloud.google.com/bigquery">console.cloud.google.com/bigquery</a> y seleccionar (o crear) un proyecto de GCP.</li>
+<li class="fragment">En el panel <em>Explorer</em>, hacer clic en el ícono <em>Add</em> → <em>Public Datasets</em>, dar clic en “Destacados por nombre”, escribir <em>bigquery-public-data</em> y fijarlo al proyecto para poder explorarlo desde el árbol de navegación. Todo debe estar en la misma región, que sería <strong>US</strong>, ya que si no se encuentran en la misma región no se van a encontrar los recursos.</li>
+<li class="fragment">Crear dos <em>datasets</em> propios donde se construirá el Data Warehouse, mediante el botón de los tres puntos junto al nombre del proyecto → <em>Create dataset</em> → como nombre de los datasets <code>dw_estrella</code> y <code>dw_copo_nieve</code>.</li>
+</ol>
+</section>
+<section id="paso-1-script-de-creación" class="slide level2">
+<h2>Paso 1: Script de creación</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a aria-label="1"></a><span class="kw">CREATE</span> <span class="kw">SCHEMA</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `id_proyecto.dw_estrella`</span>
+<span id="cb1-2"><a aria-label="2"></a>  OPTIONS (location <span class="op">=</span> <span class="st">'US'</span>);</span>
+<span id="cb1-3"><a aria-label="3"></a></span>
+<span id="cb1-4"><a aria-label="4"></a><span class="kw">CREATE</span> <span class="kw">SCHEMA</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> `id_proyecto.dw_copo_nieve`</span>
+<span id="cb1-5"><a aria-label="5"></a>  OPTIONS (location <span class="op">=</span> <span class="st">'US'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment fade-up">
+<p><em>(Sustituir <code>id_proyecto</code> por el ID real del proyecto de GCP del alumno.)</em></p>
+</div>
+</section>
+<section id="paso-2.1-exploración-de-la-fuente-de-datos" class="slide level2">
+<h2>Paso 2.1: Exploración de la fuente de datos</h2>
+<p>Entender la estructura de las tablas fuente y definir cuál será el hecho de negocio, su granularidad y sus métricas.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a aria-label="1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> `bigquery<span class="op">-</span><span class="kw">public</span><span class="op">-</span><span class="kw">data</span>.thelook_ecommerce.order_items` <span class="kw">LIMIT</span> <span class="dv">10</span>;</span>
+<span id="cb2-2"><a aria-label="2"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> `bigquery<span class="op">-</span><span class="kw">public</span><span class="op">-</span><span class="kw">data</span>.thelook_ecommerce.products`    <span class="kw">LIMIT</span> <span class="dv">10</span>;</span>
+<span id="cb2-3"><a aria-label="3"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> `bigquery<span class="op">-</span><span class="kw">public</span><span class="op">-</span><span class="kw">data</span>.thelook_ecommerce.users`       <span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="paso-2.2-definición-del-hecho-de-negocio" class="slide level2 smaller">
+<h2>Paso 2.2: Definición del hecho de negocio</h2>
+<div class="fragment fade-up">
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Definición</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Granularidad</strong></td>
+<td>Un renglón por cada producto vendido dentro de un pedido (<code>order_items.id</code>)</td>
+</tr>
+<tr class="even">
+<td><strong>Métricas (hechos)</strong></td>
+<td><code>sale_price</code> (precio de venta), <code>cost</code> (costo del producto), <code>ganancia</code> (precio − costo)</td>
+</tr>
+<tr class="odd">
+<td><strong>Dimensiones</strong></td>
+<td>Cliente, Producto, Tiempo, Centro de Distribución</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="paso-3-diseño-del-modelo-dimensional" class="slide level2 smaller">
+<h2>Paso 3: Diseño del modelo dimensional</h2>
+<p><strong>Qué se debe hacer:</strong> dibujar el diagrama conceptual de cada esquema antes de programarlos.</p>
+<ul>
+<li class="fragment"><strong>Esquema Estrella:</strong> una tabla central <code>fact_ventas</code> rodeada de <code>dim_cliente</code>, <code>dim_producto</code>, <code>dim_tiempo</code> y <code>dim_centro_distribucion</code>, todas desnormalizadas (un solo nivel)</li>
+<li class="fragment"><strong>Esquema Copo de Nieve:</strong> la misma tabla <code>fact_ventas</code>, pero con <code>dim_producto</code> descompuesta en <code>dim_categoria</code> y <code>dim_departamento</code>, y <code>dim_cliente</code> descompuesta en <code>dim_ciudad</code>, <code>dim_estado</code> y <code>dim_pais</code></li>
+</ul>
+</section>
+<section id="paso-4-consultas-analíticas-y-operaciones-olap" class="slide level2">
+<h2>Paso 4: Consultas Analíticas y Operaciones OLAP</h2>
+<p>Se deben ejecutar las siguientes consultas:</p>
+<ol type="1">
+<li class="fragment"><strong>ROLL-UP:</strong> ventas totales por mes y categoría</li>
+<li class="fragment"><strong>DRILL-DOWN:</strong> de mes a día para una categoría específica</li>
+<li class="fragment"><strong>SLICE:</strong> ventas únicamente del país “México”</li>
+<li class="fragment"><strong>DICE:</strong> ventas de las categorías “Jeans” y “Sweaters”, en “México” y “Brasil”</li>
+</ol>
+</section>
+<section id="paso-4-esquema-copo-de-nieve-consideraciones" class="slide level2">
+<h2>Paso 4: Esquema Copo de Nieve — consideraciones</h2>
+<div class="fragment fade-up">
+<p>Para las consultas sobre el esquema <code>dw_copo_nieve</code> se requerirá encadenar <code>JOIN</code>s adicionales, por ejemplo:</p>
+</div>
+<div class="fragment fade-up">
+<ul>
+<li class="fragment"><code>dim_producto</code> → <code>dim_categoria</code> para obtener el nombre de la categoría</li>
+<li class="fragment"><code>dim_cliente</code> → <code>dim_ciudad</code> → <code>dim_estado</code> → <code>dim_pais</code> para obtener el país</li>
+</ul>
+</div>
+</section>
+<section id="interfaz-de-google-query" class="slide level2 center" data-background-color="#1a0b2e" style="text-align: center; color: #ff4d9d;">
+<h2>Interfaz de Google Query</h2>
+</section>
+<section id="referencias" class="slide level2">
+<h2>Referencias</h2>
+<ul>
+<li class="fragment"><a href="https://cloud.google.com/bigquery/docs/introduction?hl=es-419">Introducción a BigQuery — Google Cloud</a></li>
+<li class="fragment"><a href="https://www.datacamp.com/es/tutorial/beginners-guide-to-bigquery">BigQuery para principiantes — DataCamp</a></li>
+<li class="fragment"><a href="https://cloud.google.com/products/calculator?hl=es">Calculadora de precios — Google Cloud</a></li>
+<li class="fragment"><a href="https://www.databricks.com/es/blog/data-warehouse-design">Guía práctica de diseño y arquitectura de data warehouse</a></li>
+<li class="fragment"><a href="https://aws.amazon.com/es/compare/the-difference-between-etl-and-elt/">¿Cuál es la diferencia entre los procesos de ETL y ELT?</a></li>
+</ul>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

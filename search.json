@@ -1,5 +1,442 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Prácticas",
+    "section": "",
+    "text": "Bienvenido/a. Aquí encontrarás el listado de prácticas del curso de Almacenes y Mineria de datos, cada práctica una en su propia carpeta. Este curso es impartido por la profesora Jessica Santizo Galicia, como ayudante teorico Diego Antonio Villalba González y ayudante de laboratorio Emma Alicia Jiménez Sánchez",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#objetivo",
+    "href": "index.html#objetivo",
+    "title": "Prácticas",
+    "section": "Objetivo:",
+    "text": "Objetivo:\nComprender los principios de los almacenes de datos y de la minería de datos, así como su aplicación al análisis y al descubrimiento de conocimiento en grandes conjuntos de datos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#finalizar-el-curso",
+    "href": "index.html#finalizar-el-curso",
+    "title": "Prácticas",
+    "section": "Finalizar el curso:",
+    "text": "Finalizar el curso:\nComprender la arquitectura de un almacén de datos. Preparar y transformar datos reales. Analizar información mediante modelos multidimensionales. Aplicar técnicas de minería de datos. Construir modelos básicos de clasificación, predicción y agrupamiento.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#temario-general",
+    "href": "index.html#temario-general",
+    "title": "Prácticas",
+    "section": "Temario general:",
+    "text": "Temario general:\nBasado en el temario oficial: https://www.fciencias.unam.mx/sites/default/files/temario/658.pdf\n\nSQL Avanzado\nAlmacenes de datos.\nCubos de datos.\nPreprocesamiento de datos.\nMinería de patrones y asociaciones.\nClasificación y predicción.\nAgrupamiento.\nDetección de anomalías.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#plataforma-y-tecnologías",
+    "href": "index.html#plataforma-y-tecnologías",
+    "title": "Prácticas",
+    "section": "Plataforma y tecnologías:",
+    "text": "Plataforma y tecnologías:\nEl curso se llevará a cabo en Google Classroom. Se utilizarán principalmente Python, NumPy, Pandas, Matplotlib, Seaborn, Plotly, Quarto, scikit-learn y SQL\nPara los laboratorios se tendrá la dinámica de que los primeros 15 minutos de cada laboratorio se van a escoger a 2 alumnos para que expliquen parte del desarrollo de su prática. Después se explicaran los conceptos fundamentales para poder desarrollar su práctica y tener mejores conocmientos con respecto a los temas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#avisos",
+    "href": "index.html#avisos",
+    "title": "Prácticas",
+    "section": "Avisos",
+    "text": "Avisos\n\nSolo se responden dudas de 10 am a 7 pm.\nSe puede usar la AI como HERRAMIENTA.\nA partir de la prática 2 se podrá hacer las prácticas en equipo. Los equipos son los mismos que en la clase teórica.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#índice",
+    "href": "index.html#índice",
+    "title": "Prácticas",
+    "section": "Índice",
+    "text": "Índice\n\nPráctica 1: SQL Avanzado\nPráctica 2: Almacenes de Datos y BigQuery\nPráctica 3",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#objetivo",
+    "href": "practica-02/practica-02.html#objetivo",
+    "title": "Práctica 2",
+    "section": "Objetivo",
+    "text": "Objetivo\n\nEl objetivo de esta práctica es que el alumno aplique los conceptos de modelado dimensional (hechos, dimensiones, granularidad y jerarquías) mediante el diseño e implementación de un Data Warehouse en la plataforma Google BigQuery.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#qué-es-google-bigquery",
+    "href": "practica-02/practica-02.html#qué-es-google-bigquery",
+    "title": "Práctica 2",
+    "section": "¿Qué es Google BigQuery?",
+    "text": "¿Qué es Google BigQuery?\n\n\n\nEs un data warehouse totalmente gestionado y serverless desarrollado por Google para almacenar y analizar datos a gran escala\nAyuda a administrar y analizar tus datos con funciones integradas como el aprendizaje automático, la búsqueda, el análisis geoespacial y la inteligencia empresarial\nProporciona una manera uniforme de trabajar con datos estructurados y no estructurados.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#nube-vs.-on-premise",
+    "href": "practica-02/practica-02.html#nube-vs.-on-premise",
+    "title": "Práctica 2",
+    "section": "Nube vs. On-premise",
+    "text": "Nube vs. On-premise\n\n\n\n\nOn-premise: Servidores físicos de la propia empresa. Implica altos costos iniciales, requiere un equipo experto para gestionarlo y una planificación rigurosa para crecer con la demanda, debido a la rigidez al escalar recursos en centros de datos tradicionales.\n\n\n\n\nNube: gestionada y alojada por un proveedor de servicios cloud, como Google BigQuery, Amazon Redshift o Snowflake.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#on-premise",
+    "href": "practica-02/practica-02.html#on-premise",
+    "title": "Práctica 2",
+    "section": "On-premise",
+    "text": "On-premise\n\n\n\n\n\n\n\n\n\nVentajas\n\nControl total sobre hardware y datos\nNo depende de conexión a internet\nCumplimiento normativo más sencillo en sectores muy regulados\n\nDesventajas\n\nAltos costos iniciales (CAPEX)\nRequiere equipo experto para su gestión\nEscalar es lento y rígido\nTodo esta cargo de la empresa",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#nube",
+    "href": "practica-02/practica-02.html#nube",
+    "title": "Práctica 2",
+    "section": "Nube",
+    "text": "Nube\n\n\n\nVentajas\n\nEscala y aprovecha la flexibilidad del entorno cloud\nMayor velocidad y rendimiento\nPrecios flexibles, pago por uso (OPEX) y reduce costos operativos\n\nDesventajas\n\nDependencia del proveedor (vendor lock-in)\nRequiere conexión a internet estable\nConsideraciones de seguridad y soberanía de datos\nLos costos pueden crecer si no se optimiza el uso",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#cómo-funciona-bigquery",
+    "href": "practica-02/practica-02.html#cómo-funciona-bigquery",
+    "title": "Práctica 2",
+    "section": "¿Cómo funciona BigQuery?",
+    "text": "¿Cómo funciona BigQuery?\n\nSepara el motor de cómputo del almacenamiento, de modo que cada uno puede escalar por separado\nResultado: puedes consultar terabytes en segundos y petabytes en minutos\n\n\nCuando BigQuery ejecuta una consulta, el motor distribuye el trabajo en paralelo, escanea las tablas relevantes en almacenamiento, combina los resultados y devuelve el conjunto final de datos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#funciones-clave-de-bigquery-en-2026",
+    "href": "practica-02/practica-02.html#funciones-clave-de-bigquery-en-2026",
+    "title": "Práctica 2",
+    "section": "Funciones clave de BigQuery en 2026",
+    "text": "Funciones clave de BigQuery en 2026\n\n\n\nBigQuery ML — Crea, entrena y despliega modelos de machine learning usando SQL\nGemini en BigQuery — Asistencia con IA para escribir consultas, entender esquemas y generar insights en lenguaje natural\nBigQuery Studio — Un espacio de trabajo unificado para SQL, notebooks de Python y Spark dentro de la consola de BigQuery\n\n\n\nConsultas federadas — Consulta datos en Cloud SQL, Cloud Storage, Bigtable y otras fuentes sin moverlos a BigQuery\nBigQuery Omni — Ejecuta analítica de BigQuery sobre datos almacenados en AWS o Azure sin copiarlos a Google Cloud\nData Studio — Permite crear dashboards automatizados que resumen la data",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#base-de-datos-relacional-data-warehouse",
+    "href": "practica-02/practica-02.html#base-de-datos-relacional-data-warehouse",
+    "title": "Práctica 2",
+    "section": "Base de datos relacional –> Data Warehouse",
+    "text": "Base de datos relacional –&gt; Data Warehouse\n\n\nUna base de datos relacional (OLTP) está normalizada para garantizar integridad y evitar redundancia en transacciones día a día.\nUn Data Warehouse (OLAP) busca lo contrario: velocidad de consulta y facilidad de análisis, aunque implique redundancia.\n\n\nPara hacer esta transición existen dos metodologías clásicas de modelado, que difieren en el orden en que se construye el warehouse y en el nivel de normalización del modelo final: la de Ralph Kimball y la de Bill Inmon.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#kimball-vs.-inmon",
+    "href": "practica-02/practica-02.html#kimball-vs.-inmon",
+    "title": "Práctica 2",
+    "section": "Kimball vs. Inmon",
+    "text": "Kimball vs. Inmon\n\n\n\nRalph Kimball — Enfoque “Bottom-Up”\nSe construyen primero data marts dimensionales por proceso de negocio, modelados como esquemas estrella o copo de nieve. El Data Warehouse general emerge de la unión de estos data marts mediante un bus de dimensiones conformadas.\n\n\nBill Inmon — Enfoque “Top-Down”\nSe construye primero un Data Warehouse corporativo único que integra los datos de toda la organización. A partir de él se derivan data marts departamentales para consumo analítico.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#kimball-vs.-inmon-comparación",
+    "href": "practica-02/practica-02.html#kimball-vs.-inmon-comparación",
+    "title": "Práctica 2",
+    "section": "Kimball vs. Inmon: comparación",
+    "text": "Kimball vs. Inmon: comparación\n\n\n\n\n\n\n\n\n\nCriterio\nKimball\nInmon\n\n\n\n\nEnfoque\nBottom-Up (de los data marts al DW)\nTop-Down (del DW a los data marts)\n\n\nModelo de datos\nDimensional (estrella / copo de nieve)\nRelacional normalizado (3FN)\n\n\nTiempo de implementación\nMás rápido, entregas incrementales\nMás lento, requiere visión global primero\n\n\nRedundancia de datos\nMayor (desnormalizado)\nMenor (normalizado)\n\n\nConsultas analíticas\nMás simples y rápidas\nRequieren más JOINs\n\n\nIdeal para\nProyectos ágiles, por departamento\nOrganizaciones grandes, gobierno de datos estricto",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#por-qué-kimball-es-la-más-usada-en-la-industria",
+    "href": "practica-02/practica-02.html#por-qué-kimball-es-la-más-usada-en-la-industria",
+    "title": "Práctica 2",
+    "section": "¿Por qué Kimball es la más usada en la industria?",
+    "text": "¿Por qué Kimball es la más usada en la industria?\n\n\n\nAunque ambas metodologías son válidas, en la práctica Kimball predomina sobre Inmon en la mayoría de los proyectos actuales, por razones directamente ligadas a la tabla anterior:\n\n\n\n\nEntregas incrementales\nMenor costo y tiempo inicial\nSe adapta mejor a metodologías ágiles\n\n\n\n\nPor estas razones, en esta práctica se utiliza el enfoque de Kimball: se modela un único proceso de negocio (ventas) directamente como esquema estrella y copo de nieve, sin necesidad de construir primero un Data Warehouse corporativo normalizado.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#metodología-de-kimball-los-4-pasos",
+    "href": "practica-02/practica-02.html#metodología-de-kimball-los-4-pasos",
+    "title": "Práctica 2",
+    "section": "Metodología de Kimball: los 4 pasos",
+    "text": "Metodología de Kimball: los 4 pasos\n\n\n\nPaso 1 · Seleccionar el proceso de negocio\nElegir el proceso operativo que se quiere analizar. Suele corresponder a una tabla transaccional central de la base relacional.\n\n\nPaso 2 · Declarar la granularidad\nDefinir qué representa cada renglón de la tabla de hechos. Toda decisión posterior depende de este nivel de detalle.\n\n\n\nPaso 3 · Identificar las dimensiones\nDetectar el contexto que describe al hecho: quién, qué, cuándo, dónde. Suelen salir de las tablas “maestras” o de catálogo de la base relacional.\n\n\nPaso 4 · Identificar los hechos\nDetectar las métricas numéricas y aditivas del proceso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#del-modelo-relacional-al-dimensional",
+    "href": "practica-02/practica-02.html#del-modelo-relacional-al-dimensional",
+    "title": "Práctica 2",
+    "section": "Del modelo relacional al dimensional",
+    "text": "Del modelo relacional al dimensional\n\n\n\n\nAnalizar el modelo entidad-relación fuente y detectar tablas transaccionales (hechos) vs. tablas de catálogo (dimensiones)\nExtraer los datos de la base relacional (proceso Extract)\n\n\n\n\n\nTransformar: desnormalizar, limpiar, generar claves sustitutas (surrogate keys) y resolver jerarquías\nCargar (Load) las tablas de hechos y dimensiones ya transformadas en el Data Warehouse (BigQuery)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#etl-vs.-elt",
+    "href": "practica-02/practica-02.html#etl-vs.-elt",
+    "title": "Práctica 2",
+    "section": "ETL vs. ELT",
+    "text": "ETL vs. ELT\n\n\n\n\n\n\n\n\n\nETL — Extract, Transform, Load\nLos datos se extraen de la fuente, se transforman en un servidor intermedio (limpieza, desnormalización, cálculo de métricas, generación de claves sustitutas) y después se cargan ya listos en el Data Warehouse.\n\n\nELT — Extract, Load, Transform\nLos datos se extraen de la fuente y se cargan crudos directamente en el Data Warehouse. La transformación ocurre después, dentro del propio motor del warehouse, usando su poder de cómputo (SQL, dbt, BigQuery ML, etc.).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#etl-vs.-elt-1",
+    "href": "practica-02/practica-02.html#etl-vs.-elt-1",
+    "title": "Práctica 2",
+    "section": "ETL vs. ELT",
+    "text": "ETL vs. ELT\n\n\n\n\n\n\n\n\n\nCriterio\nETL\nELT\n\n\n\n\nOrden del proceso\nExtraer → Transformar → Cargar\nExtraer → Cargar → Transformar\n\n\nDónde se transforma\nServidor/motor intermedio dedicado\nDentro del propio Data Warehouse\n\n\nVelocidad de carga\nMás lenta (espera la transformación)\nMás rápida (carga datos crudos de inmediato)\n\n\nEscalabilidad de la transformación\nLimitada por el servidor ETL\nAprovecha el cómputo elástico de la nube\n\n\nDatos crudos disponibles\nNo siempre se conservan\nSí, siempre quedan en el warehouse\n\n\nFlexibilidad de análisis\nBaja\nAlta\n\n\nInfraestructura necesaria\nServidor ETL adicional\nSolo el Data Warehouse + herramienta de transformación",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#por-qué-hoy-se-usa-más-elt",
+    "href": "practica-02/practica-02.html#por-qué-hoy-se-usa-más-elt",
+    "title": "Práctica 2",
+    "section": "¿Por qué hoy se usa más ELT?",
+    "text": "¿Por qué hoy se usa más ELT?\n\n\n\n1. Cómputo elástico en la nube Motores como BigQuery o Snowflake procesan volúmenes masivos en segundos.\n\n\n2. Almacenamiento ultra barato Guardar todo el historial de datos crudos cuesta centavos.\n\n\n\n3. Preservación del dato crudo Permite re-procesar o auditar la información sin perder nada.\n\n\n4. Flexibilidad para Big Data Soporta datos no estructurados (JSON, logs, eventos) sin esquemas previos.\n\n\n\n5. Ecosistema moderno (SQL + dbt) Transforma directamente en el warehouse usando solo SQL versionado y modular.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#esquema-final",
+    "href": "practica-02/practica-02.html#esquema-final",
+    "title": "Práctica 2",
+    "section": "Esquema final",
+    "text": "Esquema final",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#algoritmo-esquema-estrella",
+    "href": "practica-02/practica-02.html#algoritmo-esquema-estrella",
+    "title": "Práctica 2",
+    "section": "Algoritmo Esquema Estrella",
+    "text": "Algoritmo Esquema Estrella\n\n\n\n1. Crear tabla de hechos (fact_*) Define la granularidad del proceso. Guarda únicamente métricas numéricas y llaves foráneas.\n\n\n\n\n2. Desnormalizar dimensiones (dim_*) Aplane la información en una sola tabla por contexto (ej. producto + categoría + departamento).\n\n\n\nPaso 3 · Generar claves sustitutas Crea llaves sintéticas (surrogate keys) en las dimensiones y vincúlalas a la tabla de hechos.\n\n\n\n\nPaso 4 · Un solo nivel de JOIN Conecta fact_* directamente con cada dim_* para lograr consultas simples y ultrarrápidas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#algoritmo-esquema-copo-de-nieve",
+    "href": "practica-02/practica-02.html#algoritmo-esquema-copo-de-nieve",
+    "title": "Práctica 2",
+    "section": "Algoritmo Esquema Copo de Nieve",
+    "text": "Algoritmo Esquema Copo de Nieve\n\n\n\nPaso 1 · Mantener tabla de hechos (fact_*) Se conserva el mismo diseño base del esquema estrella.\n\n\n\n\nPaso 2 · Normalizar dimensiones Divide en subdimensiones según sus niveles jerárquicos (ej. producto → categoría → departamento).\n\n\n\nPaso 3 · Enlazar subdimensiones Vincula cada nivel con la siguiente subdimensión usando claves sustitutas en cadena.\n\n\n\n\nPaso 4 · Resultado final Reduce la redundancia de datos a costa de consultas con más JOINs y mayor complejidad.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#estrella-vs.-copo-de-nieve-cuál-elegir",
+    "href": "practica-02/practica-02.html#estrella-vs.-copo-de-nieve-cuál-elegir",
+    "title": "Práctica 2",
+    "section": "Estrella vs. Copo de Nieve: ¿cuál elegir?",
+    "text": "Estrella vs. Copo de Nieve: ¿cuál elegir?\n\n\n\n\n\n\n\n\n\nCriterio\nEstrella\nCopo de Nieve\n\n\n\n\nNormalización de dimensiones\nNinguna (desnormalizado)\nParcial/total (normalizado)\n\n\nComplejidad de las consultas\nBaja (pocos JOINs)\nMayor (JOINs encadenados)\n\n\nRendimiento de lectura\nGeneralmente más rápido\nPuede ser más lento\n\n\nEspacio en disco\nMayor (redundancia)\nMenor (sin redundancia)\n\n\nMantenimiento de jerarquías\nMás difícil\nMás fácil",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#esquemas",
+    "href": "practica-02/practica-02.html#esquemas",
+    "title": "Práctica 2",
+    "section": "Esquemas",
+    "text": "Esquemas",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-1-preparación-del-entorno-de-trabajo",
+    "href": "practica-02/practica-02.html#paso-1-preparación-del-entorno-de-trabajo",
+    "title": "Práctica 2",
+    "section": "Paso 1: Preparación del entorno de trabajo",
+    "text": "Paso 1: Preparación del entorno de trabajo\n\nIngresar a la consola de BigQuery: console.cloud.google.com/bigquery y seleccionar (o crear) un proyecto de GCP.\nEn el panel Explorer, hacer clic en el ícono Add → Public Datasets, dar clic en “Destacados por nombre”, escribir bigquery-public-data y fijarlo al proyecto para poder explorarlo desde el árbol de navegación. Todo debe estar en la misma región, que sería US, ya que si no se encuentran en la misma región no se van a encontrar los recursos.\nCrear dos datasets propios donde se construirá el Data Warehouse, mediante el botón de los tres puntos junto al nombre del proyecto → Create dataset → como nombre de los datasets dw_estrella y dw_copo_nieve.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-1-script-de-creación",
+    "href": "practica-02/practica-02.html#paso-1-script-de-creación",
+    "title": "Práctica 2",
+    "section": "Paso 1: Script de creación",
+    "text": "Paso 1: Script de creación\nCREATE SCHEMA IF NOT EXISTS `id_proyecto.dw_estrella`\n  OPTIONS (location = 'US');\n\nCREATE SCHEMA IF NOT EXISTS `id_proyecto.dw_copo_nieve`\n  OPTIONS (location = 'US');\n\n(Sustituir id_proyecto por el ID real del proyecto de GCP del alumno.)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-2.1-exploración-de-la-fuente-de-datos",
+    "href": "practica-02/practica-02.html#paso-2.1-exploración-de-la-fuente-de-datos",
+    "title": "Práctica 2",
+    "section": "Paso 2.1: Exploración de la fuente de datos",
+    "text": "Paso 2.1: Exploración de la fuente de datos\nEntender la estructura de las tablas fuente y definir cuál será el hecho de negocio, su granularidad y sus métricas.\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.order_items` LIMIT 10;\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.products`    LIMIT 10;\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.users`       LIMIT 10;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-2.2-definición-del-hecho-de-negocio",
+    "href": "practica-02/practica-02.html#paso-2.2-definición-del-hecho-de-negocio",
+    "title": "Práctica 2",
+    "section": "Paso 2.2: Definición del hecho de negocio",
+    "text": "Paso 2.2: Definición del hecho de negocio\n\n\n\n\n\n\n\n\nElemento\nDefinición\n\n\n\n\nGranularidad\nUn renglón por cada producto vendido dentro de un pedido (order_items.id)\n\n\nMétricas (hechos)\nsale_price (precio de venta), cost (costo del producto), ganancia (precio − costo)\n\n\nDimensiones\nCliente, Producto, Tiempo, Centro de Distribución",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-3-diseño-del-modelo-dimensional",
+    "href": "practica-02/practica-02.html#paso-3-diseño-del-modelo-dimensional",
+    "title": "Práctica 2",
+    "section": "Paso 3: Diseño del modelo dimensional",
+    "text": "Paso 3: Diseño del modelo dimensional\nQué se debe hacer: dibujar el diagrama conceptual de cada esquema antes de programarlos.\n\nEsquema Estrella: una tabla central fact_ventas rodeada de dim_cliente, dim_producto, dim_tiempo y dim_centro_distribucion, todas desnormalizadas (un solo nivel)\nEsquema Copo de Nieve: la misma tabla fact_ventas, pero con dim_producto descompuesta en dim_categoria y dim_departamento, y dim_cliente descompuesta en dim_ciudad, dim_estado y dim_pais",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-4-consultas-analíticas-y-operaciones-olap",
+    "href": "practica-02/practica-02.html#paso-4-consultas-analíticas-y-operaciones-olap",
+    "title": "Práctica 2",
+    "section": "Paso 4: Consultas Analíticas y Operaciones OLAP",
+    "text": "Paso 4: Consultas Analíticas y Operaciones OLAP\nSe deben ejecutar las siguientes consultas:\n\nROLL-UP: ventas totales por mes y categoría\nDRILL-DOWN: de mes a día para una categoría específica\nSLICE: ventas únicamente del país “México”\nDICE: ventas de las categorías “Jeans” y “Sweaters”, en “México” y “Brasil”",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-4-esquema-copo-de-nieve-consideraciones",
+    "href": "practica-02/practica-02.html#paso-4-esquema-copo-de-nieve-consideraciones",
+    "title": "Práctica 2",
+    "section": "Paso 4: Esquema Copo de Nieve — consideraciones",
+    "text": "Paso 4: Esquema Copo de Nieve — consideraciones\n\nPara las consultas sobre el esquema dw_copo_nieve se requerirá encadenar JOINs adicionales, por ejemplo:\n\n\n\ndim_producto → dim_categoria para obtener el nombre de la categoría\ndim_cliente → dim_ciudad → dim_estado → dim_pais para obtener el país",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#interfaz-de-google-query",
+    "href": "practica-02/practica-02.html#interfaz-de-google-query",
+    "title": "Práctica 2",
+    "section": "Interfaz de Google Query",
+    "text": "Interfaz de Google Query",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#referencias",
+    "href": "practica-02/practica-02.html#referencias",
+    "title": "Práctica 2",
+    "section": "Referencias",
+    "text": "Referencias\n\nIntroducción a BigQuery — Google Cloud\nBigQuery para principiantes — DataCamp\nCalculadora de precios — Google Cloud\nGuía práctica de diseño y arquitectura de data warehouse\n¿Cuál es la diferencia entre los procesos de ETL y ELT?",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
     "objectID": "practica-03/practica-03.html",
     "href": "practica-03/practica-03.html",
     "title": "Práctica 3",
@@ -465,124 +902,6 @@
       "Inicio",
       "Prácticas",
       "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Prácticas",
-    "section": "",
-    "text": "Bienvenido/a. Aquí encontrarás el listado de prácticas del curso de Almacenes y Mineria de datos, cada práctica una en su propia carpeta. Este curso es impartido por la profesora Jessica Santizo Galicia, como ayudante teorico Diego Antonio Villalba González y ayudante de laboratorio Emma Alicia Jiménez Sánchez",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#índice",
-    "href": "index.html#índice",
-    "title": "Prácticas",
-    "section": "Índice",
-    "text": "Índice\n\nPráctica 1\nPráctica 2\nPráctica 3",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#objetivo",
-    "href": "practica-02/practica-02.html#objetivo",
-    "title": "Práctica 2",
-    "section": "Objetivo",
-    "text": "Objetivo\nEl objetivo de esta práctica es que el alumno aplique los conceptos de modelado dimensional (hechos, dimensiones, granularidad y jerarquías) mediante el diseño e implementación de un Data Warehouse en la plataforma Google BigQuery. Se construirá el mismo modelo de negocio bajo dos enfoques de modelado distintos, Esquema Estrella y Esquema Copo de Nieve, con el fin de comparar su estructura, su facilidad de consulta y su rendimiento dentro de un motor analítico en la nube.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#componentes-principales",
-    "href": "practica-02/practica-02.html#componentes-principales",
-    "title": "Práctica 2",
-    "section": "Componentes Principales",
-    "text": "Componentes Principales",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#hechos",
-    "href": "practica-02/practica-02.html#hechos",
-    "title": "Práctica 2",
-    "section": "Hechos",
-    "text": "Hechos",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#dimensiones",
-    "href": "practica-02/practica-02.html#dimensiones",
-    "title": "Práctica 2",
-    "section": "Dimensiones",
-    "text": "Dimensiones",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#esquema-estrella",
-    "href": "practica-02/practica-02.html#esquema-estrella",
-    "title": "Práctica 2",
-    "section": "Esquema Estrella",
-    "text": "Esquema Estrella",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#esquema-copo-de-nieve",
-    "href": "practica-02/practica-02.html#esquema-copo-de-nieve",
-    "title": "Práctica 2",
-    "section": "Esquema Copo de Nieve",
-    "text": "Esquema Copo de Nieve",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#google-bigquery",
-    "href": "practica-02/practica-02.html#google-bigquery",
-    "title": "Práctica 2",
-    "section": "Google BigQuery",
-    "text": "Google BigQuery",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#desarrollo",
-    "href": "practica-02/practica-02.html#desarrollo",
-    "title": "Práctica 2",
-    "section": "Desarrollo",
-    "text": "Desarrollo",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
     ]
   }
 ]
