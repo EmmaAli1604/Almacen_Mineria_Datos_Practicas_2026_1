@@ -5,8 +5,41 @@ title: "Prácticas"
 Bienvenido/a. Aquí encontrarás el listado de prácticas del curso de Almacenes y Mineria de datos, cada práctica una en su propia carpeta.
 Este curso es impartido por la profesora Jessica Santizo Galicia, como ayudante teorico Diego Antonio Villalba González y ayudante de laboratorio Emma Alicia Jiménez Sánchez
 
+## Objetivo: 
+Comprender los principios de los almacenes de datos y de la minería de datos, así como su aplicación al análisis y al descubrimiento de conocimiento en grandes conjuntos de datos.
+
+## Finalizar el curso:
+Comprender la arquitectura de un almacén de datos.
+Preparar y transformar datos reales.
+Analizar información mediante modelos multidimensionales.
+Aplicar técnicas de minería de datos.
+Construir modelos básicos de clasificación, predicción y agrupamiento.
+
+## Temario general:
+Basado en el temario oficial: https://www.fciencias.unam.mx/sites/default/files/temario/658.pdf
+
+- SQL Avanzado
+- Almacenes de datos.
+- Cubos de datos.
+- Preprocesamiento de datos.
+- Minería de patrones y asociaciones.
+- Clasificación y predicción.
+- Agrupamiento.
+- Detección de anomalías.
+
+## Plataforma y tecnologías:
+El curso se llevará a cabo en Google Classroom.
+Se utilizarán principalmente **Python, NumPy, Pandas, Matplotlib, Seaborn, Plotly, Quarto, scikit-learn y SQL**
+
+Para los laboratorios se tendrá la dinámica de que los primeros 15 minutos de cada laboratorio se van a escoger a 2 alumnos para que expliquen parte del desarrollo de su prática. Después se explicaran los conceptos fundamentales para poder desarrollar su práctica y tener mejores conocmientos con respecto a los temas.
+
+## Avisos
+- Solo se responden dudas de 10 am a 7 pm.
+- Se puede usar la AI como **HERRAMIENTA**.
+- A partir de la prática 2 se podrá hacer las prácticas en equipo. Los equipos son los mismos que en la clase teórica.
+
 ## Índice
 
-- [Práctica 1](practica-01/practica-01.qmd)
-- [Práctica 2](practica-02/practica-02.qmd)
+- [Práctica 1: SQL Avanzado](practica-01/practica-01.qmd)
+- [Práctica 2: Almacenes de Datos y BigQuery](practica-02/practica-02.qmd)
 - [Práctica 3](practica-03/practica-03.qmd)
