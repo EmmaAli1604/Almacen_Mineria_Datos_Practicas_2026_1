@@ -22,6 +22,7 @@ website:
         contents:
           - practica-01/practica-01.qmd
           - practica-02/practica-02.qmd
+          - ejercicios-datawarehouse/ejercicios-dw.qmd
           - practica-03/practica-03.qmd
 
 format:

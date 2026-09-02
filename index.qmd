@@ -42,4 +42,5 @@ Para los laboratorios se tendrá la dinámica de que los primeros 15 minutos de 
 
 - [Práctica 1: SQL Avanzado](practica-01/practica-01.qmd)
 - [Práctica 2: Almacenes de Datos y BigQuery](practica-02/practica-02.qmd)
+- [Ejercicios DW](ejercicios-datawarehouse/ejercicios-dw.qmd)
 - [Práctica 3](practica-03/practica-03.qmd)

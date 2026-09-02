@@ -1,8 +1,23 @@
 ---
 title: "Práctica 3"
-subtitle: "Descripción breve de la práctica"
-author: "Tu nombre"
+subtitle: "dede"
+author: "Emma Alicia Jiménez Sánchez"
 date: today
+format:
+  revealjs:
+    theme: night
+    slide-number: true
+    progress: true
+    transition: slide
+    transition-speed: default
+    background-transition: fade
+    incremental: true
+    code-line-numbers: true
+    highlight-style: github-dark
+    css: styles.css
+    footer: "Práctica 2 · Google BigQuery"
+    smaller: false
+    center: false
 ---
 
 ## Objetivo

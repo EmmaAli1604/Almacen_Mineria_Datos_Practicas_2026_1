@@ -1,0 +1,782 @@
+---
+title: "Modelado Dimensional con Metodología Kimball"
+subtitle: "Esquema Estrella vs. Esquema Copo de Nieve"
+author: "Emma Alicia Jimenez Sanchez"
+format:
+  revealjs:
+    css: styles.css
+    slide-number: true
+    transition: slide
+    transition-speed: fast
+    center: false
+    code-line-numbers: false
+    highlight-style: monokai
+    chalkboard: false
+---
+
+## Agenda
+
+::: {.incremental}
+- Fundamento teórico: los 4 pasos de Kimball
+- ¿Qué es la desnormalización y por qué se usa?
+- Ejercicio 1 → Esquema en **Estrella**
+- Ejercicio 2 → Esquema en **Copo de Nieve**
+- Comparación y pasos generales
+:::
+
+# Fundamento teórico
+
+## Los 4 pasos de Kimball
+
+Para convertir un modelo relacional (OLTP) en un Data Warehouse (DW), Kimball propone seguir siempre este orden:
+
+::: {.columns}
+
+::: {.column width="50%"}
+::: {.incremental}
+1. **Seleccionar el proceso de negocio**
+2. **Definir la granularidad** 
+:::
+:::
+
+::: {.column width="50%"}
+::: {.incremental}
+3. **Identificar las dimensiones** 
+4. **Identificar los hechos**
+:::
+:::
+
+:::
+
+## Estrella vs. Copo de nieve
+
+::: {style="font-size: 80%;"}
+
+::: {.highlight-box}
+La diferencia entre los dos esquemas **no está en los 4 pasos** (son idénticos), sino en el **diseño físico** posterior de las dimensiones.
+:::
+
+<br>
+
+- **Estrella** → las jerarquías se **aplanan** en una sola tabla por dimensión
+- **Copo de nieve** → las jerarquías se **mantienen normalizadas** en varias tablas relacionadas
+
+:::
+
+# La desnormalización
+
+## ¿Qué es desnormalizar?
+
+::: {style="font-size: 75%;"}
+
+- Normalizar (3FN) = dividir la información en muchas tablas pequeñas, cada dato vive en un solo lugar → ideal para **OLTP** (muchas escrituras, se necesita integridad)
+- **Desnormalizar** = el proceso inverso: combinar tablas relacionadas por FK (una jerarquía) en **una sola tabla ancha**, copiando los atributos de las tablas "padre" hacia cada fila
+
+::: {.callout-note}
+El mecanismo técnico es un **JOIN que se ejecuta una sola vez en el ETL**, no en cada consulta del usuario.
+:::
+
+:::
+
+## ¿Por qué se hace en el DW?
+
+Un DW no recibe transacciones de escritura constantes de usuarios finales (los datos llegan por lotes vía ETL).
+
+::: {.highlight-box}
+La prioridad deja de ser la integridad referencial estricta, y pasa a ser que el usuario de negocio y las herramientas de BI puedan **consultar con el menor número de JOINs posible**.
+:::
+
+## Ejemplo: jerarquía de producto {.smaller}
+
+`Productos → Subcategorias → Categorias`
+
+:::: {.columns}
+
+::: {.column width="33%"}
+**Categorias**
+
+| id | nombre |
+|---|---|
+| 1 | Electrónica de Audio |
+| 2 | Cómputo |
+:::
+
+::: {.column width="33%"}
+**Subcategorias**
+
+| id | nombre | id_cat |
+|---|---|---|
+| 10 | Audífonos | 1 |
+| 11 | Bocinas | 1 |
+| 20 | Laptops | 2 |
+:::
+
+::: {.column width="34%"}
+**Productos**
+
+| id | nombre | id_subcat |
+|---|---|---|
+| 100 | Audífono BT X200 | 10 |
+| 101 | Bocina Portátil S1 | 11 |
+| 102 | Laptop Pro 14" | 20 |
+:::
+
+::::
+
+Responder *"ventas por categoría"* aquí exige **3 JOINs** cada vez.
+
+## Ejemplo: el JOIN de desnormalización {.smaller}
+
+```sql
+SELECT
+    p.id_producto,
+    p.nombre_producto,
+    p.precio_unitario,
+    s.nombre_subcategoria AS subcategoria,
+    c.nombre_categoria    AS categoria
+FROM Productos p
+JOIN Subcategorias s ON p.id_subcategoria = s.id_subcategoria
+JOIN Categorias c    ON s.id_categoria   = c.id_categoria;
+```
+
+Este JOIN se corre **una sola vez**, durante la carga de la dimensión.
+
+## Resultado: Dim_Producto desnormalizada {.smaller}
+
+| id (sk) | nombre_producto | precio | subcategoria | categoria |
+|---|---|---|---|---|
+| 1 | Audífono BT X200 | 45.00 | Audífonos | Electrónica de Audio |
+| 2 | Bocina Portátil S1 | 60.00 | Bocinas | Electrónica de Audio |
+| 3 | Laptop Pro 14" | 950.00 | Laptops | Cómputo |
+
+::: {.callout-note}
+"Electrónica de Audio" queda **repetido** en dos filas: es la redundancia controlada de la desnormalización. A cambio, el reporte por categoría ya necesita **0 JOINs adicionales**.
+:::
+
+## Costo y beneficio de desnormalizar
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Beneficio**
+
+- Consultas SQL más simples
+- Mejor rendimiento de lectura en BI
+- Más fácil de entender para negocio
+:::
+
+::: {.column width="50%"}
+**Costo**
+
+- Más espacio en disco (redundancia)
+- Cambios se propagan vía ETL, no manual
+- La dimensión puede volverse muy ancha
+:::
+
+::::
+
+## ¿Cuándo SÍ conviene normalizar? (copo de nieve)
+
+::: {.incremental}
+- Dimensión **muy grande** (millones de filas)
+- Jerarquía **compartida por varias tablas de hechos** (dimensión conformada)
+- El negocio exige auditar cada nivel como entidad independiente
+- Kimball prefiere la estrella; el copo de nieve es la **excepción puntual**, no la regla
+:::
+
+# Ejercicio 1 — Esquema en Estrella
+
+## Caso de negocio
+
+::: {.highlight-box}
+Una cadena de tiendas de electrónica quiere analizar sus **ventas** por producto, cliente, tienda, empleado y tiempo.
+:::
+
+Su información vive en una base de datos operacional (OLTP) normalizada en 3FN.
+
+## Modelo OLTP — Geografía {.smaller}
+
+:::: {.columns}
+
+::: {.column width="33%"}
+**Paises**
+
+| Campo | Tipo |
+|---|---|
+| id_pais (PK) | int |
+| nombre_pais | varchar |
+:::
+
+::: {.column width="33%"}
+**Estados**
+
+| Campo | Tipo |
+|---|---|
+| id_estado (PK) | int |
+| nombre_estado | varchar |
+| id_pais (FK) | int |
+:::
+
+::: {.column width="34%"}
+**Ciudades**
+
+| Campo | Tipo |
+|---|---|
+| id_ciudad (PK) | int |
+| nombre_ciudad | varchar |
+| id_estado (FK) | int |
+:::
+
+::::
+
+## Modelo OLTP — Clientes, Tiendas, Empleados {.smaller}
+
+:::: {.columns}
+
+::: {.column width="33%"}
+**Clientes**
+
+| Campo | Tipo |
+|---|---|
+| id_cliente (PK) | int |
+| nombre | varchar |
+| apellido | varchar |
+| email | varchar |
+| id_ciudad (FK) | int |
+:::
+
+::: {.column width="33%"}
+**Tiendas**
+
+| Campo | Tipo |
+|---|---|
+| id_tienda (PK) | int |
+| nombre_tienda | varchar |
+| id_ciudad (FK) | int |
+:::
+
+::: {.column width="34%"}
+**Empleados**
+
+| Campo | Tipo |
+|---|---|
+| id_empleado (PK) | int |
+| nombre_completo | varchar |
+| puesto | varchar |
+| id_tienda (FK) | int |
+:::
+
+::::
+
+## Modelo OLTP — Producto {.smaller}
+
+:::: {.columns}
+
+::: {.column width="33%"}
+**Categorias**
+
+| Campo | Tipo |
+|---|---|
+| id_categoria (PK) | int |
+| nombre_categoria | varchar |
+:::
+
+::: {.column width="33%"}
+**Subcategorias**
+
+| Campo | Tipo |
+|---|---|
+| id_subcategoria (PK) | int |
+| nombre_subcategoria | varchar |
+| id_categoria (FK) | int |
+:::
+
+::: {.column width="34%"}
+**Productos**
+
+| Campo | Tipo |
+|---|---|
+| id_producto (PK) | int |
+| nombre_producto | varchar |
+| precio_unitario | decimal |
+| id_subcategoria (FK) | int |
+:::
+
+::::
+
+## Modelo OLTP — Transacción {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Ventas** (encabezado)
+
+| Campo | Tipo |
+|---|---|
+| id_venta (PK) | int |
+| fecha | date |
+| id_cliente (FK) | int |
+| id_empleado (FK) | int |
+| id_tienda (FK) | int |
+:::
+
+::: {.column width="50%"}
+**DetalleVentas**
+
+| Campo | Tipo |
+|---|---|
+| id_detalle (PK) | int |
+| id_venta (FK) | int |
+| id_producto (FK) | int |
+| cantidad | int |
+| precio_unitario | decimal |
+| descuento | decimal |
+:::
+
+::::
+
+## Kimball paso 1 y 2
+
+::: {.highlight-box}
+**Paso 1 — Proceso de negocio:** Ventas en tienda.
+
+**Paso 2 — Grano:** una fila por cada **línea de producto vendida dentro de un ticket** (grano de `DetalleVentas`).
+:::
+
+## Kimball paso 3 — Dimensiones
+
+::: {.incremental}
+- Dim_Cliente
+- Dim_Producto
+- Dim_Tienda
+- Dim_Empleado
+- Dim_Tiempo *(derivada de la fecha, no existe en el OLTP)*
+:::
+
+## Kimball paso 4 — Hechos
+
+::: {.incremental}
+- cantidad_vendida
+- precio_unitario
+- descuento
+- **monto_total** = cantidad × precio_unitario − descuento
+:::
+
+## Kimball paso 5 — Diseño físico
+
+::: {.highlight-box}
+Las jerarquías `Producto → Subcategoria → Categoria` y `Cliente/Tienda → Ciudad → Estado → Pais` se **aplanan** en una sola tabla de dimensión cada una.
+:::
+
+Esto es lo que convierte al modelo en **estrella**.
+
+## Construcción — Dim_Producto {.smaller}
+
+Se combinan 3 tablas de origen en una sola:
+
+```sql
+SELECT ROW_NUMBER() OVER() AS id_producto_sk,
+       p.id_producto AS id_producto_origen,
+       p.nombre_producto, p.precio_unitario,
+       s.nombre_subcategoria AS subcategoria,
+       c.nombre_categoria    AS categoria
+FROM Productos p
+JOIN Subcategorias s ON p.id_subcategoria = s.id_subcategoria
+JOIN Categorias c    ON s.id_categoria   = c.id_categoria;
+```
+
+`Productos + Subcategorias + Categorias` → una sola tabla ancha.
+
+## Construcción — Dim_Cliente {.smaller}
+
+Se combinan 4 tablas de origen:
+
+```sql
+SELECT ROW_NUMBER() OVER() AS id_cliente_sk,
+       cl.id_cliente AS id_cliente_origen,
+       cl.nombre, cl.apellido, cl.email,
+       ci.nombre_ciudad AS ciudad,
+       e.nombre_estado  AS estado,
+       pa.nombre_pais   AS pais
+FROM Clientes cl
+JOIN Ciudades ci ON cl.id_ciudad = ci.id_ciudad
+JOIN Estados  e  ON ci.id_estado = e.id_estado
+JOIN Paises   pa ON e.id_pais    = pa.id_pais;
+```
+
+`Dim_Tienda` se construye con la misma lógica (`Tiendas + Ciudades + Estados + Paises`).
+
+## Construcción — Dim_Empleado {.smaller}
+
+Más simple: solo necesita el nombre de la tienda, no toda la jerarquía geográfica.
+
+```sql
+SELECT ROW_NUMBER() OVER() AS id_empleado_sk,
+       emp.id_empleado AS id_empleado_origen,
+       emp.nombre_completo, emp.puesto,
+       t.nombre_tienda AS tienda_asignada
+FROM Empleados emp
+JOIN Tiendas t ON emp.id_tienda = t.id_tienda;
+```
+
+::: {.callout-note}
+**Dim_Tiempo** no viene del OLTP: se genera con un script/calendario (ej. 2015–2030) calculando día, mes, trimestre, año y día de la semana.
+:::
+
+## Construcción — Fact_Ventas {.smaller}
+
+Se sustituye cada clave natural del OLTP por la **clave sustituta (surrogate key)** de la dimensión correspondiente:
+
+```sql
+SELECT
+    dv.id_venta,
+    dc.id_cliente_sk, dp.id_producto_sk, dt.id_tienda_sk,
+    de.id_empleado_sk, dti.id_tiempo_sk,
+    dv.cantidad, dv.precio_unitario, dv.descuento,
+    (dv.cantidad * dv.precio_unitario - dv.descuento) AS monto_total
+FROM DetalleVentas dv
+JOIN Ventas v        ON dv.id_venta    = v.id_venta
+JOIN Dim_Cliente dc  ON v.id_cliente   = dc.id_cliente_origen
+JOIN Dim_Producto dp ON dv.id_producto = dp.id_producto_origen
+JOIN Dim_Tienda dt   ON v.id_tienda    = dt.id_tienda_origen
+JOIN Dim_Empleado de ON v.id_empleado  = de.id_empleado_origen
+JOIN Dim_Tiempo dti  ON v.fecha        = dti.fecha;
+```
+
+## Idea clave del esquema estrella
+
+::: {.highlight-box}
+Los JOINs de aplanado solo ocurren **una vez**, al construir las dimensiones. Después, cualquier consulta de negocio necesita **un solo JOIN** entre `Fact_Ventas` y la dimensión — por ejemplo, ventas por categoría = `Fact_Ventas JOIN Dim_Producto`.
+:::
+
+## Resultado: Modelo en Estrella {.smaller}
+
+**Fact_Ventas** → id_venta, id_cliente, id_producto, id_tienda, id_empleado, id_tiempo, cantidad, precio_unitario, descuento, monto_total
+
+<br>
+
+- **Dim_Cliente** — nombre, apellido, email, ciudad, estado, pais *(aplanado)*
+- **Dim_Producto** — nombre_producto, subcategoria, categoria, precio *(aplanado)*
+- **Dim_Tienda** — nombre_tienda, ciudad, estado, pais *(aplanado)*
+- **Dim_Empleado** — nombre_completo, puesto, tienda_asignada
+- **Dim_Tiempo** — fecha, dia, mes, trimestre, anio, dia_semana
+
+# Ejercicio 2 — Esquema Copo de Nieve
+
+## Caso de negocio
+
+::: {.highlight-box}
+Una universidad quiere analizar sus **matrículas** por estudiante, curso, profesor, programa académico y período.
+:::
+
+Su base de datos operacional también está normalizada en 3FN.
+
+## Modelo OLTP — Geografía y Estudiantes {.smaller}
+
+:::: {.columns}
+
+::: {.column width="33%"}
+**Paises**
+
+| Campo | Tipo |
+|---|---|
+| id_pais (PK) | int |
+| nombre_pais | varchar |
+:::
+
+::: {.column width="33%"}
+**Ciudades**
+
+| Campo | Tipo |
+|---|---|
+| id_ciudad (PK) | int |
+| nombre_ciudad | varchar |
+| id_pais (FK) | int |
+:::
+
+::: {.column width="34%"}
+**Estudiantes**
+
+| Campo | Tipo |
+|---|---|
+| id_estudiante (PK) | int |
+| nombre_completo | varchar |
+| fecha_nacimiento | date |
+| id_ciudad (FK) | int |
+| id_programa (FK) | int |
+:::
+
+::::
+
+## Modelo OLTP — Estructura académica {.smaller}
+
+:::: {.columns}
+
+::: {.column width="33%"}
+**Facultades**
+
+| Campo | Tipo |
+|---|---|
+| id_facultad (PK) | int |
+| nombre_facultad | varchar |
+:::
+
+::: {.column width="33%"}
+**Programas**
+
+| Campo | Tipo |
+|---|---|
+| id_programa (PK) | int |
+| nombre_programa | varchar |
+| id_facultad (FK) | int |
+:::
+
+::: {.column width="34%"}
+**Departamentos**
+
+| Campo | Tipo |
+|---|---|
+| id_departamento (PK) | int |
+| nombre_departamento | varchar |
+| id_facultad (FK) | int |
+:::
+
+::::
+
+## Modelo OLTP — Profesores y Cursos {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Profesores**
+
+| Campo | Tipo |
+|---|---|
+| id_profesor (PK) | int |
+| nombre_completo | varchar |
+| id_departamento (FK) | int |
+:::
+
+::: {.column width="50%"}
+**Cursos**
+
+| Campo | Tipo |
+|---|---|
+| id_curso (PK) | int |
+| nombre_curso | varchar |
+| creditos | int |
+| id_departamento (FK) | int |
+| id_profesor (FK) | int |
+:::
+
+::::
+
+## Modelo OLTP — Períodos y Matrículas {.smaller}
+
+:::: {.columns}
+
+::: {.column width="45%"}
+**PeriodosAcademicos**
+
+| Campo | Tipo |
+|---|---|
+| id_periodo (PK) | int |
+| nombre_periodo | varchar |
+| fecha_inicio | date |
+| fecha_fin | date |
+:::
+
+::: {.column width="55%"}
+**Matriculas**
+
+| Campo | Tipo |
+|---|---|
+| id_matricula (PK) | int |
+| id_estudiante (FK) | int |
+| id_curso (FK) | int |
+| id_periodo (FK) | int |
+| fecha_matricula | date |
+| calificacion_final | decimal |
+| costo_credito | decimal |
+:::
+
+::::
+
+## Kimball paso 1 y 2
+
+::: {.highlight-box}
+**Paso 1 — Proceso de negocio:** Matrícula de estudiantes en cursos.
+
+**Paso 2 — Grano:** una fila por cada **matrícula de un estudiante en un curso, en un período académico** (grano de `Matriculas`).
+:::
+
+## Kimball paso 3 — Dimensiones
+
+::: {.incremental}
+- Dim_Estudiante
+- Dim_Curso
+- Dim_Profesor
+- Dim_Programa
+- Dim_Periodo
+:::
+
+## Kimball paso 4 — Hechos
+
+::: {.incremental}
+- creditos_cursados
+- calificacion_final
+- costo_credito
+- **monto_pagado** = creditos × costo_credito
+:::
+
+## Kimball paso 5 — Diseño físico
+
+::: {.highlight-box}
+Las jerarquías **se mantienen normalizadas** como tablas separadas y relacionadas entre sí, en vez de aplanarse. Esto produce las "puntas" adicionales del copo de nieve.
+:::
+
+## Construcción — Dim_Pais y Dim_Ciudad {.smaller}
+
+```sql
+-- Dim_Pais: copia directa, sin JOIN
+SELECT ROW_NUMBER() OVER() AS id_pais_sk,
+       id_pais AS id_pais_origen, nombre_pais
+FROM Paises;
+
+-- Dim_Ciudad: conserva la FK hacia Dim_Pais (no copia nombre_pais)
+SELECT ROW_NUMBER() OVER() AS id_ciudad_sk,
+       ci.id_ciudad AS id_ciudad_origen, ci.nombre_ciudad,
+       dp.id_pais_sk
+FROM Ciudades ci
+JOIN Dim_Pais dp ON ci.id_pais = dp.id_pais_origen;
+```
+
+::: {.callout-note}
+El JOIN solo sirve para obtener la clave sustituta (lookup), **no** para copiar atributos del padre.
+:::
+
+## Construcción — Dim_Facultad y Dim_Departamento {.smaller}
+
+```sql
+-- Dim_Facultad: copia directa
+SELECT ROW_NUMBER() OVER() AS id_facultad_sk,
+       id_facultad AS id_facultad_origen, nombre_facultad
+FROM Facultades;
+
+-- Dim_Departamento: conserva la FK hacia Dim_Facultad
+SELECT ROW_NUMBER() OVER() AS id_departamento_sk,
+       d.id_departamento AS id_departamento_origen,
+       d.nombre_departamento, df.id_facultad_sk
+FROM Departamentos d
+JOIN Dim_Facultad df ON d.id_facultad = df.id_facultad_origen;
+```
+
+## Construcción — Dim_Curso y Dim_Estudiante {.smaller}
+
+```sql
+-- Dim_Curso: conserva la FK hacia Dim_Departamento (no hacia Facultad)
+SELECT ROW_NUMBER() OVER() AS id_curso_sk,
+       c.id_curso AS id_curso_origen,
+       c.nombre_curso, c.creditos, dd.id_departamento_sk
+FROM Cursos c
+JOIN Dim_Departamento dd ON c.id_departamento = dd.id_departamento_origen;
+
+-- Dim_Estudiante: conserva la FK hacia Dim_Ciudad
+SELECT ROW_NUMBER() OVER() AS id_estudiante_sk,
+       e.id_estudiante AS id_estudiante_origen,
+       e.nombre_completo, e.fecha_nacimiento, dc.id_ciudad_sk
+FROM Estudiantes e
+JOIN Dim_Ciudad dc ON e.id_ciudad = dc.id_ciudad_origen;
+```
+
+## Construcción — Dim_Profesor y Dim_Programa
+
+::: {.highlight-box}
+Ambas conservan su FK hacia `Dim_Departamento` o `Dim_Facultad` respectivamente — **sin aplanar** ningún atributo del nivel superior.
+:::
+
+## Construcción — Fact_Matriculas {.smaller}
+
+Se sustituyen las claves naturales por las claves sustitutas de las dimensiones **inmediatas** (no de toda la jerarquía):
+
+```sql
+SELECT
+    m.id_matricula,
+    de.id_estudiante_sk, dcu.id_curso_sk, dper.id_periodo_sk,
+    dcu.creditos AS creditos_cursados,
+    m.calificacion_final, m.costo_credito,
+    (dcu.creditos * m.costo_credito) AS monto_pagado
+FROM Matriculas m
+JOIN Dim_Estudiante de ON m.id_estudiante = de.id_estudiante_origen
+JOIN Dim_Curso dcu     ON m.id_curso      = dcu.id_curso_origen
+JOIN Dim_Periodo dper  ON m.id_periodo    = dper.id_periodo_origen;
+```
+
+## Consecuencia práctica al consultar {.smaller}
+
+*"Créditos matriculados por facultad"* necesita encadenar **3 JOINs**, siguiendo la jerarquía original:
+
+```sql
+SELECT df.nombre_facultad, SUM(f.creditos_cursados) AS total_creditos
+FROM Fact_Matriculas f
+JOIN Dim_Curso dcu       ON f.id_curso_sk = dcu.id_curso_sk
+JOIN Dim_Departamento dd ON dcu.id_departamento_sk = dd.id_departamento_sk
+JOIN Dim_Facultad df     ON dd.id_facultad_sk = df.id_facultad_sk
+GROUP BY df.nombre_facultad;
+```
+
+::: {.callout-note}
+Esto es lo que se paga por mantener las jerarquías normalizadas: **menos redundancia, más JOINs por consulta**.
+:::
+
+## Resultado: Modelo en Copo de Nieve {.smaller}
+
+**Fact_Matriculas** → id_matricula, id_estudiante, id_curso, id_periodo, creditos_cursados, calificacion_final, costo_credito, monto_pagado
+
+<br>
+
+- **Dim_Estudiante** → **Dim_Ciudad** → **Dim_Pais**
+- **Dim_Curso** → **Dim_Departamento** → **Dim_Facultad**
+- **Dim_Profesor** → **Dim_Departamento** *(reutiliza la misma tabla)*
+- **Dim_Programa** → **Dim_Facultad** *(reutiliza la misma tabla)*
+- **Dim_Periodo** — nombre_periodo, fecha_inicio, fecha_fin
+
+# Comparación y cierre
+
+## Comparación rápida {.smaller}
+
+| Aspecto | Ejercicio 1 (Estrella) | Ejercicio 2 (Copo de nieve) |
+|---|---|---|
+| Jerarquías | Aplanadas en una tabla | Normalizadas en varias tablas |
+| N.º de tablas | Menor (1 fact + 5 dim) | Mayor (1 fact + 5 dim + 4 sub-dim) |
+| JOINs en consulta | Menor | Mayor |
+| Rendimiento de lectura | Mejor | Algo menor |
+| Redundancia | Mayor | Menor |
+| Mantenimiento de jerarquías | Menor (varias filas) | Mayor (un solo lugar) |
+
+## Pasos generales — parte 1
+
+::: {.incremental}
+1. Identificar el proceso de negocio a modelar
+2. Detectar tablas transaccionales (→ hechos) y tablas maestras (→ dimensiones)
+3. Declarar el grano exacto de la tabla de hechos
+4. Listar las dimensiones necesarias
+5. Listar los hechos (medidas numéricas y aditivas)
+:::
+
+## Pasos generales — parte 2
+
+::: {.incremental}
+6. Decidir el diseño físico: ¿desnormalizar (estrella) o normalizar (copo de nieve)?
+7. Dibujar el diagrama (fact al centro, dimensiones alrededor)
+8. Definir claves sustitutas (surrogate keys) para cada dimensión
+9. Documentar el mapeo campo a campo OLTP → DW (alimenta el ETL)
+:::
+
+## ¡Gracias! {.smaller}
+
+::: {.highlight-box}
+Preguntas y discusión
+:::
+
+Ejercicio 1 → Esquema Estrella (Ventas) &nbsp;|&nbsp; Ejercicio 2 → Esquema Copo de Nieve (Matrículas)
