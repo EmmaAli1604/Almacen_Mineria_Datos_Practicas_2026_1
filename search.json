@@ -1,22 +1,10 @@
 [
   {
-    "objectID": "practica-03/practica-03.html",
-    "href": "practica-03/practica-03.html",
-    "title": "Práctica 3",
-    "section": "",
-    "text": "Describe aquí el objetivo de la práctica.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
     "objectID": "practica-03/practica-03.html#objetivo",
     "href": "practica-03/practica-03.html#objetivo",
     "title": "Práctica 3",
-    "section": "",
-    "text": "Describe aquí el objetivo de la práctica.",
+    "section": "Objetivo",
+    "text": "Objetivo\nDescribe aquí el objetivo de la práctica.",
     "crumbs": [
       "Inicio",
       "Prácticas",
@@ -468,6 +456,546 @@
     ]
   },
   {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#agenda",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#agenda",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Agenda",
+    "text": "Agenda\n\nFundamento teórico: los 4 pasos de Kimball\n¿Qué es la desnormalización y por qué se usa?\nEjercicio 1 → Esquema en Estrella\nEjercicio 2 → Esquema en Copo de Nieve\nComparación y pasos generales",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#los-4-pasos-de-kimball",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#los-4-pasos-de-kimball",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Los 4 pasos de Kimball",
+    "text": "Los 4 pasos de Kimball\nPara convertir un modelo relacional (OLTP) en un Data Warehouse (DW), Kimball propone seguir siempre este orden:\n\n\n\nSeleccionar el proceso de negocio\nDefinir la granularidad\n\n\n\nIdentificar las dimensiones\nIdentificar los hechos",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#estrella-vs.-copo-de-nieve",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#estrella-vs.-copo-de-nieve",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Estrella vs. Copo de nieve",
+    "text": "Estrella vs. Copo de nieve\n\n\nLa diferencia entre los dos esquemas no está en los 4 pasos (son idénticos), sino en el diseño físico posterior de las dimensiones.\n\n\n\nEstrella → las jerarquías se aplanan en una sola tabla por dimensión\nCopo de nieve → las jerarquías se mantienen normalizadas en varias tablas relacionadas",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#qué-es-desnormalizar",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#qué-es-desnormalizar",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "¿Qué es desnormalizar?",
+    "text": "¿Qué es desnormalizar?\n\n\nNormalizar (3FN) = dividir la información en muchas tablas pequeñas, cada dato vive en un solo lugar → ideal para OLTP (muchas escrituras, se necesita integridad)\nDesnormalizar = el proceso inverso: combinar tablas relacionadas por FK (una jerarquía) en una sola tabla ancha, copiando los atributos de las tablas “padre” hacia cada fila\n\n\n\n\n\n\n\nNote\n\n\nEl mecanismo técnico es un JOIN que se ejecuta una sola vez en el ETL, no en cada consulta del usuario.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#por-qué-se-hace-en-el-dw",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#por-qué-se-hace-en-el-dw",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "¿Por qué se hace en el DW?",
+    "text": "¿Por qué se hace en el DW?\nUn DW no recibe transacciones de escritura constantes de usuarios finales (los datos llegan por lotes vía ETL).\n\nLa prioridad deja de ser la integridad referencial estricta, y pasa a ser que el usuario de negocio y las herramientas de BI puedan consultar con el menor número de JOINs posible.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#ejemplo-jerarquía-de-producto",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#ejemplo-jerarquía-de-producto",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Ejemplo: jerarquía de producto",
+    "text": "Ejemplo: jerarquía de producto\nProductos → Subcategorias → Categorias\n\n\nCategorias\n\n\n\nid\nnombre\n\n\n\n\n1\nElectrónica de Audio\n\n\n2\nCómputo\n\n\n\n\nSubcategorias\n\n\n\nid\nnombre\nid_cat\n\n\n\n\n10\nAudífonos\n1\n\n\n11\nBocinas\n1\n\n\n20\nLaptops\n2\n\n\n\n\nProductos\n\n\n\nid\nnombre\nid_subcat\n\n\n\n\n100\nAudífono BT X200\n10\n\n\n101\nBocina Portátil S1\n11\n\n\n102\nLaptop Pro 14”\n20\n\n\n\n\nResponder “ventas por categoría” aquí exige 3 JOINs cada vez.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#ejemplo-el-join-de-desnormalización",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#ejemplo-el-join-de-desnormalización",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Ejemplo: el JOIN de desnormalización",
+    "text": "Ejemplo: el JOIN de desnormalización\nSELECT\n    p.id_producto,\n    p.nombre_producto,\n    p.precio_unitario,\n    s.nombre_subcategoria AS subcategoria,\n    c.nombre_categoria    AS categoria\nFROM Productos p\nJOIN Subcategorias s ON p.id_subcategoria = s.id_subcategoria\nJOIN Categorias c    ON s.id_categoria   = c.id_categoria;\nEste JOIN se corre una sola vez, durante la carga de la dimensión.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#resultado-dim_producto-desnormalizada",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#resultado-dim_producto-desnormalizada",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Resultado: Dim_Producto desnormalizada",
+    "text": "Resultado: Dim_Producto desnormalizada\n\n\n\nid (sk)\nnombre_producto\nprecio\nsubcategoria\ncategoria\n\n\n\n\n1\nAudífono BT X200\n45.00\nAudífonos\nElectrónica de Audio\n\n\n2\nBocina Portátil S1\n60.00\nBocinas\nElectrónica de Audio\n\n\n3\nLaptop Pro 14”\n950.00\nLaptops\nCómputo\n\n\n\n\n\n\n\n\n\nNote\n\n\n“Electrónica de Audio” queda repetido en dos filas: es la redundancia controlada de la desnormalización. A cambio, el reporte por categoría ya necesita 0 JOINs adicionales.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#costo-y-beneficio-de-desnormalizar",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#costo-y-beneficio-de-desnormalizar",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Costo y beneficio de desnormalizar",
+    "text": "Costo y beneficio de desnormalizar\n\n\nBeneficio\n\nConsultas SQL más simples\nMejor rendimiento de lectura en BI\nMás fácil de entender para negocio\n\n\nCosto\n\nMás espacio en disco (redundancia)\nCambios se propagan vía ETL, no manual\nLa dimensión puede volverse muy ancha",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#cuándo-sí-conviene-normalizar-copo-de-nieve",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#cuándo-sí-conviene-normalizar-copo-de-nieve",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "¿Cuándo SÍ conviene normalizar? (copo de nieve)",
+    "text": "¿Cuándo SÍ conviene normalizar? (copo de nieve)\n\nDimensión muy grande (millones de filas)\nJerarquía compartida por varias tablas de hechos (dimensión conformada)\nEl negocio exige auditar cada nivel como entidad independiente\nKimball prefiere la estrella; el copo de nieve es la excepción puntual, no la regla",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#caso-de-negocio",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#caso-de-negocio",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Caso de negocio",
+    "text": "Caso de negocio\n\nUna cadena de tiendas de electrónica quiere analizar sus ventas por producto, cliente, tienda, empleado y tiempo.\n\nSu información vive en una base de datos operacional (OLTP) normalizada en 3FN.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-geografía",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-geografía",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Modelo OLTP — Geografía",
+    "text": "Modelo OLTP — Geografía\n\n\nPaises\n\n\n\nCampo\nTipo\n\n\n\n\nid_pais (PK)\nint\n\n\nnombre_pais\nvarchar\n\n\n\n\nEstados\n\n\n\nCampo\nTipo\n\n\n\n\nid_estado (PK)\nint\n\n\nnombre_estado\nvarchar\n\n\nid_pais (FK)\nint\n\n\n\n\nCiudades\n\n\n\nCampo\nTipo\n\n\n\n\nid_ciudad (PK)\nint\n\n\nnombre_ciudad\nvarchar\n\n\nid_estado (FK)\nint",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-clientes-tiendas-empleados",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-clientes-tiendas-empleados",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Modelo OLTP — Clientes, Tiendas, Empleados",
+    "text": "Modelo OLTP — Clientes, Tiendas, Empleados\n\n\nClientes\n\n\n\nCampo\nTipo\n\n\n\n\nid_cliente (PK)\nint\n\n\nnombre\nvarchar\n\n\napellido\nvarchar\n\n\nemail\nvarchar\n\n\nid_ciudad (FK)\nint\n\n\n\n\nTiendas\n\n\n\nCampo\nTipo\n\n\n\n\nid_tienda (PK)\nint\n\n\nnombre_tienda\nvarchar\n\n\nid_ciudad (FK)\nint\n\n\n\n\nEmpleados\n\n\n\nCampo\nTipo\n\n\n\n\nid_empleado (PK)\nint\n\n\nnombre_completo\nvarchar\n\n\npuesto\nvarchar\n\n\nid_tienda (FK)\nint",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-producto",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-producto",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Modelo OLTP — Producto",
+    "text": "Modelo OLTP — Producto\n\n\nCategorias\n\n\n\nCampo\nTipo\n\n\n\n\nid_categoria (PK)\nint\n\n\nnombre_categoria\nvarchar\n\n\n\n\nSubcategorias\n\n\n\nCampo\nTipo\n\n\n\n\nid_subcategoria (PK)\nint\n\n\nnombre_subcategoria\nvarchar\n\n\nid_categoria (FK)\nint\n\n\n\n\nProductos\n\n\n\nCampo\nTipo\n\n\n\n\nid_producto (PK)\nint\n\n\nnombre_producto\nvarchar\n\n\nprecio_unitario\ndecimal\n\n\nid_subcategoria (FK)\nint",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-transacción",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-transacción",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Modelo OLTP — Transacción",
+    "text": "Modelo OLTP — Transacción\n\n\nVentas (encabezado)\n\n\n\nCampo\nTipo\n\n\n\n\nid_venta (PK)\nint\n\n\nfecha\ndate\n\n\nid_cliente (FK)\nint\n\n\nid_empleado (FK)\nint\n\n\nid_tienda (FK)\nint\n\n\n\n\nDetalleVentas\n\n\n\nCampo\nTipo\n\n\n\n\nid_detalle (PK)\nint\n\n\nid_venta (FK)\nint\n\n\nid_producto (FK)\nint\n\n\ncantidad\nint\n\n\nprecio_unitario\ndecimal\n\n\ndescuento\ndecimal",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-1-y-2",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-1-y-2",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Kimball paso 1 y 2",
+    "text": "Kimball paso 1 y 2\n\nPaso 1 — Proceso de negocio: Ventas en tienda.\nPaso 2 — Grano: una fila por cada línea de producto vendida dentro de un ticket (grano de DetalleVentas).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-3-dimensiones",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-3-dimensiones",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Kimball paso 3 — Dimensiones",
+    "text": "Kimball paso 3 — Dimensiones\n\nDim_Cliente\nDim_Producto\nDim_Tienda\nDim_Empleado\nDim_Tiempo (derivada de la fecha, no existe en el OLTP)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-4-hechos",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-4-hechos",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Kimball paso 4 — Hechos",
+    "text": "Kimball paso 4 — Hechos\n\ncantidad_vendida\nprecio_unitario\ndescuento\nmonto_total = cantidad × precio_unitario − descuento",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-5-diseño-físico",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-5-diseño-físico",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Kimball paso 5 — Diseño físico",
+    "text": "Kimball paso 5 — Diseño físico\n\nLas jerarquías Producto → Subcategoria → Categoria y Cliente/Tienda → Ciudad → Estado → Pais se aplanan en una sola tabla de dimensión cada una.\n\nEsto es lo que convierte al modelo en estrella.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_producto",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_producto",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Construcción — Dim_Producto",
+    "text": "Construcción — Dim_Producto\nSe combinan 3 tablas de origen en una sola:\nSELECT ROW_NUMBER() OVER() AS id_producto_sk,\n       p.id_producto AS id_producto_origen,\n       p.nombre_producto, p.precio_unitario,\n       s.nombre_subcategoria AS subcategoria,\n       c.nombre_categoria    AS categoria\nFROM Productos p\nJOIN Subcategorias s ON p.id_subcategoria = s.id_subcategoria\nJOIN Categorias c    ON s.id_categoria   = c.id_categoria;\nProductos + Subcategorias + Categorias → una sola tabla ancha.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_cliente",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_cliente",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Construcción — Dim_Cliente",
+    "text": "Construcción — Dim_Cliente\nSe combinan 4 tablas de origen:\nSELECT ROW_NUMBER() OVER() AS id_cliente_sk,\n       cl.id_cliente AS id_cliente_origen,\n       cl.nombre, cl.apellido, cl.email,\n       ci.nombre_ciudad AS ciudad,\n       e.nombre_estado  AS estado,\n       pa.nombre_pais   AS pais\nFROM Clientes cl\nJOIN Ciudades ci ON cl.id_ciudad = ci.id_ciudad\nJOIN Estados  e  ON ci.id_estado = e.id_estado\nJOIN Paises   pa ON e.id_pais    = pa.id_pais;\nDim_Tienda se construye con la misma lógica (Tiendas + Ciudades + Estados + Paises).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_empleado",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_empleado",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Construcción — Dim_Empleado",
+    "text": "Construcción — Dim_Empleado\nMás simple: solo necesita el nombre de la tienda, no toda la jerarquía geográfica.\nSELECT ROW_NUMBER() OVER() AS id_empleado_sk,\n       emp.id_empleado AS id_empleado_origen,\n       emp.nombre_completo, emp.puesto,\n       t.nombre_tienda AS tienda_asignada\nFROM Empleados emp\nJOIN Tiendas t ON emp.id_tienda = t.id_tienda;\n\n\n\n\n\n\nNote\n\n\nDim_Tiempo no viene del OLTP: se genera con un script/calendario (ej. 2015–2030) calculando día, mes, trimestre, año y día de la semana.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-fact_ventas",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-fact_ventas",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Construcción — Fact_Ventas",
+    "text": "Construcción — Fact_Ventas\nSe sustituye cada clave natural del OLTP por la clave sustituta (surrogate key) de la dimensión correspondiente:\nSELECT\n    dv.id_venta,\n    dc.id_cliente_sk, dp.id_producto_sk, dt.id_tienda_sk,\n    de.id_empleado_sk, dti.id_tiempo_sk,\n    dv.cantidad, dv.precio_unitario, dv.descuento,\n    (dv.cantidad * dv.precio_unitario - dv.descuento) AS monto_total\nFROM DetalleVentas dv\nJOIN Ventas v        ON dv.id_venta    = v.id_venta\nJOIN Dim_Cliente dc  ON v.id_cliente   = dc.id_cliente_origen\nJOIN Dim_Producto dp ON dv.id_producto = dp.id_producto_origen\nJOIN Dim_Tienda dt   ON v.id_tienda    = dt.id_tienda_origen\nJOIN Dim_Empleado de ON v.id_empleado  = de.id_empleado_origen\nJOIN Dim_Tiempo dti  ON v.fecha        = dti.fecha;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#idea-clave-del-esquema-estrella",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#idea-clave-del-esquema-estrella",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Idea clave del esquema estrella",
+    "text": "Idea clave del esquema estrella\n\nLos JOINs de aplanado solo ocurren una vez, al construir las dimensiones. Después, cualquier consulta de negocio necesita un solo JOIN entre Fact_Ventas y la dimensión — por ejemplo, ventas por categoría = Fact_Ventas JOIN Dim_Producto.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#resultado-modelo-en-estrella",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#resultado-modelo-en-estrella",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Resultado: Modelo en Estrella",
+    "text": "Resultado: Modelo en Estrella\nFact_Ventas → id_venta, id_cliente, id_producto, id_tienda, id_empleado, id_tiempo, cantidad, precio_unitario, descuento, monto_total\n\n\nDim_Cliente — nombre, apellido, email, ciudad, estado, pais (aplanado)\nDim_Producto — nombre_producto, subcategoria, categoria, precio (aplanado)\nDim_Tienda — nombre_tienda, ciudad, estado, pais (aplanado)\nDim_Empleado — nombre_completo, puesto, tienda_asignada\nDim_Tiempo — fecha, dia, mes, trimestre, anio, dia_semana",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#caso-de-negocio-1",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#caso-de-negocio-1",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Caso de negocio",
+    "text": "Caso de negocio\n\nUna universidad quiere analizar sus matrículas por estudiante, curso, profesor, programa académico y período.\n\nSu base de datos operacional también está normalizada en 3FN.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-geografía-y-estudiantes",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-geografía-y-estudiantes",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Modelo OLTP — Geografía y Estudiantes",
+    "text": "Modelo OLTP — Geografía y Estudiantes\n\n\nPaises\n\n\n\nCampo\nTipo\n\n\n\n\nid_pais (PK)\nint\n\n\nnombre_pais\nvarchar\n\n\n\n\nCiudades\n\n\n\nCampo\nTipo\n\n\n\n\nid_ciudad (PK)\nint\n\n\nnombre_ciudad\nvarchar\n\n\nid_pais (FK)\nint\n\n\n\n\nEstudiantes\n\n\n\nCampo\nTipo\n\n\n\n\nid_estudiante (PK)\nint\n\n\nnombre_completo\nvarchar\n\n\nfecha_nacimiento\ndate\n\n\nid_ciudad (FK)\nint\n\n\nid_programa (FK)\nint",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-estructura-académica",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-estructura-académica",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Modelo OLTP — Estructura académica",
+    "text": "Modelo OLTP — Estructura académica\n\n\nFacultades\n\n\n\nCampo\nTipo\n\n\n\n\nid_facultad (PK)\nint\n\n\nnombre_facultad\nvarchar\n\n\n\n\nProgramas\n\n\n\nCampo\nTipo\n\n\n\n\nid_programa (PK)\nint\n\n\nnombre_programa\nvarchar\n\n\nid_facultad (FK)\nint\n\n\n\n\nDepartamentos\n\n\n\nCampo\nTipo\n\n\n\n\nid_departamento (PK)\nint\n\n\nnombre_departamento\nvarchar\n\n\nid_facultad (FK)\nint",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-profesores-y-cursos",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-profesores-y-cursos",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Modelo OLTP — Profesores y Cursos",
+    "text": "Modelo OLTP — Profesores y Cursos\n\n\nProfesores\n\n\n\nCampo\nTipo\n\n\n\n\nid_profesor (PK)\nint\n\n\nnombre_completo\nvarchar\n\n\nid_departamento (FK)\nint\n\n\n\n\nCursos\n\n\n\nCampo\nTipo\n\n\n\n\nid_curso (PK)\nint\n\n\nnombre_curso\nvarchar\n\n\ncreditos\nint\n\n\nid_departamento (FK)\nint\n\n\nid_profesor (FK)\nint",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-períodos-y-matrículas",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#modelo-oltp-períodos-y-matrículas",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Modelo OLTP — Períodos y Matrículas",
+    "text": "Modelo OLTP — Períodos y Matrículas\n\n\nPeriodosAcademicos\n\n\n\nCampo\nTipo\n\n\n\n\nid_periodo (PK)\nint\n\n\nnombre_periodo\nvarchar\n\n\nfecha_inicio\ndate\n\n\nfecha_fin\ndate\n\n\n\n\nMatriculas\n\n\n\nCampo\nTipo\n\n\n\n\nid_matricula (PK)\nint\n\n\nid_estudiante (FK)\nint\n\n\nid_curso (FK)\nint\n\n\nid_periodo (FK)\nint\n\n\nfecha_matricula\ndate\n\n\ncalificacion_final\ndecimal\n\n\ncosto_credito\ndecimal",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-1-y-2-1",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-1-y-2-1",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Kimball paso 1 y 2",
+    "text": "Kimball paso 1 y 2\n\nPaso 1 — Proceso de negocio: Matrícula de estudiantes en cursos.\nPaso 2 — Grano: una fila por cada matrícula de un estudiante en un curso, en un período académico (grano de Matriculas).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-3-dimensiones-1",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-3-dimensiones-1",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Kimball paso 3 — Dimensiones",
+    "text": "Kimball paso 3 — Dimensiones\n\nDim_Estudiante\nDim_Curso\nDim_Profesor\nDim_Programa\nDim_Periodo",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-4-hechos-1",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-4-hechos-1",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Kimball paso 4 — Hechos",
+    "text": "Kimball paso 4 — Hechos\n\ncreditos_cursados\ncalificacion_final\ncosto_credito\nmonto_pagado = creditos × costo_credito",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-5-diseño-físico-1",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#kimball-paso-5-diseño-físico-1",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Kimball paso 5 — Diseño físico",
+    "text": "Kimball paso 5 — Diseño físico\n\nLas jerarquías se mantienen normalizadas como tablas separadas y relacionadas entre sí, en vez de aplanarse. Esto produce las “puntas” adicionales del copo de nieve.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_pais-y-dim_ciudad",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_pais-y-dim_ciudad",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Construcción — Dim_Pais y Dim_Ciudad",
+    "text": "Construcción — Dim_Pais y Dim_Ciudad\n-- Dim_Pais: copia directa, sin JOIN\nSELECT ROW_NUMBER() OVER() AS id_pais_sk,\n       id_pais AS id_pais_origen, nombre_pais\nFROM Paises;\n\n-- Dim_Ciudad: conserva la FK hacia Dim_Pais (no copia nombre_pais)\nSELECT ROW_NUMBER() OVER() AS id_ciudad_sk,\n       ci.id_ciudad AS id_ciudad_origen, ci.nombre_ciudad,\n       dp.id_pais_sk\nFROM Ciudades ci\nJOIN Dim_Pais dp ON ci.id_pais = dp.id_pais_origen;\n\n\n\n\n\n\nNote\n\n\nEl JOIN solo sirve para obtener la clave sustituta (lookup), no para copiar atributos del padre.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_facultad-y-dim_departamento",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_facultad-y-dim_departamento",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Construcción — Dim_Facultad y Dim_Departamento",
+    "text": "Construcción — Dim_Facultad y Dim_Departamento\n-- Dim_Facultad: copia directa\nSELECT ROW_NUMBER() OVER() AS id_facultad_sk,\n       id_facultad AS id_facultad_origen, nombre_facultad\nFROM Facultades;\n\n-- Dim_Departamento: conserva la FK hacia Dim_Facultad\nSELECT ROW_NUMBER() OVER() AS id_departamento_sk,\n       d.id_departamento AS id_departamento_origen,\n       d.nombre_departamento, df.id_facultad_sk\nFROM Departamentos d\nJOIN Dim_Facultad df ON d.id_facultad = df.id_facultad_origen;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_curso-y-dim_estudiante",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_curso-y-dim_estudiante",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Construcción — Dim_Curso y Dim_Estudiante",
+    "text": "Construcción — Dim_Curso y Dim_Estudiante\n-- Dim_Curso: conserva la FK hacia Dim_Departamento (no hacia Facultad)\nSELECT ROW_NUMBER() OVER() AS id_curso_sk,\n       c.id_curso AS id_curso_origen,\n       c.nombre_curso, c.creditos, dd.id_departamento_sk\nFROM Cursos c\nJOIN Dim_Departamento dd ON c.id_departamento = dd.id_departamento_origen;\n\n-- Dim_Estudiante: conserva la FK hacia Dim_Ciudad\nSELECT ROW_NUMBER() OVER() AS id_estudiante_sk,\n       e.id_estudiante AS id_estudiante_origen,\n       e.nombre_completo, e.fecha_nacimiento, dc.id_ciudad_sk\nFROM Estudiantes e\nJOIN Dim_Ciudad dc ON e.id_ciudad = dc.id_ciudad_origen;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_profesor-y-dim_programa",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-dim_profesor-y-dim_programa",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Construcción — Dim_Profesor y Dim_Programa",
+    "text": "Construcción — Dim_Profesor y Dim_Programa\n\nAmbas conservan su FK hacia Dim_Departamento o Dim_Facultad respectivamente — sin aplanar ningún atributo del nivel superior.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-fact_matriculas",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#construcción-fact_matriculas",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Construcción — Fact_Matriculas",
+    "text": "Construcción — Fact_Matriculas\nSe sustituyen las claves naturales por las claves sustitutas de las dimensiones inmediatas (no de toda la jerarquía):\nSELECT\n    m.id_matricula,\n    de.id_estudiante_sk, dcu.id_curso_sk, dper.id_periodo_sk,\n    dcu.creditos AS creditos_cursados,\n    m.calificacion_final, m.costo_credito,\n    (dcu.creditos * m.costo_credito) AS monto_pagado\nFROM Matriculas m\nJOIN Dim_Estudiante de ON m.id_estudiante = de.id_estudiante_origen\nJOIN Dim_Curso dcu     ON m.id_curso      = dcu.id_curso_origen\nJOIN Dim_Periodo dper  ON m.id_periodo    = dper.id_periodo_origen;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#consecuencia-práctica-al-consultar",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#consecuencia-práctica-al-consultar",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Consecuencia práctica al consultar",
+    "text": "Consecuencia práctica al consultar\n“Créditos matriculados por facultad” necesita encadenar 3 JOINs, siguiendo la jerarquía original:\nSELECT df.nombre_facultad, SUM(f.creditos_cursados) AS total_creditos\nFROM Fact_Matriculas f\nJOIN Dim_Curso dcu       ON f.id_curso_sk = dcu.id_curso_sk\nJOIN Dim_Departamento dd ON dcu.id_departamento_sk = dd.id_departamento_sk\nJOIN Dim_Facultad df     ON dd.id_facultad_sk = df.id_facultad_sk\nGROUP BY df.nombre_facultad;\n\n\n\n\n\n\nNote\n\n\nEsto es lo que se paga por mantener las jerarquías normalizadas: menos redundancia, más JOINs por consulta.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#resultado-modelo-en-copo-de-nieve",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#resultado-modelo-en-copo-de-nieve",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Resultado: Modelo en Copo de Nieve",
+    "text": "Resultado: Modelo en Copo de Nieve\nFact_Matriculas → id_matricula, id_estudiante, id_curso, id_periodo, creditos_cursados, calificacion_final, costo_credito, monto_pagado\n\n\nDim_Estudiante → Dim_Ciudad → Dim_Pais\nDim_Curso → Dim_Departamento → Dim_Facultad\nDim_Profesor → Dim_Departamento (reutiliza la misma tabla)\nDim_Programa → Dim_Facultad (reutiliza la misma tabla)\nDim_Periodo — nombre_periodo, fecha_inicio, fecha_fin",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#comparación-rápida",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#comparación-rápida",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Comparación rápida",
+    "text": "Comparación rápida\n\n\n\n\n\n\n\n\nAspecto\nEjercicio 1 (Estrella)\nEjercicio 2 (Copo de nieve)\n\n\n\n\nJerarquías\nAplanadas en una tabla\nNormalizadas en varias tablas\n\n\nN.º de tablas\nMenor (1 fact + 5 dim)\nMayor (1 fact + 5 dim + 4 sub-dim)\n\n\nJOINs en consulta\nMenor\nMayor\n\n\nRendimiento de lectura\nMejor\nAlgo menor\n\n\nRedundancia\nMayor\nMenor\n\n\nMantenimiento de jerarquías\nMenor (varias filas)\nMayor (un solo lugar)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#pasos-generales-parte-1",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#pasos-generales-parte-1",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Pasos generales — parte 1",
+    "text": "Pasos generales — parte 1\n\nIdentificar el proceso de negocio a modelar\nDetectar tablas transaccionales (→ hechos) y tablas maestras (→ dimensiones)\nDeclarar el grano exacto de la tabla de hechos\nListar las dimensiones necesarias\nListar los hechos (medidas numéricas y aditivas)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#pasos-generales-parte-2",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#pasos-generales-parte-2",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "Pasos generales — parte 2",
+    "text": "Pasos generales — parte 2\n\nDecidir el diseño físico: ¿desnormalizar (estrella) o normalizar (copo de nieve)?\nDibujar el diagrama (fact al centro, dimensiones alrededor)\nDefinir claves sustitutas (surrogate keys) para cada dimensión\nDocumentar el mapeo campo a campo OLTP → DW (alimenta el ETL)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "ejercicios-datawarehouse/ejercicios-dw.html#gracias",
+    "href": "ejercicios-datawarehouse/ejercicios-dw.html#gracias",
+    "title": "Modelado Dimensional con Metodología Kimball",
+    "section": "¡Gracias!",
+    "text": "¡Gracias!\n\nPreguntas y discusión\n\nEjercicio 1 → Esquema Estrella (Ventas)  |  Ejercicio 2 → Esquema Copo de Nieve (Matrículas)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Prácticas",
@@ -538,7 +1066,7 @@
     "href": "index.html#índice",
     "title": "Prácticas",
     "section": "Índice",
-    "text": "Índice\n\nPráctica 1: SQL Avanzado\nPráctica 2: Almacenes de Datos y BigQuery\nPráctica 3",
+    "text": "Índice\n\nPráctica 1: SQL Avanzado\nPráctica 2: Almacenes de Datos y BigQuery\nEjercicios DW\nPráctica 3",
     "crumbs": [
       "Inicio",
       "Prácticas"
