@@ -1,22 +1,10 @@
 [
   {
-    "objectID": "practica-03/practica-03.html",
-    "href": "practica-03/practica-03.html",
-    "title": "Práctica 3",
-    "section": "",
-    "text": "Describe aquí el objetivo de la práctica.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
     "objectID": "practica-03/practica-03.html#objetivo",
     "href": "practica-03/practica-03.html#objetivo",
     "title": "Práctica 3",
     "section": "Objetivo",
-    "text": "Objetivo\nDescribe aquí el objetivo de la práctica.",
+    "text": "Objetivo\n\n\nEstructuración y Arquitectura\nSelección de Framework\nPreprocesamiento Riguroso\nExploración Estadística Previa",
     "crumbs": [
       "Inicio",
       "Prácticas",
@@ -465,443 +453,6 @@
       "Inicio",
       "Prácticas",
       "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Prácticas",
-    "section": "",
-    "text": "Bienvenido/a. Aquí encontrarás el listado de prácticas del curso de Almacenes y Mineria de datos, cada práctica una en su propia carpeta. Este curso es impartido por la profesora Jessica Santizo Galicia, como ayudante teorico Diego Antonio Villalba González y ayudante de laboratorio Emma Alicia Jiménez Sánchez",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#objetivo",
-    "href": "index.html#objetivo",
-    "title": "Prácticas",
-    "section": "Objetivo:",
-    "text": "Objetivo:\nComprender los principios de los almacenes de datos y de la minería de datos, así como su aplicación al análisis y al descubrimiento de conocimiento en grandes conjuntos de datos.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#finalizar-el-curso",
-    "href": "index.html#finalizar-el-curso",
-    "title": "Prácticas",
-    "section": "Finalizar el curso:",
-    "text": "Finalizar el curso:\nComprender la arquitectura de un almacén de datos. Preparar y transformar datos reales. Analizar información mediante modelos multidimensionales. Aplicar técnicas de minería de datos. Construir modelos básicos de clasificación, predicción y agrupamiento.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#temario-general",
-    "href": "index.html#temario-general",
-    "title": "Prácticas",
-    "section": "Temario general:",
-    "text": "Temario general:\nBasado en el temario oficial: https://www.fciencias.unam.mx/sites/default/files/temario/658.pdf\n\nSQL Avanzado\nAlmacenes de datos.\nCubos de datos.\nPreprocesamiento de datos.\nMinería de patrones y asociaciones.\nClasificación y predicción.\nAgrupamiento.\nDetección de anomalías.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#plataforma-y-tecnologías",
-    "href": "index.html#plataforma-y-tecnologías",
-    "title": "Prácticas",
-    "section": "Plataforma y tecnologías:",
-    "text": "Plataforma y tecnologías:\nEl curso se llevará a cabo en Google Classroom. Se utilizarán principalmente Python, NumPy, Pandas, Matplotlib, Seaborn, Plotly, Quarto, scikit-learn y SQL\nPara los laboratorios se tendrá la dinámica de que los primeros 15 minutos de cada laboratorio se van a escoger a 2 alumnos para que expliquen parte del desarrollo de su prática. Después se explicaran los conceptos fundamentales para poder desarrollar su práctica y tener mejores conocmientos con respecto a los temas.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#avisos",
-    "href": "index.html#avisos",
-    "title": "Prácticas",
-    "section": "Avisos",
-    "text": "Avisos\n\nSolo se responden dudas de 10 am a 7 pm.\nSe puede usar la AI como HERRAMIENTA.\nA partir de la prática 2 se podrá hacer las prácticas en equipo. Los equipos son los mismos que en la clase teórica.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#índice",
-    "href": "index.html#índice",
-    "title": "Prácticas",
-    "section": "Índice",
-    "text": "Índice\n\nPráctica 1: SQL Avanzado\nPráctica 2: Almacenes de Datos y BigQuery\nEjercicios DW\nPráctica 3",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#objetivo",
-    "href": "practica-02/practica-02.html#objetivo",
-    "title": "Práctica 2",
-    "section": "Objetivo",
-    "text": "Objetivo\n\nEl objetivo de esta práctica es que el alumno aplique los conceptos de modelado dimensional (hechos, dimensiones, granularidad y jerarquías) mediante el diseño e implementación de un Data Warehouse en la plataforma Google BigQuery.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#qué-es-google-bigquery",
-    "href": "practica-02/practica-02.html#qué-es-google-bigquery",
-    "title": "Práctica 2",
-    "section": "¿Qué es Google BigQuery?",
-    "text": "¿Qué es Google BigQuery?\n\n\n\nEs un data warehouse totalmente gestionado y serverless desarrollado por Google para almacenar y analizar datos a gran escala\nAyuda a administrar y analizar tus datos con funciones integradas como el aprendizaje automático, la búsqueda, el análisis geoespacial y la inteligencia empresarial\nProporciona una manera uniforme de trabajar con datos estructurados y no estructurados.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#nube-vs.-on-premise",
-    "href": "practica-02/practica-02.html#nube-vs.-on-premise",
-    "title": "Práctica 2",
-    "section": "Nube vs. On-premise",
-    "text": "Nube vs. On-premise\n\n\n\n\nOn-premise: Servidores físicos de la propia empresa. Implica altos costos iniciales, requiere un equipo experto para gestionarlo y una planificación rigurosa para crecer con la demanda, debido a la rigidez al escalar recursos en centros de datos tradicionales.\n\n\n\n\nNube: gestionada y alojada por un proveedor de servicios cloud, como Google BigQuery, Amazon Redshift o Snowflake.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#on-premise",
-    "href": "practica-02/practica-02.html#on-premise",
-    "title": "Práctica 2",
-    "section": "On-premise",
-    "text": "On-premise\n\n\n\n\n\n\n\n\n\nVentajas\n\nControl total sobre hardware y datos\nNo depende de conexión a internet\nCumplimiento normativo más sencillo en sectores muy regulados\n\nDesventajas\n\nAltos costos iniciales (CAPEX)\nRequiere equipo experto para su gestión\nEscalar es lento y rígido\nTodo esta cargo de la empresa",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#nube",
-    "href": "practica-02/practica-02.html#nube",
-    "title": "Práctica 2",
-    "section": "Nube",
-    "text": "Nube\n\n\n\nVentajas\n\nEscala y aprovecha la flexibilidad del entorno cloud\nMayor velocidad y rendimiento\nPrecios flexibles, pago por uso (OPEX) y reduce costos operativos\n\nDesventajas\n\nDependencia del proveedor (vendor lock-in)\nRequiere conexión a internet estable\nConsideraciones de seguridad y soberanía de datos\nLos costos pueden crecer si no se optimiza el uso",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#cómo-funciona-bigquery",
-    "href": "practica-02/practica-02.html#cómo-funciona-bigquery",
-    "title": "Práctica 2",
-    "section": "¿Cómo funciona BigQuery?",
-    "text": "¿Cómo funciona BigQuery?\n\nSepara el motor de cómputo del almacenamiento, de modo que cada uno puede escalar por separado\nResultado: puedes consultar terabytes en segundos y petabytes en minutos\n\n\nCuando BigQuery ejecuta una consulta, el motor distribuye el trabajo en paralelo, escanea las tablas relevantes en almacenamiento, combina los resultados y devuelve el conjunto final de datos.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#funciones-clave-de-bigquery-en-2026",
-    "href": "practica-02/practica-02.html#funciones-clave-de-bigquery-en-2026",
-    "title": "Práctica 2",
-    "section": "Funciones clave de BigQuery en 2026",
-    "text": "Funciones clave de BigQuery en 2026\n\n\n\nBigQuery ML — Crea, entrena y despliega modelos de machine learning usando SQL\nGemini en BigQuery — Asistencia con IA para escribir consultas, entender esquemas y generar insights en lenguaje natural\nBigQuery Studio — Un espacio de trabajo unificado para SQL, notebooks de Python y Spark dentro de la consola de BigQuery\n\n\n\nConsultas federadas — Consulta datos en Cloud SQL, Cloud Storage, Bigtable y otras fuentes sin moverlos a BigQuery\nBigQuery Omni — Ejecuta analítica de BigQuery sobre datos almacenados en AWS o Azure sin copiarlos a Google Cloud\nData Studio — Permite crear dashboards automatizados que resumen la data",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#base-de-datos-relacional-data-warehouse",
-    "href": "practica-02/practica-02.html#base-de-datos-relacional-data-warehouse",
-    "title": "Práctica 2",
-    "section": "Base de datos relacional –> Data Warehouse",
-    "text": "Base de datos relacional –&gt; Data Warehouse\n\n\nUna base de datos relacional (OLTP) está normalizada para garantizar integridad y evitar redundancia en transacciones día a día.\nUn Data Warehouse (OLAP) busca lo contrario: velocidad de consulta y facilidad de análisis, aunque implique redundancia.\n\n\nPara hacer esta transición existen dos metodologías clásicas de modelado, que difieren en el orden en que se construye el warehouse y en el nivel de normalización del modelo final: la de Ralph Kimball y la de Bill Inmon.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#kimball-vs.-inmon",
-    "href": "practica-02/practica-02.html#kimball-vs.-inmon",
-    "title": "Práctica 2",
-    "section": "Kimball vs. Inmon",
-    "text": "Kimball vs. Inmon\n\n\n\nRalph Kimball — Enfoque “Bottom-Up”\nSe construyen primero data marts dimensionales por proceso de negocio, modelados como esquemas estrella o copo de nieve. El Data Warehouse general emerge de la unión de estos data marts mediante un bus de dimensiones conformadas.\n\n\nBill Inmon — Enfoque “Top-Down”\nSe construye primero un Data Warehouse corporativo único que integra los datos de toda la organización. A partir de él se derivan data marts departamentales para consumo analítico.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#kimball-vs.-inmon-comparación",
-    "href": "practica-02/practica-02.html#kimball-vs.-inmon-comparación",
-    "title": "Práctica 2",
-    "section": "Kimball vs. Inmon: comparación",
-    "text": "Kimball vs. Inmon: comparación\n\n\n\n\n\n\n\n\n\nCriterio\nKimball\nInmon\n\n\n\n\nEnfoque\nBottom-Up (de los data marts al DW)\nTop-Down (del DW a los data marts)\n\n\nModelo de datos\nDimensional (estrella / copo de nieve)\nRelacional normalizado (3FN)\n\n\nTiempo de implementación\nMás rápido, entregas incrementales\nMás lento, requiere visión global primero\n\n\nRedundancia de datos\nMayor (desnormalizado)\nMenor (normalizado)\n\n\nConsultas analíticas\nMás simples y rápidas\nRequieren más JOINs\n\n\nIdeal para\nProyectos ágiles, por departamento\nOrganizaciones grandes, gobierno de datos estricto",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#por-qué-kimball-es-la-más-usada-en-la-industria",
-    "href": "practica-02/practica-02.html#por-qué-kimball-es-la-más-usada-en-la-industria",
-    "title": "Práctica 2",
-    "section": "¿Por qué Kimball es la más usada en la industria?",
-    "text": "¿Por qué Kimball es la más usada en la industria?\n\n\n\nAunque ambas metodologías son válidas, en la práctica Kimball predomina sobre Inmon en la mayoría de los proyectos actuales, por razones directamente ligadas a la tabla anterior:\n\n\n\n\nEntregas incrementales\nMenor costo y tiempo inicial\nSe adapta mejor a metodologías ágiles\n\n\n\n\nPor estas razones, en esta práctica se utiliza el enfoque de Kimball: se modela un único proceso de negocio (ventas) directamente como esquema estrella y copo de nieve, sin necesidad de construir primero un Data Warehouse corporativo normalizado.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#metodología-de-kimball-los-4-pasos",
-    "href": "practica-02/practica-02.html#metodología-de-kimball-los-4-pasos",
-    "title": "Práctica 2",
-    "section": "Metodología de Kimball: los 4 pasos",
-    "text": "Metodología de Kimball: los 4 pasos\n\n\n\nPaso 1 · Seleccionar el proceso de negocio\nElegir el proceso operativo que se quiere analizar. Suele corresponder a una tabla transaccional central de la base relacional.\n\n\nPaso 2 · Declarar la granularidad\nDefinir qué representa cada renglón de la tabla de hechos. Toda decisión posterior depende de este nivel de detalle.\n\n\n\nPaso 3 · Identificar las dimensiones\nDetectar el contexto que describe al hecho: quién, qué, cuándo, dónde. Suelen salir de las tablas “maestras” o de catálogo de la base relacional.\n\n\nPaso 4 · Identificar los hechos\nDetectar las métricas numéricas y aditivas del proceso.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#del-modelo-relacional-al-dimensional",
-    "href": "practica-02/practica-02.html#del-modelo-relacional-al-dimensional",
-    "title": "Práctica 2",
-    "section": "Del modelo relacional al dimensional",
-    "text": "Del modelo relacional al dimensional\n\n\n\n\nAnalizar el modelo entidad-relación fuente y detectar tablas transaccionales (hechos) vs. tablas de catálogo (dimensiones)\nExtraer los datos de la base relacional (proceso Extract)\n\n\n\n\n\nTransformar: desnormalizar, limpiar, generar claves sustitutas (surrogate keys) y resolver jerarquías\nCargar (Load) las tablas de hechos y dimensiones ya transformadas en el Data Warehouse (BigQuery)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#etl-vs.-elt",
-    "href": "practica-02/practica-02.html#etl-vs.-elt",
-    "title": "Práctica 2",
-    "section": "ETL vs. ELT",
-    "text": "ETL vs. ELT\n\n\n\n\n\n\n\n\n\nETL — Extract, Transform, Load\nLos datos se extraen de la fuente, se transforman en un servidor intermedio (limpieza, desnormalización, cálculo de métricas, generación de claves sustitutas) y después se cargan ya listos en el Data Warehouse.\n\n\nELT — Extract, Load, Transform\nLos datos se extraen de la fuente y se cargan crudos directamente en el Data Warehouse. La transformación ocurre después, dentro del propio motor del warehouse, usando su poder de cómputo (SQL, dbt, BigQuery ML, etc.).",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#etl-vs.-elt-1",
-    "href": "practica-02/practica-02.html#etl-vs.-elt-1",
-    "title": "Práctica 2",
-    "section": "ETL vs. ELT",
-    "text": "ETL vs. ELT\n\n\n\n\n\n\n\n\n\nCriterio\nETL\nELT\n\n\n\n\nOrden del proceso\nExtraer → Transformar → Cargar\nExtraer → Cargar → Transformar\n\n\nDónde se transforma\nServidor/motor intermedio dedicado\nDentro del propio Data Warehouse\n\n\nVelocidad de carga\nMás lenta (espera la transformación)\nMás rápida (carga datos crudos de inmediato)\n\n\nEscalabilidad de la transformación\nLimitada por el servidor ETL\nAprovecha el cómputo elástico de la nube\n\n\nDatos crudos disponibles\nNo siempre se conservan\nSí, siempre quedan en el warehouse\n\n\nFlexibilidad de análisis\nBaja\nAlta\n\n\nInfraestructura necesaria\nServidor ETL adicional\nSolo el Data Warehouse + herramienta de transformación",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#por-qué-hoy-se-usa-más-elt",
-    "href": "practica-02/practica-02.html#por-qué-hoy-se-usa-más-elt",
-    "title": "Práctica 2",
-    "section": "¿Por qué hoy se usa más ELT?",
-    "text": "¿Por qué hoy se usa más ELT?\n\n\n\n1. Cómputo elástico en la nube Motores como BigQuery o Snowflake procesan volúmenes masivos en segundos.\n\n\n2. Almacenamiento ultra barato Guardar todo el historial de datos crudos cuesta centavos.\n\n\n\n3. Preservación del dato crudo Permite re-procesar o auditar la información sin perder nada.\n\n\n4. Flexibilidad para Big Data Soporta datos no estructurados (JSON, logs, eventos) sin esquemas previos.\n\n\n\n5. Ecosistema moderno (SQL + dbt) Transforma directamente en el warehouse usando solo SQL versionado y modular.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#esquema-final",
-    "href": "practica-02/practica-02.html#esquema-final",
-    "title": "Práctica 2",
-    "section": "Esquema final",
-    "text": "Esquema final",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#algoritmo-esquema-estrella",
-    "href": "practica-02/practica-02.html#algoritmo-esquema-estrella",
-    "title": "Práctica 2",
-    "section": "Algoritmo Esquema Estrella",
-    "text": "Algoritmo Esquema Estrella\n\n\n\n1. Crear tabla de hechos (fact_*) Define la granularidad del proceso. Guarda únicamente métricas numéricas y llaves foráneas.\n\n\n\n\n2. Desnormalizar dimensiones (dim_*) Aplane la información en una sola tabla por contexto (ej. producto + categoría + departamento).\n\n\n\nPaso 3 · Generar claves sustitutas Crea llaves sintéticas (surrogate keys) en las dimensiones y vincúlalas a la tabla de hechos.\n\n\n\n\nPaso 4 · Un solo nivel de JOIN Conecta fact_* directamente con cada dim_* para lograr consultas simples y ultrarrápidas.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#algoritmo-esquema-copo-de-nieve",
-    "href": "practica-02/practica-02.html#algoritmo-esquema-copo-de-nieve",
-    "title": "Práctica 2",
-    "section": "Algoritmo Esquema Copo de Nieve",
-    "text": "Algoritmo Esquema Copo de Nieve\n\n\n\nPaso 1 · Mantener tabla de hechos (fact_*) Se conserva el mismo diseño base del esquema estrella.\n\n\n\n\nPaso 2 · Normalizar dimensiones Divide en subdimensiones según sus niveles jerárquicos (ej. producto → categoría → departamento).\n\n\n\nPaso 3 · Enlazar subdimensiones Vincula cada nivel con la siguiente subdimensión usando claves sustitutas en cadena.\n\n\n\n\nPaso 4 · Resultado final Reduce la redundancia de datos a costa de consultas con más JOINs y mayor complejidad.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#estrella-vs.-copo-de-nieve-cuál-elegir",
-    "href": "practica-02/practica-02.html#estrella-vs.-copo-de-nieve-cuál-elegir",
-    "title": "Práctica 2",
-    "section": "Estrella vs. Copo de Nieve: ¿cuál elegir?",
-    "text": "Estrella vs. Copo de Nieve: ¿cuál elegir?\n\n\n\n\n\n\n\n\n\nCriterio\nEstrella\nCopo de Nieve\n\n\n\n\nNormalización de dimensiones\nNinguna (desnormalizado)\nParcial/total (normalizado)\n\n\nComplejidad de las consultas\nBaja (pocos JOINs)\nMayor (JOINs encadenados)\n\n\nRendimiento de lectura\nGeneralmente más rápido\nPuede ser más lento\n\n\nEspacio en disco\nMayor (redundancia)\nMenor (sin redundancia)\n\n\nMantenimiento de jerarquías\nMás difícil\nMás fácil",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#esquemas",
-    "href": "practica-02/practica-02.html#esquemas",
-    "title": "Práctica 2",
-    "section": "Esquemas",
-    "text": "Esquemas",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-1-preparación-del-entorno-de-trabajo",
-    "href": "practica-02/practica-02.html#paso-1-preparación-del-entorno-de-trabajo",
-    "title": "Práctica 2",
-    "section": "Paso 1: Preparación del entorno de trabajo",
-    "text": "Paso 1: Preparación del entorno de trabajo\n\nIngresar a la consola de BigQuery: console.cloud.google.com/bigquery y seleccionar (o crear) un proyecto de GCP.\nEn el panel Explorer, hacer clic en el ícono Add → Public Datasets, dar clic en “Destacados por nombre”, escribir bigquery-public-data y fijarlo al proyecto para poder explorarlo desde el árbol de navegación. Todo debe estar en la misma región, que sería US, ya que si no se encuentran en la misma región no se van a encontrar los recursos.\nCrear dos datasets propios donde se construirá el Data Warehouse, mediante el botón de los tres puntos junto al nombre del proyecto → Create dataset → como nombre de los datasets dw_estrella y dw_copo_nieve.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-1-script-de-creación",
-    "href": "practica-02/practica-02.html#paso-1-script-de-creación",
-    "title": "Práctica 2",
-    "section": "Paso 1: Script de creación",
-    "text": "Paso 1: Script de creación\nCREATE SCHEMA IF NOT EXISTS `id_proyecto.dw_estrella`\n  OPTIONS (location = 'US');\n\nCREATE SCHEMA IF NOT EXISTS `id_proyecto.dw_copo_nieve`\n  OPTIONS (location = 'US');\n\n(Sustituir id_proyecto por el ID real del proyecto de GCP del alumno.)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-2.1-exploración-de-la-fuente-de-datos",
-    "href": "practica-02/practica-02.html#paso-2.1-exploración-de-la-fuente-de-datos",
-    "title": "Práctica 2",
-    "section": "Paso 2.1: Exploración de la fuente de datos",
-    "text": "Paso 2.1: Exploración de la fuente de datos\nEntender la estructura de las tablas fuente y definir cuál será el hecho de negocio, su granularidad y sus métricas.\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.order_items` LIMIT 10;\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.products`    LIMIT 10;\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.users`       LIMIT 10;",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-2.2-definición-del-hecho-de-negocio",
-    "href": "practica-02/practica-02.html#paso-2.2-definición-del-hecho-de-negocio",
-    "title": "Práctica 2",
-    "section": "Paso 2.2: Definición del hecho de negocio",
-    "text": "Paso 2.2: Definición del hecho de negocio\n\n\n\n\n\n\n\n\nElemento\nDefinición\n\n\n\n\nGranularidad\nUn renglón por cada producto vendido dentro de un pedido (order_items.id)\n\n\nMétricas (hechos)\nsale_price (precio de venta), cost (costo del producto), ganancia (precio − costo)\n\n\nDimensiones\nCliente, Producto, Tiempo, Centro de Distribución",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-3-diseño-del-modelo-dimensional",
-    "href": "practica-02/practica-02.html#paso-3-diseño-del-modelo-dimensional",
-    "title": "Práctica 2",
-    "section": "Paso 3: Diseño del modelo dimensional",
-    "text": "Paso 3: Diseño del modelo dimensional\nQué se debe hacer: dibujar el diagrama conceptual de cada esquema antes de programarlos.\n\nEsquema Estrella: una tabla central fact_ventas rodeada de dim_cliente, dim_producto, dim_tiempo y dim_centro_distribucion, todas desnormalizadas (un solo nivel)\nEsquema Copo de Nieve: la misma tabla fact_ventas, pero con dim_producto descompuesta en dim_categoria y dim_departamento, y dim_cliente descompuesta en dim_ciudad, dim_estado y dim_pais",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-4-consultas-analíticas-y-operaciones-olap",
-    "href": "practica-02/practica-02.html#paso-4-consultas-analíticas-y-operaciones-olap",
-    "title": "Práctica 2",
-    "section": "Paso 4: Consultas Analíticas y Operaciones OLAP",
-    "text": "Paso 4: Consultas Analíticas y Operaciones OLAP\nSe deben ejecutar las siguientes consultas:\n\nROLL-UP: ventas totales por mes y categoría\nDRILL-DOWN: de mes a día para una categoría específica\nSLICE: ventas únicamente del país “México”\nDICE: ventas de las categorías “Jeans” y “Sweaters”, en “México” y “Brasil”",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-4-esquema-copo-de-nieve-consideraciones",
-    "href": "practica-02/practica-02.html#paso-4-esquema-copo-de-nieve-consideraciones",
-    "title": "Práctica 2",
-    "section": "Paso 4: Esquema Copo de Nieve — consideraciones",
-    "text": "Paso 4: Esquema Copo de Nieve — consideraciones\n\nPara las consultas sobre el esquema dw_copo_nieve se requerirá encadenar JOINs adicionales, por ejemplo:\n\n\n\ndim_producto → dim_categoria para obtener el nombre de la categoría\ndim_cliente → dim_ciudad → dim_estado → dim_pais para obtener el país",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#interfaz-de-google-query",
-    "href": "practica-02/practica-02.html#interfaz-de-google-query",
-    "title": "Práctica 2",
-    "section": "Interfaz de Google Query",
-    "text": "Interfaz de Google Query",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#referencias",
-    "href": "practica-02/practica-02.html#referencias",
-    "title": "Práctica 2",
-    "section": "Referencias",
-    "text": "Referencias\n\nIntroducción a BigQuery — Google Cloud\nBigQuery para principiantes — DataCamp\nCalculadora de precios — Google Cloud\nGuía práctica de diseño y arquitectura de data warehouse\n¿Cuál es la diferencia entre los procesos de ETL y ELT?",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
     ]
   },
   {
@@ -1442,6 +993,1259 @@
       "Inicio",
       "Prácticas",
       "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Prácticas",
+    "section": "",
+    "text": "Bienvenido/a. Aquí encontrarás el listado de prácticas del curso de Almacenes y Mineria de datos, cada práctica una en su propia carpeta. Este curso es impartido por la profesora Jessica Santizo Galicia, como ayudante teorico Diego Antonio Villalba González y ayudante de laboratorio Emma Alicia Jiménez Sánchez",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#objetivo",
+    "href": "index.html#objetivo",
+    "title": "Prácticas",
+    "section": "Objetivo:",
+    "text": "Objetivo:\nComprender los principios de los almacenes de datos y de la minería de datos, así como su aplicación al análisis y al descubrimiento de conocimiento en grandes conjuntos de datos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#finalizar-el-curso",
+    "href": "index.html#finalizar-el-curso",
+    "title": "Prácticas",
+    "section": "Finalizar el curso:",
+    "text": "Finalizar el curso:\nComprender la arquitectura de un almacén de datos. Preparar y transformar datos reales. Analizar información mediante modelos multidimensionales. Aplicar técnicas de minería de datos. Construir modelos básicos de clasificación, predicción y agrupamiento.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#temario-general",
+    "href": "index.html#temario-general",
+    "title": "Prácticas",
+    "section": "Temario general:",
+    "text": "Temario general:\nBasado en el temario oficial: https://www.fciencias.unam.mx/sites/default/files/temario/658.pdf\n\nSQL Avanzado\nAlmacenes de datos.\nCubos de datos.\nPreprocesamiento de datos.\nMinería de patrones y asociaciones.\nClasificación y predicción.\nAgrupamiento.\nDetección de anomalías.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#plataforma-y-tecnologías",
+    "href": "index.html#plataforma-y-tecnologías",
+    "title": "Prácticas",
+    "section": "Plataforma y tecnologías:",
+    "text": "Plataforma y tecnologías:\nEl curso se llevará a cabo en Google Classroom. Se utilizarán principalmente Python, NumPy, Pandas, Matplotlib, Seaborn, Plotly, Quarto, scikit-learn y SQL\nPara los laboratorios se tendrá la dinámica de que los primeros 15 minutos de cada laboratorio se van a escoger a 2 alumnos para que expliquen parte del desarrollo de su prática. Después se explicaran los conceptos fundamentales para poder desarrollar su práctica y tener mejores conocmientos con respecto a los temas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#avisos",
+    "href": "index.html#avisos",
+    "title": "Prácticas",
+    "section": "Avisos",
+    "text": "Avisos\n\nSolo se responden dudas de 10 am a 7 pm.\nSe puede usar la AI como HERRAMIENTA.\nA partir de la prática 2 se podrá hacer las prácticas en equipo. Los equipos son los mismos que en la clase teórica.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#índice",
+    "href": "index.html#índice",
+    "title": "Prácticas",
+    "section": "Índice",
+    "text": "Índice\n\nPráctica 1: SQL Avanzado\nPráctica 2: Almacenes de Datos y BigQuery\nEjercicios DW\nPráctica 3",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#objetivo",
+    "href": "practica-02/practica-02.html#objetivo",
+    "title": "Práctica 2",
+    "section": "Objetivo",
+    "text": "Objetivo\n\nEl objetivo de esta práctica es que el alumno aplique los conceptos de modelado dimensional (hechos, dimensiones, granularidad y jerarquías) mediante el diseño e implementación de un Data Warehouse en la plataforma Google BigQuery.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#qué-es-google-bigquery",
+    "href": "practica-02/practica-02.html#qué-es-google-bigquery",
+    "title": "Práctica 2",
+    "section": "¿Qué es Google BigQuery?",
+    "text": "¿Qué es Google BigQuery?\n\n\n\nEs un data warehouse totalmente gestionado y serverless desarrollado por Google para almacenar y analizar datos a gran escala\nAyuda a administrar y analizar tus datos con funciones integradas como el aprendizaje automático, la búsqueda, el análisis geoespacial y la inteligencia empresarial\nProporciona una manera uniforme de trabajar con datos estructurados y no estructurados.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#nube-vs.-on-premise",
+    "href": "practica-02/practica-02.html#nube-vs.-on-premise",
+    "title": "Práctica 2",
+    "section": "Nube vs. On-premise",
+    "text": "Nube vs. On-premise\n\n\n\n\nOn-premise: Servidores físicos de la propia empresa. Implica altos costos iniciales, requiere un equipo experto para gestionarlo y una planificación rigurosa para crecer con la demanda, debido a la rigidez al escalar recursos en centros de datos tradicionales.\n\n\n\n\nNube: gestionada y alojada por un proveedor de servicios cloud, como Google BigQuery, Amazon Redshift o Snowflake.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#on-premise",
+    "href": "practica-02/practica-02.html#on-premise",
+    "title": "Práctica 2",
+    "section": "On-premise",
+    "text": "On-premise\n\n\n\n\n\n\n\n\n\nVentajas\n\nControl total sobre hardware y datos\nNo depende de conexión a internet\nCumplimiento normativo más sencillo en sectores muy regulados\n\nDesventajas\n\nAltos costos iniciales (CAPEX)\nRequiere equipo experto para su gestión\nEscalar es lento y rígido\nTodo esta cargo de la empresa",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#nube",
+    "href": "practica-02/practica-02.html#nube",
+    "title": "Práctica 2",
+    "section": "Nube",
+    "text": "Nube\n\n\n\nVentajas\n\nEscala y aprovecha la flexibilidad del entorno cloud\nMayor velocidad y rendimiento\nPrecios flexibles, pago por uso (OPEX) y reduce costos operativos\n\nDesventajas\n\nDependencia del proveedor (vendor lock-in)\nRequiere conexión a internet estable\nConsideraciones de seguridad y soberanía de datos\nLos costos pueden crecer si no se optimiza el uso",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#cómo-funciona-bigquery",
+    "href": "practica-02/practica-02.html#cómo-funciona-bigquery",
+    "title": "Práctica 2",
+    "section": "¿Cómo funciona BigQuery?",
+    "text": "¿Cómo funciona BigQuery?\n\nSepara el motor de cómputo del almacenamiento, de modo que cada uno puede escalar por separado\nResultado: puedes consultar terabytes en segundos y petabytes en minutos\n\n\nCuando BigQuery ejecuta una consulta, el motor distribuye el trabajo en paralelo, escanea las tablas relevantes en almacenamiento, combina los resultados y devuelve el conjunto final de datos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#funciones-clave-de-bigquery-en-2026",
+    "href": "practica-02/practica-02.html#funciones-clave-de-bigquery-en-2026",
+    "title": "Práctica 2",
+    "section": "Funciones clave de BigQuery en 2026",
+    "text": "Funciones clave de BigQuery en 2026\n\n\n\nBigQuery ML — Crea, entrena y despliega modelos de machine learning usando SQL\nGemini en BigQuery — Asistencia con IA para escribir consultas, entender esquemas y generar insights en lenguaje natural\nBigQuery Studio — Un espacio de trabajo unificado para SQL, notebooks de Python y Spark dentro de la consola de BigQuery\n\n\n\nConsultas federadas — Consulta datos en Cloud SQL, Cloud Storage, Bigtable y otras fuentes sin moverlos a BigQuery\nBigQuery Omni — Ejecuta analítica de BigQuery sobre datos almacenados en AWS o Azure sin copiarlos a Google Cloud\nData Studio — Permite crear dashboards automatizados que resumen la data",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#base-de-datos-relacional-data-warehouse",
+    "href": "practica-02/practica-02.html#base-de-datos-relacional-data-warehouse",
+    "title": "Práctica 2",
+    "section": "Base de datos relacional –> Data Warehouse",
+    "text": "Base de datos relacional –&gt; Data Warehouse\n\n\nUna base de datos relacional (OLTP) está normalizada para garantizar integridad y evitar redundancia en transacciones día a día.\nUn Data Warehouse (OLAP) busca lo contrario: velocidad de consulta y facilidad de análisis, aunque implique redundancia.\n\n\nPara hacer esta transición existen dos metodologías clásicas de modelado, que difieren en el orden en que se construye el warehouse y en el nivel de normalización del modelo final: la de Ralph Kimball y la de Bill Inmon.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#kimball-vs.-inmon",
+    "href": "practica-02/practica-02.html#kimball-vs.-inmon",
+    "title": "Práctica 2",
+    "section": "Kimball vs. Inmon",
+    "text": "Kimball vs. Inmon\n\n\n\nRalph Kimball — Enfoque “Bottom-Up”\nSe construyen primero data marts dimensionales por proceso de negocio, modelados como esquemas estrella o copo de nieve. El Data Warehouse general emerge de la unión de estos data marts mediante un bus de dimensiones conformadas.\n\n\nBill Inmon — Enfoque “Top-Down”\nSe construye primero un Data Warehouse corporativo único que integra los datos de toda la organización. A partir de él se derivan data marts departamentales para consumo analítico.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#kimball-vs.-inmon-comparación",
+    "href": "practica-02/practica-02.html#kimball-vs.-inmon-comparación",
+    "title": "Práctica 2",
+    "section": "Kimball vs. Inmon: comparación",
+    "text": "Kimball vs. Inmon: comparación\n\n\n\n\n\n\n\n\n\nCriterio\nKimball\nInmon\n\n\n\n\nEnfoque\nBottom-Up (de los data marts al DW)\nTop-Down (del DW a los data marts)\n\n\nModelo de datos\nDimensional (estrella / copo de nieve)\nRelacional normalizado (3FN)\n\n\nTiempo de implementación\nMás rápido, entregas incrementales\nMás lento, requiere visión global primero\n\n\nRedundancia de datos\nMayor (desnormalizado)\nMenor (normalizado)\n\n\nConsultas analíticas\nMás simples y rápidas\nRequieren más JOINs\n\n\nIdeal para\nProyectos ágiles, por departamento\nOrganizaciones grandes, gobierno de datos estricto",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#por-qué-kimball-es-la-más-usada-en-la-industria",
+    "href": "practica-02/practica-02.html#por-qué-kimball-es-la-más-usada-en-la-industria",
+    "title": "Práctica 2",
+    "section": "¿Por qué Kimball es la más usada en la industria?",
+    "text": "¿Por qué Kimball es la más usada en la industria?\n\n\n\nAunque ambas metodologías son válidas, en la práctica Kimball predomina sobre Inmon en la mayoría de los proyectos actuales, por razones directamente ligadas a la tabla anterior:\n\n\n\n\nEntregas incrementales\nMenor costo y tiempo inicial\nSe adapta mejor a metodologías ágiles\n\n\n\n\nPor estas razones, en esta práctica se utiliza el enfoque de Kimball: se modela un único proceso de negocio (ventas) directamente como esquema estrella y copo de nieve, sin necesidad de construir primero un Data Warehouse corporativo normalizado.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#metodología-de-kimball-los-4-pasos",
+    "href": "practica-02/practica-02.html#metodología-de-kimball-los-4-pasos",
+    "title": "Práctica 2",
+    "section": "Metodología de Kimball: los 4 pasos",
+    "text": "Metodología de Kimball: los 4 pasos\n\n\n\nPaso 1 · Seleccionar el proceso de negocio\nElegir el proceso operativo que se quiere analizar. Suele corresponder a una tabla transaccional central de la base relacional.\n\n\nPaso 2 · Declarar la granularidad\nDefinir qué representa cada renglón de la tabla de hechos. Toda decisión posterior depende de este nivel de detalle.\n\n\n\nPaso 3 · Identificar las dimensiones\nDetectar el contexto que describe al hecho: quién, qué, cuándo, dónde. Suelen salir de las tablas “maestras” o de catálogo de la base relacional.\n\n\nPaso 4 · Identificar los hechos\nDetectar las métricas numéricas y aditivas del proceso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#del-modelo-relacional-al-dimensional",
+    "href": "practica-02/practica-02.html#del-modelo-relacional-al-dimensional",
+    "title": "Práctica 2",
+    "section": "Del modelo relacional al dimensional",
+    "text": "Del modelo relacional al dimensional\n\n\n\n\nAnalizar el modelo entidad-relación fuente y detectar tablas transaccionales (hechos) vs. tablas de catálogo (dimensiones)\nExtraer los datos de la base relacional (proceso Extract)\n\n\n\n\n\nTransformar: desnormalizar, limpiar, generar claves sustitutas (surrogate keys) y resolver jerarquías\nCargar (Load) las tablas de hechos y dimensiones ya transformadas en el Data Warehouse (BigQuery)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#etl-vs.-elt",
+    "href": "practica-02/practica-02.html#etl-vs.-elt",
+    "title": "Práctica 2",
+    "section": "ETL vs. ELT",
+    "text": "ETL vs. ELT\n\n\n\n\n\n\n\n\n\nETL — Extract, Transform, Load\nLos datos se extraen de la fuente, se transforman en un servidor intermedio (limpieza, desnormalización, cálculo de métricas, generación de claves sustitutas) y después se cargan ya listos en el Data Warehouse.\n\n\nELT — Extract, Load, Transform\nLos datos se extraen de la fuente y se cargan crudos directamente en el Data Warehouse. La transformación ocurre después, dentro del propio motor del warehouse, usando su poder de cómputo (SQL, dbt, BigQuery ML, etc.).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#etl-vs.-elt-1",
+    "href": "practica-02/practica-02.html#etl-vs.-elt-1",
+    "title": "Práctica 2",
+    "section": "ETL vs. ELT",
+    "text": "ETL vs. ELT\n\n\n\n\n\n\n\n\n\nCriterio\nETL\nELT\n\n\n\n\nOrden del proceso\nExtraer → Transformar → Cargar\nExtraer → Cargar → Transformar\n\n\nDónde se transforma\nServidor/motor intermedio dedicado\nDentro del propio Data Warehouse\n\n\nVelocidad de carga\nMás lenta (espera la transformación)\nMás rápida (carga datos crudos de inmediato)\n\n\nEscalabilidad de la transformación\nLimitada por el servidor ETL\nAprovecha el cómputo elástico de la nube\n\n\nDatos crudos disponibles\nNo siempre se conservan\nSí, siempre quedan en el warehouse\n\n\nFlexibilidad de análisis\nBaja\nAlta\n\n\nInfraestructura necesaria\nServidor ETL adicional\nSolo el Data Warehouse + herramienta de transformación",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#por-qué-hoy-se-usa-más-elt",
+    "href": "practica-02/practica-02.html#por-qué-hoy-se-usa-más-elt",
+    "title": "Práctica 2",
+    "section": "¿Por qué hoy se usa más ELT?",
+    "text": "¿Por qué hoy se usa más ELT?\n\n\n\n1. Cómputo elástico en la nube Motores como BigQuery o Snowflake procesan volúmenes masivos en segundos.\n\n\n2. Almacenamiento ultra barato Guardar todo el historial de datos crudos cuesta centavos.\n\n\n\n3. Preservación del dato crudo Permite re-procesar o auditar la información sin perder nada.\n\n\n4. Flexibilidad para Big Data Soporta datos no estructurados (JSON, logs, eventos) sin esquemas previos.\n\n\n\n5. Ecosistema moderno (SQL + dbt) Transforma directamente en el warehouse usando solo SQL versionado y modular.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#esquema-final",
+    "href": "practica-02/practica-02.html#esquema-final",
+    "title": "Práctica 2",
+    "section": "Esquema final",
+    "text": "Esquema final",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#algoritmo-esquema-estrella",
+    "href": "practica-02/practica-02.html#algoritmo-esquema-estrella",
+    "title": "Práctica 2",
+    "section": "Algoritmo Esquema Estrella",
+    "text": "Algoritmo Esquema Estrella\n\n\n\n1. Crear tabla de hechos (fact_*) Define la granularidad del proceso. Guarda únicamente métricas numéricas y llaves foráneas.\n\n\n\n\n2. Desnormalizar dimensiones (dim_*) Aplane la información en una sola tabla por contexto (ej. producto + categoría + departamento).\n\n\n\nPaso 3 · Generar claves sustitutas Crea llaves sintéticas (surrogate keys) en las dimensiones y vincúlalas a la tabla de hechos.\n\n\n\n\nPaso 4 · Un solo nivel de JOIN Conecta fact_* directamente con cada dim_* para lograr consultas simples y ultrarrápidas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#algoritmo-esquema-copo-de-nieve",
+    "href": "practica-02/practica-02.html#algoritmo-esquema-copo-de-nieve",
+    "title": "Práctica 2",
+    "section": "Algoritmo Esquema Copo de Nieve",
+    "text": "Algoritmo Esquema Copo de Nieve\n\n\n\nPaso 1 · Mantener tabla de hechos (fact_*) Se conserva el mismo diseño base del esquema estrella.\n\n\n\n\nPaso 2 · Normalizar dimensiones Divide en subdimensiones según sus niveles jerárquicos (ej. producto → categoría → departamento).\n\n\n\nPaso 3 · Enlazar subdimensiones Vincula cada nivel con la siguiente subdimensión usando claves sustitutas en cadena.\n\n\n\n\nPaso 4 · Resultado final Reduce la redundancia de datos a costa de consultas con más JOINs y mayor complejidad.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#estrella-vs.-copo-de-nieve-cuál-elegir",
+    "href": "practica-02/practica-02.html#estrella-vs.-copo-de-nieve-cuál-elegir",
+    "title": "Práctica 2",
+    "section": "Estrella vs. Copo de Nieve: ¿cuál elegir?",
+    "text": "Estrella vs. Copo de Nieve: ¿cuál elegir?\n\n\n\n\n\n\n\n\n\nCriterio\nEstrella\nCopo de Nieve\n\n\n\n\nNormalización de dimensiones\nNinguna (desnormalizado)\nParcial/total (normalizado)\n\n\nComplejidad de las consultas\nBaja (pocos JOINs)\nMayor (JOINs encadenados)\n\n\nRendimiento de lectura\nGeneralmente más rápido\nPuede ser más lento\n\n\nEspacio en disco\nMayor (redundancia)\nMenor (sin redundancia)\n\n\nMantenimiento de jerarquías\nMás difícil\nMás fácil",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#esquemas",
+    "href": "practica-02/practica-02.html#esquemas",
+    "title": "Práctica 2",
+    "section": "Esquemas",
+    "text": "Esquemas",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-1-preparación-del-entorno-de-trabajo",
+    "href": "practica-02/practica-02.html#paso-1-preparación-del-entorno-de-trabajo",
+    "title": "Práctica 2",
+    "section": "Paso 1: Preparación del entorno de trabajo",
+    "text": "Paso 1: Preparación del entorno de trabajo\n\nIngresar a la consola de BigQuery: console.cloud.google.com/bigquery y seleccionar (o crear) un proyecto de GCP.\nEn el panel Explorer, hacer clic en el ícono Add → Public Datasets, dar clic en “Destacados por nombre”, escribir bigquery-public-data y fijarlo al proyecto para poder explorarlo desde el árbol de navegación. Todo debe estar en la misma región, que sería US, ya que si no se encuentran en la misma región no se van a encontrar los recursos.\nCrear dos datasets propios donde se construirá el Data Warehouse, mediante el botón de los tres puntos junto al nombre del proyecto → Create dataset → como nombre de los datasets dw_estrella y dw_copo_nieve.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-1-script-de-creación",
+    "href": "practica-02/practica-02.html#paso-1-script-de-creación",
+    "title": "Práctica 2",
+    "section": "Paso 1: Script de creación",
+    "text": "Paso 1: Script de creación\nCREATE SCHEMA IF NOT EXISTS `id_proyecto.dw_estrella`\n  OPTIONS (location = 'US');\n\nCREATE SCHEMA IF NOT EXISTS `id_proyecto.dw_copo_nieve`\n  OPTIONS (location = 'US');\n\n(Sustituir id_proyecto por el ID real del proyecto de GCP del alumno.)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-2.1-exploración-de-la-fuente-de-datos",
+    "href": "practica-02/practica-02.html#paso-2.1-exploración-de-la-fuente-de-datos",
+    "title": "Práctica 2",
+    "section": "Paso 2.1: Exploración de la fuente de datos",
+    "text": "Paso 2.1: Exploración de la fuente de datos\nEntender la estructura de las tablas fuente y definir cuál será el hecho de negocio, su granularidad y sus métricas.\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.order_items` LIMIT 10;\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.products`    LIMIT 10;\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.users`       LIMIT 10;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-2.2-definición-del-hecho-de-negocio",
+    "href": "practica-02/practica-02.html#paso-2.2-definición-del-hecho-de-negocio",
+    "title": "Práctica 2",
+    "section": "Paso 2.2: Definición del hecho de negocio",
+    "text": "Paso 2.2: Definición del hecho de negocio\n\n\n\n\n\n\n\n\nElemento\nDefinición\n\n\n\n\nGranularidad\nUn renglón por cada producto vendido dentro de un pedido (order_items.id)\n\n\nMétricas (hechos)\nsale_price (precio de venta), cost (costo del producto), ganancia (precio − costo)\n\n\nDimensiones\nCliente, Producto, Tiempo, Centro de Distribución",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-3-diseño-del-modelo-dimensional",
+    "href": "practica-02/practica-02.html#paso-3-diseño-del-modelo-dimensional",
+    "title": "Práctica 2",
+    "section": "Paso 3: Diseño del modelo dimensional",
+    "text": "Paso 3: Diseño del modelo dimensional\nQué se debe hacer: dibujar el diagrama conceptual de cada esquema antes de programarlos.\n\nEsquema Estrella: una tabla central fact_ventas rodeada de dim_cliente, dim_producto, dim_tiempo y dim_centro_distribucion, todas desnormalizadas (un solo nivel)\nEsquema Copo de Nieve: la misma tabla fact_ventas, pero con dim_producto descompuesta en dim_categoria y dim_departamento, y dim_cliente descompuesta en dim_ciudad, dim_estado y dim_pais",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-4-consultas-analíticas-y-operaciones-olap",
+    "href": "practica-02/practica-02.html#paso-4-consultas-analíticas-y-operaciones-olap",
+    "title": "Práctica 2",
+    "section": "Paso 4: Consultas Analíticas y Operaciones OLAP",
+    "text": "Paso 4: Consultas Analíticas y Operaciones OLAP\nSe deben ejecutar las siguientes consultas:\n\nROLL-UP: ventas totales por mes y categoría\nDRILL-DOWN: de mes a día para una categoría específica\nSLICE: ventas únicamente del país “México”\nDICE: ventas de las categorías “Jeans” y “Sweaters”, en “México” y “Brasil”",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-4-esquema-copo-de-nieve-consideraciones",
+    "href": "practica-02/practica-02.html#paso-4-esquema-copo-de-nieve-consideraciones",
+    "title": "Práctica 2",
+    "section": "Paso 4: Esquema Copo de Nieve — consideraciones",
+    "text": "Paso 4: Esquema Copo de Nieve — consideraciones\n\nPara las consultas sobre el esquema dw_copo_nieve se requerirá encadenar JOINs adicionales, por ejemplo:\n\n\n\ndim_producto → dim_categoria para obtener el nombre de la categoría\ndim_cliente → dim_ciudad → dim_estado → dim_pais para obtener el país",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#interfaz-de-google-query",
+    "href": "practica-02/practica-02.html#interfaz-de-google-query",
+    "title": "Práctica 2",
+    "section": "Interfaz de Google Query",
+    "text": "Interfaz de Google Query",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#referencias",
+    "href": "practica-02/practica-02.html#referencias",
+    "title": "Práctica 2",
+    "section": "Referencias",
+    "text": "Referencias\n\nIntroducción a BigQuery — Google Cloud\nBigQuery para principiantes — DataCamp\nCalculadora de precios — Google Cloud\nGuía práctica de diseño y arquitectura de data warehouse\n¿Cuál es la diferencia entre los procesos de ETL y ELT?",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
+    "href": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
+    "title": "Práctica 3",
+    "section": "De la teoría al modelo: el proceso completo",
+    "text": "De la teoría al modelo: el proceso completo\nEn un proyecto real, entrenar un modelo es apenas la última fase. Antes hace falta:\n\n\nOrganizar el proyecto con una arquitectura de carpetas clara y reproducible\nSeleccionar el framework de análisis adecuado según el volumen de datos\nEjecutar un preprocesamiento que garantice datos consistentes, únicos y del tipo correcto\nDescribir cuantitativamente los datos con medidas de localización y variabilidad",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#el-caso-de-estudio-endireh-2021",
+    "href": "practica-03/practica-03.html#el-caso-de-estudio-endireh-2021",
+    "title": "Práctica 3",
+    "section": "El caso de estudio: ENDIREH 2021",
+    "text": "El caso de estudio: ENDIREH 2021\n\nLa Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021, del INEGI, genera información representativa a nivel nacional y estatal sobre las experiencias de violencia física, sexual, emocional, económica y patrimonial que enfrentan las mujeres de 15 años y más.\n\n\nCombina de forma natural variables cualitativas y cuantitativas, además de valores faltantes, duplicados y columnas que requieren conversión de tipo — un escenario idéntico al de un proyecto profesional real.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#nota-de-sensibilidad-del-tema",
+    "href": "practica-03/practica-03.html#nota-de-sensibilidad-del-tema",
+    "title": "Práctica 3",
+    "section": "Nota de sensibilidad del tema",
+    "text": "Nota de sensibilidad del tema\n\nAl tratarse de un tema social sensible, el análisis debe realizarse con rigor técnico y responsabilidad ética, evitando conclusiones que estigmaticen a personas o grupos, y reconociendo que los datos representan experiencias reales de violencia reportadas por las encuestadas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#por-qué-una-arquitectura-de-carpetas",
+    "href": "practica-03/practica-03.html#por-qué-una-arquitectura-de-carpetas",
+    "title": "Práctica 3",
+    "section": "¿Por qué una arquitectura de carpetas?",
+    "text": "¿Por qué una arquitectura de carpetas?\n\nAntes de escribir una sola línea de análisis, el proyecto necesita una estructura ordenada y reproducible\nSe basa en el estándar de la industria Cookiecutter Data Science\n\n\nSepara claramente:\n\nDatos crudos (nunca se editan)\nDatos procesados (limpios, tipados, imputados)\nDatos listos para modelar\nCódigo fuente por responsabilidad (limpieza, visualización, modelos)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#pandas-vs.-polars-vs.-pyspark",
+    "href": "practica-03/practica-03.html#pandas-vs.-polars-vs.-pyspark",
+    "title": "Práctica 3",
+    "section": "Pandas vs. Polars vs. PySpark",
+    "text": "Pandas vs. Polars vs. PySpark\n\n\n\n\n\n\n\n\n\n\nFramework\nMotor / Diseño\nCuándo usarlo\nUso en la industria\n\n\n\n\nPandas\nUn solo hilo, basado en NumPy. API muy madura\nDatasets pequeños/medianos que caben en memoria\nEstándar histórico, el más enseñado\n\n\nPolars\nMotor en Rust, multihilo, evaluación lazy\nDatasets medianos/grandes en una sola máquina\nAdopción creciente 2024-2025\n\n\nPySpark\nMotor distribuido (Apache Spark) sobre clúster\nDatasets que no caben en una sola máquina (Big Data)\nEstándar para procesamiento distribuido",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#por-qué-polars-para-esta-práctica",
+    "href": "practica-03/practica-03.html#por-qué-polars-para-esta-práctica",
+    "title": "Práctica 3",
+    "section": "¿Por qué Polars para esta práctica?",
+    "text": "¿Por qué Polars para esta práctica?\n\n\n\n\nLa ENDIREH tiene ~700,000 registros: manejable en una sola máquina, pero grande para exprimir a pandas\nSintaxis cercana a pandas → curva de aprendizaje corta\n\n\n\n\n\nMotor en Rust, multihilo por defecto, sin configuración extra\nEvaluación perezosa (lazy): optimiza toda la consulta antes de ejecutarla\n\n\n\n\npip install polars pyarrow",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#introducción-a-polars-eager-vs.-lazy",
+    "href": "practica-03/practica-03.html#introducción-a-polars-eager-vs.-lazy",
+    "title": "Práctica 3",
+    "section": "Introducción a Polars: Eager vs. Lazy",
+    "text": "Introducción a Polars: Eager vs. Lazy\n\n\n⚡ Eager (pl.read_csv)\nEjecución instantánea: Lee el archivo completo e interactúa inmediatamente en memoria RAM.\nCarga todas las columnas y filas de inmediato, aunque luego descartes el 90% mediante filtros o selecciones posteriores.\n# Lee 700k filas y 50 columnas ya\ndf = pl.read_csv(\"endireh_2021.csv\")\nres = df.filter(pl.col(\"edad\") &gt; 30)\n\n\n◐ Lazy (pl.scan_csv)\nEvaluación diferida: No carga datos a memoria. Solo lee metadatos e inspecciona el esquema (tipos de datos).\nCrea un grafo lógico de transformaciones y espera hasta que el usuario decida materializar con .collect().\n# Solo genera un LazyFrame (0 datos en RAM)\nq = (\n    pl.scan_csv(\"endireh_2021.csv\")\n    .filter(pl.col(\"edad\") &gt; 30)\n)\n\n\n\nCon 700,000 registros, trabajar en modo lazy evita procesar columnas que ni siquiera se van a usar en el análisis.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#introducción-a-polars-sintaxis-básica",
+    "href": "practica-03/practica-03.html#introducción-a-polars-sintaxis-básica",
+    "title": "Práctica 3",
+    "section": "Introducción a Polars: sintaxis básica",
+    "text": "Introducción a Polars: sintaxis básica\nimport polars as pl\n\n# Seleccionar columnas\ndf.select([\"edad_primer_union\", \"num_hijos\", \"nom_entidad\"])\n\n# Filtrar renglones\ndf.filter(pl.col(\"nom_entidad\") == \"Ciudad de Mexico\")\n\n# Agrupar y agregar\ndf.group_by(\"nom_entidad\").agg([\n    pl.col(\"edad_primer_union\").mean().alias(\"edad_promedio\")\n])\n\nLas expresiones pl.col(...) describen qué hacer con una columna; no se ejecuta nada hasta que se pide el resultado (.collect() en modo lazy).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#polars-vs.-pandas-sintaxis-comparada",
+    "href": "practica-03/practica-03.html#polars-vs.-pandas-sintaxis-comparada",
+    "title": "Práctica 3",
+    "section": "Polars vs. pandas: sintaxis comparada",
+    "text": "Polars vs. pandas: sintaxis comparada\n\n\n\n\n\n\n\n\n\nOperación\npandas\npolars\n\n\n\n\nLeer CSV\npd.read_csv(ruta)\npl.read_csv(ruta) / pl.scan_csv(ruta)\n\n\nFiltrar\ndf[df.col &gt; 5]\ndf.filter(pl.col(\"col\") &gt; 5)\n\n\nSeleccionar\ndf[[\"a\",\"b\"]]\ndf.select([\"a\",\"b\"])\n\n\nAgrupar\ndf.groupby(\"col\").mean()\ndf.group_by(\"col\").agg(pl.col(\"x\").mean())\n\n\nQuitar nulos\ndf.dropna()\ndf.drop_nulls()",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#medidas-de-localización-fundamentos",
+    "href": "practica-03/practica-03.html#medidas-de-localización-fundamentos",
+    "title": "Práctica 3",
+    "section": "Medidas de Localización: fundamentos",
+    "text": "Medidas de Localización: fundamentos\n\n\\[\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\]\n\n\n\\[Me = \\begin{cases} x_{(\\frac{n+1}{2})} & n \\text{ impar} \\\\[4pt] \\dfrac{x_{(n/2)} + x_{(n/2+1)}}{2} & n \\text{ par} \\end{cases}\\]\n\n\nJunto con la moda y los cuantiles/percentiles (Q1, Q2, Q3, P10, P90), construyen el “perfil típico” de las encuestadas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#media-ponderada-por-qué-importa",
+    "href": "practica-03/practica-03.html#media-ponderada-por-qué-importa",
+    "title": "Práctica 3",
+    "section": "Media ponderada: por qué importa",
+    "text": "Media ponderada: por qué importa\n\nLa ENDIREH es una encuesta con muestreo complejo: cada registro trae un factor_expansion que indica a cuántas mujeres de la población representa esa observación.\n\n\n\\[\\bar{x}_w = \\frac{\\sum_{i=1}^{n} w_i x_i}{\\sum_{i=1}^{n} w_i}, \\qquad w_i = \\text{factor\\_expansion}_i\\]\n\n\nCuándo usarla: siempre que los datos provengan de un muestreo con pesos o factores de expansión — es decir, casi cualquier encuesta oficial (ENDIREH, ENIGH, ENOE, etc.), no solo este dataset.\n\n\n\nCalcular la media sin ponderar solo describe a la muestra encuestada, no a la población real. En un tema como violencia contra las mujeres, reportar la cifra equivocada puede sub- o sobre-representar la magnitud real del problema a nivel nacional.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#medidas-de-variabilidad-fundamentos",
+    "href": "practica-03/practica-03.html#medidas-de-variabilidad-fundamentos",
+    "title": "Práctica 3",
+    "section": "Medidas de Variabilidad: fundamentos",
+    "text": "Medidas de Variabilidad: fundamentos\n\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\qquad s = \\sqrt{s^2}\\]\n\n\n\\[CV = \\frac{s}{\\bar{x}} \\times 100\\% \\qquad IQR = Q_3 - Q_1\\]\n\n\nEl CV permite comparar la dispersión relativa entre grupos con medias distintas — algo que la desviación estándar por sí sola no permite.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#registros-y-una-historia-que-contar",
+    "href": "practica-03/practica-03.html#registros-y-una-historia-que-contar",
+    "title": "Práctica 3",
+    "section": "700,000 registros y una historia que contar",
+    "text": "700,000 registros y una historia que contar",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-1-obtención-de-la-fuente-de-datos",
+    "href": "practica-03/practica-03.html#paso-1-obtención-de-la-fuente-de-datos",
+    "title": "Práctica 3",
+    "section": "Paso 1: Obtención de la fuente de datos",
+    "text": "Paso 1: Obtención de la fuente de datos\n\nDescargar del classroom el .csv",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-2-arquitectura-del-proyecto",
+    "href": "practica-03/practica-03.html#paso-2-arquitectura-del-proyecto",
+    "title": "Práctica 3",
+    "section": "Paso 2: Arquitectura del proyecto",
+    "text": "Paso 2: Arquitectura del proyecto\nproyecto-endireh-violencia/\n├── config/\n│   └── rutas.py              # Rutas de archivos estaticos\n├── data/\n│   ├── data-raw/             # Datos originales (nunca se editan)\n│   ├── data-processed/       # Datos limpios: sin duplicados, tipados, imputados\n│   ├── data-input-model/     # Datos transformados, listos para modelar\n│   └── data-model/           # Salidas: predicciones, clusters, reglas\n├── src/\n│   ├── cleaning/              # Scripts de limpieza y preprocesamiento\n│   ├── visualization/         # Scripts de graficas y EDA\n│   └── models/                 # Entrenamiento y evaluacion de modelos\n├── notebooks/                  # Notebooks exploratorios (no productivos)\n├── README.md\n└── requirements.txt",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-2-readme-y-requirements.txt",
+    "href": "practica-03/practica-03.html#paso-2-readme-y-requirements.txt",
+    "title": "Práctica 3",
+    "section": "Paso 2: README y requirements.txt",
+    "text": "Paso 2: README y requirements.txt\n\n\nEl README.md debe documentar, como mínimo: el objetivo del proyecto, la fuente de los datos, cómo instalar el entorno y cómo ejecutar el pipeline.\n\n\n\n\nEl requirements.txt debe fijar versiones exactas: polars==1.9.0, pandas==2.2.2, pyarrow==17.0.0, numpy==2.0.1, matplotlib, seaborn, scikit-learn, jupyter…\n\n\n\nSin README.md ni requirements.txt la práctica no se evalúa.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-3-selección-del-framework",
+    "href": "practica-03/practica-03.html#paso-3-selección-del-framework",
+    "title": "Práctica 3",
+    "section": "Paso 3: Selección del framework",
+    "text": "Paso 3: Selección del framework\n\nDado que la ENDIREH 2021 es un archivo manejable en una sola máquina (algunos cientos de miles de registros), se recomienda polars para todo el pipeline de la práctica.\n\n\n\nOpcionalmente, se puede replicar el preprocesamiento también en pandas, para documentar en el reporte las diferencias de sintaxis y de tiempo de ejecución entre ambos frameworks.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-4-carga-de-los-datos-crudos",
+    "href": "practica-03/practica-03.html#paso-4-carga-de-los-datos-crudos",
+    "title": "Práctica 3",
+    "section": "Paso 4: Carga de los datos crudos",
+    "text": "Paso 4: Carga de los datos crudos\nimport polars as pl\nfrom config.rutas import RUTA_DATA_RAW\n\ndf_crudo = pl.read_csv(RUTA_DATA_RAW / \"endireh_2021.csv\")\nprint(df_crudo.shape)\nprint(df_crudo.head())\n\nCon ~700,000 renglones, conviene explorar también la versión lazy:\ndf_lazy = pl.scan_csv(RUTA_DATA_RAW / \"endireh_2021.csv\")\nprint(df_lazy.collect_schema())",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-5-clasificación-de-variables",
+    "href": "practica-03/practica-03.html#paso-5-clasificación-de-variables",
+    "title": "Práctica 3",
+    "section": "Paso 5: Clasificación de variables",
+    "text": "Paso 5: Clasificación de variables\n\n\n\n\n\n\n\n\n\nVariable\nTipo de dato\nJustificación (ejemplo)\n\n\n\n\nedad_primer_union\nCuantitativa continua\nToma cualquier valor numérico en un rango de edades\n\n\nnum_hijos\n\n\n\n\nnom_entidad\n\n\n\n\nnivel_escolaridad\n\n\n\n\nsufrio_violencia_pareja\n\n\n\n\nfactor_expansion\n\n\n\n\n\n\n\n(Completar las variables restantes del dataset siguiendo esta misma lógica — si falta alguna, el equipo la agrega.)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-5-preprocesamiento-duplicados-y-tipos",
+    "href": "practica-03/practica-03.html#paso-5-preprocesamiento-duplicados-y-tipos",
+    "title": "Práctica 3",
+    "section": "Paso 5: Preprocesamiento — duplicados y tipos",
+    "text": "Paso 5: Preprocesamiento — duplicados y tipos\n\n\nEliminar (drop_nulls): válido cuando los nulos son pocos y no sesgan la muestra\nImputar con media/mediana: para variables cuantitativas, cuidando el efecto en la variabilidad\nImputar con moda: para variables categóricas\nMarcar como “No especificado”: cuando la ausencia de dato es en sí informativa",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-5-estrategias-de-imputación",
+    "href": "practica-03/practica-03.html#paso-5-estrategias-de-imputación",
+    "title": "Práctica 3",
+    "section": "Paso 5: Estrategias de imputación",
+    "text": "Paso 5: Estrategias de imputación\n\n\nEliminar (drop_nulls): válido cuando los nulos son pocos y no sesgan la muestra\nImputar con media/mediana: para variables cuantitativas, cuidando el efecto en la variabilidad\nImputar con moda: para variables categóricas\nMarcar como “No especificado”: cuando la ausencia de dato es en sí informativa\n\n\n\n\nEn un dataset sobre violencia, un valor faltante en “sufrió violencia” no siempre es aleatorio — puede reflejar falta de disposición a responder. Imputar sin cuidado puede introducir sesgo.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-6-código-medidas-de-localización",
+    "href": "practica-03/practica-03.html#paso-6-código-medidas-de-localización",
+    "title": "Práctica 3",
+    "section": "Paso 6: Código — medidas de localización",
+    "text": "Paso 6: Código — medidas de localización\nimport numpy as np\n\nresumen = df.select([\n    pl.col(\"edad_primer_union\").mean().alias(\"media_edad\"),\n    pl.col(\"edad_primer_union\").median().alias(\"mediana_edad\"),\n    pl.col(\"edad_primer_union\").quantile(0.25).alias(\"Q1_edad\"),\n    pl.col(\"edad_primer_union\").quantile(0.75).alias(\"Q3_edad\"),\n    pl.col(\"nivel_escolaridad\").mode().alias(\"moda_escolaridad\"),\n])\n\n# Media ponderada por factor de expansion\ndf_clean = df.drop_nulls(subset=[\"edad_primer_union\"])\nedad  = df_clean[\"edad_primer_union\"].to_numpy()\npesos = df_clean[\"factor_expansion\"].to_numpy()\nmedia_ponderada = np.average(edad, weights=pesos)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-7-código-medidas-de-variabilidad",
+    "href": "practica-03/practica-03.html#paso-7-código-medidas-de-variabilidad",
+    "title": "Práctica 3",
+    "section": "Paso 7: Código — medidas de variabilidad",
+    "text": "Paso 7: Código — medidas de variabilidad\nresumen_var = df.select([\n    (pl.col(\"edad_primer_union\").max()\n     - pl.col(\"edad_primer_union\").min()).alias(\"rango\"),\n    pl.col(\"edad_primer_union\").var().alias(\"varianza\"),\n    pl.col(\"edad_primer_union\").std().alias(\"desv_estandar\"),\n    (pl.col(\"edad_primer_union\").quantile(0.75)\n     - pl.col(\"edad_primer_union\").quantile(0.25)).alias(\"IQR\"),\n])\n\ncv = (resumen_var[\"desv_estandar\"][0]\n      / df[\"edad_primer_union\"].mean()) * 100",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-7-comparando-grupos-violencia-de-pareja",
+    "href": "practica-03/practica-03.html#paso-7-comparando-grupos-violencia-de-pareja",
+    "title": "Práctica 3",
+    "section": "Paso 7: Comparando grupos — ¿violencia de pareja?",
+    "text": "Paso 7: Comparando grupos — ¿violencia de pareja?\n\n\nDividir el dataset en dos grupos según sufrio_violencia_pareja\nCalcular media, desviación estándar y CV por separado en cada grupo\nComparar el CV entre ambos grupos\n\n\n\n\nUn CV considerablemente más alto en un grupo sugiere mayor heterogeneidad interna — una pista para plantear hipótesis, no una conclusión por sí sola.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#rumbo-a-la-entrega",
+    "href": "practica-03/practica-03.html#rumbo-a-la-entrega",
+    "title": "Práctica 3",
+    "section": "Rumbo a la entrega",
+    "text": "Rumbo a la entrega",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#qué-debe-incluir-el-reporte",
+    "href": "practica-03/practica-03.html#qué-debe-incluir-el-reporte",
+    "title": "Práctica 3",
+    "section": "Qué debe incluir el reporte",
+    "text": "Qué debe incluir el reporte\n\n\nComparación de frameworks (pandas / polars / PySpark) y justificación de la elección Solo se debe de implementar un solo framework\nDocumentación del preprocesamiento: duplicados eliminados, columnas convertidas, estrategia de imputación\nTabla de clasificación de variables completa\nResultados de medidas de localización y variabilidad, con capturas del EDA\nRespuestas al cuestionario\n\n\n\nRepositorio de Git con README.md y requirements.txt (solo el link; nada de código en el classroom). data/data-raw/ no va en el repositorio.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#rúbrica-de-evaluación",
+    "href": "practica-03/practica-03.html#rúbrica-de-evaluación",
+    "title": "Práctica 3",
+    "section": "Rúbrica de evaluación",
+    "text": "Rúbrica de evaluación\n\n\n\n\nCriterio\nPorcentaje\n\n\n\n\nArquitectura del proyecto\n20%\n\n\nSelección y justificación del framework\n25%\n\n\nEDA, clasificación de variables y medidas descriptivas\n35%\n\n\nEntendimiento del problema\n20%",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#referencias",
+    "href": "practica-03/practica-03.html#referencias",
+    "title": "Práctica 3",
+    "section": "Referencias",
+    "text": "Referencias\n\nINEGI — ENDIREH 2021\nDescriptor de archivos ENDIREH 2021\nPolars User Guide\npandas documentation\nPySpark documentation\nCookiecutter Data Science",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#eager-vs-lazy-en-polars",
+    "href": "practica-03/practica-03.html#eager-vs-lazy-en-polars",
+    "title": "Práctica 3",
+    "section": "Eager vs Lazy en Polars",
+    "text": "Eager vs Lazy en Polars\n\n\n⚡ Eager (pl.read_csv)\nEjecución instantánea: Lee el archivo completo e interactúa inmediatamente en memoria RAM.\nCarga todas las columnas y filas de inmediato, aunque luego descartes el 90% mediante filtros o selecciones posteriores.\n# Lee 700k filas y 50 columnas ya\ndf = pl.read_csv(\"endireh_2021.csv\")\nres = df.filter(pl.col(\"edad\") &gt; 30)\n\n\n◐ Lazy (pl.scan_csv)\nEvaluación diferida: No carga datos a memoria. Solo lee metadatos e inspecciona el esquema (tipos de datos).\nCrea un grafo lógico de transformaciones y espera hasta que el usuario decida materializar con .collect().\n# Solo genera un LazyFrame (0 datos en RAM)\nq = pl.scan_csv(\"endireh_2021.csv\") \\\n    .filter(pl.col(\"edad\") &gt; 30)\n\n\n\nCon 700,000 registros, trabajar en modo lazy evita procesar columnas que ni siquiera se van a usar en el análisis.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#introducción-a-polars-eager-vs.-lazy-1",
+    "href": "practica-03/practica-03.html#introducción-a-polars-eager-vs.-lazy-1",
+    "title": "Práctica 3",
+    "section": "Introducción a Polars: Eager vs. Lazy",
+    "text": "Introducción a Polars: Eager vs. Lazy\n\n◐ Lazy (pl.scan_csv)\nEvaluación diferida: No carga datos a memoria. Solo lee metadatos e inspecciona el esquema (tipos de datos).\nCrea un grafo lógico de transformaciones y espera hasta que el usuario decida materializar con .collect().\n# Solo genera un LazyFrame (0 datos en RAM)\nq = pl.scan_csv(\"endireh_2021.csv\") \\\n    .filter(pl.col(\"edad\") &gt; 30)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#introducción-a-polars-modo-eager",
+    "href": "practica-03/practica-03.html#introducción-a-polars-modo-eager",
+    "title": "Práctica 3",
+    "section": "Introducción a Polars: Modo Eager",
+    "text": "Introducción a Polars: Modo Eager\n\n\n⚡ Eager (pl.read_csv)\nEjecución instantánea: Lee el archivo completo e interactúa inmediatamente en memoria RAM.\nCarga todas las columnas y filas de inmediato, aunque luego descartes el 90% mediante filtros o selecciones posteriores.\n# Lee 700k filas y 50 columnas ya\ndf = pl.read_csv(\"endireh_2021.csv\")\nres = df.filter(pl.col(\"edad\") &gt; 30)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#introducción-a-polars-modo-lazy",
+    "href": "practica-03/practica-03.html#introducción-a-polars-modo-lazy",
+    "title": "Práctica 3",
+    "section": "Introducción a Polars: Modo Lazy",
+    "text": "Introducción a Polars: Modo Lazy\n\n\n◐ Lazy (pl.scan_csv)\nEvaluación diferida: No carga datos a memoria. Solo lee metadatos e inspecciona el esquema (tipos de datos).\nCrea un grafo lógico de transformaciones y espera hasta que el usuario decida materializar con .collect().\n# Solo genera un LazyFrame (0 datos en RAM)\nq = (\n    pl.scan_csv(\"endireh_2021.csv\")\n    .filter(pl.col(\"edad\") &gt; 30)\n)\n\n\n\nCon 700,000 registros, trabajar en modo lazy evita procesar columnas que ni siquiera se van a usar en el análisis.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#sintaxis-de-select",
+    "href": "practica-03/practica-03.html#sintaxis-de-select",
+    "title": "Práctica 3",
+    "section": "Sintaxis de Select()",
+    "text": "Sintaxis de Select()\n\nselect() devuelve un nuevo DataFrame solo con las columnas (o expresiones) que le indiques.\n\n# Una columna\ndf.select(\"edad\")\n\n# Varias columnas\ndf.select([\"edad\", \"nom_entidad\", \"factor_expansion\"])\n\n# Con expresiones: renombrar o transformar al vuelo\ndf.select([\n    pl.col(\"edad\"),\n    (pl.col(\"edad\") * 2).alias(\"edad_doble\")\n])\n\n\nRecibe una lista de nombres de columna o de expresiones pl.col(...). Con .alias() puedes renombrar o crear columnas calculadas sin salir del select().",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#sintaxis-de-filter",
+    "href": "practica-03/practica-03.html#sintaxis-de-filter",
+    "title": "Práctica 3",
+    "section": "Sintaxis de Filter()",
+    "text": "Sintaxis de Filter()\n\nfilter() conserva solo los renglones donde la condición es True.\n\n# Una condición\ndf.filter(pl.col(\"edad\") &gt; 30)\n\n# Varias condiciones (AND)\ndf.filter(\n    (pl.col(\"edad\") &gt; 30) & (pl.col(\"nom_entidad\") == \"Jalisco\")\n)\n\n# Condición OR\ndf.filter(\n    (pl.col(\"nivel_escolaridad\") == \"Primaria\")\n    | (pl.col(\"nivel_escolaridad\") == \"Secundaria\")\n)\n\n\nCada condición se escribe como pl.col(\"columna\") operador valor. Para combinar condiciones usa & (AND), | (OR) o ~ (NOT) — siempre con cada condición entre paréntesis.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#sintaxis-de-group_by",
+    "href": "practica-03/practica-03.html#sintaxis-de-group_by",
+    "title": "Práctica 3",
+    "section": "Sintaxis de Group_By()",
+    "text": "Sintaxis de Group_By()\n\ngroup_by() agrupa los renglones; por sí solo no calcula nada — siempre va seguido de .agg().\n\n# Agrupar por una columna y agregar\ndf.group_by(\"nom_entidad\").agg([\n    pl.col(\"edad\").mean().alias(\"edad_promedio\"),\n    pl.col(\"factor_expansion\").sum().alias(\"poblacion_total\")\n])\n\n# Agrupar por varias columnas\ndf.group_by([\"nom_entidad\", \"nivel_escolaridad\"]).agg(\n    pl.len().alias(\"num_encuestadas\")\n)\n\n\nDentro de .agg([...]) defines qué operación aplicar por grupo (mean, sum, len, etc.). Puedes agrupar por una o varias columnas, y encadenar .sort() después para ordenar el resultado.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#materializando-con-collect",
+    "href": "practica-03/practica-03.html#materializando-con-collect",
+    "title": "Práctica 3",
+    "section": "Materializando con collect()",
+    "text": "Materializando con collect()\n\nTodo lo anterior (select, filter, group_by) no ejecuta nada si vienes de pl.scan_csv(...) — solo arma el plan. .collect() es quien finalmente corre la consulta completa y te regresa un DataFrame real en memoria.\n\n\n\n\n\nAntes de .collect(), Polars optimiza el plan completo: junta el select y el filter para leer del CSV solo las columnas y filas necesarias, .collect() es el único punto donde realmente se toca el disco y se gasta memoria.\n\n\n\n\nresultado = (\n    pl.scan_csv(\"endireh_2021.csv\")        # 1. LazyFrame: aún no lee nada\n    .select([\"edad\", \"nom_entidad\",\n             \"nivel_escolaridad\", \"factor_expansion\"])\n    .filter(pl.col(\"edad\") &gt; 30)            # 2. Se agrega al plan\n    .group_by(\"nom_entidad\")\n    .agg([\n        pl.col(\"edad\").mean().alias(\"edad_promedio\"),\n        pl.len().alias(\"num_encuestadas\")\n    ])\n    .sort(\"num_encuestadas\", descending=True)\n    .collect()                               # 3. AQUI se ejecuta todo\n)\n\nprint(resultado)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#polars-vs-pandas-sintaxis-comparada",
+    "href": "practica-03/practica-03.html#polars-vs-pandas-sintaxis-comparada",
+    "title": "Práctica 3",
+    "section": "Polars vs Pandas: sintaxis comparada",
+    "text": "Polars vs Pandas: sintaxis comparada\n\n\n\n\n\n\n\n\n\nOperación\npandas\npolars\n\n\n\n\nLeer CSV\npd.read_csv(ruta)\npl.read_csv(ruta) / pl.scan_csv(ruta)\n\n\nFiltrar\ndf[df.col &gt; 5]\ndf.filter(pl.col(\"col\") &gt; 5)\n\n\nSeleccionar\ndf[[\"a\",\"b\"]]\ndf.select([\"a\",\"b\"])\n\n\nAgrupar\ndf.groupby(\"col\").mean()\ndf.group_by(\"col\").agg(pl.col(\"x\").mean())\n\n\nQuitar nulos\ndf.dropna()\ndf.drop_nulls()",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#medidas-de-localización-qué-responden",
+    "href": "practica-03/practica-03.html#medidas-de-localización-qué-responden",
+    "title": "Práctica 3",
+    "section": "Medidas de Localización: ¿qué responden?",
+    "text": "Medidas de Localización: ¿qué responden?\n\nResponden a la pregunta: ¿alrededor de qué valor se agrupan los datos?\n\n\nSon la base para construir un “perfil típico” de las encuestadas — por ejemplo, la edad promedio de una población, o el nivel de escolaridad más común. Sin ellas, no hay un punto de referencia para comparar grupos ni para detectar qué tan “normal” o “atípico” es un caso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#la-media-promedio-aritmético",
+    "href": "practica-03/practica-03.html#la-media-promedio-aritmético",
+    "title": "Práctica 3",
+    "section": "La Media: promedio aritmético",
+    "text": "La Media: promedio aritmético\n\n\\[\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\]\n\n\nCuándo usarla: variables cuantitativas con distribución razonablemente simétrica, sin valores extremos que la distorsionen.\n\n\n\nLimitación clave: es muy sensible a outliers. Un solo valor extremo (por ejemplo, una edad de unión reportada erróneamente como 99) puede desplazar la media completa, dando una imagen falsa del “promedio” real.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#la-mediana-el-valor-de-en-medio",
+    "href": "practica-03/practica-03.html#la-mediana-el-valor-de-en-medio",
+    "title": "Práctica 3",
+    "section": "La Mediana: el valor de en medio",
+    "text": "La Mediana: el valor de en medio\n\n\\[Me = \\begin{cases} x_{(\\frac{n+1}{2})} & n \\text{ impar} \\\\[4pt] \\dfrac{x_{(n/2)} + x_{(n/2+1)}}{2} & n \\text{ par} \\end{cases}\\]\n\n\nCuándo usarla: cuando la variable tiene una distribución asimétrica o contiene valores extremos — la mediana no se mueve por ellos, porque solo depende de la posición central, no de la magnitud de los valores.\n\n\n\nRegla práctica: si la media es mucho mayor que la mediana, la distribución está sesgada hacia la derecha (hay valores altos poco frecuentes que la “jalan”). Comparar ambas ya te dice algo sobre la forma de los datos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#la-moda-el-valor-más-frecuente",
+    "href": "practica-03/practica-03.html#la-moda-el-valor-más-frecuente",
+    "title": "Práctica 3",
+    "section": "La Moda: el valor más frecuente",
+    "text": "La Moda: el valor más frecuente\n\nLa moda es el valor (o categoría) que más veces se repite en los datos.\n\n\nCuándo usarla: es la única medida de tendencia central válida para variables cualitativas nominales — no tiene sentido calcular un “promedio” de nom_entidad o de sufrio_violencia_pareja, pero sí preguntar cuál es la categoría más común.\n\n\n\nEn ENDIREH, la moda es clave para variables como nivel_escolaridad o estado_civil_desc: te dice cuál es la situación más frecuente entre las encuestadas, algo que la media no puede responder.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#cuantiles-y-percentiles",
+    "href": "practica-03/practica-03.html#cuantiles-y-percentiles",
+    "title": "Práctica 3",
+    "section": "Cuantiles y Percentiles",
+    "text": "Cuantiles y Percentiles\n\nDividen los datos ordenados en partes iguales: los cuartiles (Q1, Q2, Q3) los dividen en 4 partes; los percentiles (P10, P90…) en 100.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#medidas-de-variabilidad-qué-responden",
+    "href": "practica-03/practica-03.html#medidas-de-variabilidad-qué-responden",
+    "title": "Práctica 3",
+    "section": "Medidas de Variabilidad: ¿qué responden?",
+    "text": "Medidas de Variabilidad: ¿qué responden?\n\nResponden a la pregunta: ¿qué tan dispersos están los datos respecto al valor central?\n\n\n\nDos variables pueden tener la misma media y comportarse de forma totalmente distinta. Una alta variabilidad advierte que un solo valor central puede ser engañoso, y que conviene segmentar a la población antes de sacar conclusiones.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#varianza-y-desviación-estándar",
+    "href": "practica-03/practica-03.html#varianza-y-desviación-estándar",
+    "title": "Práctica 3",
+    "section": "Varianza y Desviación Estándar",
+    "text": "Varianza y Desviación Estándar\n\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\qquad s = \\sqrt{s^2}\\]\n\n\nLa varianza promedia qué tan lejos está cada valor de la media (al cuadrado, para que las diferencias negativas y positivas no se cancelen). Se divide entre \\(n-1\\), no entre \\(n\\), porque estamos estimando la variabilidad de la población a partir de una muestra.\n\n\n\nCuándo usarla: la desviación estándar (\\(s\\)) es más interpretable que la varianza porque queda en las mismas unidades que la variable original (años, si hablamos de edad). Úsala para describir qué tan homogénea o heterogénea es una variable cuantitativa.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#coeficiente-de-variación-cv",
+    "href": "practica-03/practica-03.html#coeficiente-de-variación-cv",
+    "title": "Práctica 3",
+    "section": "Coeficiente de Variación (CV)",
+    "text": "Coeficiente de Variación (CV)\n\n\\[CV = \\frac{s}{\\bar{x}} \\times 100\\%\\]\n\n\nEl CV expresa la desviación estándar como porcentaje de la media — es una medida de dispersión relativa, sin unidades.\n\n\n\nCuándo usarlo: cuando quieres comparar la dispersión entre dos grupos con medias distintas — por ejemplo, la variabilidad en edad_primer_union entre el grupo que reportó violencia de pareja y el que no. Comparar solo la desviación estándar sería injusto si las medias de ambos grupos son diferentes; el CV corrige eso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#rango-intercuartílico-iqr",
+    "href": "practica-03/practica-03.html#rango-intercuartílico-iqr",
+    "title": "Práctica 3",
+    "section": "Rango Intercuartílico (IQR)",
+    "text": "Rango Intercuartílico (IQR)\n\n\\[IQR = Q_3 - Q_1\\]\n\n\nEs el rango que cubre el 50% central de los datos, ignorando el 25% más bajo y el 25% más alto.\n\n\n\nCuándo usarlo: cuando la variable tiene valores extremos o una distribución sesgada — a diferencia de la varianza o el rango total, el IQR no se ve afectado por outliers, porque ni siquiera los considera en su cálculo. También es la base para detectar valores atípicos (fuera de \\(Q1 - 1.5 \\times IQR\\) o \\(Q3 + 1.5 \\times IQR\\)) y para construir boxplots.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#localización-variabilidad-la-fotografía-completa",
+    "href": "practica-03/practica-03.html#localización-variabilidad-la-fotografía-completa",
+    "title": "Práctica 3",
+    "section": "Localización + Variabilidad: la fotografía completa",
+    "text": "Localización + Variabilidad: la fotografía completa\n\nNinguna medida sirve sola. Reportar solo la media, sin su dispersión, oculta si esa “cifra promedio” describe bien a la mayoría o esconde grupos muy distintos entre sí.\n\n\n\nRegla práctica para el reporte: si la distribución es simétrica y sin outliers, usa media + desviación estándar. Si es asimétrica o con valores extremos, usa mediana + IQR. Para comparar grupos con medias distintas (como violencia sí/no), usa siempre el CV.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#qué-es-un-percentil",
+    "href": "practica-03/practica-03.html#qué-es-un-percentil",
+    "title": "Práctica 3",
+    "section": "¿Qué es un percentil?",
+    "text": "¿Qué es un percentil?\n\nUn percentil es un valor que divide un conjunto de datos ordenados en 100 partes iguales. El percentil \\(P_k\\) indica el valor por debajo del cual queda el \\(k\\%\\) de las observaciones.\n\n\n\nNo es lo mismo que un porcentaje. Un porcentaje describe qué proporción de algo representa un valor; un percentil describe qué posición ocupa un valor dentro de todo el conjunto de datos, comparado con los demás.\n\n\n\nLos cuartiles (Q1, Q2, Q3) son casos particulares: Q1 = P25, Q2 = P50 (la mediana), Q3 = P75.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ejemplo-percentiles-en-un-examen",
+    "href": "practica-03/practica-03.html#ejemplo-percentiles-en-un-examen",
+    "title": "Práctica 3",
+    "section": "Ejemplo: percentiles en un examen",
+    "text": "Ejemplo: percentiles en un examen\n\nUn grupo de 20 estudiantes presenta un examen. Se ordenan sus calificaciones de menor a mayor:\n45, 50, 52, 55, 58, 60, 61, 63, 65, 67, 68, 70, 72, 74, 76, 78, 80, 85, 90, 95\n\n\n¿Cuál es el percentil 25 (P25)?\nBuscamos la posición que deja el 25% de los datos por debajo. Con 20 valores, esa posición cae entre el 5° y 6° dato: 58 y 60 → P25 ≈ 59.\nInterpretación: el 25% de los estudiantes sacó 59 puntos o menos.\n\n\n¿Cuál es el percentil 90 (P90)?\nCae cerca de la posición 18: P90 ≈ 85.\nInterpretación: el 90% de los estudiantes sacó 85 puntos o menos — solo el 10% sacó más de 85.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#por-qué-el-percentil-dice-más-que-el-promedio",
+    "href": "practica-03/practica-03.html#por-qué-el-percentil-dice-más-que-el-promedio",
+    "title": "Práctica 3",
+    "section": "Por qué el percentil dice más que el promedio",
+    "text": "Por qué el percentil dice más que el promedio\n\nSupón que la calificación promedio del grupo es 68 puntos. Esa cifra no te dice si el grupo está muy parejo o muy disperso.\n\n\n\nSi te dicen que sacaste 85 puntos, saber que estás en el percentil 90 es mucho más útil que saber que la media fue 68 — te dice exactamente dónde te ubicas respecto a tus compañeros, no solo si estás “arriba o abajo” del promedio.\n\n\n\nPor eso, en estadística descriptiva, los percentiles se usan cuando interesa la posición relativa de un valor dentro de toda la distribución, no solo su relación con un único número central.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-6-código",
+    "href": "practica-03/practica-03.html#paso-6-código",
+    "title": "Práctica 3",
+    "section": "Paso 6: Código",
+    "text": "Paso 6: Código\n\nPreprocesamiento de los datos\nMedidas de Localizacion\nMedidas de Variabilidad",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#qué-es-una-media-ponderada",
+    "href": "practica-03/practica-03.html#qué-es-una-media-ponderada",
+    "title": "Práctica 3",
+    "section": "¿Qué es una media ponderada?",
+    "text": "¿Qué es una media ponderada?\n\nEn una media simple, todos los valores pesan lo mismo. En una media ponderada, cada valor se multiplica por un peso que refleja qué tanto debe contar — porque representa más casos, más importancia, o más frecuencia que los demás.\n\n\n\\[\\bar{x}_w = \\frac{\\sum_{i=1}^{n} w_i x_i}{\\sum_{i=1}^{n} w_i}\\]\n\n\nSi todos los pesos \\(w_i\\) son iguales, la fórmula se reduce exactamente a la media simple — la media ponderada no es una fórmula distinta, es la versión general de la media.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ejemplo-el-promedio-que-engaña",
+    "href": "practica-03/practica-03.html#ejemplo-el-promedio-que-engaña",
+    "title": "Práctica 3",
+    "section": "Ejemplo: el promedio que engaña",
+    "text": "Ejemplo: el promedio que engaña\n\nTres salones presentan el mismo examen. Se reporta el promedio de cada salón:\n\n\n\nSalón\nN.º de estudiantes\nPromedio del salón\n\n\n\n\nA\n30\n70\n\n\nB\n10\n90\n\n\nC\n50\n60\n\n\n\n\n\nTrata a los tres salones como si tuvieran el mismo peso — como si el salón de 10 estudiantes contara igual que el de 50.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ejemplo-el-promedio-correcto",
+    "href": "practica-03/practica-03.html#ejemplo-el-promedio-correcto",
+    "title": "Práctica 3",
+    "section": "Ejemplo: el promedio correcto",
+    "text": "Ejemplo: el promedio correcto\n\nPromedio ponderado por número de estudiantes:\n\\[\\bar{x}_w = \\frac{(30)(70) + (10)(90) + (50)(60)}{30 + 10 + 50} = \\frac{6000}{90} = 66.7\\]\n\n\n\nLa diferencia (73.3 vs. 66.7) no es un error de redondeo: el salón C tiene 50 estudiantes con promedio bajo, así que debe pesar más en el resultado final. Ignorar eso hace parecer que el desempeño general fue mejor de lo que realmente fue.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#cuándo-usar-una-media-ponderada",
+    "href": "practica-03/practica-03.html#cuándo-usar-una-media-ponderada",
+    "title": "Práctica 3",
+    "section": "¿Cuándo usar una media ponderada?",
+    "text": "¿Cuándo usar una media ponderada?\n\nSiempre que cada dato no representa lo mismo que los demás:\n\nEncuestas y censos: cada persona encuestada representa a un número distinto de personas en la población real (factor de expansión / peso muestral)\nCalificaciones: materias con más créditos pesan más en el promedio general\nReseñas de producto: una tienda con 5,000 reseñas debería pesar más que una con 5\n\n\n\n\nCalcular una media sin ponderar cuando los pesos importan no es “menos preciso” — es una cifra distinta, que describe algo diferente: describe a los grupos por igual, no a la población real que representan.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-que-hago",
+    "href": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-que-hago",
+    "title": "Práctica 3",
+    "section": "Ya tengo mis datos ¿Ahora que hago?",
+    "text": "Ya tengo mis datos ¿Ahora que hago?",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#el-pipeline-de-preprocesamiento",
+    "href": "practica-03/practica-03.html#el-pipeline-de-preprocesamiento",
+    "title": "Práctica 3",
+    "section": "El pipeline de preprocesamiento",
+    "text": "El pipeline de preprocesamiento\n\nAntes de calcular cualquier medida o entrenar cualquier modelo, los datos crudos pasan por cuatro etapas:\n\n\n\nDetectar valores nulos — qué columnas los tienen y en qué porcentaje\nDecidir qué hacer con ellos — eliminar, imputar, o investigar si siguen un patrón\nNormalizar tipos de datos — que lo numérico sea numérico, lo categórico sea consistente\nFeature engineering — crear variables nuevas que representen mejor el fenómeno",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#detección-de-valores-nulos",
+    "href": "practica-03/practica-03.html#detección-de-valores-nulos",
+    "title": "Práctica 3",
+    "section": "Detección de valores nulos",
+    "text": "Detección de valores nulos\n\nEl primer paso no es decidir qué hacer con los nulos — es medirlos. Por cada columna necesitas saber cuántos nulos tiene y qué porcentaje representan.\n\ntotal_filas = df.height\n\nresumen_nulos = df.null_count().transpose(\n    include_header=True,\n    header_name=\"columna\",\n    column_names=[\"nulos\"]\n).with_columns(\n    (pl.col(\"nulos\") / total_filas * 100).round(2).alias(\"% nulos\")\n).sort(\"% nulos\", descending=True)\n\nprint(resumen_nulos)\n\n\nEl resultado debería ser una tabla como: ingreso → 320 nulos (3.2%), ocupacion → 1,850 nulos (18.5%), edad → 12 nulos (0.1%). Esta tabla es la que decide el resto de la estrategia.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#eliminar-o-imputar-la-regla-del-5",
+    "href": "practica-03/practica-03.html#eliminar-o-imputar-la-regla-del-5",
+    "title": "Práctica 3",
+    "section": "¿Eliminar o imputar? La regla del 5%",
+    "text": "¿Eliminar o imputar? La regla del 5%\n\nHeurística común en la industria: si una columna tiene menos del 5% de valores nulos, eliminar esos renglones rara vez sesga la muestra de forma importante — es más simple que imputar y el costo de perder esos datos es bajo.\n\n\n\nEl 5% es una guía, no una ley. Si esa columna es central para tu análisis (por ejemplo, la variable que quieres describir o predecir), incluso un 3% de nulos merece revisión antes de eliminar.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#los-nulos-son-aleatorios-o-siguen-un-patrón",
+    "href": "practica-03/practica-03.html#los-nulos-son-aleatorios-o-siguen-un-patrón",
+    "title": "Práctica 3",
+    "section": "¿Los nulos son aleatorios o siguen un patrón?",
+    "text": "¿Los nulos son aleatorios o siguen un patrón?\n\n\nAleatorios (MCAR): la ausencia no depende de nada — un error de captura, una hoja perdida. Ej: un encuestador olvidó registrar la edad de algunas personas al azar.\nCon patrón relacionado a otra variable (MAR): la probabilidad de faltar depende de algo que sí observaste. Ej: las personas mayores de 60 años tienden a no responder la pregunta de nivel de estudios.\nCon patrón relacionado al propio valor (MNAR): la ausencia depende de lo que falta. Ej: las personas con ingresos muy altos o muy bajos prefieren no reportar su ingreso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#código-hay-un-patrón-detrás-del-nulo",
+    "href": "practica-03/practica-03.html#código-hay-un-patrón-detrás-del-nulo",
+    "title": "Práctica 3",
+    "section": "Código: ¿hay un patrón detrás del nulo?",
+    "text": "Código: ¿hay un patrón detrás del nulo?\n\nUna forma simple de investigarlo: comparar otra variable entre el grupo que tiene el dato y el que no.\n\ndf_check = df.with_columns(\n    pl.col(\"ingreso\").is_null().alias(\"ingreso_es_nulo\")\n)\n\ndf_check.group_by(\"ingreso_es_nulo\").agg([\n    pl.col(\"edad\").mean().alias(\"edad_promedio\"),\n    pl.col(\"nivel_escolaridad\").mode().alias(\"escolaridad_comun\")\n])\n\nSi la edad promedio o la escolaridad más común son muy distintas entre ambos grupos, el nulo no es aleatorio — está relacionado con otra variable, y hay que documentarlo así en el reporte.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#normalización-de-tipos-de-datos",
+    "href": "practica-03/practica-03.html#normalización-de-tipos-de-datos",
+    "title": "Práctica 3",
+    "section": "Normalización de tipos de datos",
+    "text": "Normalización de tipos de datos\n\nLos datos crudos casi nunca vienen con el tipo correcto: números guardados como texto, fechas como strings, o categorías escritas de formas distintas.\n\n\nEjemplo típico de una columna edad mal tipada:\n\"25\", \"30\", \"N/A\", \"28 años\", \" 41 \"\n\n\n\nMientras esa columna sea texto, no puedes calcular su media, ordenarla numéricamente ni compararla con &gt; o &lt; — Polars/pandas la tratan como cadenas, no como cantidades.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#código-normalizar-tipos-en-polars",
+    "href": "practica-03/practica-03.html#código-normalizar-tipos-en-polars",
+    "title": "Práctica 3",
+    "section": "Código: normalizar tipos en Polars",
+    "text": "Código: normalizar tipos en Polars\ndf = df.with_columns(\n    pl.col(\"edad\")\n      .str.strip_chars()                     # quita espacios\n      .str.extract(r\"(\\d+)\")                 # extrae solo el número\n      .cast(pl.Int32, strict=False)           # convierte a entero\n      .alias(\"edad\")\n)\n\n# Normalizar texto categórico (mayúsculas/espacios inconsistentes)\ndf = df.with_columns(\n    pl.col(\"nombre_categoria\").str.to_lowercase().str.strip_chars()\n)\n\nstrict=False convierte a null los valores que no se pudieron transformar (como \"N/A\") en lugar de tronar el proceso — así conservas el error como un nulo detectado, no como un dato inventado.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#feature-engineering-crear-variables-nuevas",
+    "href": "practica-03/practica-03.html#feature-engineering-crear-variables-nuevas",
+    "title": "Práctica 3",
+    "section": "Feature Engineering: crear variables nuevas",
+    "text": "Feature Engineering: crear variables nuevas\n\nCrear columnas nuevas a partir de las existentes para que representen mejor lo que quieres analizar o modelar.\n\n\nEjemplos:\n\nA partir de una fecha: edad = año_actual − año_nacimiento\nCombinar variables en una razón: ingreso_per_capita = ingreso_hogar / num_personas\n\n\n\n\nUn análisis o modelo es tan bueno como las variables que le das. edad_en_dias casi no dice nada útil; grupo_edad en categorías interpretables sí revela patrones claros al graficar o agrupar.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#código-ejemplo-de-feature-engineering",
+    "href": "practica-03/practica-03.html#código-ejemplo-de-feature-engineering",
+    "title": "Práctica 3",
+    "section": "Código: ejemplo de feature engineering",
+    "text": "Código: ejemplo de feature engineering\ndf = df.with_columns([\n    (pl.col(\"anio_actual\") - pl.col(\"anio_nacimiento\")).alias(\"edad\"),\n\n    pl.when(pl.col(\"edad\") &lt; 30).then(pl.lit(\"Joven\"))\n      .when(pl.col(\"edad\") &lt; 60).then(pl.lit(\"Adulto\"))\n      .otherwise(pl.lit(\"Adulto mayor\"))\n      .alias(\"grupo_edad\"),\n\n    (pl.col(\"ingreso_hogar\") / pl.col(\"num_personas\"))\n      .alias(\"ingreso_per_capita\")\n])",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#resumen-el-flujo-completo",
+    "href": "practica-03/practica-03.html#resumen-el-flujo-completo",
+    "title": "Práctica 3",
+    "section": "Resumen: el flujo completo",
+    "text": "Resumen: el flujo completo\n\n\nDetectar nulos: qué columnas, qué porcentaje\nDecidir: &lt;5% y aleatorio → eliminar; alto % o con patrón → imputar e investigar\nNormalizar tipos: numérico a numérico, texto categórico consistente\nFeature engineering: crear variables que enriquezcan el análisis",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-qué-hago",
+    "href": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-qué-hago",
+    "title": "Práctica 3",
+    "section": "Ya tengo mis datos ¿Ahora qué hago?",
+    "text": "Ya tengo mis datos ¿Ahora qué hago?",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#preprocesamiento",
+    "href": "practica-03/practica-03.html#preprocesamiento",
+    "title": "Práctica 3",
+    "section": "Preprocesamiento",
+    "text": "Preprocesamiento\n\nAntes de calcular cualquier medida o entrenar cualquier modelo, los datos crudos pasan por cuatro etapas:\n\n\n\nDetectar valores nulos — qué columnas los tienen y en qué porcentaje\nDecidir qué hacer con ellos — eliminar, imputar, o investigar si siguen un patrón\nNormalizar tipos de datos — que lo numérico sea numérico, lo categórico sea consistente\nFeature engineering — crear variables nuevas que representen mejor el fenómeno",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
     ]
   }
 ]

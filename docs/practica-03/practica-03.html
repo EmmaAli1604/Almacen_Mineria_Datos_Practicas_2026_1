@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Emma Alicia Jiménez Sánchez">
-  <meta name="dcterms.date" content="2026-09-01">
+  <meta name="dcterms.date" content="2026-09-09">
   <title>Mis Prácticas – Práctica 3</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -35,6 +35,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #e1e4e8; background-color: #24292e; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #e1e4e8; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #f97583; } /* Attribute */
+    code span.bn { color: #79b8ff; } /* BaseN */
+    code span.bu { color: #f97583; } /* BuiltIn */
+    code span.cf { color: #f97583; } /* ControlFlow */
+    code span.ch { color: #9ecbff; } /* Char */
+    code span.cn { color: #79b8ff; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #f97583; } /* DataType */
+    code span.dv { color: #79b8ff; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #f97583; font-weight: bold; } /* Extension */
+    code span.fl { color: #79b8ff; } /* Float */
+    code span.fu { color: #b392f0; } /* Function */
+    code span.im { color: #9ecbff; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #f97583; } /* Keyword */
+    code span.op { color: #e1e4e8; } /* Operator */
+    code span.ot { color: #b392f0; } /* Other */
+    code span.pp { color: #f97583; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #79b8ff; } /* SpecialChar */
+    code span.ss { color: #9ecbff; } /* SpecialString */
+    code span.st { color: #9ecbff; } /* String */
+    code span.va { color: #ffab70; } /* Variable */
+    code span.vs { color: #9ecbff; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ce599bbac41cbca6ad956b8cafd1a012.css">
   <link rel="stylesheet" href="styles.css">
@@ -136,7 +202,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Práctica 3</h1>
-  <p class="subtitle">dede</p>
+  <p class="subtitle">Arquitectura, Frameworks, Preprocesamiento y EDA sobre Violencia contra las Mujeres</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -146,26 +212,698 @@ Emma Alicia Jiménez Sánchez
 </div>
 </div>
 
-  <p class="date">2026-09-01</p>
+  <p class="date">2026-09-09</p>
 </section>
-<section id="objetivo" class="slide level2">
-<h2>Objetivo</h2>
-<p>Describe aquí el objetivo de la práctica.</p>
+<section id="de-la-teoría-al-modelo-el-proceso-completo" class="slide level2 smaller">
+<h2>De la teoría al modelo: el proceso completo</h2>
+<p>En un proyecto real, entrenar un modelo es apenas la <strong>última fase</strong>. Antes hace falta:</p>
+<div class="fragment fade-up">
+<ol type="1">
+<li class="fragment">Organizar el proyecto con una arquitectura de carpetas clara y reproducible</li>
+<li class="fragment">Seleccionar el framework de análisis adecuado según el volumen de datos</li>
+<li class="fragment">Ejecutar un preprocesamiento que garantice datos consistentes, únicos y del tipo correcto</li>
+<li class="fragment">Describir cuantitativamente los datos con medidas de localización y variabilidad</li>
+</ol>
+</div>
 </section>
-<section id="desarrollo" class="slide level2">
-<h2>Desarrollo</h2>
-<p>Contenido de la práctica 3.</p>
+<section id="el-caso-de-estudio-endireh-2021" class="slide level2 smaller">
+<h2>El caso de estudio: ENDIREH 2021</h2>
+<div class="highlight-box">
+<p>La <strong>Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021</strong>, del INEGI, genera información representativa a nivel nacional y estatal sobre las experiencias de violencia física, sexual, emocional, económica y patrimonial que enfrentan las mujeres de 15 años y más.</p>
+</div>
+<div class="fragment fade-up">
+<p>Combina de forma natural variables <strong>cualitativas</strong> y <strong>cuantitativas</strong>, además de valores faltantes, duplicados y columnas que requieren conversión de tipo — un escenario idéntico al de un proyecto profesional real.</p>
+</div>
 </section>
-<section id="conclusiones" class="slide level2">
-<h2>Conclusiones</h2>
-<p>Escribe tus conclusiones aquí.</p>
+<section id="nota-de-sensibilidad-del-tema" class="slide level2 smaller">
+<h2>Nota de sensibilidad del tema</h2>
+<div class="highlight-box">
+<p>Al tratarse de un tema social sensible, el análisis debe realizarse con <strong>rigor técnico y responsabilidad ética</strong>, evitando conclusiones que estigmaticen a personas o grupos, y reconociendo que los datos representan experiencias reales de violencia reportadas por las encuestadas.</p>
+</div>
+</section>
+<section id="por-qué-una-arquitectura-de-carpetas" class="slide level2 smaller">
+<h2>¿Por qué una arquitectura de carpetas?</h2>
+<ul>
+<li class="fragment">Antes de escribir una sola línea de análisis, el proyecto necesita una estructura <strong>ordenada y reproducible</strong></li>
+<li class="fragment">Se basa en el estándar de la industria <strong>Cookiecutter Data Science</strong></li>
+</ul>
+<div class="fragment fade-up">
+<p>Separa claramente:</p>
+<ul>
+<li class="fragment">Datos <strong>crudos</strong> (nunca se editan)</li>
+<li class="fragment">Datos <strong>procesados</strong> (limpios, tipados, imputados)</li>
+<li class="fragment">Datos <strong>listos para modelar</strong></li>
+<li class="fragment">Código fuente <strong>por responsabilidad</strong> (limpieza, visualización, modelos)</li>
+</ul>
+</div>
+</section>
+<section id="pandas-vs.-polars-vs.-pyspark" class="slide level2 smaller">
+<h2>Pandas vs.&nbsp;Polars vs.&nbsp;PySpark</h2>
+<div class="fragment fade-up">
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Framework</th>
+<th>Motor / Diseño</th>
+<th>Cuándo usarlo</th>
+<th>Uso en la industria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Pandas</strong></td>
+<td>Un solo hilo, basado en NumPy. API muy madura</td>
+<td>Datasets pequeños/medianos que caben en memoria</td>
+<td>Estándar histórico, el más enseñado</td>
+</tr>
+<tr class="even">
+<td><strong>Polars</strong></td>
+<td>Motor en Rust, multihilo, evaluación <em>lazy</em></td>
+<td>Datasets medianos/grandes en una sola máquina</td>
+<td>Adopción creciente 2024-2025</td>
+</tr>
+<tr class="odd">
+<td><strong>PySpark</strong></td>
+<td>Motor distribuido (Apache Spark) sobre clúster</td>
+<td>Datasets que no caben en una sola máquina (Big Data)</td>
+<td>Estándar para procesamiento distribuido</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="introducción-a-polars-modo-eager" class="slide level2 smaller">
+<h2>Introducción a Polars: Modo Eager</h2>
+<div class="compare-cards">
+<div class="compare-card fragment fade-up">
+<h4 id="eager-pl.read_csv">⚡ Eager (<code>pl.read_csv</code>)</h4>
+<p><strong>Ejecución instantánea:</strong> Lee el archivo completo e interactúa inmediatamente en memoria RAM.</p>
+<p>Carga todas las columnas y filas de inmediato, aunque luego descartes el 90% mediante filtros o selecciones posteriores.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="co"># Lee 700k filas y 50 columnas ya</span></span>
+<span id="cb1-2"><a aria-label="2"></a>df <span class="op">=</span> pl.read_csv(<span class="st">"endireh_2021.csv"</span>)</span>
+<span id="cb1-3"><a aria-label="3"></a>res <span class="op">=</span> df.<span class="bu">filter</span>(pl.col(<span class="st">"edad"</span>) <span class="op">&gt;</span> <span class="dv">30</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="introducción-a-polars-modo-lazy" class="slide level2 smaller">
+<h2>Introducción a Polars: Modo Lazy</h2>
+<div class="compare-cards">
+<div class="compare-card fragment fade-up">
+<h4 id="lazy-pl.scan_csv">◐ Lazy (<code>pl.scan_csv</code>)</h4>
+<p><strong>Evaluación diferida:</strong> No carga datos a memoria. Solo lee metadatos e inspecciona el esquema (tipos de datos).</p>
+<p>Crea un <strong>grafo lógico</strong> de transformaciones y espera hasta que el usuario decida materializar con <code>.collect()</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Solo genera un LazyFrame (0 datos en RAM)</span></span>
+<span id="cb2-2"><a aria-label="2"></a>q <span class="op">=</span> (</span>
+<span id="cb2-3"><a aria-label="3"></a>    pl.scan_csv(<span class="st">"endireh_2021.csv"</span>)</span>
+<span id="cb2-4"><a aria-label="4"></a>    .<span class="bu">filter</span>(pl.col(<span class="st">"edad"</span>) <span class="op">&gt;</span> <span class="dv">30</span>)</span>
+<span id="cb2-5"><a aria-label="5"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment custom-fade">
+<p>Con 700,000 registros, trabajar en modo <em>lazy</em> evita procesar columnas que ni siquiera se van a usar en el análisis.</p>
+</div>
+</section>
+<section id="introducción-a-polars-sintaxis-básica" class="slide level2 smaller">
+<h2>Introducción a Polars: sintaxis básica</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb3-2"><a aria-label="2"></a></span>
+<span id="cb3-3"><a aria-label="3"></a><span class="co"># Seleccionar columnas</span></span>
+<span id="cb3-4"><a aria-label="4"></a>df.select([<span class="st">"edad_primer_union"</span>, <span class="st">"num_hijos"</span>, <span class="st">"nom_entidad"</span>])</span>
+<span id="cb3-5"><a aria-label="5"></a></span>
+<span id="cb3-6"><a aria-label="6"></a><span class="co"># Filtrar renglones</span></span>
+<span id="cb3-7"><a aria-label="7"></a>df.<span class="bu">filter</span>(pl.col(<span class="st">"nom_entidad"</span>) <span class="op">==</span> <span class="st">"Ciudad de Mexico"</span>)</span>
+<span id="cb3-8"><a aria-label="8"></a></span>
+<span id="cb3-9"><a aria-label="9"></a><span class="co"># Agrupar y agregar</span></span>
+<span id="cb3-10"><a aria-label="10"></a>df.group_by(<span class="st">"nom_entidad"</span>).agg([</span>
+<span id="cb3-11"><a aria-label="11"></a>    pl.col(<span class="st">"edad_primer_union"</span>).mean().alias(<span class="st">"edad_promedio"</span>)</span>
+<span id="cb3-12"><a aria-label="12"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment fade-up">
+<p>Las expresiones <code>pl.col(...)</code> describen <strong>qué</strong> hacer con una columna; no se ejecuta nada hasta que se pide el resultado (<code>.collect()</code> en modo lazy).</p>
+</div>
+</section>
+<section id="sintaxis-de-select" class="slide level2 smaller">
+<h2>Sintaxis de Select()</h2>
+<div class="fragment fade-up">
+<p><code>select()</code> devuelve un <strong>nuevo DataFrame</strong> solo con las columnas (o expresiones) que le indiques.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="co"># Una columna</span></span>
+<span id="cb4-2"><a aria-label="2"></a>df.select(<span class="st">"edad"</span>)</span>
+<span id="cb4-3"><a aria-label="3"></a></span>
+<span id="cb4-4"><a aria-label="4"></a><span class="co"># Varias columnas</span></span>
+<span id="cb4-5"><a aria-label="5"></a>df.select([<span class="st">"edad"</span>, <span class="st">"nom_entidad"</span>, <span class="st">"factor_expansion"</span>])</span>
+<span id="cb4-6"><a aria-label="6"></a></span>
+<span id="cb4-7"><a aria-label="7"></a><span class="co"># Con expresiones: renombrar o transformar al vuelo</span></span>
+<span id="cb4-8"><a aria-label="8"></a>df.select([</span>
+<span id="cb4-9"><a aria-label="9"></a>    pl.col(<span class="st">"edad"</span>),</span>
+<span id="cb4-10"><a aria-label="10"></a>    (pl.col(<span class="st">"edad"</span>) <span class="op">*</span> <span class="dv">2</span>).alias(<span class="st">"edad_doble"</span>)</span>
+<span id="cb4-11"><a aria-label="11"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>Recibe una <strong>lista</strong> de nombres de columna o de expresiones <code>pl.col(...)</code>. Con <code>.alias()</code> puedes renombrar o crear columnas calculadas sin salir del <code>select()</code>.</p>
+</div>
+</div>
+</section>
+<section id="sintaxis-de-filter" class="slide level2 smaller">
+<h2>Sintaxis de Filter()</h2>
+<div class="fragment fade-up">
+<p><code>filter()</code> conserva solo los renglones donde la condición es <strong>True</strong>.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="co"># Una condición</span></span>
+<span id="cb5-2"><a aria-label="2"></a>df.<span class="bu">filter</span>(pl.col(<span class="st">"edad"</span>) <span class="op">&gt;</span> <span class="dv">30</span>)</span>
+<span id="cb5-3"><a aria-label="3"></a></span>
+<span id="cb5-4"><a aria-label="4"></a><span class="co"># Varias condiciones (AND)</span></span>
+<span id="cb5-5"><a aria-label="5"></a>df.<span class="bu">filter</span>(</span>
+<span id="cb5-6"><a aria-label="6"></a>    (pl.col(<span class="st">"edad"</span>) <span class="op">&gt;</span> <span class="dv">30</span>) <span class="op">&amp;</span> (pl.col(<span class="st">"nom_entidad"</span>) <span class="op">==</span> <span class="st">"Jalisco"</span>)</span>
+<span id="cb5-7"><a aria-label="7"></a>)</span>
+<span id="cb5-8"><a aria-label="8"></a></span>
+<span id="cb5-9"><a aria-label="9"></a><span class="co"># Condición OR</span></span>
+<span id="cb5-10"><a aria-label="10"></a>df.<span class="bu">filter</span>(</span>
+<span id="cb5-11"><a aria-label="11"></a>    (pl.col(<span class="st">"nivel_escolaridad"</span>) <span class="op">==</span> <span class="st">"Primaria"</span>)</span>
+<span id="cb5-12"><a aria-label="12"></a>    <span class="op">|</span> (pl.col(<span class="st">"nivel_escolaridad"</span>) <span class="op">==</span> <span class="st">"Secundaria"</span>)</span>
+<span id="cb5-13"><a aria-label="13"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>Cada condición se escribe como <code>pl.col("columna") operador valor</code>. Para combinar condiciones usa <strong><code>&amp;</code></strong> (AND), <strong><code>|</code></strong> (OR) o <strong><code>~</code></strong> (NOT) — siempre con cada condición entre paréntesis.</p>
+</div>
+</div>
+</section>
+<section id="sintaxis-de-group_by" class="slide level2 smaller">
+<h2>Sintaxis de Group_By()</h2>
+<div class="fragment fade-up">
+<p><code>group_by()</code> <strong>agrupa</strong> los renglones; por sí solo no calcula nada — siempre va seguido de <code>.agg()</code>.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="co"># Agrupar por una columna y agregar</span></span>
+<span id="cb6-2"><a aria-label="2"></a>df.group_by(<span class="st">"nom_entidad"</span>).agg([</span>
+<span id="cb6-3"><a aria-label="3"></a>    pl.col(<span class="st">"edad"</span>).mean().alias(<span class="st">"edad_promedio"</span>),</span>
+<span id="cb6-4"><a aria-label="4"></a>    pl.col(<span class="st">"factor_expansion"</span>).<span class="bu">sum</span>().alias(<span class="st">"poblacion_total"</span>)</span>
+<span id="cb6-5"><a aria-label="5"></a>])</span>
+<span id="cb6-6"><a aria-label="6"></a></span>
+<span id="cb6-7"><a aria-label="7"></a><span class="co"># Agrupar por varias columnas</span></span>
+<span id="cb6-8"><a aria-label="8"></a>df.group_by([<span class="st">"nom_entidad"</span>, <span class="st">"nivel_escolaridad"</span>]).agg(</span>
+<span id="cb6-9"><a aria-label="9"></a>    pl.<span class="bu">len</span>().alias(<span class="st">"num_encuestadas"</span>)</span>
+<span id="cb6-10"><a aria-label="10"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>Dentro de <code>.agg([...])</code> defines qué operación aplicar por grupo (<code>mean</code>, <code>sum</code>, <code>len</code>, etc.). Puedes agrupar por una o varias columnas, y encadenar <code>.sort()</code> después para ordenar el resultado.</p>
+</div>
+</div>
+</section>
+<section id="materializando-con-collect" class="slide level2 smaller">
+<h2>Materializando con collect()</h2>
+<div class="fragment fade-up">
+<p>Todo lo anterior (<code>select</code>, <code>filter</code>, <code>group_by</code>) <strong>no ejecuta nada</strong> si vienes de <code>pl.scan_csv(...)</code> — solo arma el plan. <code>.collect()</code> es quien finalmente <strong>corre la consulta completa</strong> y te regresa un <code>DataFrame</code> real en memoria.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>Antes de <code>.collect()</code>, Polars <strong>optimiza el plan completo</strong>: junta el <code>select</code> y el <code>filter</code> para leer del CSV solo las columnas y filas necesarias, <code>.collect()</code> es el único punto donde realmente se toca el disco y se gasta memoria.</p>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="fragment fade-up">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>resultado <span class="op">=</span> (</span>
+<span id="cb7-2"><a aria-label="2"></a>    pl.scan_csv(<span class="st">"endireh_2021.csv"</span>)        <span class="co"># 1. LazyFrame: aún no lee nada</span></span>
+<span id="cb7-3"><a aria-label="3"></a>    .select([<span class="st">"edad"</span>, <span class="st">"nom_entidad"</span>,</span>
+<span id="cb7-4"><a aria-label="4"></a>             <span class="st">"nivel_escolaridad"</span>, <span class="st">"factor_expansion"</span>])</span>
+<span id="cb7-5"><a aria-label="5"></a>    .<span class="bu">filter</span>(pl.col(<span class="st">"edad"</span>) <span class="op">&gt;</span> <span class="dv">30</span>)            <span class="co"># 2. Se agrega al plan</span></span>
+<span id="cb7-6"><a aria-label="6"></a>    .group_by(<span class="st">"nom_entidad"</span>)</span>
+<span id="cb7-7"><a aria-label="7"></a>    .agg([</span>
+<span id="cb7-8"><a aria-label="8"></a>        pl.col(<span class="st">"edad"</span>).mean().alias(<span class="st">"edad_promedio"</span>),</span>
+<span id="cb7-9"><a aria-label="9"></a>        pl.<span class="bu">len</span>().alias(<span class="st">"num_encuestadas"</span>)</span>
+<span id="cb7-10"><a aria-label="10"></a>    ])</span>
+<span id="cb7-11"><a aria-label="11"></a>    .sort(<span class="st">"num_encuestadas"</span>, descending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-12"><a aria-label="12"></a>    .collect()                               <span class="co"># 3. AQUI se ejecuta todo</span></span>
+<span id="cb7-13"><a aria-label="13"></a>)</span>
+<span id="cb7-14"><a aria-label="14"></a></span>
+<span id="cb7-15"><a aria-label="15"></a><span class="bu">print</span>(resultado)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section>
+<section id="ya-tengo-mis-datos-ahora-qué-hago" class="slide level2 center" data-background-color="#1a0b2e" style="text-align: center; color: #ff4d9d;">
+<h2>Ya tengo mis datos ¿Ahora qué hago?</h2>
+</section>
+<section id="preprocesamiento" class="slide level2 smaller">
+<h2>Preprocesamiento</h2>
+<div class="fragment fade-up">
+<p>Antes de calcular cualquier medida o entrenar cualquier modelo, los datos crudos pasan por cuatro etapas:</p>
+</div>
+<div class="fragment fade-up">
+<ol type="1">
+<li class="fragment"><strong>Detectar valores nulos</strong> — qué columnas los tienen y en qué porcentaje</li>
+<li class="fragment"><strong>Decidir qué hacer con ellos</strong> — eliminar, imputar, o investigar si siguen un patrón</li>
+<li class="fragment"><strong>Normalizar tipos de datos</strong> — que lo numérico sea numérico, lo categórico sea consistente</li>
+<li class="fragment"><strong>Feature engineering</strong> — crear variables nuevas que representen mejor el fenómeno</li>
+</ol>
+</div>
+</section>
+<section id="eliminar-o-imputar-la-regla-del-5" class="slide level2 smaller">
+<h2>¿Eliminar o imputar? La regla del 5%</h2>
+<div class="fragment fade-up">
+<p><strong>Heurística común en la industria:</strong> si una columna tiene <strong>menos del 5%</strong> de valores nulos, eliminar esos renglones rara vez sesga la muestra de forma importante — es más simple que imputar y el costo de perder esos datos es bajo.</p>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>El 5% es una <strong>guía</strong>, no una ley. Si esa columna es central para tu análisis (por ejemplo, la variable que quieres describir o predecir), incluso un 3% de nulos merece revisión antes de eliminar.</p>
+</div>
+</div>
+</section>
+<section id="los-nulos-son-aleatorios-o-siguen-un-patrón" class="slide level2 smaller">
+<h2>¿Los nulos son aleatorios o siguen un patrón?</h2>
+<div class="fragment fade-up">
+<ul>
+<li class="fragment"><strong>Aleatorios (MCAR):</strong> la ausencia no depende de nada — un error de captura, una hoja perdida. Ej: un encuestador olvidó registrar la edad de algunas personas al azar.</li>
+<li class="fragment"><strong>Con patrón relacionado a otra variable (MAR):</strong> la probabilidad de faltar depende de algo que <strong>sí</strong> observaste. Ej: las personas mayores de 60 años tienden a no responder la pregunta de nivel de estudios.</li>
+<li class="fragment"><strong>Con patrón relacionado al propio valor (MNAR):</strong> la ausencia depende de lo que falta. Ej: las personas con ingresos muy altos o muy bajos prefieren no reportar su ingreso.</li>
+</ul>
+</div>
+</section>
+<section id="normalización-de-tipos-de-datos" class="slide level2 smaller">
+<h2>Normalización de tipos de datos</h2>
+<div class="fragment fade-up">
+<p>Los datos crudos casi nunca vienen con el tipo correcto: números guardados como texto, fechas como strings, o categorías escritas de formas distintas.</p>
+</div>
+<div class="fragment fade-up">
+<p>Ejemplo típico de una columna <code>edad</code> mal tipada:</p>
+<p><code>"25"</code>, <code>"30"</code>, <code>"N/A"</code>, <code>"28 años"</code>, <code>" 41 "</code></p>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>Mientras esa columna sea texto, <strong>no puedes</strong> calcular su media, ordenarla numéricamente ni compararla con <code>&gt;</code> o <code>&lt;</code> — Polars/pandas la tratan como cadenas, no como cantidades.</p>
+</div>
+</div>
+</section>
+<section id="código-normalizar-tipos-en-polars" class="slide level2 smaller">
+<h2>Código: normalizar tipos en Polars</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>df <span class="op">=</span> df.with_columns(</span>
+<span id="cb8-2"><a aria-label="2"></a>    pl.col(<span class="st">"edad"</span>)</span>
+<span id="cb8-3"><a aria-label="3"></a>      .<span class="bu">str</span>.strip_chars()                     <span class="co"># quita espacios</span></span>
+<span id="cb8-4"><a aria-label="4"></a>      .<span class="bu">str</span>.extract(<span class="vs">r"</span><span class="kw">(</span><span class="dv">\d</span><span class="op">+</span><span class="kw">)</span><span class="vs">"</span>)                 <span class="co"># extrae solo el número</span></span>
+<span id="cb8-5"><a aria-label="5"></a>      .cast(pl.Int32, strict<span class="op">=</span><span class="va">False</span>)           <span class="co"># convierte a entero</span></span>
+<span id="cb8-6"><a aria-label="6"></a>      .alias(<span class="st">"edad"</span>)</span>
+<span id="cb8-7"><a aria-label="7"></a>)</span>
+<span id="cb8-8"><a aria-label="8"></a></span>
+<span id="cb8-9"><a aria-label="9"></a><span class="co"># Normalizar texto categórico (mayúsculas/espacios inconsistentes)</span></span>
+<span id="cb8-10"><a aria-label="10"></a>df <span class="op">=</span> df.with_columns(</span>
+<span id="cb8-11"><a aria-label="11"></a>    pl.col(<span class="st">"nombre_categoria"</span>).<span class="bu">str</span>.to_lowercase().<span class="bu">str</span>.strip_chars()</span>
+<span id="cb8-12"><a aria-label="12"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment fade-up">
+<p><code>strict=False</code> convierte a <code>null</code> los valores que no se pudieron transformar (como <code>"N/A"</code>) en lugar de tronar el proceso — así conservas el error como un nulo detectado, no como un dato inventado.</p>
+</div>
+</section>
+<section id="feature-engineering-crear-variables-nuevas" class="slide level2 smaller">
+<h2>Feature Engineering: crear variables nuevas</h2>
+<div class="fragment fade-up">
+<p>Crear columnas nuevas a partir de las existentes para que representen mejor lo que quieres analizar o modelar.</p>
+</div>
+<div class="fragment fade-up">
+<p>Ejemplos:</p>
+<ul>
+<li class="fragment"><strong>A partir de una fecha:</strong> <code>edad = año_actual − año_nacimiento</code></li>
+<li class="fragment"><strong>Combinar variables en una razón:</strong> <code>ingreso_per_capita = ingreso_hogar / num_personas</code></li>
+</ul>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>Un análisis o modelo es tan bueno como las variables que le das. <code>edad_en_dias</code> casi no dice nada útil; <code>grupo_edad</code> en categorías interpretables sí revela patrones claros al graficar o agrupar.</p>
+</div>
+</div>
+</section>
+<section id="resumen-el-flujo-completo" class="slide level2 smaller">
+<h2>Resumen: el flujo completo</h2>
+<div class="fragment fade-up">
+<ol type="1">
+<li class="fragment"><strong>Detectar</strong> nulos: qué columnas, qué porcentaje</li>
+<li class="fragment"><strong>Decidir</strong>: &lt;5% y aleatorio → eliminar; alto % o con patrón → imputar e investigar</li>
+<li class="fragment"><strong>Normalizar</strong> tipos: numérico a numérico, texto categórico consistente</li>
+<li class="fragment"><strong>Feature engineering</strong>: crear variables que enriquezcan el análisis</li>
+</ol>
+</div>
+</section>
+<section id="medidas-de-localización-qué-responden" class="slide level2 smaller">
+<h2>Medidas de Localización: ¿qué responden?</h2>
+<div class="fragment fade-up">
+<p>Responden a la pregunta: <strong>¿alrededor de qué valor se agrupan los datos?</strong></p>
+</div>
+<div class="fragment fade-up">
+<p>Son la base para construir un <strong>“perfil típico”</strong> de las encuestadas — por ejemplo, la edad promedio de una población, o el nivel de escolaridad más común. Sin ellas, no hay un punto de referencia para comparar grupos ni para detectar qué tan “normal” o “atípico” es un caso.</p>
+</div>
+</section>
+<section id="la-media-promedio-aritmético" class="slide level2 smaller">
+<h2>La Media: promedio aritmético</h2>
+<div class="fragment fade-up">
+<p><span class="math display">\[\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\]</span></p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Cuándo usarla:</strong> variables cuantitativas con distribución razonablemente simétrica, sin valores extremos que la distorsionen.</p>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p><strong>Limitación clave:</strong> es muy sensible a <em>outliers</em>. Un solo valor extremo (por ejemplo, una edad de unión reportada erróneamente como 99) puede desplazar la media completa, dando una imagen falsa del “promedio” real.</p>
+</div>
+</div>
+</section>
+<section id="la-mediana-el-valor-de-en-medio" class="slide level2 smaller">
+<h2>La Mediana: el valor de en medio</h2>
+<div class="fragment fade-up">
+<p><span class="math display">\[Me = \begin{cases} x_{(\frac{n+1}{2})} &amp; n \text{ impar} \\[4pt] \dfrac{x_{(n/2)} + x_{(n/2+1)}}{2} &amp; n \text{ par} \end{cases}\]</span></p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Cuándo usarla:</strong> cuando la variable tiene una distribución <strong>asimétrica</strong> o contiene valores extremos — la mediana no se mueve por ellos, porque solo depende de la posición central, no de la magnitud de los valores.</p>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p><strong>Regla práctica:</strong> si la media es mucho mayor que la mediana, la distribución está sesgada hacia la derecha (hay valores altos poco frecuentes que la “jalan”). Comparar ambas ya te dice algo sobre la forma de los datos.</p>
+</div>
+</div>
+</section>
+<section id="la-moda-el-valor-más-frecuente" class="slide level2 smaller">
+<h2>La Moda: el valor más frecuente</h2>
+<div class="fragment fade-up">
+<p>La moda es el valor (o categoría) que <strong>más veces se repite</strong> en los datos.</p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Cuándo usarla:</strong> es la <strong>única</strong> medida de tendencia central válida para variables <strong>cualitativas nominales</strong> — no tiene sentido calcular un “promedio” de <code>nom_entidad</code> o de <code>sufrio_violencia_pareja</code>, pero sí preguntar cuál es la categoría más común.</p>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>En ENDIREH, la moda es clave para variables como <code>nivel_escolaridad</code> o <code>estado_civil_desc</code>: te dice cuál es la situación más frecuente entre las encuestadas, algo que la media no puede responder.</p>
+</div>
+</div>
+</section>
+<section id="qué-es-un-percentil" class="slide level2 smaller">
+<h2>¿Qué es un percentil?</h2>
+<div class="fragment fade-up">
+<p>Un <strong>percentil</strong> es un valor que divide un conjunto de datos <strong>ordenados</strong> en 100 partes iguales. El percentil <span class="math inline">\(P_k\)</span> indica el valor por debajo del cual queda el <span class="math inline">\(k\%\)</span> de las observaciones.</p>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>No es lo mismo que un porcentaje. Un porcentaje describe <strong>qué proporción</strong> de algo representa un valor; un percentil describe <strong>qué posición</strong> ocupa un valor dentro de todo el conjunto de datos, comparado con los demás.</p>
+</div>
+</div>
+<div class="fragment fade-up">
+<p>Los cuartiles (Q1, Q2, Q3) son casos particulares: Q1 = P25, Q2 = P50 (la mediana), Q3 = P75.</p>
+</div>
+</section>
+<section id="ejemplo-percentiles-en-un-examen" class="slide level2 smaller">
+<h2>Ejemplo: percentiles en un examen</h2>
+<div class="fragment fade-up">
+<p>Un grupo de <strong>20 estudiantes</strong> presenta un examen. Se ordenan sus calificaciones de menor a mayor:</p>
+<p><code>45, 50, 52, 55, 58, 60, 61, 63, 65, 67, 68, 70, 72, 74, 76, 78, 80, 85, 90, 95</code></p>
+</div>
+<div class="fragment fade-up">
+<p><strong>¿Cuál es el percentil 25 (P25)?</strong></p>
+<p>Buscamos la posición que deja el 25% de los datos por debajo. Con 20 valores, esa posición cae entre el 5° y 6° dato: <code>58</code> y <code>60</code> → <strong>P25 ≈ 59</strong>.</p>
+<p>Interpretación: el 25% de los estudiantes sacó 59 puntos o menos.</p>
+</div>
+<div class="fragment fade-up">
+<p><strong>¿Cuál es el percentil 90 (P90)?</strong></p>
+<p>Cae cerca de la posición 18: <strong>P90 ≈ 85</strong>.</p>
+<p>Interpretación: el 90% de los estudiantes sacó 85 puntos o menos — solo el 10% sacó más de 85.</p>
+</div>
+</section>
+<section id="qué-es-una-media-ponderada" class="slide level2 smaller">
+<h2>¿Qué es una media ponderada?</h2>
+<div class="fragment fade-up">
+<p>En una media simple, <strong>todos los valores pesan lo mismo</strong>. En una media ponderada, cada valor se multiplica por un <strong>peso</strong> que refleja qué tanto debe contar — porque representa más casos, más importancia, o más frecuencia que los demás.</p>
+</div>
+<div class="fragment fade-up">
+<p><span class="math display">\[\bar{x}_w = \frac{\sum_{i=1}^{n} w_i x_i}{\sum_{i=1}^{n} w_i}\]</span></p>
+</div>
+<div class="fragment fade-up">
+<p>Si todos los pesos <span class="math inline">\(w_i\)</span> son iguales, la fórmula se reduce exactamente a la media simple — la media ponderada no es una fórmula distinta, es la <strong>versión general</strong> de la media.</p>
+</div>
+</section>
+<section id="ejemplo-el-promedio-que-engaña" class="slide level2 smaller">
+<h2>Ejemplo: el promedio que engaña</h2>
+<div class="fragment fade-up">
+<p>Tres salones presentan el mismo examen. Se reporta el promedio de cada salón:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Salón</th>
+<th>N.º de estudiantes</th>
+<th>Promedio del salón</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>30</td>
+<td>70</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>10</td>
+<td>90</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>50</td>
+<td>60</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment fade-up">
+<p>Trata a los tres salones como si tuvieran <strong>el mismo peso</strong> — como si el salón de 10 estudiantes contara igual que el de 50.</p>
+</div>
+</section>
+<section id="ejemplo-el-promedio-correcto" class="slide level2 smaller">
+<h2>Ejemplo: el promedio correcto</h2>
+<div class="fragment fade-up">
+<p><strong>Promedio ponderado por número de estudiantes:</strong></p>
+<p><span class="math display">\[\bar{x}_w = \frac{(30)(70) + (10)(90) + (50)(60)}{30 + 10 + 50} = \frac{6000}{90} = 66.7\]</span></p>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>La diferencia (<strong>73.3 vs.&nbsp;66.7</strong>) no es un error de redondeo: el salón C tiene 50 estudiantes con promedio bajo, así que <strong>debe pesar más</strong> en el resultado final. Ignorar eso hace parecer que el desempeño general fue mejor de lo que realmente fue.</p>
+</div>
+</div>
+</section>
+<section id="medidas-de-variabilidad-qué-responden" class="slide level2 smaller">
+<h2>Medidas de Variabilidad: ¿qué responden?</h2>
+<div class="fragment fade-up">
+<p>Responden a la pregunta: <strong>¿qué tan dispersos están los datos respecto al valor central?</strong></p>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>Dos variables pueden tener <strong>la misma media</strong> y comportarse de forma totalmente distinta. Una alta variabilidad advierte que un solo valor central puede ser <strong>engañoso</strong>, y que conviene segmentar a la población antes de sacar conclusiones.</p>
+</div>
+</div>
+</section>
+<section id="varianza-y-desviación-estándar" class="slide level2 smaller">
+<h2>Varianza y Desviación Estándar</h2>
+<div class="fragment fade-up">
+<p><span class="math display">\[s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2 \qquad s = \sqrt{s^2}\]</span></p>
+</div>
+<div class="fragment fade-up">
+<p>La varianza promedia qué tan lejos está cada valor de la media (al cuadrado, para que las diferencias negativas y positivas no se cancelen). Se divide entre <span class="math inline">\(n-1\)</span>, no entre <span class="math inline">\(n\)</span>, porque estamos estimando la variabilidad de la <strong>población</strong> a partir de una <strong>muestra</strong>.</p>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p><strong>Cuándo usarla:</strong> la desviación estándar (<span class="math inline">\(s\)</span>) es más interpretable que la varianza porque queda en las <strong>mismas unidades</strong> que la variable original (años, si hablamos de edad). Úsala para describir qué tan homogénea o heterogénea es una variable cuantitativa.</p>
+</div>
+</div>
+</section>
+<section id="rango-intercuartílico-iqr" class="slide level2 smaller">
+<h2>Rango Intercuartílico (IQR)</h2>
+<div class="fragment fade-up">
+<p><span class="math display">\[IQR = Q_3 - Q_1\]</span></p>
+</div>
+<div class="fragment fade-up">
+<p>Es el rango que cubre el <strong>50% central</strong> de los datos, ignorando el 25% más bajo y el 25% más alto.</p>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p><strong>Cuándo usarlo:</strong> cuando la variable tiene valores extremos o una distribución sesgada — a diferencia de la varianza o el rango total, el IQR <strong>no se ve afectado por outliers</strong>, porque ni siquiera los considera en su cálculo. También es la base para detectar valores atípicos (fuera de <span class="math inline">\(Q1 - 1.5 \times IQR\)</span> o <span class="math inline">\(Q3 + 1.5 \times IQR\)</span>) y para construir boxplots.</p>
+</div>
+</div>
+</section>
+<section>
+<section id="desarrollo" class="title-slide slide level1 center">
+<h1>Desarrollo</h1>
+
+</section>
+<section id="paso-1-obtención-de-la-fuente-de-datos" class="slide level2 smaller">
+<h2>Paso 1: Obtención de la fuente de datos</h2>
+<ol type="1">
+<li class="fragment">Descargar del classroom el <strong>.csv</strong></li>
+</ol>
+</section>
+<section id="paso-2-arquitectura-del-proyecto" class="slide level2 smaller">
+<h2>Paso 2: Arquitectura del proyecto</h2>
+<pre><code>proyecto-endireh-violencia/
+├── config/
+│   └── rutas.py              # Rutas de archivos estaticos
+├── data/
+│   ├── data-raw/             # Datos originales (nunca se editan)
+│   ├── data-processed/       # Datos limpios: sin duplicados, tipados, imputados
+│   ├── data-input-model/     # Datos transformados, listos para modelar
+│   └── data-model/           # Salidas: predicciones, clusters, reglas
+├── src/
+│   ├── cleaning/              # Scripts de limpieza y preprocesamiento
+│   ├── visualization/         # Scripts de graficas y EDA
+│   └── models/                 # Entrenamiento y evaluacion de modelos
+├── notebooks/                  # Notebooks exploratorios (no productivos)
+├── README.md
+└── requirements.txt</code></pre>
+</section>
+<section id="paso-2-readme-y-requirements.txt" class="slide level2 smaller">
+<h2>Paso 2: README y requirements.txt</h2>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>El <strong>README.md</strong> debe documentar, como mínimo: el objetivo del proyecto, la fuente de los datos, cómo instalar el entorno y cómo ejecutar el pipeline.</p>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>El <strong>requirements.txt</strong> debe fijar versiones exactas: <code>polars==1.9.0</code>, <code>pandas==2.2.2</code>, <code>pyarrow==17.0.0</code>, <code>numpy==2.0.1</code>, <code>matplotlib</code>, <code>seaborn</code>, <code>scikit-learn</code>, <code>jupyter</code>…</p>
+</div>
+</div>
+<div class="fragment fade-up">
+<p><strong>Sin <code>README.md</code> ni <code>requirements.txt</code> la práctica no se evalúa.</strong></p>
+</div>
+</section>
+<section id="paso-3-selección-del-framework" class="slide level2 smaller">
+<h2>Paso 3: Selección del framework</h2>
+<div class="fragment fade-up">
+<p>Dado que la ENDIREH 2021 es un archivo manejable en una sola máquina (algunos cientos de miles de registros), se recomienda <strong>polars</strong> para todo el pipeline de la práctica.</p>
+</div>
+<div class="fragment fade-up">
+<div class="highlight-box">
+<p>Opcionalmente, se puede replicar el preprocesamiento también en pandas, para documentar en el reporte las diferencias de sintaxis y de tiempo de ejecución entre ambos frameworks.</p>
+</div>
+</div>
+</section>
+<section id="paso-4-carga-de-los-datos-crudos" class="slide level2 smaller">
+<h2>Paso 4: Carga de los datos crudos</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb10-2"><a aria-label="2"></a><span class="im">from</span> config.rutas <span class="im">import</span> RUTA_DATA_RAW</span>
+<span id="cb10-3"><a aria-label="3"></a></span>
+<span id="cb10-4"><a aria-label="4"></a>df_crudo <span class="op">=</span> pl.read_csv(RUTA_DATA_RAW <span class="op">/</span> <span class="st">"endireh_2021.csv"</span>)</span>
+<span id="cb10-5"><a aria-label="5"></a><span class="bu">print</span>(df_crudo.shape)</span>
+<span id="cb10-6"><a aria-label="6"></a><span class="bu">print</span>(df_crudo.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment fade-up">
+<p>Con ~700,000 renglones, conviene explorar también la versión <em>lazy</em>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>df_lazy <span class="op">=</span> pl.scan_csv(RUTA_DATA_RAW <span class="op">/</span> <span class="st">"endireh_2021.csv"</span>)</span>
+<span id="cb11-2"><a aria-label="2"></a><span class="bu">print</span>(df_lazy.collect_schema())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="paso-5-clasificación-de-variables" class="slide level2 smaller">
+<h2>Paso 5: Clasificación de variables</h2>
+<div class="fragment fade-up">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Tipo de dato</th>
+<th>Justificación (ejemplo)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>edad_primer_union</code></td>
+<td>Cuantitativa continua</td>
+<td>Toma cualquier valor numérico en un rango de edades</td>
+</tr>
+<tr class="even">
+<td><code>num_hijos</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>nom_entidad</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>nivel_escolaridad</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>sufrio_violencia_pareja</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>factor_expansion</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment fade-up">
+<p><em>(Completar las variables restantes del dataset siguiendo esta misma lógica — si falta alguna, el equipo la agrega.)</em></p>
+</div>
+</section>
+<section id="paso-5-preprocesamiento-duplicados-y-tipos" class="slide level2 smaller">
+<h2>Paso 5: Preprocesamiento — duplicados y tipos</h2>
+<div class="fragment fade-up">
+<ul>
+<li class="fragment"><strong>Eliminar</strong> (<code>drop_nulls</code>): válido cuando los nulos son pocos y no sesgan la muestra</li>
+<li class="fragment"><strong>Imputar con media/mediana</strong>: para variables cuantitativas, cuidando el efecto en la variabilidad</li>
+<li class="fragment"><strong>Imputar con moda</strong>: para variables categóricas</li>
+<li class="fragment"><strong>Marcar como “No especificado”</strong>: cuando la ausencia de dato es en sí informativa</li>
+</ul>
+</div>
+</section>
+<section id="paso-6-código" class="slide level2 smaller">
+<h2>Paso 6: Código</h2>
+<ul>
+<li class="fragment">Preprocesamiento de los datos</li>
+<li class="fragment">Medidas de Localizacion</li>
+<li class="fragment">Medidas de Variabilidad</li>
+</ul>
+</section>
+<section id="rumbo-a-la-entrega" class="slide level2 center" data-background-color="#1a0b2e" style="text-align: center; color: #ff4d9d;">
+<h2>Rumbo a la entrega</h2>
+</section>
+<section id="qué-debe-incluir-el-reporte" class="slide level2 smaller">
+<h2>Qué debe incluir el reporte</h2>
+<div class="fragment fade-up">
+<ul>
+<li class="fragment">Comparación de frameworks (pandas / polars / PySpark) y justificación de la elección <strong>Solo se debe de implementar un solo framework</strong></li>
+<li class="fragment">Documentación del preprocesamiento: duplicados eliminados, columnas convertidas, estrategia de imputación</li>
+<li class="fragment">Tabla de clasificación de variables completa</li>
+<li class="fragment">Resultados de medidas de localización y variabilidad, con capturas del EDA</li>
+<li class="fragment">Respuestas al cuestionario</li>
+</ul>
+</div>
+<div class="fragment fade-up">
+<p>Repositorio de <strong>Git</strong> con <code>README.md</code> y <code>requirements.txt</code> (solo el link; nada de código en el classroom). <code>data/data-raw/</code> <strong>no</strong> va en el repositorio.</p>
+</div>
+</section>
+<section id="referencias" class="slide level2">
+<h2>Referencias</h2>
+<ul>
+<li class="fragment"><a href="https://www.inegi.org.mx/programas/endireh/2021/">INEGI — ENDIREH 2021</a></li>
+<li class="fragment"><a href="https://www.inegi.org.mx/contenidos/programas/endireh/2021/doc/endireh2021_fd.pdf">Descriptor de archivos ENDIREH 2021</a></li>
+<li class="fragment"><a href="https://docs.pola.rs/">Polars User Guide</a></li>
+<li class="fragment"><a href="https://pandas.pydata.org/docs/">pandas documentation</a></li>
+<li class="fragment"><a href="https://spark.apache.org/docs/latest/api/python/">PySpark documentation</a></li>
+<li class="fragment"><a href="https://cookiecutter-data-science.drivendata.org/">Cookiecutter Data Science</a></li>
+</ul>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Práctica 2 · Google BigQuery</p>
+<p>Práctica 3 · Minería de Datos</p>
 </div>
 </div></div>
 
