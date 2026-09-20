@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-5a1953863e1f72ef3b996ef827f01ca7.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="Emma Alicia Jiménez Sánchez">
+  <meta name="dcterms.date" content="2026-09-19">
+  <title>Mis Prácticas – Práctica 4</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ce599bbac41cbca6ad956b8cafd1a012.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Práctica 4</h1>
+  <p class="subtitle">Arquitectura, Frameworks, Preprocesamiento y EDA sobre Violencia contra las Mujeres</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Emma Alicia Jiménez Sánchez
+</div>
+</div>
+</div>
+
+  <p class="date">2026-09-19</p>
+</section>
+<section id="objetivo-de-la-práctica" class="slide level2">
+<h2>Objetivo de la práctica</h2>
+<ul>
+<li class="fragment">Calcular e interpretar medidas de <strong>localización</strong>, <strong>variabilidad</strong>, <strong>heterogeneidad</strong> y <strong>concentración</strong></li>
+<li class="fragment">Calcular específicamente el <strong>coeficiente de Gini</strong> y la <strong>entropía de Shannon</strong></li>
+<li class="fragment">Comunicar los hallazgos con visualizaciones adecuadas</li>
+<li class="fragment">Reflexionar críticamente sobre qué revelan —y qué ocultan— estas medidas sobre la violencia contra las mujeres</li>
+</ul>
+</section>
+<section id="por-qué-esta-práctica" class="slide level2 smaller">
+<h2>¿Por qué esta práctica?</h2>
+<p>En la Práctica 3 se dejaron los datos <strong>limpios, sin duplicados, con tipos correctos</strong> en <code>data/data-processed/</code>.</p>
+<p>El siguiente paso natural en minería de datos es <strong>describir cuantitativamente</strong> esos datos antes de modelar: es el rol de la <strong>estadística descriptiva</strong> dentro del Análisis Exploratorio de Datos (EDA).</p>
+<div class="highlight-box">
+<p>No se vuelve a descargar ni reestructurar el proyecto: se <strong>extiende</strong> la arquitectura ya existente.</p>
+</div>
+</section>
+<section id="dos-preguntas-dos-familias-de-medidas" class="slide level2">
+<h2>Dos preguntas, dos familias de medidas</h2>
+<div class="fragment fade-up">
+<p><strong>Concentración</strong> — <em>¿qué proporción del total se acumula en una fracción pequeña de las unidades de análisis?</em> Herramienta clásica: curva de Lorenz y coeficiente de Gini.</p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Heterogeneidad</strong> — <em>¿qué tan mezcladas o diversas son las categorías?</em> Herramientas: IQV, Gini-Simpson, entropía de Shannon.</p>
+</div>
+<div class="fragment fade-up">
+<p>Uno mide desigualdad en cómo se reparte una cantidad; el otro mide diversidad entre categorías.</p>
+</div>
+</section>
+<section id="nota-de-sensibilidad-del-tema" class="slide level2">
+<h2>Nota de sensibilidad del tema</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>El análisis debe hacerse con <strong>rigor técnico y responsabilidad ética</strong>:</p>
+<ul>
+<li class="fragment">Evitar conclusiones que estigmaticen personas, grupos o entidades federativas</li>
+<li class="fragment">Recordar que los datos representan <strong>experiencias reales</strong> de violencia</li>
+<li class="fragment">Una concentración alta en una entidad <strong>no implica automáticamente</strong> “ahí hay más violencia” — puede reflejar diferencias en denuncia, tamaño poblacional o factores de expansión</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section>
+<section id="medidas-de-localización-y-variabilidad" class="title-slide slide level1 center">
+<h1>Medidas de Localización y Variabilidad</h1>
+
+</section>
+<section id="qué-miden" class="slide level2 smaller">
+<h2>¿Qué miden?</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><strong>Localización</strong> — dónde se “centra” la distribución</p>
+<ul>
+<li class="fragment">Media, mediana, moda</li>
+<li class="fragment">Percentiles / cuantiles</li>
+<li class="fragment">Media ponderada por factor de expansión</li>
+</ul>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:45%;">
+<p><strong>Variabilidad</strong> — qué tan dispersos están los datos</p>
+<ul>
+<li class="fragment">Varianza y desviación estándar</li>
+<li class="fragment">Coeficiente de variación (CV)</li>
+<li class="fragment">Rango intercuartílico (IQR)</li>
+</ul>
+</div></div>
+</section></section>
+<section>
+<section id="medidas-de-heterogeneidad" class="title-slide slide level1 center">
+<h1>Medidas de Heterogeneidad</h1>
+
+</section>
+<section id="qué-miden-realmente" class="slide level2 smaller">
+<h2>¿Qué miden realmente?</h2>
+<p>Mientras que la varianza evalúa dispersión numérica, estas medidas aplican a <strong>variables cualitativas</strong> (categóricas).</p>
+<p>Responden a una pregunta central:</p>
+<blockquote>
+<p><em>¿Los datos se aglutinan en una sola categoría dominante (baja heterogeneidad) o están repartidos de forma equilibrada entre todas las opciones (alta heterogeneidad)?</em></p>
+</blockquote>
+<div class="fragment">
+<p><strong>Los cimientos matemáticos:</strong> Para calcular qué tan mezclados están los datos, las fórmulas utilizan dos bloques básicos:</p>
+<ul>
+<li class="fragment"><span class="math inline">\(k\)</span> = El <strong>número total de categorías</strong> posibles. <em>(Ej. Si analizamos el “Tipo de violencia”, tenemos Psicológica, Física, Económica y Sexual, por lo tanto <span class="math inline">\(k = 4\)</span>)</em>.</li>
+<li class="fragment"><span class="math inline">\(p_i\)</span> = La <strong>proporción</strong> de casos que caen en la categoría <span class="math inline">\(i\)</span>. <em>(Ej. Si el 50% de los reportes son de violencia psicológica, su <span class="math inline">\(p_i = 0.5\)</span>)</em>.</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="img/0120-0283-boge-41-01-133-gf10.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
+<section id="índice-de-variación-cualitativa-iqv" class="slide level2">
+<h2>Índice de Variación Cualitativa (IQV)</h2>
+<p><span class="math display">\[\text{IQV} = \frac{k\left(1 - \sum_{i=1}^{k} p_i^2\right)}{k - 1}\]</span></p>
+<ul>
+<li class="fragment"><span class="math inline">\(\text{IQV} = 0\)</span> → toda la masa en una sola categoría (heterogeneidad nula)</li>
+<li class="fragment"><span class="math inline">\(\text{IQV} = 1\)</span> → categorías perfectamente balanceadas (heterogeneidad máxima)</li>
+</ul>
+</section>
+<section id="índice-de-gini-simpson" class="slide level2">
+<h2>Índice de Gini-Simpson</h2>
+<p><span class="math display">\[\text{GS} = 1 - \sum_{i=1}^{k} p_i^2\]</span></p>
+<ul>
+<li class="fragment">Interpretación intuitiva: probabilidad de que <strong>dos observaciones elegidas al azar</strong> pertenezcan a categorías <strong>distintas</strong></li>
+<li class="fragment">Mismo rango de comportamiento que el IQV, pero sin reescalar por <span class="math inline">\(k\)</span></li>
+</ul>
+</section>
+<section id="entropía-de-shannon" class="slide level2">
+<h2>Entropía de Shannon</h2>
+<p><span class="math display">\[H = -\sum_{i=1}^{k} p_i \log_2(p_i), \qquad 0 \le H \le \log_2(k)\]</span></p>
+<ul>
+<li class="fragment">Mide <strong>incertidumbre</strong>: ¿qué tan difícil es predecir la categoría de un caso elegido al azar?</li>
+<li class="fragment"><span class="math inline">\(H = 0\)</span> → nula incertidumbre (una sola categoría)</li>
+<li class="fragment"><span class="math inline">\(H = \log_2(k)\)</span> → máxima incertidumbre (categorías balanceadas)</li>
+</ul>
+</section>
+<section id="cuándo-usar-cada-una" class="slide level2 smaller">
+<h2>¿Cuándo usar cada una?</h2>
+<div class="fragment fade-up">
+<p><strong>Usa Entropía / Gini-Simpson / IQV cuando…</strong> La pregunta es <em>¿qué tan mezcladas o diversas son las categorías?</em> Ejemplo: tipo de violencia, modalidad, relación con el agresor</p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Usa el coeficiente de Gini / curva de Lorenz cuando…</strong> La pregunta es <em>¿qué proporción del total se concentra en pocas unidades?</em> Ejemplo: casos de violencia por entidad federativa</p>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Si aplicas ambas a la <strong>misma</strong> variable categórica (cada categoría como “unidad”, su frecuencia como la “cantidad” a repartir), obtienes dos lecturas complementarias: la entropía dice qué tan mezclada está; el Gini sobre esas mismas frecuencias dice qué tan desigual es esa mezcla.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="caso-práctico" class="slide level2 smaller">
+<h2>Caso Práctico</h2>
+<p>Imaginemos que analizamos un subconjunto de <strong>100 casos reportados de violencia</strong>. ¿Están concentrados en un solo tipo o vemos una mezcla de todas las formas de violencia?</p>
+<div id="6613d1c9" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>- Psicológica : 50 casos
+- Física      : 30 casos
+- Económica   : 15 casos
+- Sexual      : 5 casos</code></pre>
+</div>
+</div>
+<div title="Observación inicial">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Observación inicial</strong></p>
+</div>
+<div class="callout-content">
+<p>A simple vista notamos que la violencia “Psicológica” acapara la mitad de los casos (50), mientras que la “Sexual” es la minoría (5). Esto ya nos indica que <strong>no hay un balance perfecto</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="paso-1-las-proporciones" class="slide level2 smaller">
+<h2>Paso 1: Las proporciones</h2>
+<p>Todas las fórmulas de heterogeneidad necesitan convertir frecuencias absolutas a proporciones (<span class="math inline">\(p_i\)</span>) y, fundamentalmente, <strong>elevar esas proporciones al cuadrado (<span class="math inline">\(p_i^2\)</span>)</strong>.</p>
+<p><em>¿Por qué al cuadrado?</em> Porque penaliza fuertemente a las categorías minoritarias y recompensa a las mayoritarias, revelando qué tan dominante es el pico de la distribución.</p>
+<div id="abca1195" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>Proporciones (p_i): [0.5  0.3  0.15 0.05]
+Proporciones al cuadrado (p_i^2): [0.25   0.09   0.0225 0.0025]
+
+Suma de p_i^2 = 0.365</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>▶ Si todos los casos estuvieran en “Psicológica”, la suma sería <strong>1</strong>.<br>
+▶ Si hubiera 25 casos de cada tipo, la suma sería <strong>0.25</strong> (lo mínimo posible).<br>
+▶ Nuestro <strong>0.365</strong> está en un punto intermedio.</p>
+</div>
+</section>
+<section id="paso-2-índices-de-gini-simpson-e-iqv" class="slide level2 smaller">
+<h2>Paso 2: Índices de Gini-Simpson e IQV</h2>
+<p><strong>Gini-Simpson (<span class="math inline">\(1 - \sum p_i^2\)</span>)</strong> Mide la probabilidad de que, al tomar 2 reportes al azar, sean de tipos de violencia <em>distintos</em>.</p>
+<div id="f72019d5" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>Gini-Simpson = 0.6350</code></pre>
+</div>
+</div>
+<p><em>(Hay un 63.5% de probabilidad de que dos víctimas al azar hayan sufrido distintos tipos de violencia).</em></p>
+<div class="fragment">
+<p><strong>Índice de Variación Cualitativa (IQV)</strong> Ajusta el valor anterior usando el número de categorías (<span class="math inline">\(k=4\)</span>) para darnos una métrica de <strong>0 a 1</strong> (donde 1 es la máxima mezcla posible).</p>
+<div id="06759a34" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>IQV = 0.8467</code></pre>
+</div>
+</div>
+<p><em>(Nuestros datos alcanzan casi el 85% de la máxima diversidad posible).</em></p>
+</div>
+<div class="fragment">
+<p>Fíjate que <strong>IQV es simplemente Gini-Simpson reescalado</strong>: <span class="math inline">\(\text{IQV} = \frac{k}{k-1}\,\text{GS}\)</span>.</p>
+</div>
+</section>
+<section id="paso-3-entropía-de-shannon" class="slide level2 smaller">
+<h2>Paso 3: Entropía de Shannon</h2>
+<p><em>Si te digo el tipo de violencia de un caso elegido al azar, ¿qué tan “sorprendido” te vas a llevar?</em></p>
+<ul>
+<li class="fragment">Un evento <strong>casi seguro</strong> (p cercana a 1) no sorprende casi nada → aporta <strong>poca</strong> información</li>
+<li class="fragment">Un evento <strong>raro</strong> (p cercana a 0) sí sorprende → aporta <strong>mucha</strong> información</li>
+<li class="fragment">Shannon mide esa sorpresa en <strong>bits</strong>, con la fórmula <span class="math inline">\(-\log_2(p_i)\)</span></li>
+</ul>
+<div class="fragment">
+<p>Pero la sorpresa de una sola categoría no basta: necesitamos <strong>un solo número</strong> que resuma a las 4 categorías juntas. Para eso, Shannon promedia la sorpresa de cada categoría, <strong>ponderándola por qué tan seguido ocurre</strong>.</p>
+</div>
+</section>
+<section id="paso-3a-la-ocurrencia-de-cada-categoría" class="slide level2 smaller">
+<h2>Paso 3a: la “ocurrencia” de cada categoría</h2>
+<p>Primero calculamos <span class="math inline">\(-\log_2(p_i)\)</span> para cada categoría: entre menos frecuente es un tipo de violencia, más bits de sorpresa aporta si aparece.</p>
+<div id="e86d453a" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>Psicológica   p_i=0.50   -log2(p_i) = 1.0000 bits
+Física        p_i=0.30   -log2(p_i) = 1.7370 bits
+Económica     p_i=0.15   -log2(p_i) = 2.7370 bits
+Sexual        p_i=0.05   -log2(p_i) = 4.3219 bits</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>“Sexual” (5% de los casos) sorprende casi <strong>4.3 bits</strong> si aparece; “Psicológica” (50% de los casos) apenas sorprende <strong>1 bit</strong>, porque ya la esperábamos.</p>
+</div>
+</section>
+<section id="paso-3b-ponderando-la-sorpresa-por-su-probabilidad" class="slide level2 smaller">
+<h2>Paso 3b: ponderando la sorpresa por su probabilidad</h2>
+<p>Ahora multiplicamos la sorpresa de cada categoría por <span class="math inline">\(p_i\)</span>: así las categorías raras (mucha sorpresa, pero ocurren poco) no dominan el resultado, y las comunes (poca sorpresa, pero ocurren mucho) sí pesan.</p>
+<div id="943ab194" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-stdout">
+<pre><code>Psicológica   p_i * (-log2 p_i) = 0.5000
+Física        p_i * (-log2 p_i) = 0.5211
+Económica     p_i * (-log2 p_i) = 0.4105
+Sexual        p_i * (-log2 p_i) = 0.2161
+
+Suma de todas las contribuciones -&gt; H = 1.6477 bits</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(H\)</span> es literalmente la <strong>suma de esas 4 contribuciones</strong>: no es una fórmula misteriosa, es un promedio ponderado de “qué tan sorprendente es cada categoría”.</p>
+</div>
+</section>
+<section id="paso-3c-comparando-contra-el-máximo-posible" class="slide level2 smaller">
+<h2>Paso 3c: comparando contra el máximo posible</h2>
+<div id="79e52463" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-stdout">
+<pre><code>Entropía (H)     = 1.6477 bits
+Entropía Máxima  = 2.0000 bits
+
+H / H_max = 0.8239 (82.4%)</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(H_{max} = \log_2(k)\)</span> es la entropía que tendríamos si las 4 categorías fueran <strong>igual de probables</strong> (25% cada una): ahí ninguna te da pistas de antemano, así que la sorpresa promedio es máxima.</p>
+<p>La entropía relativa (<span class="math inline">\(H/H_{max}\)</span>) nos dice que tenemos el <strong>82.4%</strong> de la incertidumbre que tendríamos en ese escenario perfectamente balanceado.</p>
+</section>
+<section id="visualizando-la-distribución" class="slide level2 smaller">
+<h2>Visualizando la distribución</h2>
+<div id="e214da2b" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="practica-04_files/figure-revealjs/cell-10-output-1.png" class="quarto-figure quarto-figure-center" width="590" height="359"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La barra de “Psicológica” domina visualmente el resto — la misma historia que cuentan GS=0.635, IQV=0.847 y H/H_max=0.824, pero ahora se puede ver de un vistazo.</p>
+</section>
+<section id="síntesis-del-ejemplo" class="slide level2 smaller">
+<h2>Síntesis del ejemplo</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Índice</th>
+<th>Valor</th>
+<th>¿Qué significa en la realidad?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Gini-Simpson</strong></td>
+<td>0.635</td>
+<td>Probabilidad moderada-alta de cruzar víctimas con vivencias diferentes.</td>
+</tr>
+<tr class="even">
+<td><strong>IQV</strong></td>
+<td>0.847</td>
+<td>La distribución está al 85% de ser perfectamente heterogénea.</td>
+</tr>
+<tr class="odd">
+<td><strong>Entropía (Relativa)</strong></td>
+<td>0.824</td>
+<td>Tenemos un 82% de incertidumbre al predecir el tipo de violencia del siguiente caso.</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="gini-vs.-entropía" class="title-slide slide level1 center">
+<h1>Gini vs.&nbsp;Entropía</h1>
+
+</section>
+<section id="primos-conceptuales-no-sinónimos" class="slide level2 smaller">
+<h2>Primos conceptuales, no sinónimos</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Entropía de Shannon</strong> (heterogeneidad)</th>
+<th><strong>Gini</strong> (concentración)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mide</td>
+<td>Diversidad / incertidumbre entre categorías</td>
+<td>Desigualdad en cómo se reparte una cantidad</td>
+</tr>
+<tr class="even">
+<td>Rango</td>
+<td><span class="math inline">\(0\)</span> a <span class="math inline">\(\log_2(k)\)</span></td>
+<td><span class="math inline">\(0\)</span> a <span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="odd">
+<td>Pregunta</td>
+<td>¿Qué tan mezcladas están las categorías?</td>
+<td>¿Qué proporción se concentra en pocas unidades?</td>
+</tr>
+<tr class="even">
+<td>Origen</td>
+<td>Teoría de la información (1948)</td>
+<td>Estadística económica (1912)</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="medidas-de-concentración" class="title-slide slide level1 center">
+<h1>Medidas de Concentración</h1>
+
+</section>
+<section id="qué-miden-curva-de-lorenz" class="slide level2 smaller">
+<h2>¿Qué miden? — Curva de Lorenz</h2>
+<p>Responde: <em>¿qué fracción de una cantidad total (casos de violencia) se acumula en una fracción pequeña de las unidades (entidades federativas)?</em></p>
+<p>Construcción de la curva:</p>
+<ol type="1">
+<li class="fragment">Ordenar las unidades de <strong>menor a mayor</strong> en la cantidad de interés</li>
+<li class="fragment">Calcular la proporción <strong>acumulada</strong> de la cantidad</li>
+<li class="fragment">Calcular la proporción <strong>acumulada</strong> de unidades</li>
+<li class="fragment">Graficar (prop. acumulada de unidades, prop. acumulada de la cantidad) contra la <strong>diagonal de igualdad perfecta</strong></li>
+</ol>
+<p>Misma herramienta que usa la economía para medir desigualdad del ingreso.</p>
+</section>
+<section id="coeficiente-de-gini" class="slide level2">
+<h2>Coeficiente de Gini</h2>
+<p><span class="math display">\[G = \frac{2\sum_{i=1}^{n} i\, x_{(i)} - (n+1)\sum_{i=1}^{n} x_{(i)}}{n\sum_{i=1}^{n} x_{(i)}}, \quad x_{(i)} \text{ ordenado ascendentemente}\]</span></p>
+<ul>
+<li class="fragment"><span class="math inline">\(G = 0\)</span> → reparto perfectamente homogéneo entre entidades</li>
+<li class="fragment"><span class="math inline">\(G \to 1\)</span> → casi todos los casos concentrados en muy pocas entidades</li>
+</ul>
+</section>
+<section id="ejemplo-paso-1-los-datos" class="slide level2">
+<h2>Ejemplo Paso 1: los datos</h2>
+<p>Casos reportados (hipotéticos) en 5 entidades, ya ordenados de menor a mayor:</p>
+<div id="7edb317e" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-stdout">
+<pre><code>Entidad E: 5 casos
+Entidad D: 10 casos
+Entidad C: 15 casos
+Entidad B: 30 casos
+Entidad A: 40 casos
+Total: 100</code></pre>
+</div>
+</div>
+</section>
+<section id="ejemplo-paso-2-proporciones-acumuladas" class="slide level2">
+<h2>Ejemplo Paso 2: proporciones acumuladas</h2>
+<p>Vamos entidad por entidad, <strong>sumando</strong> los casos como si fueran llegando en fila. En cada paso preguntamos: <em>¿cuántos casos llevamos acumulados hasta aquí?</em></p>
+<div id="afc86ece" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-stdout">
+<pre><code>Entidad      Casos   Acumulado   Prop. acum.
+E                5           5          0.05
+D               10          15          0.15
+C               15          30          0.30
+B               30          60          0.60
+A               40         100          1.00</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Al llegar a la última entidad, el acumulado siempre coincide con el <strong>total</strong> (100). Eso es justo lo que confirma que no se nos perdió ningún caso en el camino.</p>
+</div>
+</section>
+<section id="ejemplo-paso-3-coeficiente-de-gini" class="slide level2">
+<h2>Ejemplo Paso 3: coeficiente de Gini</h2>
+<div id="068df70f" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-stdout">
+<pre><code>Numerador   = 180
+Denominador = 500
+Coeficiente de Gini = 0.360</code></pre>
+</div>
+</div>
+</section>
+<section id="ejemplo-paso-3a-de-dónde-sale-el-numerador" class="slide level2 smaller">
+<h2>Ejemplo Paso 3a: ¿de dónde sale el numerador?</h2>
+<p><span class="math display">\[\text{Numerador} = 2\sum_{i=1}^{n} i\,x_{(i)} - (n+1)\sum_{i=1}^{n} x_{(i)}\]</span></p>
+<p>Cada entidad se multiplica por su <strong>posición</strong> en el orden (1 = la que menos casos tiene, 5 = la que más): así, las entidades con más casos pesan más.</p>
+<div id="403ca2a1" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-stdout">
+<pre><code>Entidad E: posición 1 x  5 casos = 5
+Entidad D: posición 2 x 10 casos = 20
+Entidad C: posición 3 x 15 casos = 45
+Entidad B: posición 4 x 30 casos = 120
+Entidad A: posición 5 x 40 casos = 200
+
+Suma de i*x         = 390
+2 x suma de i*x     = 780
+(n+1) x total       = 600
+Numerador           = 780 - 600 = 180
+
+Si todas tuvieran 20 casos: numerador = 0</code></pre>
+</div>
+</div>
+</section>
+<section id="ejemplo-paso-3b-qué-representan-180-y-500" class="slide level2 smaller">
+<h2>Ejemplo Paso 3b: ¿qué representan 180 y 500?</h2>
+<p><strong>Numerador (180)</strong> = suma de las diferencias absolutas entre <strong>todos los pares</strong> de entidades. Mide qué tan <em>distintas</em> son las entidades entre sí.</p>
+<div id="0ad778db" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-stdout">
+<pre><code>Pares de entidades: 10
+Suma de |x_i - x_j| sobre todos los pares = 180</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Denominador (500)</strong> = <span class="math inline">\(n \times \text{total} = 5 \times 100\)</span>. Es un factor de escala (equivale a <span class="math inline">\(n^2 \times \text{media} = 25 \times 20\)</span>): sin él, el 180 crecería solo por agregar entidades o casos y no podríamos comparar problemas distintos.</p>
+</div>
+<div class="fragment">
+<p><strong>Conexión con la curva de Lorenz:</strong> <span class="math inline">\(G = \dfrac{180}{500}\)</span> es lo mismo que el área entre la diagonal y la curva, dividida entre el área total bajo la diagonal (0.5).</p>
+<div id="198e4405" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-stdout">
+<pre><code>Área bajo la curva de Lorenz      = 0.32
+Área entre la diagonal y la curva = 0.18
+Gini = área entre / 0.5           = 0.36</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="ejemplo-paso-4-graficar-la-curva-de-lorenz" class="slide level2">
+<h2>Ejemplo Paso 4: graficar la curva de Lorenz</h2>
+<div id="92002719" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="practica-04_files/figure-revealjs/cell-17-output-1.png" class="quarto-figure quarto-figure-center" width="516" height="525"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="interpretación-g-0.36" class="slide level2">
+<h2>Interpretación: G = 0.36</h2>
+<ul>
+<li class="fragment">El área entre la curva de Lorenz y la diagonal de igualdad es <strong>moderada</strong></li>
+<li class="fragment">Existe <strong>concentración por encima de lo homogéneo</strong>, pero lejos del extremo (<span class="math inline">\(G\to1\)</span>)</li>
+<li class="fragment">En el contexto de ENDIREH: sugiere que algunas entidades concentran más casos que otras, <strong>sin</strong> que unas pocas acaparen prácticamente todo</li>
+</ul>
+</section></section>
+<section>
+<section id="desarrollo-de-la-práctica-sobre-endireh-2021" class="title-slide slide level1 center">
+<h1>Desarrollo de la Práctica sobre ENDIREH 2021</h1>
+
+</section>
+<section id="punto-de-partida-lo-que-ya-tenemos-de-la-práctica-3" class="slide level2">
+<h2>Punto de partida: lo que ya tenemos de la Práctica 3</h2>
+<ul>
+<li class="fragment">Estructura de carpetas del proyecto</li>
+<li class="fragment"><code>README.md</code> y <code>requirements.txt</code></li>
+<li class="fragment"><code>data/data-processed/endireh_2021_limpio.csv</code> — <strong>ya limpio</strong>, sin duplicados, tipos correctos, sin faltantes</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>No se descarga ni reestructura de nuevo: se <strong>extiende</strong> el proyecto existente.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="notebook-medidas-de-heterogeneidad" class="slide level2">
+<h2>Notebook: Medidas de Heterogeneidad</h2>
+<p>Sobre variables cualitativas, calcular:</p>
+<ul>
+<li class="fragment">Índice de Variación Cualitativa (IQV)</li>
+<li class="fragment">Índice de Gini-Simpson</li>
+<li class="fragment">Entropía de Shannon</li>
+</ul>
+<p>Con gráficos e <strong>interpretación</strong> en el contexto de violencia contra las mujeres.</p>
+</section>
+<section id="notebook-medidas-de-concentración" class="slide level2">
+<h2>Notebook: Medidas de Concentración</h2>
+<ul>
+<li class="fragment">Analizar los casos reportados <strong>ponderados por el factor de expansión</strong></li>
+<li class="fragment">Construir la <strong>curva de Lorenz</strong> por entidad federativa</li>
+<li class="fragment">Calcular el <strong>coeficiente de Gini</strong></li>
+<li class="fragment">Interpretar: ¿concentración territorial alta o reparto homogéneo?</li>
+</ul>
+</section>
+<section id="síntesis-gini-y-entropía" class="slide level2">
+<h2>Síntesis Gini y Entropía</h2>
+<ul>
+<li class="fragment">Elegir <strong>una misma variable categórica</strong> (p.&nbsp;ej. tipo de violencia)</li>
+<li class="fragment">Calcular sobre ella tanto la entropía de Shannon como una versión del Gini aplicada a las frecuencias de sus categorías</li>
+<li class="fragment">Redactar, en <strong>no más de un párrafo</strong>, la diferencia conceptual entre ambas lecturas</li>
+</ul>
+</section>
+<section id="tabla-de-resultados" class="slide level2">
+<h2>Tabla de resultados</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Familia de medida</th>
+<th>Variable(s)</th>
+<th>Valor obtenido</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Localización</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Variabilidad</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Heterogeneidad</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Concentración</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Gini vs.&nbsp;Entropía</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="qué-se-busca-en-cada-criterio" class="slide level2 smaller">
+<h2>Qué se busca en cada criterio</h2>
+<ul>
+<li class="fragment"><strong>Localización</strong>: media, mediana, moda y cuantiles — con <strong>media ponderada justificada</strong> por factor de expansión</li>
+<li class="fragment"><strong>Variabilidad</strong>: varianza, SD, CV, IQR — con <strong>comparación entre grupos</strong></li>
+<li class="fragment"><strong>Heterogeneidad / Concentración</strong>: cálculo correcto + <strong>interpretación adecuada</strong></li>
+<li class="fragment"><strong>Síntesis</strong>: comparación explícita y <strong>bien argumentada</strong></li>
+<li class="fragment"><strong>Visualización</strong>: claridad, pertinencia e <strong>integración narrativa</strong> en el notebook</li>
+<li class="fragment"><strong>Reflexión</strong>: profundidad, limitaciones detectadas y <strong>sensibilidad</strong> ante el tema social</li>
+</ul>
+</section></section>
+<section>
+<section id="formato-de-entrega" class="title-slide slide level1 center">
+<h1>Formato de Entrega</h1>
+
+</section>
+<section id="reporte-pdf" class="slide level2">
+<h2>Reporte PDF</h2>
+<p>Resumen ejecutivo y conciso que incluya:</p>
+<ul>
+<li class="fragment">La <strong>tabla de resultados</strong> completa</li>
+<li class="fragment">Las <strong>gráficas</strong>: histograma/boxplot, barras de heterogeneidad, curva de Lorenz, prevalencia por entidad — cada una con su interpretación</li>
+<li class="fragment">Las <strong>respuestas al cuestionario</strong></li>
+</ul>
+</section>
+<section id="repositorio-de-git-actualizado" class="slide level2">
+<h2>Repositorio de Git actualizado</h2>
+<ul>
+<li class="fragment">Medidas de localización</li>
+<li class="fragment">Medidas de variabilidad</li>
+<li class="fragment">Medidas de heterogeneidad</li>
+<li class="fragment">Medidas de concentración</li>
+<li class="fragment">Comparación de Gini y Entropía</li>
+</ul>
+<p>Más <code>README.md</code> y <code>requirements.txt</code> <strong>actualizados</strong>.</p>
+</section>
+<section id="recapitulación" class="slide level2">
+<h2>Recapitulación</h2>
+<ul>
+<li class="fragment"><strong>Heterogeneidad</strong> (IQV, Gini-Simpson, Entropía) mide qué tan mezcladas están las categorías</li>
+<li class="fragment"><strong>Concentración</strong> (Lorenz, Gini) mide qué tan desigual es el reparto de una cantidad</li>
+</ul>
+</section></section>
+<section>
+<section id="gracias" class="title-slide slide level1 center">
+<h1>¡Gracias!</h1>
+
+</section>
+<section id="referencias-clave" class="slide level2">
+<h2>Referencias clave</h2>
+<ul>
+<li class="fragment">INEGI (2022). <em>Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021</em></li>
+<li class="fragment">Gini, C. (1912). <em>Variabilità e mutabilità</em></li>
+<li class="fragment">Shannon, C. E. (1948). <em>A Mathematical Theory of Communication</em></li>
+<li class="fragment">Wilcox, A. R. (1973). <em>Indices of Qualitative Variation and Political Measurement</em></li>
+</ul>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Práctica 4 · Minería de Datos</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/EmmaAli1604\.github\.io\/Almacen_Mineria_Datos_Practicas_2026_1\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

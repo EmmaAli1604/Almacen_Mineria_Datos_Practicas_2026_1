@@ -1,0 +1,243 @@
+/* ============================================================
+   Tema personalizado: Dark Purple / Pink / Blue
+   Práctica 2 · Almacenes de Datos y BigQuery
+   ============================================================ */
+
+:root {
+  --morado-oscuro: #1a0b2e;
+  --morado: #6c2bd9;
+  --morado-claro: #9d4edd;
+  --rosa: #ff4d9d;
+  --azul: #3a86ff;
+  --azul-claro: #48cae4;
+  --texto: #f1e9ff;
+  --texto-tenue: #c9b8e8;
+
+  --r-background-color: var(--morado-oscuro);
+  --r-main-color: var(--texto);
+  --r-heading-color: #ffffff;
+  --r-link-color: var(--rosa);
+}
+
+/* ---------- Fondo general con degradado animado ---------- */
+.reveal {
+  background: radial-gradient(circle at 20% 20%, #2d1155 0%, #1a0b2e 45%, #0d0620 100%);
+  color: var(--texto);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.reveal .slides {
+  background: transparent;
+}
+
+.reveal .slide-background {
+  background: radial-gradient(circle at 80% 80%, rgba(108,43,217,0.25) 0%, rgba(26,11,46,0) 60%),
+              radial-gradient(circle at 15% 15%, rgba(255,77,157,0.18) 0%, rgba(26,11,46,0) 55%),
+              var(--morado-oscuro);
+}
+
+/* Brillo de fondo sutil en movimiento */
+.reveal .slide-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(58,134,255,0.10), rgba(255,77,157,0.10), rgba(108,43,217,0.10));
+  background-size: 300% 300%;
+  animation: fondoAnimado 18s ease infinite;
+  pointer-events: none;
+}
+
+@keyframes fondoAnimado {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------- Encabezados con degradado de color ---------- */
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  background: linear-gradient(90deg, var(--azul-claro), var(--morado-claro), var(--rosa));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-shadow: none;
+  animation: apareceTitulo 0.9s ease-out;
+}
+
+.reveal h1 {
+  font-size: 2.4em;
+}
+
+.reveal h2 {
+  font-size: 1.7em;
+  border-bottom: 2px solid var(--morado);
+  padding-bottom: 0.2em;
+  margin-bottom: 0.6em;
+}
+
+@keyframes apareceTitulo {
+  from { opacity: 0; transform: translateY(-25px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Título principal de la portada ---------- */
+.reveal .title-slide h1,
+.reveal .reveal-header h1 {
+  font-size: 3em;
+  animation: brilloTitulo 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes brilloTitulo {
+  from { filter: drop-shadow(0 0 6px rgba(255,77,157,0.35)); }
+  to   { filter: drop-shadow(0 0 18px rgba(58,134,255,0.55)); }
+}
+
+.reveal .subtitle {
+  color: var(--texto-tenue);
+  font-weight: 300;
+}
+
+/* ---------- Texto normal y listas ---------- */
+.reveal p,
+.reveal li {
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+.reveal ul > li::marker,
+.reveal ol > li::marker {
+  color: var(--rosa);
+}
+
+.reveal strong {
+  color: var(--azul-claro);
+}
+
+.reveal em {
+  color: var(--rosa);
+}
+
+/* ---------- Animación de entrada para fragments (bullets) ---------- */
+.reveal .fragment.fade-up {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+.reveal .fragment.fade-up.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.reveal .fragment.custom-fade {
+  opacity: 0;
+  transform: translateX(-25px);
+  transition: all 0.55s ease;
+}
+.reveal .fragment.custom-fade.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---------- Enlaces ---------- */
+.reveal a {
+  color: var(--azul-claro);
+  transition: color 0.3s ease;
+}
+.reveal a:hover {
+  color: var(--rosa);
+}
+
+/* ---------- Bloques de código ---------- */
+.reveal pre {
+  box-shadow: 0 0 25px rgba(108,43,217,0.35);
+  border: 1px solid var(--morado);
+  border-radius: 10px;
+}
+
+.reveal code {
+  color: var(--azul-claro);
+}
+
+.reveal pre code {
+  font-size: 0.75em;
+  line-height: 1.35;
+}
+
+/* ---------- Tablas ---------- */
+.reveal table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-size: 0.75em;
+  animation: apareceTitulo 1s ease-out;
+}
+
+.reveal table thead th {
+  background: linear-gradient(90deg, var(--morado), var(--rosa));
+  color: #ffffff;
+  padding: 0.6em 1em;
+  border: none;
+}
+
+.reveal table tbody td {
+  background: rgba(108,43,217,0.12);
+  color: var(--texto);
+  padding: 0.6em 1em;
+  border: 1px solid rgba(157,78,221,0.35);
+  transition: background 0.3s ease;
+}
+
+.reveal table tbody tr:hover td {
+  background: rgba(255,77,157,0.18);
+}
+
+/* ---------- Pie de página / número de diapositiva ---------- */
+.reveal .footer,
+.reveal .slide-number {
+  color: var(--texto-tenue);
+  opacity: 0.7;
+}
+
+/* ---------- Barra de progreso ---------- */
+.reveal .progress {
+  color: var(--rosa);
+  height: 5px;
+}
+.reveal .progress span {
+  background: linear-gradient(90deg, var(--azul), var(--morado-claro), var(--rosa));
+}
+
+/* ---------- Recuadros de definición / elemento destacado ---------- */
+.reveal .highlight-box {
+  background: rgba(108,43,217,0.15);
+  border-left: 4px solid var(--rosa);
+  padding: 0.8em 1.2em;
+  border-radius: 6px;
+  animation: apareceTitulo 0.8s ease-out;
+}
+
+/* ---------- Callouts de Quarto ---------- */
+.callout-note {
+  border-left: 4px solid var(--azul-claro);
+  background: rgba(72, 202, 228, 0.10);
+  padding: 0.6em 1em;
+  border-radius: 4px;
+  color: var(--texto);
+}
+
+/* ---------- Blockquotes con estilo de "nota" ---------- */
+.reveal blockquote {
+  border-left: 4px solid var(--azul-claro);
+  padding-left: 0.8em;
+  background: rgba(72, 202, 228, 0.10);
+  box-shadow: none;
+  font-style: normal;
+  color: var(--texto);
+}
+
+/* ---------- Slides .smaller: reduce texto general para que quepa todo ---------- */
+.reveal .slides section.smaller {
+  font-size: 0.72em;
+}
