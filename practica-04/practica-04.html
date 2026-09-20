@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Emma Alicia Jiménez Sánchez">
-  <meta name="dcterms.date" content="2026-09-19">
+  <meta name="dcterms.date" content="2026-09-20">
   <title>Mis Prácticas – Práctica 4</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -146,7 +146,7 @@ Emma Alicia Jiménez Sánchez
 </div>
 </div>
 
-  <p class="date">2026-09-19</p>
+  <p class="date">2026-09-20</p>
 </section>
 <section id="objetivo-de-la-práctica" class="slide level2">
 <h2>Objetivo de la práctica</h2>
@@ -300,7 +300,7 @@ Emma Alicia Jiménez Sánchez
 <section id="caso-práctico" class="slide level2 smaller">
 <h2>Caso Práctico</h2>
 <p>Imaginemos que analizamos un subconjunto de <strong>100 casos reportados de violencia</strong>. ¿Están concentrados en un solo tipo o vemos una mezcla de todas las formas de violencia?</p>
-<div id="6613d1c9" class="cell" data-execution_count="2">
+<div id="df05b4b7" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>- Psicológica : 50 casos
 - Física      : 30 casos
@@ -328,7 +328,7 @@ Emma Alicia Jiménez Sánchez
 <h2>Paso 1: Las proporciones</h2>
 <p>Todas las fórmulas de heterogeneidad necesitan convertir frecuencias absolutas a proporciones (<span class="math inline">\(p_i\)</span>) y, fundamentalmente, <strong>elevar esas proporciones al cuadrado (<span class="math inline">\(p_i^2\)</span>)</strong>.</p>
 <p><em>¿Por qué al cuadrado?</em> Porque penaliza fuertemente a las categorías minoritarias y recompensa a las mayoritarias, revelando qué tan dominante es el pico de la distribución.</p>
-<div id="abca1195" class="cell" data-execution_count="3">
+<div id="5409a947" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>Proporciones (p_i): [0.5  0.3  0.15 0.05]
 Proporciones al cuadrado (p_i^2): [0.25   0.09   0.0225 0.0025]
@@ -345,7 +345,7 @@ Suma de p_i^2 = 0.365</code></pre>
 <section id="paso-2-índices-de-gini-simpson-e-iqv" class="slide level2 smaller">
 <h2>Paso 2: Índices de Gini-Simpson e IQV</h2>
 <p><strong>Gini-Simpson (<span class="math inline">\(1 - \sum p_i^2\)</span>)</strong> Mide la probabilidad de que, al tomar 2 reportes al azar, sean de tipos de violencia <em>distintos</em>.</p>
-<div id="f72019d5" class="cell" data-execution_count="4">
+<div id="54497d2b" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>Gini-Simpson = 0.6350</code></pre>
 </div>
@@ -353,7 +353,7 @@ Suma de p_i^2 = 0.365</code></pre>
 <p><em>(Hay un 63.5% de probabilidad de que dos víctimas al azar hayan sufrido distintos tipos de violencia).</em></p>
 <div class="fragment">
 <p><strong>Índice de Variación Cualitativa (IQV)</strong> Ajusta el valor anterior usando el número de categorías (<span class="math inline">\(k=4\)</span>) para darnos una métrica de <strong>0 a 1</strong> (donde 1 es la máxima mezcla posible).</p>
-<div id="06759a34" class="cell" data-execution_count="5">
+<div id="3fef67ed" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>IQV = 0.8467</code></pre>
 </div>
@@ -379,7 +379,7 @@ Suma de p_i^2 = 0.365</code></pre>
 <section id="paso-3a-la-ocurrencia-de-cada-categoría" class="slide level2 smaller">
 <h2>Paso 3a: la “ocurrencia” de cada categoría</h2>
 <p>Primero calculamos <span class="math inline">\(-\log_2(p_i)\)</span> para cada categoría: entre menos frecuente es un tipo de violencia, más bits de sorpresa aporta si aparece.</p>
-<div id="e86d453a" class="cell" data-execution_count="6">
+<div id="74cf9f6d" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Psicológica   p_i=0.50   -log2(p_i) = 1.0000 bits
 Física        p_i=0.30   -log2(p_i) = 1.7370 bits
@@ -394,7 +394,7 @@ Sexual        p_i=0.05   -log2(p_i) = 4.3219 bits</code></pre>
 <section id="paso-3b-ponderando-la-sorpresa-por-su-probabilidad" class="slide level2 smaller">
 <h2>Paso 3b: ponderando la sorpresa por su probabilidad</h2>
 <p>Ahora multiplicamos la sorpresa de cada categoría por <span class="math inline">\(p_i\)</span>: así las categorías raras (mucha sorpresa, pero ocurren poco) no dominan el resultado, y las comunes (poca sorpresa, pero ocurren mucho) sí pesan.</p>
-<div id="943ab194" class="cell" data-execution_count="7">
+<div id="82c1993f" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>Psicológica   p_i * (-log2 p_i) = 0.5000
 Física        p_i * (-log2 p_i) = 0.5211
@@ -410,7 +410,7 @@ Suma de todas las contribuciones -&gt; H = 1.6477 bits</code></pre>
 </section>
 <section id="paso-3c-comparando-contra-el-máximo-posible" class="slide level2 smaller">
 <h2>Paso 3c: comparando contra el máximo posible</h2>
-<div id="79e52463" class="cell" data-execution_count="8">
+<div id="a70187d0" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Entropía (H)     = 1.6477 bits
 Entropía Máxima  = 2.0000 bits
@@ -423,7 +423,7 @@ H / H_max = 0.8239 (82.4%)</code></pre>
 </section>
 <section id="visualizando-la-distribución" class="slide level2 smaller">
 <h2>Visualizando la distribución</h2>
-<div id="e214da2b" class="cell" data-execution_count="9">
+<div id="8c22f8cc" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -540,7 +540,7 @@ H / H_max = 0.8239 (82.4%)</code></pre>
 <section id="ejemplo-paso-1-los-datos" class="slide level2">
 <h2>Ejemplo Paso 1: los datos</h2>
 <p>Casos reportados (hipotéticos) en 5 entidades, ya ordenados de menor a mayor:</p>
-<div id="7edb317e" class="cell" data-execution_count="10">
+<div id="f6096bde" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>Entidad E: 5 casos
 Entidad D: 10 casos
@@ -554,7 +554,7 @@ Total: 100</code></pre>
 <section id="ejemplo-paso-2-proporciones-acumuladas" class="slide level2">
 <h2>Ejemplo Paso 2: proporciones acumuladas</h2>
 <p>Vamos entidad por entidad, <strong>sumando</strong> los casos como si fueran llegando en fila. En cada paso preguntamos: <em>¿cuántos casos llevamos acumulados hasta aquí?</em></p>
-<div id="afc86ece" class="cell" data-execution_count="11">
+<div id="4e4f4a80" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>Entidad      Casos   Acumulado   Prop. acum.
 E                5           5          0.05
@@ -570,7 +570,7 @@ A               40         100          1.00</code></pre>
 </section>
 <section id="ejemplo-paso-3-coeficiente-de-gini" class="slide level2">
 <h2>Ejemplo Paso 3: coeficiente de Gini</h2>
-<div id="068df70f" class="cell" data-execution_count="12">
+<div id="01165555" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>Numerador   = 180
 Denominador = 500
@@ -582,7 +582,7 @@ Coeficiente de Gini = 0.360</code></pre>
 <h2>Ejemplo Paso 3a: ¿de dónde sale el numerador?</h2>
 <p><span class="math display">\[\text{Numerador} = 2\sum_{i=1}^{n} i\,x_{(i)} - (n+1)\sum_{i=1}^{n} x_{(i)}\]</span></p>
 <p>Cada entidad se multiplica por su <strong>posición</strong> en el orden (1 = la que menos casos tiene, 5 = la que más): así, las entidades con más casos pesan más.</p>
-<div id="403ca2a1" class="cell" data-execution_count="13">
+<div id="e73e376a" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <pre><code>Entidad E: posición 1 x  5 casos = 5
 Entidad D: posición 2 x 10 casos = 20
@@ -602,7 +602,7 @@ Si todas tuvieran 20 casos: numerador = 0</code></pre>
 <section id="ejemplo-paso-3b-qué-representan-180-y-500" class="slide level2 smaller">
 <h2>Ejemplo Paso 3b: ¿qué representan 180 y 500?</h2>
 <p><strong>Numerador (180)</strong> = suma de las diferencias absolutas entre <strong>todos los pares</strong> de entidades. Mide qué tan <em>distintas</em> son las entidades entre sí.</p>
-<div id="0ad778db" class="cell" data-execution_count="14">
+<div id="2c0e14a8" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-stdout">
 <pre><code>Pares de entidades: 10
 Suma de |x_i - x_j| sobre todos los pares = 180</code></pre>
@@ -613,7 +613,7 @@ Suma de |x_i - x_j| sobre todos los pares = 180</code></pre>
 </div>
 <div class="fragment">
 <p><strong>Conexión con la curva de Lorenz:</strong> <span class="math inline">\(G = \dfrac{180}{500}\)</span> es lo mismo que el área entre la diagonal y la curva, dividida entre el área total bajo la diagonal (0.5).</p>
-<div id="198e4405" class="cell" data-execution_count="15">
+<div id="071ac52c" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-stdout">
 <pre><code>Área bajo la curva de Lorenz      = 0.32
 Área entre la diagonal y la curva = 0.18
@@ -624,7 +624,7 @@ Gini = área entre / 0.5           = 0.36</code></pre>
 </section>
 <section id="ejemplo-paso-4-graficar-la-curva-de-lorenz" class="slide level2">
 <h2>Ejemplo Paso 4: graficar la curva de Lorenz</h2>
-<div id="92002719" class="cell" data-execution_count="16">
+<div id="eebca969" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
