@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "practica-03/practica-03.html#objetivo",
-    "href": "practica-03/practica-03.html#objetivo",
+    "objectID": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
+    "href": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
     "title": "Práctica 3",
-    "section": "Objetivo",
-    "text": "Objetivo\n\n\nEstructuración y Arquitectura\nSelección de Framework\nPreprocesamiento Riguroso\nExploración Estadística Previa",
+    "section": "De la teoría al modelo: el proceso completo",
+    "text": "De la teoría al modelo: el proceso completo\nEn un proyecto real, entrenar un modelo es apenas la última fase. Antes hace falta:\n\n\nOrganizar el proyecto con una arquitectura de carpetas clara y reproducible\nSeleccionar el framework de análisis adecuado según el volumen de datos\nEjecutar un preprocesamiento que garantice datos consistentes, únicos y del tipo correcto\nDescribir cuantitativamente los datos con medidas de localización y variabilidad",
     "crumbs": [
       "Inicio",
       "Prácticas",
@@ -12,11 +12,11 @@
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#desarrollo",
-    "href": "practica-03/practica-03.html#desarrollo",
+    "objectID": "practica-03/practica-03.html#el-caso-de-estudio-endireh-2021",
+    "href": "practica-03/practica-03.html#el-caso-de-estudio-endireh-2021",
     "title": "Práctica 3",
-    "section": "Desarrollo",
-    "text": "Desarrollo\nContenido de la práctica 3.",
+    "section": "El caso de estudio: ENDIREH 2021",
+    "text": "El caso de estudio: ENDIREH 2021\n\nLa Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021, del INEGI, genera información representativa a nivel nacional y estatal sobre las experiencias de violencia física, sexual, emocional, económica y patrimonial que enfrentan las mujeres de 15 años y más.\n\n\nCombina de forma natural variables cualitativas y cuantitativas, además de valores faltantes, duplicados y columnas que requieren conversión de tipo — un escenario idéntico al de un proyecto profesional real.",
     "crumbs": [
       "Inicio",
       "Prácticas",
@@ -24,11 +24,491 @@
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#conclusiones",
-    "href": "practica-03/practica-03.html#conclusiones",
+    "objectID": "practica-03/practica-03.html#nota-de-sensibilidad-del-tema",
+    "href": "practica-03/practica-03.html#nota-de-sensibilidad-del-tema",
     "title": "Práctica 3",
-    "section": "Conclusiones",
-    "text": "Conclusiones\nEscribe tus conclusiones aquí.",
+    "section": "Nota de sensibilidad del tema",
+    "text": "Nota de sensibilidad del tema\n\nAl tratarse de un tema social sensible, el análisis debe realizarse con rigor técnico y responsabilidad ética, evitando conclusiones que estigmaticen a personas o grupos, y reconociendo que los datos representan experiencias reales de violencia reportadas por las encuestadas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#por-qué-una-arquitectura-de-carpetas",
+    "href": "practica-03/practica-03.html#por-qué-una-arquitectura-de-carpetas",
+    "title": "Práctica 3",
+    "section": "¿Por qué una arquitectura de carpetas?",
+    "text": "¿Por qué una arquitectura de carpetas?\n\nAntes de escribir una sola línea de análisis, el proyecto necesita una estructura ordenada y reproducible\nSe basa en el estándar de la industria Cookiecutter Data Science\n\n\nSepara claramente:\n\nDatos crudos (nunca se editan)\nDatos procesados (limpios, tipados, imputados)\nDatos listos para modelar\nCódigo fuente por responsabilidad (limpieza, visualización, modelos)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#pandas-vs.-polars-vs.-pyspark",
+    "href": "practica-03/practica-03.html#pandas-vs.-polars-vs.-pyspark",
+    "title": "Práctica 3",
+    "section": "Pandas vs. Polars vs. PySpark",
+    "text": "Pandas vs. Polars vs. PySpark\n\n\n\n\n\n\n\n\n\n\nFramework\nMotor / Diseño\nCuándo usarlo\nUso en la industria\n\n\n\n\nPandas\nUn solo hilo, basado en NumPy. API muy madura\nDatasets pequeños/medianos que caben en memoria\nEstándar histórico, el más enseñado\n\n\nPolars\nMotor en Rust, multihilo, evaluación lazy\nDatasets medianos/grandes en una sola máquina\nAdopción creciente 2024-2025\n\n\nPySpark\nMotor distribuido (Apache Spark) sobre clúster\nDatasets que no caben en una sola máquina (Big Data)\nEstándar para procesamiento distribuido",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#introducción-a-polars-modo-eager",
+    "href": "practica-03/practica-03.html#introducción-a-polars-modo-eager",
+    "title": "Práctica 3",
+    "section": "Introducción a Polars: Modo Eager",
+    "text": "Introducción a Polars: Modo Eager\n\n\n⚡ Eager (pl.read_csv)\nEjecución instantánea: Lee el archivo completo e interactúa inmediatamente en memoria RAM.\nCarga todas las columnas y filas de inmediato, aunque luego descartes el 90% mediante filtros o selecciones posteriores.\n# Lee 700k filas y 50 columnas ya\ndf = pl.read_csv(\"endireh_2021.csv\")\nres = df.filter(pl.col(\"edad\") &gt; 30)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#introducción-a-polars-modo-lazy",
+    "href": "practica-03/practica-03.html#introducción-a-polars-modo-lazy",
+    "title": "Práctica 3",
+    "section": "Introducción a Polars: Modo Lazy",
+    "text": "Introducción a Polars: Modo Lazy\n\n\n◐ Lazy (pl.scan_csv)\nEvaluación diferida: No carga datos a memoria. Solo lee metadatos e inspecciona el esquema (tipos de datos).\nCrea un grafo lógico de transformaciones y espera hasta que el usuario decida materializar con .collect().\n# Solo genera un LazyFrame (0 datos en RAM)\nq = (\n    pl.scan_csv(\"endireh_2021.csv\")\n    .filter(pl.col(\"edad\") &gt; 30)\n)\n\n\n\nCon 700,000 registros, trabajar en modo lazy evita procesar columnas que ni siquiera se van a usar en el análisis.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#introducción-a-polars-sintaxis-básica",
+    "href": "practica-03/practica-03.html#introducción-a-polars-sintaxis-básica",
+    "title": "Práctica 3",
+    "section": "Introducción a Polars: sintaxis básica",
+    "text": "Introducción a Polars: sintaxis básica\nimport polars as pl\n\n# Seleccionar columnas\ndf.select([\"edad_primer_union\", \"num_hijos\", \"nom_entidad\"])\n\n# Filtrar renglones\ndf.filter(pl.col(\"nom_entidad\") == \"Ciudad de Mexico\")\n\n# Agrupar y agregar\ndf.group_by(\"nom_entidad\").agg([\n    pl.col(\"edad_primer_union\").mean().alias(\"edad_promedio\")\n])\n\nLas expresiones pl.col(...) describen qué hacer con una columna; no se ejecuta nada hasta que se pide el resultado (.collect() en modo lazy).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#sintaxis-de-select",
+    "href": "practica-03/practica-03.html#sintaxis-de-select",
+    "title": "Práctica 3",
+    "section": "Sintaxis de Select()",
+    "text": "Sintaxis de Select()\n\nselect() devuelve un nuevo DataFrame solo con las columnas (o expresiones) que le indiques.\n\n# Una columna\ndf.select(\"edad\")\n\n# Varias columnas\ndf.select([\"edad\", \"nom_entidad\", \"factor_expansion\"])\n\n# Con expresiones: renombrar o transformar al vuelo\ndf.select([\n    pl.col(\"edad\"),\n    (pl.col(\"edad\") * 2).alias(\"edad_doble\")\n])\n\n\nRecibe una lista de nombres de columna o de expresiones pl.col(...). Con .alias() puedes renombrar o crear columnas calculadas sin salir del select().",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#sintaxis-de-filter",
+    "href": "practica-03/practica-03.html#sintaxis-de-filter",
+    "title": "Práctica 3",
+    "section": "Sintaxis de Filter()",
+    "text": "Sintaxis de Filter()\n\nfilter() conserva solo los renglones donde la condición es True.\n\n# Una condición\ndf.filter(pl.col(\"edad\") &gt; 30)\n\n# Varias condiciones (AND)\ndf.filter(\n    (pl.col(\"edad\") &gt; 30) & (pl.col(\"nom_entidad\") == \"Jalisco\")\n)\n\n# Condición OR\ndf.filter(\n    (pl.col(\"nivel_escolaridad\") == \"Primaria\")\n    | (pl.col(\"nivel_escolaridad\") == \"Secundaria\")\n)\n\n\nCada condición se escribe como pl.col(\"columna\") operador valor. Para combinar condiciones usa & (AND), | (OR) o ~ (NOT) — siempre con cada condición entre paréntesis.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#sintaxis-de-group_by",
+    "href": "practica-03/practica-03.html#sintaxis-de-group_by",
+    "title": "Práctica 3",
+    "section": "Sintaxis de Group_By()",
+    "text": "Sintaxis de Group_By()\n\ngroup_by() agrupa los renglones; por sí solo no calcula nada — siempre va seguido de .agg().\n\n# Agrupar por una columna y agregar\ndf.group_by(\"nom_entidad\").agg([\n    pl.col(\"edad\").mean().alias(\"edad_promedio\"),\n    pl.col(\"factor_expansion\").sum().alias(\"poblacion_total\")\n])\n\n# Agrupar por varias columnas\ndf.group_by([\"nom_entidad\", \"nivel_escolaridad\"]).agg(\n    pl.len().alias(\"num_encuestadas\")\n)\n\n\nDentro de .agg([...]) defines qué operación aplicar por grupo (mean, sum, len, etc.). Puedes agrupar por una o varias columnas, y encadenar .sort() después para ordenar el resultado.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#materializando-con-collect",
+    "href": "practica-03/practica-03.html#materializando-con-collect",
+    "title": "Práctica 3",
+    "section": "Materializando con collect()",
+    "text": "Materializando con collect()\n\nTodo lo anterior (select, filter, group_by) no ejecuta nada si vienes de pl.scan_csv(...) — solo arma el plan. .collect() es quien finalmente corre la consulta completa y te regresa un DataFrame real en memoria.\n\n\n\n\n\nAntes de .collect(), Polars optimiza el plan completo: junta el select y el filter para leer del CSV solo las columnas y filas necesarias, .collect() es el único punto donde realmente se toca el disco y se gasta memoria.\n\n\n\n\nresultado = (\n    pl.scan_csv(\"endireh_2021.csv\")        # 1. LazyFrame: aún no lee nada\n    .select([\"edad\", \"nom_entidad\",\n             \"nivel_escolaridad\", \"factor_expansion\"])\n    .filter(pl.col(\"edad\") &gt; 30)            # 2. Se agrega al plan\n    .group_by(\"nom_entidad\")\n    .agg([\n        pl.col(\"edad\").mean().alias(\"edad_promedio\"),\n        pl.len().alias(\"num_encuestadas\")\n    ])\n    .sort(\"num_encuestadas\", descending=True)\n    .collect()                               # 3. AQUI se ejecuta todo\n)\n\nprint(resultado)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-qué-hago",
+    "href": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-qué-hago",
+    "title": "Práctica 3",
+    "section": "Ya tengo mis datos ¿Ahora qué hago?",
+    "text": "Ya tengo mis datos ¿Ahora qué hago?",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#preprocesamiento",
+    "href": "practica-03/practica-03.html#preprocesamiento",
+    "title": "Práctica 3",
+    "section": "Preprocesamiento",
+    "text": "Preprocesamiento\n\nAntes de calcular cualquier medida o entrenar cualquier modelo, los datos crudos pasan por cuatro etapas:\n\n\n\nDetectar valores nulos — qué columnas los tienen y en qué porcentaje\nDecidir qué hacer con ellos — eliminar, imputar, o investigar si siguen un patrón\nNormalizar tipos de datos — que lo numérico sea numérico, lo categórico sea consistente\nFeature engineering — crear variables nuevas que representen mejor el fenómeno",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#eliminar-o-imputar-la-regla-del-5",
+    "href": "practica-03/practica-03.html#eliminar-o-imputar-la-regla-del-5",
+    "title": "Práctica 3",
+    "section": "¿Eliminar o imputar? La regla del 5%",
+    "text": "¿Eliminar o imputar? La regla del 5%\n\nHeurística común en la industria: si una columna tiene menos del 5% de valores nulos, eliminar esos renglones rara vez sesga la muestra de forma importante — es más simple que imputar y el costo de perder esos datos es bajo.\n\n\n\nEl 5% es una guía, no una ley. Si esa columna es central para tu análisis (por ejemplo, la variable que quieres describir o predecir), incluso un 3% de nulos merece revisión antes de eliminar.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#los-nulos-son-aleatorios-o-siguen-un-patrón",
+    "href": "practica-03/practica-03.html#los-nulos-son-aleatorios-o-siguen-un-patrón",
+    "title": "Práctica 3",
+    "section": "¿Los nulos son aleatorios o siguen un patrón?",
+    "text": "¿Los nulos son aleatorios o siguen un patrón?\n\n\nAleatorios (MCAR): la ausencia no depende de nada — un error de captura, una hoja perdida. Ej: un encuestador olvidó registrar la edad de algunas personas al azar.\nCon patrón relacionado a otra variable (MAR): la probabilidad de faltar depende de algo que sí observaste. Ej: las personas mayores de 60 años tienden a no responder la pregunta de nivel de estudios.\nCon patrón relacionado al propio valor (MNAR): la ausencia depende de lo que falta. Ej: las personas con ingresos muy altos o muy bajos prefieren no reportar su ingreso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#normalización-de-tipos-de-datos",
+    "href": "practica-03/practica-03.html#normalización-de-tipos-de-datos",
+    "title": "Práctica 3",
+    "section": "Normalización de tipos de datos",
+    "text": "Normalización de tipos de datos\n\nLos datos crudos casi nunca vienen con el tipo correcto: números guardados como texto, fechas como strings, o categorías escritas de formas distintas.\n\n\nEjemplo típico de una columna edad mal tipada:\n\"25\", \"30\", \"N/A\", \"28 años\", \" 41 \"\n\n\n\nMientras esa columna sea texto, no puedes calcular su media, ordenarla numéricamente ni compararla con &gt; o &lt; — Polars/pandas la tratan como cadenas, no como cantidades.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#código-normalizar-tipos-en-polars",
+    "href": "practica-03/practica-03.html#código-normalizar-tipos-en-polars",
+    "title": "Práctica 3",
+    "section": "Código: normalizar tipos en Polars",
+    "text": "Código: normalizar tipos en Polars\ndf = df.with_columns(\n    pl.col(\"edad\")\n      .str.strip_chars()                     # quita espacios\n      .str.extract(r\"(\\d+)\")                 # extrae solo el número\n      .cast(pl.Int32, strict=False)           # convierte a entero\n      .alias(\"edad\")\n)\n\n# Normalizar texto categórico (mayúsculas/espacios inconsistentes)\ndf = df.with_columns(\n    pl.col(\"nombre_categoria\").str.to_lowercase().str.strip_chars()\n)\n\nstrict=False convierte a null los valores que no se pudieron transformar (como \"N/A\") en lugar de tronar el proceso — así conservas el error como un nulo detectado, no como un dato inventado.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#feature-engineering-crear-variables-nuevas",
+    "href": "practica-03/practica-03.html#feature-engineering-crear-variables-nuevas",
+    "title": "Práctica 3",
+    "section": "Feature Engineering: crear variables nuevas",
+    "text": "Feature Engineering: crear variables nuevas\n\nCrear columnas nuevas a partir de las existentes para que representen mejor lo que quieres analizar o modelar.\n\n\nEjemplos:\n\nA partir de una fecha: edad = año_actual − año_nacimiento\nCombinar variables en una razón: ingreso_per_capita = ingreso_hogar / num_personas\n\n\n\n\nUn análisis o modelo es tan bueno como las variables que le das. edad_en_dias casi no dice nada útil; grupo_edad en categorías interpretables sí revela patrones claros al graficar o agrupar.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#resumen-el-flujo-completo",
+    "href": "practica-03/practica-03.html#resumen-el-flujo-completo",
+    "title": "Práctica 3",
+    "section": "Resumen: el flujo completo",
+    "text": "Resumen: el flujo completo\n\n\nDetectar nulos: qué columnas, qué porcentaje\nDecidir: &lt;5% y aleatorio → eliminar; alto % o con patrón → imputar e investigar\nNormalizar tipos: numérico a numérico, texto categórico consistente\nFeature engineering: crear variables que enriquezcan el análisis",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#medidas-de-localización-qué-responden",
+    "href": "practica-03/practica-03.html#medidas-de-localización-qué-responden",
+    "title": "Práctica 3",
+    "section": "Medidas de Localización: ¿qué responden?",
+    "text": "Medidas de Localización: ¿qué responden?\n\nResponden a la pregunta: ¿alrededor de qué valor se agrupan los datos?\n\n\nSon la base para construir un “perfil típico” de las encuestadas — por ejemplo, la edad promedio de una población, o el nivel de escolaridad más común. Sin ellas, no hay un punto de referencia para comparar grupos ni para detectar qué tan “normal” o “atípico” es un caso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#la-media-promedio-aritmético",
+    "href": "practica-03/practica-03.html#la-media-promedio-aritmético",
+    "title": "Práctica 3",
+    "section": "La Media: promedio aritmético",
+    "text": "La Media: promedio aritmético\n\n\\[\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\]\n\n\nCuándo usarla: variables cuantitativas con distribución razonablemente simétrica, sin valores extremos que la distorsionen.\n\n\n\nLimitación clave: es muy sensible a outliers. Un solo valor extremo (por ejemplo, una edad de unión reportada erróneamente como 99) puede desplazar la media completa, dando una imagen falsa del “promedio” real.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#la-mediana-el-valor-de-en-medio",
+    "href": "practica-03/practica-03.html#la-mediana-el-valor-de-en-medio",
+    "title": "Práctica 3",
+    "section": "La Mediana: el valor de en medio",
+    "text": "La Mediana: el valor de en medio\n\n\\[Me = \\begin{cases} x_{(\\frac{n+1}{2})} & n \\text{ impar} \\\\[4pt] \\dfrac{x_{(n/2)} + x_{(n/2+1)}}{2} & n \\text{ par} \\end{cases}\\]\n\n\nCuándo usarla: cuando la variable tiene una distribución asimétrica o contiene valores extremos — la mediana no se mueve por ellos, porque solo depende de la posición central, no de la magnitud de los valores.\n\n\n\nRegla práctica: si la media es mucho mayor que la mediana, la distribución está sesgada hacia la derecha (hay valores altos poco frecuentes que la “jalan”). Comparar ambas ya te dice algo sobre la forma de los datos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#la-moda-el-valor-más-frecuente",
+    "href": "practica-03/practica-03.html#la-moda-el-valor-más-frecuente",
+    "title": "Práctica 3",
+    "section": "La Moda: el valor más frecuente",
+    "text": "La Moda: el valor más frecuente\n\nLa moda es el valor (o categoría) que más veces se repite en los datos.\n\n\nCuándo usarla: es la única medida de tendencia central válida para variables cualitativas nominales — no tiene sentido calcular un “promedio” de nom_entidad o de sufrio_violencia_pareja, pero sí preguntar cuál es la categoría más común.\n\n\n\nEn ENDIREH, la moda es clave para variables como nivel_escolaridad o estado_civil_desc: te dice cuál es la situación más frecuente entre las encuestadas, algo que la media no puede responder.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#qué-es-un-percentil",
+    "href": "practica-03/practica-03.html#qué-es-un-percentil",
+    "title": "Práctica 3",
+    "section": "¿Qué es un percentil?",
+    "text": "¿Qué es un percentil?\n\nUn percentil es un valor que divide un conjunto de datos ordenados en 100 partes iguales. El percentil \\(P_k\\) indica el valor por debajo del cual queda el \\(k\\%\\) de las observaciones.\n\n\n\nNo es lo mismo que un porcentaje. Un porcentaje describe qué proporción de algo representa un valor; un percentil describe qué posición ocupa un valor dentro de todo el conjunto de datos, comparado con los demás.\n\n\n\nLos cuartiles (Q1, Q2, Q3) son casos particulares: Q1 = P25, Q2 = P50 (la mediana), Q3 = P75.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ejemplo-percentiles-en-un-examen",
+    "href": "practica-03/practica-03.html#ejemplo-percentiles-en-un-examen",
+    "title": "Práctica 3",
+    "section": "Ejemplo: percentiles en un examen",
+    "text": "Ejemplo: percentiles en un examen\n\nUn grupo de 20 estudiantes presenta un examen. Se ordenan sus calificaciones de menor a mayor:\n45, 50, 52, 55, 58, 60, 61, 63, 65, 67, 68, 70, 72, 74, 76, 78, 80, 85, 90, 95\n\n\n¿Cuál es el percentil 25 (P25)?\nBuscamos la posición que deja el 25% de los datos por debajo. Con 20 valores, esa posición cae entre el 5° y 6° dato: 58 y 60 → P25 ≈ 59.\nInterpretación: el 25% de los estudiantes sacó 59 puntos o menos.\n\n\n¿Cuál es el percentil 90 (P90)?\nCae cerca de la posición 18: P90 ≈ 85.\nInterpretación: el 90% de los estudiantes sacó 85 puntos o menos — solo el 10% sacó más de 85.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#qué-es-una-media-ponderada",
+    "href": "practica-03/practica-03.html#qué-es-una-media-ponderada",
+    "title": "Práctica 3",
+    "section": "¿Qué es una media ponderada?",
+    "text": "¿Qué es una media ponderada?\n\nEn una media simple, todos los valores pesan lo mismo. En una media ponderada, cada valor se multiplica por un peso que refleja qué tanto debe contar — porque representa más casos, más importancia, o más frecuencia que los demás.\n\n\n\\[\\bar{x}_w = \\frac{\\sum_{i=1}^{n} w_i x_i}{\\sum_{i=1}^{n} w_i}\\]\n\n\nSi todos los pesos \\(w_i\\) son iguales, la fórmula se reduce exactamente a la media simple — la media ponderada no es una fórmula distinta, es la versión general de la media.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ejemplo-el-promedio-que-engaña",
+    "href": "practica-03/practica-03.html#ejemplo-el-promedio-que-engaña",
+    "title": "Práctica 3",
+    "section": "Ejemplo: el promedio que engaña",
+    "text": "Ejemplo: el promedio que engaña\n\nTres salones presentan el mismo examen. Se reporta el promedio de cada salón:\n\n\n\nSalón\nN.º de estudiantes\nPromedio del salón\n\n\n\n\nA\n30\n70\n\n\nB\n10\n90\n\n\nC\n50\n60\n\n\n\n\n\nTrata a los tres salones como si tuvieran el mismo peso — como si el salón de 10 estudiantes contara igual que el de 50.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ejemplo-el-promedio-correcto",
+    "href": "practica-03/practica-03.html#ejemplo-el-promedio-correcto",
+    "title": "Práctica 3",
+    "section": "Ejemplo: el promedio correcto",
+    "text": "Ejemplo: el promedio correcto\n\nPromedio ponderado por número de estudiantes:\n\\[\\bar{x}_w = \\frac{(30)(70) + (10)(90) + (50)(60)}{30 + 10 + 50} = \\frac{6000}{90} = 66.7\\]\n\n\n\nLa diferencia (73.3 vs. 66.7) no es un error de redondeo: el salón C tiene 50 estudiantes con promedio bajo, así que debe pesar más en el resultado final. Ignorar eso hace parecer que el desempeño general fue mejor de lo que realmente fue.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#medidas-de-variabilidad-qué-responden",
+    "href": "practica-03/practica-03.html#medidas-de-variabilidad-qué-responden",
+    "title": "Práctica 3",
+    "section": "Medidas de Variabilidad: ¿qué responden?",
+    "text": "Medidas de Variabilidad: ¿qué responden?\n\nResponden a la pregunta: ¿qué tan dispersos están los datos respecto al valor central?\n\n\n\nDos variables pueden tener la misma media y comportarse de forma totalmente distinta. Una alta variabilidad advierte que un solo valor central puede ser engañoso, y que conviene segmentar a la población antes de sacar conclusiones.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#varianza-y-desviación-estándar",
+    "href": "practica-03/practica-03.html#varianza-y-desviación-estándar",
+    "title": "Práctica 3",
+    "section": "Varianza y Desviación Estándar",
+    "text": "Varianza y Desviación Estándar\n\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\qquad s = \\sqrt{s^2}\\]\n\n\nLa varianza promedia qué tan lejos está cada valor de la media (al cuadrado, para que las diferencias negativas y positivas no se cancelen). Se divide entre \\(n-1\\), no entre \\(n\\), porque estamos estimando la variabilidad de la población a partir de una muestra.\n\n\n\nCuándo usarla: la desviación estándar (\\(s\\)) es más interpretable que la varianza porque queda en las mismas unidades que la variable original (años, si hablamos de edad). Úsala para describir qué tan homogénea o heterogénea es una variable cuantitativa.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#rango-intercuartílico-iqr",
+    "href": "practica-03/practica-03.html#rango-intercuartílico-iqr",
+    "title": "Práctica 3",
+    "section": "Rango Intercuartílico (IQR)",
+    "text": "Rango Intercuartílico (IQR)\n\n\\[IQR = Q_3 - Q_1\\]\n\n\nEs el rango que cubre el 50% central de los datos, ignorando el 25% más bajo y el 25% más alto.\n\n\n\nCuándo usarlo: cuando la variable tiene valores extremos o una distribución sesgada — a diferencia de la varianza o el rango total, el IQR no se ve afectado por outliers, porque ni siquiera los considera en su cálculo. También es la base para detectar valores atípicos (fuera de \\(Q1 - 1.5 \\times IQR\\) o \\(Q3 + 1.5 \\times IQR\\)) y para construir boxplots.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-1-obtención-de-la-fuente-de-datos",
+    "href": "practica-03/practica-03.html#paso-1-obtención-de-la-fuente-de-datos",
+    "title": "Práctica 3",
+    "section": "Paso 1: Obtención de la fuente de datos",
+    "text": "Paso 1: Obtención de la fuente de datos\n\nDescargar del classroom el .csv",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-2-arquitectura-del-proyecto",
+    "href": "practica-03/practica-03.html#paso-2-arquitectura-del-proyecto",
+    "title": "Práctica 3",
+    "section": "Paso 2: Arquitectura del proyecto",
+    "text": "Paso 2: Arquitectura del proyecto\nproyecto-endireh-violencia/\n├── config/\n│   └── rutas.py              # Rutas de archivos estaticos\n├── data/\n│   ├── data-raw/             # Datos originales (nunca se editan)\n│   ├── data-processed/       # Datos limpios: sin duplicados, tipados, imputados\n│   ├── data-input-model/     # Datos transformados, listos para modelar\n│   └── data-model/           # Salidas: predicciones, clusters, reglas\n├── src/\n│   ├── cleaning/              # Scripts de limpieza y preprocesamiento\n│   ├── visualization/         # Scripts de graficas y EDA\n│   └── models/                 # Entrenamiento y evaluacion de modelos\n├── notebooks/                  # Notebooks exploratorios (no productivos)\n├── README.md\n└── requirements.txt",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-2-readme-y-requirements.txt",
+    "href": "practica-03/practica-03.html#paso-2-readme-y-requirements.txt",
+    "title": "Práctica 3",
+    "section": "Paso 2: README y requirements.txt",
+    "text": "Paso 2: README y requirements.txt\n\n\nEl README.md debe documentar, como mínimo: el objetivo del proyecto, la fuente de los datos, cómo instalar el entorno y cómo ejecutar el pipeline.\n\n\n\n\nEl requirements.txt debe fijar versiones exactas: polars==1.9.0, pandas==2.2.2, pyarrow==17.0.0, numpy==2.0.1, matplotlib, seaborn, scikit-learn, jupyter…\n\n\n\nSin README.md ni requirements.txt la práctica no se evalúa.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-3-selección-del-framework",
+    "href": "practica-03/practica-03.html#paso-3-selección-del-framework",
+    "title": "Práctica 3",
+    "section": "Paso 3: Selección del framework",
+    "text": "Paso 3: Selección del framework\n\nDado que la ENDIREH 2021 es un archivo manejable en una sola máquina (algunos cientos de miles de registros), se recomienda polars para todo el pipeline de la práctica.\n\n\n\nOpcionalmente, se puede replicar el preprocesamiento también en pandas, para documentar en el reporte las diferencias de sintaxis y de tiempo de ejecución entre ambos frameworks.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-4-carga-de-los-datos-crudos",
+    "href": "practica-03/practica-03.html#paso-4-carga-de-los-datos-crudos",
+    "title": "Práctica 3",
+    "section": "Paso 4: Carga de los datos crudos",
+    "text": "Paso 4: Carga de los datos crudos\nimport polars as pl\nfrom config.rutas import RUTA_DATA_RAW\n\ndf_crudo = pl.read_csv(RUTA_DATA_RAW / \"endireh_2021.csv\")\nprint(df_crudo.shape)\nprint(df_crudo.head())\n\nCon ~700,000 renglones, conviene explorar también la versión lazy:\ndf_lazy = pl.scan_csv(RUTA_DATA_RAW / \"endireh_2021.csv\")\nprint(df_lazy.collect_schema())",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-5-clasificación-de-variables",
+    "href": "practica-03/practica-03.html#paso-5-clasificación-de-variables",
+    "title": "Práctica 3",
+    "section": "Paso 5: Clasificación de variables",
+    "text": "Paso 5: Clasificación de variables\n\n\n\n\n\n\n\n\n\nVariable\nTipo de dato\nJustificación (ejemplo)\n\n\n\n\nedad_primer_union\nCuantitativa continua\nToma cualquier valor numérico en un rango de edades\n\n\nnum_hijos\n\n\n\n\nnom_entidad\n\n\n\n\nnivel_escolaridad\n\n\n\n\nsufrio_violencia_pareja\n\n\n\n\nfactor_expansion\n\n\n\n\n\n\n\n(Completar las variables restantes del dataset siguiendo esta misma lógica — si falta alguna, el equipo la agrega.)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-5-preprocesamiento-duplicados-y-tipos",
+    "href": "practica-03/practica-03.html#paso-5-preprocesamiento-duplicados-y-tipos",
+    "title": "Práctica 3",
+    "section": "Paso 5: Preprocesamiento — duplicados y tipos",
+    "text": "Paso 5: Preprocesamiento — duplicados y tipos\n\n\nEliminar (drop_nulls): válido cuando los nulos son pocos y no sesgan la muestra\nImputar con media/mediana: para variables cuantitativas, cuidando el efecto en la variabilidad\nImputar con moda: para variables categóricas\nMarcar como “No especificado”: cuando la ausencia de dato es en sí informativa",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-6-código",
+    "href": "practica-03/practica-03.html#paso-6-código",
+    "title": "Práctica 3",
+    "section": "Paso 6: Código",
+    "text": "Paso 6: Código\n\nPreprocesamiento de los datos\nMedidas de Localizacion\nMedidas de Variabilidad",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#rumbo-a-la-entrega",
+    "href": "practica-03/practica-03.html#rumbo-a-la-entrega",
+    "title": "Práctica 3",
+    "section": "Rumbo a la entrega",
+    "text": "Rumbo a la entrega",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#qué-debe-incluir-el-reporte",
+    "href": "practica-03/practica-03.html#qué-debe-incluir-el-reporte",
+    "title": "Práctica 3",
+    "section": "Qué debe incluir el reporte",
+    "text": "Qué debe incluir el reporte\n\n\nComparación de frameworks (pandas / polars / PySpark) y justificación de la elección Solo se debe de implementar un solo framework\nDocumentación del preprocesamiento: duplicados eliminados, columnas convertidas, estrategia de imputación\nTabla de clasificación de variables completa\nResultados de medidas de localización y variabilidad, con capturas del EDA\nRespuestas al cuestionario\n\n\n\nRepositorio de Git con README.md y requirements.txt (solo el link; nada de código en el classroom). data/data-raw/ no va en el repositorio.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#referencias",
+    "href": "practica-03/practica-03.html#referencias",
+    "title": "Práctica 3",
+    "section": "Referencias",
+    "text": "Referencias\n\nINEGI — ENDIREH 2021\nDescriptor de archivos ENDIREH 2021\nPolars User Guide\npandas documentation\nPySpark documentation\nCookiecutter Data Science",
     "crumbs": [
       "Inicio",
       "Prácticas",
@@ -1066,7 +1546,7 @@
     "href": "index.html#índice",
     "title": "Prácticas",
     "section": "Índice",
-    "text": "Índice\n\nPráctica 1: SQL Avanzado\nPráctica 2: Almacenes de Datos y BigQuery\nEjercicios DW\nPráctica 3",
+    "text": "Índice\n\nPráctica 1: SQL Avanzado\nPráctica 2: Almacenes de Datos y BigQuery\nEjercicios DW\nPráctica 3\nPráctica 4: Medidas de Concentración y Heterogenidad",
     "crumbs": [
       "Inicio",
       "Prácticas"
@@ -1433,819 +1913,814 @@
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
-    "href": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
-    "title": "Práctica 3",
-    "section": "De la teoría al modelo: el proceso completo",
-    "text": "De la teoría al modelo: el proceso completo\nEn un proyecto real, entrenar un modelo es apenas la última fase. Antes hace falta:\n\n\nOrganizar el proyecto con una arquitectura de carpetas clara y reproducible\nSeleccionar el framework de análisis adecuado según el volumen de datos\nEjecutar un preprocesamiento que garantice datos consistentes, únicos y del tipo correcto\nDescribir cuantitativamente los datos con medidas de localización y variabilidad",
+    "objectID": "practica-04/practica-04.html#objetivo-de-la-práctica",
+    "href": "practica-04/practica-04.html#objetivo-de-la-práctica",
+    "title": "Práctica 4",
+    "section": "Objetivo de la práctica",
+    "text": "Objetivo de la práctica\n\nCalcular e interpretar medidas de localización, variabilidad, heterogeneidad y concentración\nCalcular específicamente el coeficiente de Gini y la entropía de Shannon\nComunicar los hallazgos con visualizaciones adecuadas\nReflexionar críticamente sobre qué revelan —y qué ocultan— estas medidas sobre la violencia contra las mujeres",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#el-caso-de-estudio-endireh-2021",
-    "href": "practica-03/practica-03.html#el-caso-de-estudio-endireh-2021",
-    "title": "Práctica 3",
-    "section": "El caso de estudio: ENDIREH 2021",
-    "text": "El caso de estudio: ENDIREH 2021\n\nLa Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021, del INEGI, genera información representativa a nivel nacional y estatal sobre las experiencias de violencia física, sexual, emocional, económica y patrimonial que enfrentan las mujeres de 15 años y más.\n\n\nCombina de forma natural variables cualitativas y cuantitativas, además de valores faltantes, duplicados y columnas que requieren conversión de tipo — un escenario idéntico al de un proyecto profesional real.",
+    "objectID": "practica-04/practica-04.html#por-qué-esta-práctica",
+    "href": "practica-04/practica-04.html#por-qué-esta-práctica",
+    "title": "Práctica 4",
+    "section": "¿Por qué esta práctica?",
+    "text": "¿Por qué esta práctica?\nEn la Práctica 3 se dejaron los datos limpios, sin duplicados, con tipos correctos en data/data-processed/.\nEl siguiente paso natural en minería de datos es describir cuantitativamente esos datos antes de modelar: es el rol de la estadística descriptiva dentro del Análisis Exploratorio de Datos (EDA).\n\nNo se vuelve a descargar ni reestructurar el proyecto: se extiende la arquitectura ya existente.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#nota-de-sensibilidad-del-tema",
-    "href": "practica-03/practica-03.html#nota-de-sensibilidad-del-tema",
-    "title": "Práctica 3",
+    "objectID": "practica-04/practica-04.html#dos-preguntas-dos-familias-de-medidas",
+    "href": "practica-04/practica-04.html#dos-preguntas-dos-familias-de-medidas",
+    "title": "Práctica 4",
+    "section": "Dos preguntas, dos familias de medidas",
+    "text": "Dos preguntas, dos familias de medidas\n\nConcentración — ¿qué proporción del total se acumula en una fracción pequeña de las unidades de análisis? Herramienta clásica: curva de Lorenz y coeficiente de Gini.\n\n\nHeterogeneidad — ¿qué tan mezcladas o diversas son las categorías? Herramientas: IQV, Gini-Simpson, entropía de Shannon.\n\n\nUno mide desigualdad en cómo se reparte una cantidad; el otro mide diversidad entre categorías.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#nota-de-sensibilidad-del-tema",
+    "href": "practica-04/practica-04.html#nota-de-sensibilidad-del-tema",
+    "title": "Práctica 4",
     "section": "Nota de sensibilidad del tema",
-    "text": "Nota de sensibilidad del tema\n\nAl tratarse de un tema social sensible, el análisis debe realizarse con rigor técnico y responsabilidad ética, evitando conclusiones que estigmaticen a personas o grupos, y reconociendo que los datos representan experiencias reales de violencia reportadas por las encuestadas.",
+    "text": "Nota de sensibilidad del tema\n\n\n\n\n\n\nNote\n\n\nEl análisis debe hacerse con rigor técnico y responsabilidad ética:\n\nEvitar conclusiones que estigmaticen personas, grupos o entidades federativas\nRecordar que los datos representan experiencias reales de violencia\nUna concentración alta en una entidad no implica automáticamente “ahí hay más violencia” — puede reflejar diferencias en denuncia, tamaño poblacional o factores de expansión",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#por-qué-una-arquitectura-de-carpetas",
-    "href": "practica-03/practica-03.html#por-qué-una-arquitectura-de-carpetas",
-    "title": "Práctica 3",
-    "section": "¿Por qué una arquitectura de carpetas?",
-    "text": "¿Por qué una arquitectura de carpetas?\n\nAntes de escribir una sola línea de análisis, el proyecto necesita una estructura ordenada y reproducible\nSe basa en el estándar de la industria Cookiecutter Data Science\n\n\nSepara claramente:\n\nDatos crudos (nunca se editan)\nDatos procesados (limpios, tipados, imputados)\nDatos listos para modelar\nCódigo fuente por responsabilidad (limpieza, visualización, modelos)",
+    "objectID": "practica-04/practica-04.html#qué-miden",
+    "href": "practica-04/practica-04.html#qué-miden",
+    "title": "Práctica 4",
+    "section": "¿Qué miden?",
+    "text": "¿Qué miden?\n\n\nLocalización — dónde se “centra” la distribución\n\nMedia, mediana, moda\nPercentiles / cuantiles\nMedia ponderada por factor de expansión\n\n\n\n\nVariabilidad — qué tan dispersos están los datos\n\nVarianza y desviación estándar\nCoeficiente de variación (CV)\nRango intercuartílico (IQR)",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#pandas-vs.-polars-vs.-pyspark",
-    "href": "practica-03/practica-03.html#pandas-vs.-polars-vs.-pyspark",
-    "title": "Práctica 3",
-    "section": "Pandas vs. Polars vs. PySpark",
-    "text": "Pandas vs. Polars vs. PySpark\n\n\n\n\n\n\n\n\n\n\nFramework\nMotor / Diseño\nCuándo usarlo\nUso en la industria\n\n\n\n\nPandas\nUn solo hilo, basado en NumPy. API muy madura\nDatasets pequeños/medianos que caben en memoria\nEstándar histórico, el más enseñado\n\n\nPolars\nMotor en Rust, multihilo, evaluación lazy\nDatasets medianos/grandes en una sola máquina\nAdopción creciente 2024-2025\n\n\nPySpark\nMotor distribuido (Apache Spark) sobre clúster\nDatasets que no caben en una sola máquina (Big Data)\nEstándar para procesamiento distribuido",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
+    "objectID": "practica-04/practica-04.html#fórmulas-clave",
+    "href": "practica-04/practica-04.html#fórmulas-clave",
+    "title": "Práctica 4",
+    "section": "Fórmulas clave",
+    "text": "Fórmulas clave\n\\[\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i \\qquad \\text{CV} = \\frac{s}{\\bar{x}}\\]\n\\[\\text{IQR} = Q_3 - Q_1\\]\nEl CV permite comparar dispersión entre variables con escalas distintas; el IQR es robusto a valores atípicos."
   },
   {
-    "objectID": "practica-03/practica-03.html#por-qué-polars-para-esta-práctica",
-    "href": "practica-03/practica-03.html#por-qué-polars-para-esta-práctica",
-    "title": "Práctica 3",
-    "section": "¿Por qué Polars para esta práctica?",
-    "text": "¿Por qué Polars para esta práctica?\n\n\n\n\nLa ENDIREH tiene ~700,000 registros: manejable en una sola máquina, pero grande para exprimir a pandas\nSintaxis cercana a pandas → curva de aprendizaje corta\n\n\n\n\n\nMotor en Rust, multihilo por defecto, sin configuración extra\nEvaluación perezosa (lazy): optimiza toda la consulta antes de ejecutarla\n\n\n\n\npip install polars pyarrow",
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-1-los-datos",
+    "href": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-1-los-datos",
+    "title": "Práctica 4",
+    "section": "Ejemplo paso a paso — Paso 1: los datos",
+    "text": "Ejemplo paso a paso — Paso 1: los datos\nCasos reportados (hipotéticos) en 5 entidades, ya ordenados de menor a mayor:\n\n\nEntidad E: 5 casos\nEntidad D: 10 casos\nEntidad C: 15 casos\nEntidad B: 30 casos\nEntidad A: 40 casos\nTotal: 100",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#introducción-a-polars-eager-vs.-lazy",
-    "href": "practica-03/practica-03.html#introducción-a-polars-eager-vs.-lazy",
-    "title": "Práctica 3",
-    "section": "Introducción a Polars: Eager vs. Lazy",
-    "text": "Introducción a Polars: Eager vs. Lazy\n\n\n⚡ Eager (pl.read_csv)\nEjecución instantánea: Lee el archivo completo e interactúa inmediatamente en memoria RAM.\nCarga todas las columnas y filas de inmediato, aunque luego descartes el 90% mediante filtros o selecciones posteriores.\n# Lee 700k filas y 50 columnas ya\ndf = pl.read_csv(\"endireh_2021.csv\")\nres = df.filter(pl.col(\"edad\") &gt; 30)\n\n\n◐ Lazy (pl.scan_csv)\nEvaluación diferida: No carga datos a memoria. Solo lee metadatos e inspecciona el esquema (tipos de datos).\nCrea un grafo lógico de transformaciones y espera hasta que el usuario decida materializar con .collect().\n# Solo genera un LazyFrame (0 datos en RAM)\nq = (\n    pl.scan_csv(\"endireh_2021.csv\")\n    .filter(pl.col(\"edad\") &gt; 30)\n)\n\n\n\nCon 700,000 registros, trabajar en modo lazy evita procesar columnas que ni siquiera se van a usar en el análisis.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-2-localización",
+    "href": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-2-localización",
+    "title": "Práctica 4",
+    "section": "Ejemplo paso a paso — Paso 2: localización",
+    "text": "Ejemplo paso a paso — Paso 2: localización\n\n\nMedia   = 2.9\nMediana = 2.5\nModa    = 2"
   },
   {
-    "objectID": "practica-03/practica-03.html#introducción-a-polars-sintaxis-básica",
-    "href": "practica-03/practica-03.html#introducción-a-polars-sintaxis-básica",
-    "title": "Práctica 3",
-    "section": "Introducción a Polars: sintaxis básica",
-    "text": "Introducción a Polars: sintaxis básica\nimport polars as pl\n\n# Seleccionar columnas\ndf.select([\"edad_primer_union\", \"num_hijos\", \"nom_entidad\"])\n\n# Filtrar renglones\ndf.filter(pl.col(\"nom_entidad\") == \"Ciudad de Mexico\")\n\n# Agrupar y agregar\ndf.group_by(\"nom_entidad\").agg([\n    pl.col(\"edad_primer_union\").mean().alias(\"edad_promedio\")\n])\n\nLas expresiones pl.col(...) describen qué hacer con una columna; no se ejecuta nada hasta que se pide el resultado (.collect() en modo lazy).",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-3-variabilidad",
+    "href": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-3-variabilidad",
+    "title": "Práctica 4",
+    "section": "Ejemplo paso a paso — Paso 3: variabilidad",
+    "text": "Ejemplo paso a paso — Paso 3: variabilidad\n\n\nDesv. estándar = 1.578\nCV             = 0.544  (54.4%)\nQ1=2.0, Q3=3.75, IQR=1.75"
   },
   {
-    "objectID": "practica-03/practica-03.html#polars-vs.-pandas-sintaxis-comparada",
-    "href": "practica-03/practica-03.html#polars-vs.-pandas-sintaxis-comparada",
-    "title": "Práctica 3",
-    "section": "Polars vs. pandas: sintaxis comparada",
-    "text": "Polars vs. pandas: sintaxis comparada\n\n\n\n\n\n\n\n\n\nOperación\npandas\npolars\n\n\n\n\nLeer CSV\npd.read_csv(ruta)\npl.read_csv(ruta) / pl.scan_csv(ruta)\n\n\nFiltrar\ndf[df.col &gt; 5]\ndf.filter(pl.col(\"col\") &gt; 5)\n\n\nSeleccionar\ndf[[\"a\",\"b\"]]\ndf.select([\"a\",\"b\"])\n\n\nAgrupar\ndf.groupby(\"col\").mean()\ndf.group_by(\"col\").agg(pl.col(\"x\").mean())\n\n\nQuitar nulos\ndf.dropna()\ndf.drop_nulls()",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
+    "objectID": "practica-04/practica-04.html#interpretación-del-ejemplo",
+    "href": "practica-04/practica-04.html#interpretación-del-ejemplo",
+    "title": "Práctica 4",
+    "section": "Interpretación del ejemplo",
+    "text": "Interpretación del ejemplo\n\n\n\nÍndice\nValor\nLectura\n\n\n\n\nGini-Simpson\n0.635\nDiversidad moderada-alta\n\n\nIQV\n0.847\n85% de la heterogeneidad máxima posible\n\n\nEntropía (H/H_max)\n0.824\n82% de la incertidumbre máxima\n\n\n\n\nLos tres índices coinciden: hay diversidad considerable de tipos de violencia, pero no es máxima porque “Psicológica” domina con el 50% de los casos."
   },
   {
-    "objectID": "practica-03/practica-03.html#medidas-de-localización-fundamentos",
-    "href": "practica-03/practica-03.html#medidas-de-localización-fundamentos",
-    "title": "Práctica 3",
-    "section": "Medidas de Localización: fundamentos",
-    "text": "Medidas de Localización: fundamentos\n\n\\[\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\]\n\n\n\\[Me = \\begin{cases} x_{(\\frac{n+1}{2})} & n \\text{ impar} \\\\[4pt] \\dfrac{x_{(n/2)} + x_{(n/2+1)}}{2} & n \\text{ par} \\end{cases}\\]\n\n\nJunto con la moda y los cuantiles/percentiles (Q1, Q2, Q3, P10, P90), construyen el “perfil típico” de las encuestadas.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
+    "objectID": "practica-04/practica-04.html#qué-miden-1",
+    "href": "practica-04/practica-04.html#qué-miden-1",
+    "title": "Práctica 4",
+    "section": "¿Qué miden?",
+    "text": "¿Qué miden?\nAplican a variables cualitativas. Responden:\n\n¿Las categorías reportadas están concentradas en una sola categoría dominante, o repartidas de forma pareja entre varias?\n\nSea \\(k\\) el número de categorías y \\(p_i\\) la proporción de observaciones en la categoría \\(i\\)."
   },
   {
-    "objectID": "practica-03/practica-03.html#media-ponderada-por-qué-importa",
-    "href": "practica-03/practica-03.html#media-ponderada-por-qué-importa",
-    "title": "Práctica 3",
-    "section": "Media ponderada: por qué importa",
-    "text": "Media ponderada: por qué importa\n\nLa ENDIREH es una encuesta con muestreo complejo: cada registro trae un factor_expansion que indica a cuántas mujeres de la población representa esa observación.\n\n\n\\[\\bar{x}_w = \\frac{\\sum_{i=1}^{n} w_i x_i}{\\sum_{i=1}^{n} w_i}, \\qquad w_i = \\text{factor\\_expansion}_i\\]\n\n\nCuándo usarla: siempre que los datos provengan de un muestreo con pesos o factores de expansión — es decir, casi cualquier encuesta oficial (ENDIREH, ENIGH, ENOE, etc.), no solo este dataset.\n\n\n\nCalcular la media sin ponderar solo describe a la muestra encuestada, no a la población real. En un tema como violencia contra las mujeres, reportar la cifra equivocada puede sub- o sobre-representar la magnitud real del problema a nivel nacional.",
+    "objectID": "practica-04/practica-04.html#índice-de-variación-cualitativa-iqv",
+    "href": "practica-04/practica-04.html#índice-de-variación-cualitativa-iqv",
+    "title": "Práctica 4",
+    "section": "Índice de Variación Cualitativa (IQV)",
+    "text": "Índice de Variación Cualitativa (IQV)\n\\[\\text{IQV} = \\frac{k\\left(1 - \\sum_{i=1}^{k} p_i^2\\right)}{k - 1}\\]\n\n\\(\\text{IQV} = 0\\) → toda la masa en una sola categoría (heterogeneidad nula)\n\\(\\text{IQV} = 1\\) → categorías perfectamente balanceadas (heterogeneidad máxima)",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#medidas-de-variabilidad-fundamentos",
-    "href": "practica-03/practica-03.html#medidas-de-variabilidad-fundamentos",
-    "title": "Práctica 3",
-    "section": "Medidas de Variabilidad: fundamentos",
-    "text": "Medidas de Variabilidad: fundamentos\n\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\qquad s = \\sqrt{s^2}\\]\n\n\n\\[CV = \\frac{s}{\\bar{x}} \\times 100\\% \\qquad IQR = Q_3 - Q_1\\]\n\n\nEl CV permite comparar la dispersión relativa entre grupos con medias distintas — algo que la desviación estándar por sí sola no permite.",
+    "objectID": "practica-04/practica-04.html#índice-de-gini-simpson",
+    "href": "practica-04/practica-04.html#índice-de-gini-simpson",
+    "title": "Práctica 4",
+    "section": "Índice de Gini-Simpson",
+    "text": "Índice de Gini-Simpson\n\\[\\text{GS} = 1 - \\sum_{i=1}^{k} p_i^2\\]\n\nInterpretación intuitiva: probabilidad de que dos observaciones elegidas al azar pertenezcan a categorías distintas\nMismo rango de comportamiento que el IQV, pero sin reescalar por \\(k\\)",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#registros-y-una-historia-que-contar",
-    "href": "practica-03/practica-03.html#registros-y-una-historia-que-contar",
-    "title": "Práctica 3",
-    "section": "700,000 registros y una historia que contar",
-    "text": "700,000 registros y una historia que contar",
+    "objectID": "practica-04/practica-04.html#entropía-de-shannon",
+    "href": "practica-04/practica-04.html#entropía-de-shannon",
+    "title": "Práctica 4",
+    "section": "Entropía de Shannon",
+    "text": "Entropía de Shannon\n\\[H = -\\sum_{i=1}^{k} p_i \\log_2(p_i), \\qquad 0 \\le H \\le \\log_2(k)\\]\n\nMide incertidumbre: ¿qué tan difícil es predecir la categoría de un caso elegido al azar?\n\\(H = 0\\) → nula incertidumbre (una sola categoría)\n\\(H = \\log_2(k)\\) → máxima incertidumbre (categorías balanceadas)",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#paso-1-obtención-de-la-fuente-de-datos",
-    "href": "practica-03/practica-03.html#paso-1-obtención-de-la-fuente-de-datos",
-    "title": "Práctica 3",
-    "section": "Paso 1: Obtención de la fuente de datos",
-    "text": "Paso 1: Obtención de la fuente de datos\n\nDescargar del classroom el .csv",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-1-los-datos-1",
+    "href": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-1-los-datos-1",
+    "title": "Práctica 4",
+    "section": "Ejemplo paso a paso — Paso 1: los datos",
+    "text": "Ejemplo paso a paso — Paso 1: los datos\nCasos reportados (hipotéticos) en 5 entidades, ya ordenados de menor a mayor:\n\n\nEntidad E: 5 casos\nEntidad D: 10 casos\nEntidad C: 15 casos\nEntidad B: 30 casos\nEntidad A: 40 casos\nTotal: 100"
   },
   {
-    "objectID": "practica-03/practica-03.html#paso-2-arquitectura-del-proyecto",
-    "href": "practica-03/practica-03.html#paso-2-arquitectura-del-proyecto",
-    "title": "Práctica 3",
-    "section": "Paso 2: Arquitectura del proyecto",
-    "text": "Paso 2: Arquitectura del proyecto\nproyecto-endireh-violencia/\n├── config/\n│   └── rutas.py              # Rutas de archivos estaticos\n├── data/\n│   ├── data-raw/             # Datos originales (nunca se editan)\n│   ├── data-processed/       # Datos limpios: sin duplicados, tipados, imputados\n│   ├── data-input-model/     # Datos transformados, listos para modelar\n│   └── data-model/           # Salidas: predicciones, clusters, reglas\n├── src/\n│   ├── cleaning/              # Scripts de limpieza y preprocesamiento\n│   ├── visualization/         # Scripts de graficas y EDA\n│   └── models/                 # Entrenamiento y evaluacion de modelos\n├── notebooks/                  # Notebooks exploratorios (no productivos)\n├── README.md\n└── requirements.txt",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-2-proporciones",
+    "href": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-2-proporciones",
+    "title": "Práctica 4",
+    "section": "Ejemplo paso a paso — Paso 2: proporciones",
+    "text": "Ejemplo paso a paso — Paso 2: proporciones\n\n\nProporciones p_i: [0.5  0.3  0.15 0.05]\np_i^2:            [0.25   0.09   0.0225 0.0025]\nSuma p_i^2 = 0.365"
   },
   {
-    "objectID": "practica-03/practica-03.html#paso-2-readme-y-requirements.txt",
-    "href": "practica-03/practica-03.html#paso-2-readme-y-requirements.txt",
-    "title": "Práctica 3",
-    "section": "Paso 2: README y requirements.txt",
-    "text": "Paso 2: README y requirements.txt\n\n\nEl README.md debe documentar, como mínimo: el objetivo del proyecto, la fuente de los datos, cómo instalar el entorno y cómo ejecutar el pipeline.\n\n\n\n\nEl requirements.txt debe fijar versiones exactas: polars==1.9.0, pandas==2.2.2, pyarrow==17.0.0, numpy==2.0.1, matplotlib, seaborn, scikit-learn, jupyter…\n\n\n\nSin README.md ni requirements.txt la práctica no se evalúa.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-3-gini-simpson-e-iqv",
+    "href": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-3-gini-simpson-e-iqv",
+    "title": "Práctica 4",
+    "section": "Ejemplo paso a paso — Paso 3: Gini-Simpson e IQV",
+    "text": "Ejemplo paso a paso — Paso 3: Gini-Simpson e IQV\n\n\nGini-Simpson = 0.6350\nIQV          = 0.8467"
   },
   {
-    "objectID": "practica-03/practica-03.html#paso-3-selección-del-framework",
-    "href": "practica-03/practica-03.html#paso-3-selección-del-framework",
-    "title": "Práctica 3",
-    "section": "Paso 3: Selección del framework",
-    "text": "Paso 3: Selección del framework\n\nDado que la ENDIREH 2021 es un archivo manejable en una sola máquina (algunos cientos de miles de registros), se recomienda polars para todo el pipeline de la práctica.\n\n\n\nOpcionalmente, se puede replicar el preprocesamiento también en pandas, para documentar en el reporte las diferencias de sintaxis y de tiempo de ejecución entre ambos frameworks.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-4-entropía-de-shannon",
+    "href": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-4-entropía-de-shannon",
+    "title": "Práctica 4",
+    "section": "Ejemplo paso a paso — Paso 4: Entropía de Shannon",
+    "text": "Ejemplo paso a paso — Paso 4: Entropía de Shannon\n\n\nH     = 1.6477 bits\nH_max = 2.0000 bits\nH / H_max = 0.8239  (82.4%)"
+  },
+  {
+    "objectID": "practica-04/practica-04.html#interpretación-del-ejemplo-1",
+    "href": "practica-04/practica-04.html#interpretación-del-ejemplo-1",
+    "title": "Práctica 4",
+    "section": "Interpretación del ejemplo",
+    "text": "Interpretación del ejemplo\n\n\n\nÍndice\nValor\nLectura\n\n\n\n\nGini-Simpson\n0.635\nDiversidad moderada-alta\n\n\nIQV\n0.847\n85% de la heterogeneidad máxima posible\n\n\nEntropía (H/H_max)\n0.824\n82% de la incertidumbre máxima\n\n\n\n\nLos tres índices coinciden: hay diversidad considerable de tipos de violencia, pero no es máxima porque “Psicológica” domina con el 50% de los casos."
   },
   {
-    "objectID": "practica-03/practica-03.html#paso-4-carga-de-los-datos-crudos",
-    "href": "practica-03/practica-03.html#paso-4-carga-de-los-datos-crudos",
-    "title": "Práctica 3",
-    "section": "Paso 4: Carga de los datos crudos",
-    "text": "Paso 4: Carga de los datos crudos\nimport polars as pl\nfrom config.rutas import RUTA_DATA_RAW\n\ndf_crudo = pl.read_csv(RUTA_DATA_RAW / \"endireh_2021.csv\")\nprint(df_crudo.shape)\nprint(df_crudo.head())\n\nCon ~700,000 renglones, conviene explorar también la versión lazy:\ndf_lazy = pl.scan_csv(RUTA_DATA_RAW / \"endireh_2021.csv\")\nprint(df_lazy.collect_schema())",
+    "objectID": "practica-04/practica-04.html#casos-extremos-intuición",
+    "href": "practica-04/practica-04.html#casos-extremos-intuición",
+    "title": "Práctica 4",
+    "section": "Casos extremos (intuición)",
+    "text": "Casos extremos (intuición)\n\n\nConcentración total    -&gt; GS=0.00  H=-0.00\nBalance perfecto       -&gt; GS=0.75  H=2.00",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#paso-5-clasificación-de-variables",
-    "href": "practica-03/practica-03.html#paso-5-clasificación-de-variables",
-    "title": "Práctica 3",
-    "section": "Paso 5: Clasificación de variables",
-    "text": "Paso 5: Clasificación de variables\n\n\n\n\n\n\n\n\n\nVariable\nTipo de dato\nJustificación (ejemplo)\n\n\n\n\nedad_primer_union\nCuantitativa continua\nToma cualquier valor numérico en un rango de edades\n\n\nnum_hijos\n\n\n\n\nnom_entidad\n\n\n\n\nnivel_escolaridad\n\n\n\n\nsufrio_violencia_pareja\n\n\n\n\nfactor_expansion\n\n\n\n\n\n\n\n(Completar las variables restantes del dataset siguiendo esta misma lógica — si falta alguna, el equipo la agrega.)",
+    "objectID": "practica-04/practica-04.html#qué-miden-curva-de-lorenz",
+    "href": "practica-04/practica-04.html#qué-miden-curva-de-lorenz",
+    "title": "Práctica 4",
+    "section": "¿Qué miden? — Curva de Lorenz",
+    "text": "¿Qué miden? — Curva de Lorenz\nResponde: ¿qué fracción de una cantidad total (casos de violencia) se acumula en una fracción pequeña de las unidades (entidades federativas)?\nConstrucción de la curva:\n\nOrdenar las unidades de menor a mayor en la cantidad de interés\nCalcular la proporción acumulada de la cantidad\nCalcular la proporción acumulada de unidades\nGraficar (prop. acumulada de unidades, prop. acumulada de la cantidad) contra la diagonal de igualdad perfecta\n\nMisma herramienta que usa la economía para medir desigualdad del ingreso.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#paso-5-preprocesamiento-duplicados-y-tipos",
-    "href": "practica-03/practica-03.html#paso-5-preprocesamiento-duplicados-y-tipos",
-    "title": "Práctica 3",
-    "section": "Paso 5: Preprocesamiento — duplicados y tipos",
-    "text": "Paso 5: Preprocesamiento — duplicados y tipos\n\n\nEliminar (drop_nulls): válido cuando los nulos son pocos y no sesgan la muestra\nImputar con media/mediana: para variables cuantitativas, cuidando el efecto en la variabilidad\nImputar con moda: para variables categóricas\nMarcar como “No especificado”: cuando la ausencia de dato es en sí informativa",
+    "objectID": "practica-04/practica-04.html#coeficiente-de-gini",
+    "href": "practica-04/practica-04.html#coeficiente-de-gini",
+    "title": "Práctica 4",
+    "section": "Coeficiente de Gini",
+    "text": "Coeficiente de Gini\n\\[G = \\frac{2\\sum_{i=1}^{n} i\\, x_{(i)} - (n+1)\\sum_{i=1}^{n} x_{(i)}}{n\\sum_{i=1}^{n} x_{(i)}}, \\quad x_{(i)} \\text{ ordenado ascendentemente}\\]\n\n\\(G = 0\\) → reparto perfectamente homogéneo entre entidades\n\\(G \\to 1\\) → casi todos los casos concentrados en muy pocas entidades",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#paso-5-estrategias-de-imputación",
-    "href": "practica-03/practica-03.html#paso-5-estrategias-de-imputación",
-    "title": "Práctica 3",
-    "section": "Paso 5: Estrategias de imputación",
-    "text": "Paso 5: Estrategias de imputación\n\n\nEliminar (drop_nulls): válido cuando los nulos son pocos y no sesgan la muestra\nImputar con media/mediana: para variables cuantitativas, cuidando el efecto en la variabilidad\nImputar con moda: para variables categóricas\nMarcar como “No especificado”: cuando la ausencia de dato es en sí informativa\n\n\n\n\nEn un dataset sobre violencia, un valor faltante en “sufrió violencia” no siempre es aleatorio — puede reflejar falta de disposición a responder. Imputar sin cuidado puede introducir sesgo.",
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-1-los-datos-2",
+    "href": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-1-los-datos-2",
+    "title": "Práctica 4",
+    "section": "Ejemplo paso a paso — Paso 1: los datos",
+    "text": "Ejemplo paso a paso — Paso 1: los datos\nCasos reportados (hipotéticos) en 5 entidades, ya ordenados de menor a mayor:\n\n\nEntidad E: 5 casos\nEntidad D: 10 casos\nEntidad C: 15 casos\nEntidad B: 30 casos\nEntidad A: 40 casos\nTotal: 100"
+  },
+  {
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-2-proporciones-acumuladas",
+    "href": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-2-proporciones-acumuladas",
+    "title": "Práctica 4",
+    "section": "Ejemplo paso a paso — Paso 2: proporciones acumuladas",
+    "text": "Ejemplo paso a paso — Paso 2: proporciones acumuladas\n\n\nProp. acumulada de casos:     [0.05 0.15 0.3  0.6  1.  ]\nProp. acumulada de entidades: [0.2 0.4 0.6 0.8 1. ]\n\n\nNótese que el 20% de las entidades (1 de 5) ya acumula solo el 5% de los casos, mientras que la última entidad por sí sola aporta el 40%.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#paso-6-código-medidas-de-localización",
-    "href": "practica-03/practica-03.html#paso-6-código-medidas-de-localización",
-    "title": "Práctica 3",
-    "section": "Paso 6: Código — medidas de localización",
-    "text": "Paso 6: Código — medidas de localización\nimport numpy as np\n\nresumen = df.select([\n    pl.col(\"edad_primer_union\").mean().alias(\"media_edad\"),\n    pl.col(\"edad_primer_union\").median().alias(\"mediana_edad\"),\n    pl.col(\"edad_primer_union\").quantile(0.25).alias(\"Q1_edad\"),\n    pl.col(\"edad_primer_union\").quantile(0.75).alias(\"Q3_edad\"),\n    pl.col(\"nivel_escolaridad\").mode().alias(\"moda_escolaridad\"),\n])\n\n# Media ponderada por factor de expansion\ndf_clean = df.drop_nulls(subset=[\"edad_primer_union\"])\nedad  = df_clean[\"edad_primer_union\"].to_numpy()\npesos = df_clean[\"factor_expansion\"].to_numpy()\nmedia_ponderada = np.average(edad, weights=pesos)",
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-3-coeficiente-de-gini",
+    "href": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-3-coeficiente-de-gini",
+    "title": "Práctica 4",
+    "section": "Ejemplo paso a paso — Paso 3: coeficiente de Gini",
+    "text": "Ejemplo paso a paso — Paso 3: coeficiente de Gini\n\n\nNumerador   = 180\nDenominador = 500\nCoeficiente de Gini = 0.360",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#paso-7-código-medidas-de-variabilidad",
-    "href": "practica-03/practica-03.html#paso-7-código-medidas-de-variabilidad",
-    "title": "Práctica 3",
-    "section": "Paso 7: Código — medidas de variabilidad",
-    "text": "Paso 7: Código — medidas de variabilidad\nresumen_var = df.select([\n    (pl.col(\"edad_primer_union\").max()\n     - pl.col(\"edad_primer_union\").min()).alias(\"rango\"),\n    pl.col(\"edad_primer_union\").var().alias(\"varianza\"),\n    pl.col(\"edad_primer_union\").std().alias(\"desv_estandar\"),\n    (pl.col(\"edad_primer_union\").quantile(0.75)\n     - pl.col(\"edad_primer_union\").quantile(0.25)).alias(\"IQR\"),\n])\n\ncv = (resumen_var[\"desv_estandar\"][0]\n      / df[\"edad_primer_union\"].mean()) * 100",
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-4-graficar-la-curva-de-lorenz",
+    "href": "practica-04/practica-04.html#ejemplo-paso-a-paso-paso-4-graficar-la-curva-de-lorenz",
+    "title": "Práctica 4",
+    "section": "Ejemplo paso a paso — Paso 4: graficar la curva de Lorenz",
+    "text": "Ejemplo paso a paso — Paso 4: graficar la curva de Lorenz",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#paso-7-comparando-grupos-violencia-de-pareja",
-    "href": "practica-03/practica-03.html#paso-7-comparando-grupos-violencia-de-pareja",
-    "title": "Práctica 3",
-    "section": "Paso 7: Comparando grupos — ¿violencia de pareja?",
-    "text": "Paso 7: Comparando grupos — ¿violencia de pareja?\n\n\nDividir el dataset en dos grupos según sufrio_violencia_pareja\nCalcular media, desviación estándar y CV por separado en cada grupo\nComparar el CV entre ambos grupos\n\n\n\n\nUn CV considerablemente más alto en un grupo sugiere mayor heterogeneidad interna — una pista para plantear hipótesis, no una conclusión por sí sola.",
+    "objectID": "practica-04/practica-04.html#interpretación-g-0.36",
+    "href": "practica-04/practica-04.html#interpretación-g-0.36",
+    "title": "Práctica 4",
+    "section": "Interpretación: G = 0.36",
+    "text": "Interpretación: G = 0.36\n\nEl área entre la curva de Lorenz y la diagonal de igualdad es moderada\nExiste concentración por encima de lo homogéneo, pero lejos del extremo (\\(G\\to1\\))\nEn el contexto de ENDIREH: sugiere que algunas entidades concentran más casos que otras, sin que unas pocas acaparen prácticamente todo",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#rumbo-a-la-entrega",
-    "href": "practica-03/practica-03.html#rumbo-a-la-entrega",
-    "title": "Práctica 3",
-    "section": "Rumbo a la entrega",
-    "text": "Rumbo a la entrega",
+    "objectID": "practica-04/practica-04.html#primos-conceptuales-no-sinónimos",
+    "href": "practica-04/practica-04.html#primos-conceptuales-no-sinónimos",
+    "title": "Práctica 4",
+    "section": "Primos conceptuales, no sinónimos",
+    "text": "Primos conceptuales, no sinónimos\n\n\n\n\n\n\n\n\n\nEntropía de Shannon (heterogeneidad)\nGini (concentración)\n\n\n\n\nMide\nDiversidad / incertidumbre entre categorías\nDesigualdad en cómo se reparte una cantidad\n\n\nRango\n\\(0\\) a \\(\\log_2(k)\\)\n\\(0\\) a \\(1\\)\n\n\nPregunta\n¿Qué tan mezcladas están las categorías?\n¿Qué proporción se concentra en pocas unidades?\n\n\nOrigen\nTeoría de la información (1948)\nEstadística económica (1912)",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#qué-debe-incluir-el-reporte",
-    "href": "practica-03/practica-03.html#qué-debe-incluir-el-reporte",
-    "title": "Práctica 3",
-    "section": "Qué debe incluir el reporte",
-    "text": "Qué debe incluir el reporte\n\n\nComparación de frameworks (pandas / polars / PySpark) y justificación de la elección Solo se debe de implementar un solo framework\nDocumentación del preprocesamiento: duplicados eliminados, columnas convertidas, estrategia de imputación\nTabla de clasificación de variables completa\nResultados de medidas de localización y variabilidad, con capturas del EDA\nRespuestas al cuestionario\n\n\n\nRepositorio de Git con README.md y requirements.txt (solo el link; nada de código en el classroom). data/data-raw/ no va en el repositorio.",
+    "objectID": "practica-04/practica-04.html#aplicando-ambos-a-la-misma-variable",
+    "href": "practica-04/practica-04.html#aplicando-ambos-a-la-misma-variable",
+    "title": "Práctica 4",
+    "section": "Aplicando ambos a la misma variable",
+    "text": "Aplicando ambos a la misma variable\nReutilizamos las frecuencias de tipo de violencia (Psicológica=50, Física=30, Económica=15, Sexual=5) pero ahora aplicamos el Gini a esas mismas frecuencias, tratando cada categoría como una “unidad”:\n\n\nEntropía (H/H_max) = 0.824\nGini sobre las mismas frecuencias = 0.375",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#rúbrica-de-evaluación",
-    "href": "practica-03/practica-03.html#rúbrica-de-evaluación",
-    "title": "Práctica 3",
-    "section": "Rúbrica de evaluación",
-    "text": "Rúbrica de evaluación\n\n\n\n\nCriterio\nPorcentaje\n\n\n\n\nArquitectura del proyecto\n20%\n\n\nSelección y justificación del framework\n25%\n\n\nEDA, clasificación de variables y medidas descriptivas\n35%\n\n\nEntendimiento del problema\n20%",
+    "objectID": "practica-04/practica-04.html#diferencia-conceptual-párrafo-guía",
+    "href": "practica-04/practica-04.html#diferencia-conceptual-párrafo-guía",
+    "title": "Práctica 4",
+    "section": "Diferencia conceptual (párrafo guía)",
+    "text": "Diferencia conceptual (párrafo guía)\n\nLa entropía/uniformidad describe qué tan repartida está la violencia entre los tipos reportados (82% de la diversidad máxima posible). El Gini aplicado a esas mismas frecuencias describe qué tan desigual es esa repartición en términos de concentración relativa (0.375, concentración moderada en “Psicológica”). Ambos números describen el mismo fenómeno desde ángulos distintos: uno mide mezcla, el otro mide acaparamiento.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#referencias",
-    "href": "practica-03/practica-03.html#referencias",
-    "title": "Práctica 3",
-    "section": "Referencias",
-    "text": "Referencias\n\nINEGI — ENDIREH 2021\nDescriptor de archivos ENDIREH 2021\nPolars User Guide\npandas documentation\nPySpark documentation\nCookiecutter Data Science",
+    "objectID": "practica-04/practica-04.html#punto-de-partida-lo-que-ya-tenemos-de-la-práctica-3",
+    "href": "practica-04/practica-04.html#punto-de-partida-lo-que-ya-tenemos-de-la-práctica-3",
+    "title": "Práctica 4",
+    "section": "Punto de partida: lo que ya tenemos de la Práctica 3",
+    "text": "Punto de partida: lo que ya tenemos de la Práctica 3\n\nEstructura de carpetas del proyecto\nREADME.md y requirements.txt\ndata/data-processed/endireh_2021_limpio.csv — ya limpio, sin duplicados, tipos correctos, sin faltantes\n\n\n\n\n\n\n\nNote\n\n\nNo se descarga ni reestructura de nuevo: se extiende el proyecto existente.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#eager-vs-lazy-en-polars",
-    "href": "practica-03/practica-03.html#eager-vs-lazy-en-polars",
-    "title": "Práctica 3",
-    "section": "Eager vs Lazy en Polars",
-    "text": "Eager vs Lazy en Polars\n\n\n⚡ Eager (pl.read_csv)\nEjecución instantánea: Lee el archivo completo e interactúa inmediatamente en memoria RAM.\nCarga todas las columnas y filas de inmediato, aunque luego descartes el 90% mediante filtros o selecciones posteriores.\n# Lee 700k filas y 50 columnas ya\ndf = pl.read_csv(\"endireh_2021.csv\")\nres = df.filter(pl.col(\"edad\") &gt; 30)\n\n\n◐ Lazy (pl.scan_csv)\nEvaluación diferida: No carga datos a memoria. Solo lee metadatos e inspecciona el esquema (tipos de datos).\nCrea un grafo lógico de transformaciones y espera hasta que el usuario decida materializar con .collect().\n# Solo genera un LazyFrame (0 datos en RAM)\nq = pl.scan_csv(\"endireh_2021.csv\") \\\n    .filter(pl.col(\"edad\") &gt; 30)\n\n\n\nCon 700,000 registros, trabajar en modo lazy evita procesar columnas que ni siquiera se van a usar en el análisis.",
+    "objectID": "practica-04/practica-04.html#paso-1-carga-de-datos-crudos",
+    "href": "practica-04/practica-04.html#paso-1-carga-de-datos-crudos",
+    "title": "Práctica 4",
+    "section": "Paso 1 — Carga de datos crudos",
+    "text": "Paso 1 — Carga de datos crudos\n\nCargar data/data-raw/ sin modificarlo\nTodas las rutas estáticas van en config/rutas.py\nCrear en notebooks/ los archivos de:\n\nMedidas de Heterogeneidad\nMedidas de Concentración",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#introducción-a-polars-eager-vs.-lazy-1",
-    "href": "practica-03/practica-03.html#introducción-a-polars-eager-vs.-lazy-1",
-    "title": "Práctica 3",
-    "section": "Introducción a Polars: Eager vs. Lazy",
-    "text": "Introducción a Polars: Eager vs. Lazy\n\n◐ Lazy (pl.scan_csv)\nEvaluación diferida: No carga datos a memoria. Solo lee metadatos e inspecciona el esquema (tipos de datos).\nCrea un grafo lógico de transformaciones y espera hasta que el usuario decida materializar con .collect().\n# Solo genera un LazyFrame (0 datos en RAM)\nq = pl.scan_csv(\"endireh_2021.csv\") \\\n    .filter(pl.col(\"edad\") &gt; 30)",
+    "objectID": "practica-04/practica-04.html#paso-2-notebook-medidas-de-heterogeneidad",
+    "href": "practica-04/practica-04.html#paso-2-notebook-medidas-de-heterogeneidad",
+    "title": "Práctica 4",
+    "section": "Paso 2 — Notebook: Medidas de Heterogeneidad",
+    "text": "Paso 2 — Notebook: Medidas de Heterogeneidad\nSobre variables cualitativas (p. ej. tipo de violencia), calcular:\n\nÍndice de Variación Cualitativa (IQV)\nÍndice de Gini-Simpson\nEntropía de Shannon\n\nCon gráficas de barras de heterogeneidad e interpretación en el contexto de violencia contra las mujeres.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#introducción-a-polars-modo-eager",
-    "href": "practica-03/practica-03.html#introducción-a-polars-modo-eager",
-    "title": "Práctica 3",
-    "section": "Introducción a Polars: Modo Eager",
-    "text": "Introducción a Polars: Modo Eager\n\n\n⚡ Eager (pl.read_csv)\nEjecución instantánea: Lee el archivo completo e interactúa inmediatamente en memoria RAM.\nCarga todas las columnas y filas de inmediato, aunque luego descartes el 90% mediante filtros o selecciones posteriores.\n# Lee 700k filas y 50 columnas ya\ndf = pl.read_csv(\"endireh_2021.csv\")\nres = df.filter(pl.col(\"edad\") &gt; 30)",
+    "objectID": "practica-04/practica-04.html#paso-3-notebook-medidas-de-concentración",
+    "href": "practica-04/practica-04.html#paso-3-notebook-medidas-de-concentración",
+    "title": "Práctica 4",
+    "section": "Paso 3 — Notebook: Medidas de Concentración",
+    "text": "Paso 3 — Notebook: Medidas de Concentración\n\nAnalizar los casos reportados ponderados por el factor de expansión\nConstruir la curva de Lorenz por entidad federativa\nCalcular el coeficiente de Gini\nInterpretar: ¿concentración territorial alta o reparto homogéneo?",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#introducción-a-polars-modo-lazy",
-    "href": "practica-03/practica-03.html#introducción-a-polars-modo-lazy",
-    "title": "Práctica 3",
-    "section": "Introducción a Polars: Modo Lazy",
-    "text": "Introducción a Polars: Modo Lazy\n\n\n◐ Lazy (pl.scan_csv)\nEvaluación diferida: No carga datos a memoria. Solo lee metadatos e inspecciona el esquema (tipos de datos).\nCrea un grafo lógico de transformaciones y espera hasta que el usuario decida materializar con .collect().\n# Solo genera un LazyFrame (0 datos en RAM)\nq = (\n    pl.scan_csv(\"endireh_2021.csv\")\n    .filter(pl.col(\"edad\") &gt; 30)\n)\n\n\n\nCon 700,000 registros, trabajar en modo lazy evita procesar columnas que ni siquiera se van a usar en el análisis.",
+    "objectID": "practica-04/practica-04.html#paso-4-síntesis-gini-y-entropía",
+    "href": "practica-04/practica-04.html#paso-4-síntesis-gini-y-entropía",
+    "title": "Práctica 4",
+    "section": "Paso 4 — Síntesis Gini y Entropía",
+    "text": "Paso 4 — Síntesis Gini y Entropía\n\nElegir una misma variable categórica (p. ej. tipo de violencia)\nCalcular sobre ella tanto la entropía de Shannon como una versión del Gini aplicada a las frecuencias de sus categorías\nRedactar, en no más de un párrafo, la diferencia conceptual entre ambas lecturas",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#sintaxis-de-select",
-    "href": "practica-03/practica-03.html#sintaxis-de-select",
-    "title": "Práctica 3",
-    "section": "Sintaxis de Select()",
-    "text": "Sintaxis de Select()\n\nselect() devuelve un nuevo DataFrame solo con las columnas (o expresiones) que le indiques.\n\n# Una columna\ndf.select(\"edad\")\n\n# Varias columnas\ndf.select([\"edad\", \"nom_entidad\", \"factor_expansion\"])\n\n# Con expresiones: renombrar o transformar al vuelo\ndf.select([\n    pl.col(\"edad\"),\n    (pl.col(\"edad\") * 2).alias(\"edad_doble\")\n])\n\n\nRecibe una lista de nombres de columna o de expresiones pl.col(...). Con .alias() puedes renombrar o crear columnas calculadas sin salir del select().",
+    "objectID": "practica-04/practica-04.html#paso-5-tabla-de-resultados-y-reflexión",
+    "href": "practica-04/practica-04.html#paso-5-tabla-de-resultados-y-reflexión",
+    "title": "Práctica 4",
+    "section": "Paso 5 — Tabla de resultados y reflexión",
+    "text": "Paso 5 — Tabla de resultados y reflexión\nCompletar en el reporte:\n\n\n\nFamilia de medida\nVariable(s)\nValor obtenido\nInterpretación\n\n\n\n\nLocalización\n\n\n\n\n\nVariabilidad\n\n\n\n\n\nHeterogeneidad\n\n\n\n\n\nConcentración\n\n\n\n\n\nGini vs. Entropía",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#sintaxis-de-filter",
-    "href": "practica-03/practica-03.html#sintaxis-de-filter",
-    "title": "Práctica 3",
-    "section": "Sintaxis de Filter()",
-    "text": "Sintaxis de Filter()\n\nfilter() conserva solo los renglones donde la condición es True.\n\n# Una condición\ndf.filter(pl.col(\"edad\") &gt; 30)\n\n# Varias condiciones (AND)\ndf.filter(\n    (pl.col(\"edad\") &gt; 30) & (pl.col(\"nom_entidad\") == \"Jalisco\")\n)\n\n# Condición OR\ndf.filter(\n    (pl.col(\"nivel_escolaridad\") == \"Primaria\")\n    | (pl.col(\"nivel_escolaridad\") == \"Secundaria\")\n)\n\n\nCada condición se escribe como pl.col(\"columna\") operador valor. Para combinar condiciones usa & (AND), | (OR) o ~ (NOT) — siempre con cada condición entre paréntesis.",
+    "objectID": "practica-04/practica-04.html#cuestionario-a-responder",
+    "href": "practica-04/practica-04.html#cuestionario-a-responder",
+    "title": "Práctica 4",
+    "section": "Cuestionario a responder",
+    "text": "Cuestionario a responder\n\nInterprete la curva de Lorenz de los casos por entidad: ¿concentrada o distribuida homogéneamente? Apoye su respuesta con el Gini calculado\n¿Qué limitaciones detecta en los datos/variables/análisis? Mencione al menos dos mejoras concretas\n¿Cómo podrían estas medidas orientar decisiones posteriores del proyecto (selección de variables, modelado, segmentación)?\nAl publicar un índice de Gini por entidad sobre violencia contra las mujeres, ¿qué consideraciones éticas y de comunicación evitan estigmatizar regiones o minimizar el problema?",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#sintaxis-de-group_by",
-    "href": "practica-03/practica-03.html#sintaxis-de-group_by",
-    "title": "Práctica 3",
-    "section": "Sintaxis de Group_By()",
-    "text": "Sintaxis de Group_By()\n\ngroup_by() agrupa los renglones; por sí solo no calcula nada — siempre va seguido de .agg().\n\n# Agrupar por una columna y agregar\ndf.group_by(\"nom_entidad\").agg([\n    pl.col(\"edad\").mean().alias(\"edad_promedio\"),\n    pl.col(\"factor_expansion\").sum().alias(\"poblacion_total\")\n])\n\n# Agrupar por varias columnas\ndf.group_by([\"nom_entidad\", \"nivel_escolaridad\"]).agg(\n    pl.len().alias(\"num_encuestadas\")\n)\n\n\nDentro de .agg([...]) defines qué operación aplicar por grupo (mean, sum, len, etc.). Puedes agrupar por una o varias columnas, y encadenar .sort() después para ordenar el resultado.",
+    "objectID": "practica-04/practica-04.html#dinámica-final-en-clase",
+    "href": "practica-04/practica-04.html#dinámica-final-en-clase",
+    "title": "Práctica 4",
+    "section": "Dinámica final en clase",
+    "text": "Dinámica final en clase\n\nEn los últimos 15 minutos, se elegirá al azar a 2 personas para responder:\n\n¿Qué hallazgo les pareció más relevante?\n¿Qué mejorarían en su análisis con una semana más?",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#materializando-con-collect",
-    "href": "practica-03/practica-03.html#materializando-con-collect",
-    "title": "Práctica 3",
-    "section": "Materializando con collect()",
-    "text": "Materializando con collect()\n\nTodo lo anterior (select, filter, group_by) no ejecuta nada si vienes de pl.scan_csv(...) — solo arma el plan. .collect() es quien finalmente corre la consulta completa y te regresa un DataFrame real en memoria.\n\n\n\n\n\nAntes de .collect(), Polars optimiza el plan completo: junta el select y el filter para leer del CSV solo las columnas y filas necesarias, .collect() es el único punto donde realmente se toca el disco y se gasta memoria.\n\n\n\n\nresultado = (\n    pl.scan_csv(\"endireh_2021.csv\")        # 1. LazyFrame: aún no lee nada\n    .select([\"edad\", \"nom_entidad\",\n             \"nivel_escolaridad\", \"factor_expansion\"])\n    .filter(pl.col(\"edad\") &gt; 30)            # 2. Se agrega al plan\n    .group_by(\"nom_entidad\")\n    .agg([\n        pl.col(\"edad\").mean().alias(\"edad_promedio\"),\n        pl.len().alias(\"num_encuestadas\")\n    ])\n    .sort(\"num_encuestadas\", descending=True)\n    .collect()                               # 3. AQUI se ejecuta todo\n)\n\nprint(resultado)",
+    "objectID": "practica-04/practica-04.html#ponderación-de-la-evaluación",
+    "href": "practica-04/practica-04.html#ponderación-de-la-evaluación",
+    "title": "Práctica 4",
+    "section": "Ponderación de la evaluación",
+    "text": "Ponderación de la evaluación\n\n\n\nCriterio\n%\n\n\n\n\nMedidas de Localización\n15%\n\n\nMedidas de Variabilidad\n15%\n\n\nMedidas de Heterogeneidad\n15%\n\n\nMedidas de Concentración\n15%\n\n\nSíntesis Gini y Entropía\n10%\n\n\nVisualización de Datos\n15%\n\n\nReflexión y consideraciones éticas\n15%",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#polars-vs-pandas-sintaxis-comparada",
-    "href": "practica-03/practica-03.html#polars-vs-pandas-sintaxis-comparada",
-    "title": "Práctica 3",
-    "section": "Polars vs Pandas: sintaxis comparada",
-    "text": "Polars vs Pandas: sintaxis comparada\n\n\n\n\n\n\n\n\n\nOperación\npandas\npolars\n\n\n\n\nLeer CSV\npd.read_csv(ruta)\npl.read_csv(ruta) / pl.scan_csv(ruta)\n\n\nFiltrar\ndf[df.col &gt; 5]\ndf.filter(pl.col(\"col\") &gt; 5)\n\n\nSeleccionar\ndf[[\"a\",\"b\"]]\ndf.select([\"a\",\"b\"])\n\n\nAgrupar\ndf.groupby(\"col\").mean()\ndf.group_by(\"col\").agg(pl.col(\"x\").mean())\n\n\nQuitar nulos\ndf.dropna()\ndf.drop_nulls()",
+    "objectID": "practica-04/practica-04.html#qué-se-busca-en-cada-criterio",
+    "href": "practica-04/practica-04.html#qué-se-busca-en-cada-criterio",
+    "title": "Práctica 4",
+    "section": "Qué se busca en cada criterio",
+    "text": "Qué se busca en cada criterio\n\nLocalización: media, mediana, moda y cuantiles — con media ponderada justificada por factor de expansión\nVariabilidad: varianza, SD, CV, IQR — con comparación entre grupos\nHeterogeneidad / Concentración: cálculo correcto + interpretación adecuada\nSíntesis: comparación explícita y bien argumentada\nVisualización: claridad, pertinencia e integración narrativa en el notebook\nReflexión: profundidad, limitaciones detectadas y sensibilidad ante el tema social",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#medidas-de-localización-qué-responden",
-    "href": "practica-03/practica-03.html#medidas-de-localización-qué-responden",
-    "title": "Práctica 3",
-    "section": "Medidas de Localización: ¿qué responden?",
-    "text": "Medidas de Localización: ¿qué responden?\n\nResponden a la pregunta: ¿alrededor de qué valor se agrupan los datos?\n\n\nSon la base para construir un “perfil típico” de las encuestadas — por ejemplo, la edad promedio de una población, o el nivel de escolaridad más común. Sin ellas, no hay un punto de referencia para comparar grupos ni para detectar qué tan “normal” o “atípico” es un caso.",
+    "objectID": "practica-04/practica-04.html#reporte-pdf",
+    "href": "practica-04/practica-04.html#reporte-pdf",
+    "title": "Práctica 4",
+    "section": "Reporte PDF",
+    "text": "Reporte PDF\nResumen ejecutivo y conciso que incluya:\n\nLa tabla de resultados completa\nLas gráficas: histograma/boxplot, barras de heterogeneidad, curva de Lorenz, prevalencia por entidad — cada una con su interpretación\nLas respuestas al cuestionario",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#la-media-promedio-aritmético",
-    "href": "practica-03/practica-03.html#la-media-promedio-aritmético",
-    "title": "Práctica 3",
-    "section": "La Media: promedio aritmético",
-    "text": "La Media: promedio aritmético\n\n\\[\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\]\n\n\nCuándo usarla: variables cuantitativas con distribución razonablemente simétrica, sin valores extremos que la distorsionen.\n\n\n\nLimitación clave: es muy sensible a outliers. Un solo valor extremo (por ejemplo, una edad de unión reportada erróneamente como 99) puede desplazar la media completa, dando una imagen falsa del “promedio” real.",
+    "objectID": "practica-04/practica-04.html#repositorio-de-git-actualizado",
+    "href": "practica-04/practica-04.html#repositorio-de-git-actualizado",
+    "title": "Práctica 4",
+    "section": "Repositorio de Git actualizado",
+    "text": "Repositorio de Git actualizado\n\nMedidas de localización\nMedidas de variabilidad\nMedidas de heterogeneidad\nMedidas de concentración\nComparación de Gini y Entropía\n\nMás README.md y requirements.txt actualizados.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#la-mediana-el-valor-de-en-medio",
-    "href": "practica-03/practica-03.html#la-mediana-el-valor-de-en-medio",
-    "title": "Práctica 3",
-    "section": "La Mediana: el valor de en medio",
-    "text": "La Mediana: el valor de en medio\n\n\\[Me = \\begin{cases} x_{(\\frac{n+1}{2})} & n \\text{ impar} \\\\[4pt] \\dfrac{x_{(n/2)} + x_{(n/2+1)}}{2} & n \\text{ par} \\end{cases}\\]\n\n\nCuándo usarla: cuando la variable tiene una distribución asimétrica o contiene valores extremos — la mediana no se mueve por ellos, porque solo depende de la posición central, no de la magnitud de los valores.\n\n\n\nRegla práctica: si la media es mucho mayor que la mediana, la distribución está sesgada hacia la derecha (hay valores altos poco frecuentes que la “jalan”). Comparar ambas ya te dice algo sobre la forma de los datos.",
+    "objectID": "practica-04/practica-04.html#manejo-de-los-datos",
+    "href": "practica-04/practica-04.html#manejo-de-los-datos",
+    "title": "Práctica 4",
+    "section": "3. Manejo de los datos",
+    "text": "3. Manejo de los datos\n\n\n\n\n\n\nNote\n\n\n\ndata/data-raw/ sigue sin subirse al repositorio por su tamaño\ndata/data-processed/ puede incluirse si el tamaño lo permite, o documentar cómo regenerarla con el pipeline de la Práctica 3\nLos datos raw y processed se envían aparte, en un archivo separado",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#la-moda-el-valor-más-frecuente",
-    "href": "practica-03/practica-03.html#la-moda-el-valor-más-frecuente",
-    "title": "Práctica 3",
-    "section": "La Moda: el valor más frecuente",
-    "text": "La Moda: el valor más frecuente\n\nLa moda es el valor (o categoría) que más veces se repite en los datos.\n\n\nCuándo usarla: es la única medida de tendencia central válida para variables cualitativas nominales — no tiene sentido calcular un “promedio” de nom_entidad o de sufrio_violencia_pareja, pero sí preguntar cuál es la categoría más común.\n\n\n\nEn ENDIREH, la moda es clave para variables como nivel_escolaridad o estado_civil_desc: te dice cuál es la situación más frecuente entre las encuestadas, algo que la media no puede responder.",
+    "objectID": "practica-04/practica-04.html#recapitulación",
+    "href": "practica-04/practica-04.html#recapitulación",
+    "title": "Práctica 4",
+    "section": "Recapitulación",
+    "text": "Recapitulación\n\nHeterogeneidad (IQV, Gini-Simpson, Entropía) mide qué tan mezcladas están las categorías\nConcentración (Lorenz, Gini) mide qué tan desigual es el reparto de una cantidad",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#cuantiles-y-percentiles",
-    "href": "practica-03/practica-03.html#cuantiles-y-percentiles",
-    "title": "Práctica 3",
-    "section": "Cuantiles y Percentiles",
-    "text": "Cuantiles y Percentiles\n\nDividen los datos ordenados en partes iguales: los cuartiles (Q1, Q2, Q3) los dividen en 4 partes; los percentiles (P10, P90…) en 100.",
+    "objectID": "practica-04/practica-04.html#referencias-clave",
+    "href": "practica-04/practica-04.html#referencias-clave",
+    "title": "Práctica 4",
+    "section": "Referencias clave",
+    "text": "Referencias clave\n\nINEGI (2022). Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021\nGini, C. (1912). Variabilità e mutabilità\nShannon, C. E. (1948). A Mathematical Theory of Communication\nWilcox, A. R. (1973). Indices of Qualitative Variation and Political Measurement",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#medidas-de-variabilidad-qué-responden",
-    "href": "practica-03/practica-03.html#medidas-de-variabilidad-qué-responden",
-    "title": "Práctica 3",
-    "section": "Medidas de Variabilidad: ¿qué responden?",
-    "text": "Medidas de Variabilidad: ¿qué responden?\n\nResponden a la pregunta: ¿qué tan dispersos están los datos respecto al valor central?\n\n\n\nDos variables pueden tener la misma media y comportarse de forma totalmente distinta. Una alta variabilidad advierte que un solo valor central puede ser engañoso, y que conviene segmentar a la población antes de sacar conclusiones.",
+    "objectID": "practica-04/practica-04.html#gracias",
+    "href": "practica-04/practica-04.html#gracias",
+    "title": "Práctica 4",
+    "section": "¡Gracias!",
+    "text": "¡Gracias!\nPreguntas y discusión\nFecha de entrega: por definir",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#varianza-y-desviación-estándar",
-    "href": "practica-03/practica-03.html#varianza-y-desviación-estándar",
-    "title": "Práctica 3",
-    "section": "Varianza y Desviación Estándar",
-    "text": "Varianza y Desviación Estándar\n\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\qquad s = \\sqrt{s^2}\\]\n\n\nLa varianza promedia qué tan lejos está cada valor de la media (al cuadrado, para que las diferencias negativas y positivas no se cancelen). Se divide entre \\(n-1\\), no entre \\(n\\), porque estamos estimando la variabilidad de la población a partir de una muestra.\n\n\n\nCuándo usarla: la desviación estándar (\\(s\\)) es más interpretable que la varianza porque queda en las mismas unidades que la variable original (años, si hablamos de edad). Úsala para describir qué tan homogénea o heterogénea es una variable cuantitativa.",
+    "objectID": "practica-04/practica-04.html#qué-miden-realmente",
+    "href": "practica-04/practica-04.html#qué-miden-realmente",
+    "title": "Práctica 4",
+    "section": "¿Qué miden realmente?",
+    "text": "¿Qué miden realmente?\nMientras que la varianza evalúa dispersión numérica, estas medidas aplican a variables cualitativas (categóricas).\nResponden a una pregunta central:\n\n¿Los datos se aglutinan en una sola categoría dominante (baja heterogeneidad) o están repartidos de forma equilibrada entre todas las opciones (alta heterogeneidad)?\n\n\nLos cimientos matemáticos: Para calcular qué tan mezclados están los datos, las fórmulas utilizan dos bloques básicos:\n\n\\(k\\) = El número total de categorías posibles. (Ej. Si analizamos el “Tipo de violencia”, tenemos Psicológica, Física, Económica y Sexual, por lo tanto \\(k = 4\\)).\n\\(p_i\\) = La proporción de casos que caen en la categoría \\(i\\). (Ej. Si el 50% de los reportes son de violencia psicológica, su \\(p_i = 0.5\\)).",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#coeficiente-de-variación-cv",
-    "href": "practica-03/practica-03.html#coeficiente-de-variación-cv",
-    "title": "Práctica 3",
-    "section": "Coeficiente de Variación (CV)",
-    "text": "Coeficiente de Variación (CV)\n\n\\[CV = \\frac{s}{\\bar{x}} \\times 100\\%\\]\n\n\nEl CV expresa la desviación estándar como porcentaje de la media — es una medida de dispersión relativa, sin unidades.\n\n\n\nCuándo usarlo: cuando quieres comparar la dispersión entre dos grupos con medias distintas — por ejemplo, la variabilidad en edad_primer_union entre el grupo que reportó violencia de pareja y el que no. Comparar solo la desviación estándar sería injusto si las medias de ambos grupos son diferentes; el CV corrige eso.",
+    "objectID": "practica-04/practica-04.html#cuándo-usar-cada-una",
+    "href": "practica-04/practica-04.html#cuándo-usar-cada-una",
+    "title": "Práctica 4",
+    "section": "¿Cuándo usar cada una?",
+    "text": "¿Cuándo usar cada una?\n\nUsa Entropía / Gini-Simpson / IQV cuando… La pregunta es ¿qué tan mezcladas o diversas son las categorías? Ejemplo: tipo de violencia, modalidad, relación con el agresor\n\n\nUsa el coeficiente de Gini / curva de Lorenz cuando… La pregunta es ¿qué proporción del total se concentra en pocas unidades? Ejemplo: casos de violencia por entidad federativa\n\n\n\n\n\n\n\n\nNote\n\n\nSi aplicas ambas a la misma variable categórica (cada categoría como “unidad”, su frecuencia como la “cantidad” a repartir), obtienes dos lecturas complementarias: la entropía dice qué tan mezclada está; el Gini sobre esas mismas frecuencias dice qué tan desigual es esa mezcla.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#calculando-la-heterogeneidad-caso-práctico",
+    "href": "practica-04/practica-04.html#calculando-la-heterogeneidad-caso-práctico",
+    "title": "Práctica 4",
+    "section": "Calculando la Heterogeneidad: Caso Práctico",
+    "text": "Calculando la Heterogeneidad: Caso Práctico\nImaginemos que analizamos un subconjunto de 100 casos reportados de violencia. ¿Están concentrados en un solo tipo o vemos una mezcla de todas las formas de violencia?\n\n\n- Psicológica : 50 casos\n- Física      : 30 casos\n- Económica   : 15 casos\n- Sexual      : 5 casos\n\n\n\n\n\n\n\n\n\nObservación inicial\n\n\nA simple vista notamos que la violencia “Psicológica” acapara la mitad de los casos (50), mientras que la “Sexual” es la minoría (5). Esto ya nos indica que no hay un balance perfecto."
+  },
+  {
+    "objectID": "practica-04/practica-04.html#paso-1-el-motor-matemático-las-proporciones",
+    "href": "practica-04/practica-04.html#paso-1-el-motor-matemático-las-proporciones",
+    "title": "Práctica 4",
+    "section": "Paso 1: El motor matemático (las proporciones)",
+    "text": "Paso 1: El motor matemático (las proporciones)\nTodas las fórmulas de heterogeneidad necesitan convertir frecuencias absolutas a proporciones (\\(p_i\\)) y, fundamentalmente, elevar esas proporciones al cuadrado (\\(p_i^2\\)).\n¿Por qué al cuadrado? Porque penaliza fuertemente a las categorías minoritarias y recompensa a las mayoritarias, revelando qué tan dominante es el pico de la distribución.\n\n\nProporciones (p_i): [0.5  0.3  0.15 0.05]\nProporciones al cuadrado (p_i^2): [0.25   0.09   0.0225 0.0025]\n\nSuma de p_i^2 = 0.365\n\n\n\n▶ Si todos los casos estuvieran en “Psicológica”, la suma sería 1. ▶ Si hubiera 25 casos de cada tipo, la suma sería 0.25 (lo mínimo posible). ▶ Nuestro 0.365 está en un punto intermedio."
   },
   {
-    "objectID": "practica-03/practica-03.html#rango-intercuartílico-iqr",
-    "href": "practica-03/practica-03.html#rango-intercuartílico-iqr",
-    "title": "Práctica 3",
-    "section": "Rango Intercuartílico (IQR)",
-    "text": "Rango Intercuartílico (IQR)\n\n\\[IQR = Q_3 - Q_1\\]\n\n\nEs el rango que cubre el 50% central de los datos, ignorando el 25% más bajo y el 25% más alto.\n\n\n\nCuándo usarlo: cuando la variable tiene valores extremos o una distribución sesgada — a diferencia de la varianza o el rango total, el IQR no se ve afectado por outliers, porque ni siquiera los considera en su cálculo. También es la base para detectar valores atípicos (fuera de \\(Q1 - 1.5 \\times IQR\\) o \\(Q3 + 1.5 \\times IQR\\)) y para construir boxplots.",
+    "objectID": "practica-04/practica-04.html#paso-2-índices-de-gini-simpson-e-iqv",
+    "href": "practica-04/practica-04.html#paso-2-índices-de-gini-simpson-e-iqv",
+    "title": "Práctica 4",
+    "section": "Paso 2: Índices de Gini-Simpson e IQV",
+    "text": "Paso 2: Índices de Gini-Simpson e IQV\nGini-Simpson (\\(1 - \\sum p_i^2\\)) Mide la probabilidad de que, al tomar 2 reportes al azar, sean de tipos de violencia distintos.\n\n\nGini-Simpson = 0.6350\n\n\n(Hay un 63.5% de probabilidad de que dos víctimas al azar hayan sufrido distintos tipos de violencia).\n\nÍndice de Variación Cualitativa (IQV) Ajusta el valor anterior usando el número de categorías (\\(k=4\\)) para darnos una métrica de 0 a 1 (donde 1 es la máxima mezcla posible).\n\n\nIQV = 0.8467\n\n\n(Nuestros datos alcanzan casi el 85% de la máxima diversidad posible).\n\n\nFíjate que IQV es simplemente Gini-Simpson reescalado: \\(\\text{IQV} = \\frac{k}{k-1}\\,\\text{GS}\\).",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#localización-variabilidad-la-fotografía-completa",
-    "href": "practica-03/practica-03.html#localización-variabilidad-la-fotografía-completa",
-    "title": "Práctica 3",
-    "section": "Localización + Variabilidad: la fotografía completa",
-    "text": "Localización + Variabilidad: la fotografía completa\n\nNinguna medida sirve sola. Reportar solo la media, sin su dispersión, oculta si esa “cifra promedio” describe bien a la mayoría o esconde grupos muy distintos entre sí.\n\n\n\nRegla práctica para el reporte: si la distribución es simétrica y sin outliers, usa media + desviación estándar. Si es asimétrica o con valores extremos, usa mediana + IQR. Para comparar grupos con medias distintas (como violencia sí/no), usa siempre el CV.",
+    "objectID": "practica-04/practica-04.html#paso-3-entropía-de-shannon",
+    "href": "practica-04/practica-04.html#paso-3-entropía-de-shannon",
+    "title": "Práctica 4",
+    "section": "Paso 3: Entropía de Shannon",
+    "text": "Paso 3: Entropía de Shannon\nSi te digo el tipo de violencia de un caso elegido al azar, ¿qué tan “sorprendido” te vas a llevar?\n\nUn evento casi seguro (p cercana a 1) no sorprende casi nada → aporta poca información\nUn evento raro (p cercana a 0) sí sorprende → aporta mucha información\nShannon mide esa sorpresa en bits, con la fórmula \\(-\\log_2(p_i)\\)\n\n\nPero la sorpresa de una sola categoría no basta: necesitamos un solo número que resuma a las 4 categorías juntas. Para eso, Shannon promedia la sorpresa de cada categoría, ponderándola por qué tan seguido ocurre.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#qué-es-un-percentil",
-    "href": "practica-03/practica-03.html#qué-es-un-percentil",
-    "title": "Práctica 3",
-    "section": "¿Qué es un percentil?",
-    "text": "¿Qué es un percentil?\n\nUn percentil es un valor que divide un conjunto de datos ordenados en 100 partes iguales. El percentil \\(P_k\\) indica el valor por debajo del cual queda el \\(k\\%\\) de las observaciones.\n\n\n\nNo es lo mismo que un porcentaje. Un porcentaje describe qué proporción de algo representa un valor; un percentil describe qué posición ocupa un valor dentro de todo el conjunto de datos, comparado con los demás.\n\n\n\nLos cuartiles (Q1, Q2, Q3) son casos particulares: Q1 = P25, Q2 = P50 (la mediana), Q3 = P75.",
+    "objectID": "practica-04/practica-04.html#visualizando-la-distribución",
+    "href": "practica-04/practica-04.html#visualizando-la-distribución",
+    "title": "Práctica 4",
+    "section": "Visualizando la distribución",
+    "text": "Visualizando la distribución\n\n\n\n\n\n\n\n\n\nLa barra de “Psicológica” domina visualmente el resto — la misma historia que cuentan GS=0.635, IQV=0.847 y H/H_max=0.824, pero ahora se puede ver de un vistazo.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#ejemplo-percentiles-en-un-examen",
-    "href": "practica-03/practica-03.html#ejemplo-percentiles-en-un-examen",
-    "title": "Práctica 3",
-    "section": "Ejemplo: percentiles en un examen",
-    "text": "Ejemplo: percentiles en un examen\n\nUn grupo de 20 estudiantes presenta un examen. Se ordenan sus calificaciones de menor a mayor:\n45, 50, 52, 55, 58, 60, 61, 63, 65, 67, 68, 70, 72, 74, 76, 78, 80, 85, 90, 95\n\n\n¿Cuál es el percentil 25 (P25)?\nBuscamos la posición que deja el 25% de los datos por debajo. Con 20 valores, esa posición cae entre el 5° y 6° dato: 58 y 60 → P25 ≈ 59.\nInterpretación: el 25% de los estudiantes sacó 59 puntos o menos.\n\n\n¿Cuál es el percentil 90 (P90)?\nCae cerca de la posición 18: P90 ≈ 85.\nInterpretación: el 90% de los estudiantes sacó 85 puntos o menos — solo el 10% sacó más de 85.",
+    "objectID": "practica-04/practica-04.html#síntesis-del-ejemplo",
+    "href": "practica-04/practica-04.html#síntesis-del-ejemplo",
+    "title": "Práctica 4",
+    "section": "Síntesis del ejemplo",
+    "text": "Síntesis del ejemplo\n\n\n\n\n\n\n\n\nÍndice\nValor\n¿Qué significa en la realidad?\n\n\n\n\nGini-Simpson\n0.635\nProbabilidad moderada-alta de cruzar víctimas con vivencias diferentes.\n\n\nIQV\n0.847\nLa distribución está al 85% de ser perfectamente heterogénea.\n\n\nEntropía (Relativa)\n0.824\nTenemos un 82% de incertidumbre al predecir el tipo de violencia del siguiente caso.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#por-qué-el-percentil-dice-más-que-el-promedio",
-    "href": "practica-03/practica-03.html#por-qué-el-percentil-dice-más-que-el-promedio",
-    "title": "Práctica 3",
-    "section": "Por qué el percentil dice más que el promedio",
-    "text": "Por qué el percentil dice más que el promedio\n\nSupón que la calificación promedio del grupo es 68 puntos. Esa cifra no te dice si el grupo está muy parejo o muy disperso.\n\n\n\nSi te dicen que sacaste 85 puntos, saber que estás en el percentil 90 es mucho más útil que saber que la media fue 68 — te dice exactamente dónde te ubicas respecto a tus compañeros, no solo si estás “arriba o abajo” del promedio.\n\n\n\nPor eso, en estadística descriptiva, los percentiles se usan cuando interesa la posición relativa de un valor dentro de toda la distribución, no solo su relación con un único número central.",
+    "objectID": "practica-04/practica-04.html#caso-práctico",
+    "href": "practica-04/practica-04.html#caso-práctico",
+    "title": "Práctica 4",
+    "section": "Caso Práctico",
+    "text": "Caso Práctico\nImaginemos que analizamos un subconjunto de 100 casos reportados de violencia. ¿Están concentrados en un solo tipo o vemos una mezcla de todas las formas de violencia?\n\n\n- Psicológica : 50 casos\n- Física      : 30 casos\n- Económica   : 15 casos\n- Sexual      : 5 casos\n\n\n\n\n\n\n\n\n\nObservación inicial\n\n\nA simple vista notamos que la violencia “Psicológica” acapara la mitad de los casos (50), mientras que la “Sexual” es la minoría (5). Esto ya nos indica que no hay un balance perfecto.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#paso-6-código",
-    "href": "practica-03/practica-03.html#paso-6-código",
-    "title": "Práctica 3",
-    "section": "Paso 6: Código",
-    "text": "Paso 6: Código\n\nPreprocesamiento de los datos\nMedidas de Localizacion\nMedidas de Variabilidad",
+    "objectID": "practica-04/practica-04.html#paso-1-las-proporciones",
+    "href": "practica-04/practica-04.html#paso-1-las-proporciones",
+    "title": "Práctica 4",
+    "section": "Paso 1: Las proporciones",
+    "text": "Paso 1: Las proporciones\nTodas las fórmulas de heterogeneidad necesitan convertir frecuencias absolutas a proporciones (\\(p_i\\)) y, fundamentalmente, elevar esas proporciones al cuadrado (\\(p_i^2\\)).\n¿Por qué al cuadrado? Porque penaliza fuertemente a las categorías minoritarias y recompensa a las mayoritarias, revelando qué tan dominante es el pico de la distribución.\n\n\nProporciones (p_i): [0.5  0.3  0.15 0.05]\nProporciones al cuadrado (p_i^2): [0.25   0.09   0.0225 0.0025]\n\nSuma de p_i^2 = 0.365\n\n\n\n▶ Si todos los casos estuvieran en “Psicológica”, la suma sería 1.\n▶ Si hubiera 25 casos de cada tipo, la suma sería 0.25 (lo mínimo posible).\n▶ Nuestro 0.365 está en un punto intermedio.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#qué-es-una-media-ponderada",
-    "href": "practica-03/practica-03.html#qué-es-una-media-ponderada",
-    "title": "Práctica 3",
-    "section": "¿Qué es una media ponderada?",
-    "text": "¿Qué es una media ponderada?\n\nEn una media simple, todos los valores pesan lo mismo. En una media ponderada, cada valor se multiplica por un peso que refleja qué tanto debe contar — porque representa más casos, más importancia, o más frecuencia que los demás.\n\n\n\\[\\bar{x}_w = \\frac{\\sum_{i=1}^{n} w_i x_i}{\\sum_{i=1}^{n} w_i}\\]\n\n\nSi todos los pesos \\(w_i\\) son iguales, la fórmula se reduce exactamente a la media simple — la media ponderada no es una fórmula distinta, es la versión general de la media.",
+    "objectID": "practica-04/practica-04.html#entropía-de-shannon-la-intuición",
+    "href": "practica-04/practica-04.html#entropía-de-shannon-la-intuición",
+    "title": "Práctica 4",
+    "section": "Entropía de Shannon: la intuición",
+    "text": "Entropía de Shannon: la intuición\nLa entropía viene de la teoría de la información y responde una pregunta muy concreta: si te digo el tipo de violencia de un caso elegido al azar, ¿qué tan “sorprendido” te vas a llevar?\n\nUn evento casi seguro (p cercana a 1) no sorprende casi nada → aporta poca información\nUn evento raro (p cercana a 0) sí sorprende → aporta mucha información\nShannon mide esa sorpresa en bits, con la fórmula \\(-\\log_2(p_i)\\)\n\n\nPero la sorpresa de una sola categoría no basta: necesitamos un solo número que resuma a las 4 categorías juntas. Para eso, Shannon promedia la sorpresa de cada categoría, ponderándola por qué tan seguido ocurre.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#ejemplo-el-promedio-que-engaña",
-    "href": "practica-03/practica-03.html#ejemplo-el-promedio-que-engaña",
-    "title": "Práctica 3",
-    "section": "Ejemplo: el promedio que engaña",
-    "text": "Ejemplo: el promedio que engaña\n\nTres salones presentan el mismo examen. Se reporta el promedio de cada salón:\n\n\n\nSalón\nN.º de estudiantes\nPromedio del salón\n\n\n\n\nA\n30\n70\n\n\nB\n10\n90\n\n\nC\n50\n60\n\n\n\n\n\nTrata a los tres salones como si tuvieran el mismo peso — como si el salón de 10 estudiantes contara igual que el de 50.",
+    "objectID": "practica-04/practica-04.html#paso-3a-la-sorpresa-de-cada-categoría",
+    "href": "practica-04/practica-04.html#paso-3a-la-sorpresa-de-cada-categoría",
+    "title": "Práctica 4",
+    "section": "Paso 3a: la “sorpresa” de cada categoría",
+    "text": "Paso 3a: la “sorpresa” de cada categoría\nPrimero calculamos \\(-\\log_2(p_i)\\) para cada categoría: entre menos frecuente es un tipo de violencia, más bits de sorpresa aporta si aparece.\n\n\nPsicológica   p_i=0.50   -log2(p_i) = 1.0000 bits\nFísica        p_i=0.30   -log2(p_i) = 1.7370 bits\nEconómica     p_i=0.15   -log2(p_i) = 2.7370 bits\nSexual        p_i=0.05   -log2(p_i) = 4.3219 bits\n\n\n\n“Sexual” (5% de los casos) sorprende casi 4.3 bits si aparece; “Psicológica” (50% de los casos) apenas sorprende 1 bit, porque ya la esperábamos.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#ejemplo-el-promedio-correcto",
-    "href": "practica-03/practica-03.html#ejemplo-el-promedio-correcto",
-    "title": "Práctica 3",
-    "section": "Ejemplo: el promedio correcto",
-    "text": "Ejemplo: el promedio correcto\n\nPromedio ponderado por número de estudiantes:\n\\[\\bar{x}_w = \\frac{(30)(70) + (10)(90) + (50)(60)}{30 + 10 + 50} = \\frac{6000}{90} = 66.7\\]\n\n\n\nLa diferencia (73.3 vs. 66.7) no es un error de redondeo: el salón C tiene 50 estudiantes con promedio bajo, así que debe pesar más en el resultado final. Ignorar eso hace parecer que el desempeño general fue mejor de lo que realmente fue.",
+    "objectID": "practica-04/practica-04.html#paso-3b-ponderando-la-sorpresa-por-su-probabilidad",
+    "href": "practica-04/practica-04.html#paso-3b-ponderando-la-sorpresa-por-su-probabilidad",
+    "title": "Práctica 4",
+    "section": "Paso 3b: ponderando la sorpresa por su probabilidad",
+    "text": "Paso 3b: ponderando la sorpresa por su probabilidad\nAhora multiplicamos la sorpresa de cada categoría por \\(p_i\\): así las categorías raras (mucha sorpresa, pero ocurren poco) no dominan el resultado, y las comunes (poca sorpresa, pero ocurren mucho) sí pesan.\n\n\nPsicológica   p_i * (-log2 p_i) = 0.5000\nFísica        p_i * (-log2 p_i) = 0.5211\nEconómica     p_i * (-log2 p_i) = 0.4105\nSexual        p_i * (-log2 p_i) = 0.2161\n\nSuma de todas las contribuciones -&gt; H = 1.6477 bits\n\n\n\n\\(H\\) es literalmente la suma de esas 4 contribuciones: no es una fórmula misteriosa, es un promedio ponderado de “qué tan sorprendente es cada categoría”.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#cuándo-usar-una-media-ponderada",
-    "href": "practica-03/practica-03.html#cuándo-usar-una-media-ponderada",
-    "title": "Práctica 3",
-    "section": "¿Cuándo usar una media ponderada?",
-    "text": "¿Cuándo usar una media ponderada?\n\nSiempre que cada dato no representa lo mismo que los demás:\n\nEncuestas y censos: cada persona encuestada representa a un número distinto de personas en la población real (factor de expansión / peso muestral)\nCalificaciones: materias con más créditos pesan más en el promedio general\nReseñas de producto: una tienda con 5,000 reseñas debería pesar más que una con 5\n\n\n\n\nCalcular una media sin ponderar cuando los pesos importan no es “menos preciso” — es una cifra distinta, que describe algo diferente: describe a los grupos por igual, no a la población real que representan.",
+    "objectID": "practica-04/practica-04.html#paso-3c-comparando-contra-el-máximo-posible",
+    "href": "practica-04/practica-04.html#paso-3c-comparando-contra-el-máximo-posible",
+    "title": "Práctica 4",
+    "section": "Paso 3c: comparando contra el máximo posible",
+    "text": "Paso 3c: comparando contra el máximo posible\n\n\nEntropía (H)     = 1.6477 bits\nEntropía Máxima  = 2.0000 bits\n\nH / H_max = 0.8239 (82.4%)\n\n\n\\(H_{max} = \\log_2(k)\\) es la entropía que tendríamos si las 4 categorías fueran igual de probables (25% cada una): ahí ninguna te da pistas de antemano, así que la sorpresa promedio es máxima.\nLa entropía relativa (\\(H/H_{max}\\)) nos dice que tenemos el 82.4% de la incertidumbre que tendríamos en ese escenario perfectamente balanceado.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-que-hago",
-    "href": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-que-hago",
-    "title": "Práctica 3",
-    "section": "Ya tengo mis datos ¿Ahora que hago?",
-    "text": "Ya tengo mis datos ¿Ahora que hago?",
+    "objectID": "practica-04/practica-04.html#entropía-de-shannon-1",
+    "href": "practica-04/practica-04.html#entropía-de-shannon-1",
+    "title": "Práctica 4",
+    "section": "Entropía de Shannon",
+    "text": "Entropía de Shannon\nLa entropía viene de la teoría de la información y responde una pregunta muy concreta: si te digo el tipo de violencia de un caso elegido al azar, ¿qué tan “sorprendido” te vas a llevar?\n\nUn evento casi seguro (p cercana a 1) no sorprende casi nada → aporta poca información\nUn evento raro (p cercana a 0) sí sorprende → aporta mucha información\nShannon mide esa sorpresa en bits, con la fórmula \\(-\\log_2(p_i)\\)\n\n\nPero la sorpresa de una sola categoría no basta: necesitamos un solo número que resuma a las 4 categorías juntas. Para eso, Shannon promedia la sorpresa de cada categoría, ponderándola por qué tan seguido ocurre.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#el-pipeline-de-preprocesamiento",
-    "href": "practica-03/practica-03.html#el-pipeline-de-preprocesamiento",
-    "title": "Práctica 3",
-    "section": "El pipeline de preprocesamiento",
-    "text": "El pipeline de preprocesamiento\n\nAntes de calcular cualquier medida o entrenar cualquier modelo, los datos crudos pasan por cuatro etapas:\n\n\n\nDetectar valores nulos — qué columnas los tienen y en qué porcentaje\nDecidir qué hacer con ellos — eliminar, imputar, o investigar si siguen un patrón\nNormalizar tipos de datos — que lo numérico sea numérico, lo categórico sea consistente\nFeature engineering — crear variables nuevas que representen mejor el fenómeno",
+    "objectID": "practica-04/practica-04.html#paso-3a-la-ocurrencia-de-cada-categoría",
+    "href": "practica-04/practica-04.html#paso-3a-la-ocurrencia-de-cada-categoría",
+    "title": "Práctica 4",
+    "section": "Paso 3a: la “ocurrencia” de cada categoría",
+    "text": "Paso 3a: la “ocurrencia” de cada categoría\nPrimero calculamos \\(-\\log_2(p_i)\\) para cada categoría: entre menos frecuente es un tipo de violencia, más bits de sorpresa aporta si aparece.\n\n\nPsicológica   p_i=0.50   -log2(p_i) = 1.0000 bits\nFísica        p_i=0.30   -log2(p_i) = 1.7370 bits\nEconómica     p_i=0.15   -log2(p_i) = 2.7370 bits\nSexual        p_i=0.05   -log2(p_i) = 4.3219 bits\n\n\n\n“Sexual” (5% de los casos) sorprende casi 4.3 bits si aparece; “Psicológica” (50% de los casos) apenas sorprende 1 bit, porque ya la esperábamos.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#detección-de-valores-nulos",
-    "href": "practica-03/practica-03.html#detección-de-valores-nulos",
-    "title": "Práctica 3",
-    "section": "Detección de valores nulos",
-    "text": "Detección de valores nulos\n\nEl primer paso no es decidir qué hacer con los nulos — es medirlos. Por cada columna necesitas saber cuántos nulos tiene y qué porcentaje representan.\n\ntotal_filas = df.height\n\nresumen_nulos = df.null_count().transpose(\n    include_header=True,\n    header_name=\"columna\",\n    column_names=[\"nulos\"]\n).with_columns(\n    (pl.col(\"nulos\") / total_filas * 100).round(2).alias(\"% nulos\")\n).sort(\"% nulos\", descending=True)\n\nprint(resumen_nulos)\n\n\nEl resultado debería ser una tabla como: ingreso → 320 nulos (3.2%), ocupacion → 1,850 nulos (18.5%), edad → 12 nulos (0.1%). Esta tabla es la que decide el resto de la estrategia.",
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-1-los-datos",
+    "href": "practica-04/practica-04.html#ejemplo-paso-1-los-datos",
+    "title": "Práctica 4",
+    "section": "Ejemplo Paso 1: los datos",
+    "text": "Ejemplo Paso 1: los datos\nCasos reportados (hipotéticos) en 5 entidades, ya ordenados de menor a mayor:\n\n\nEntidad E: 5 casos\nEntidad D: 10 casos\nEntidad C: 15 casos\nEntidad B: 30 casos\nEntidad A: 40 casos\nTotal: 100",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#eliminar-o-imputar-la-regla-del-5",
-    "href": "practica-03/practica-03.html#eliminar-o-imputar-la-regla-del-5",
-    "title": "Práctica 3",
-    "section": "¿Eliminar o imputar? La regla del 5%",
-    "text": "¿Eliminar o imputar? La regla del 5%\n\nHeurística común en la industria: si una columna tiene menos del 5% de valores nulos, eliminar esos renglones rara vez sesga la muestra de forma importante — es más simple que imputar y el costo de perder esos datos es bajo.\n\n\n\nEl 5% es una guía, no una ley. Si esa columna es central para tu análisis (por ejemplo, la variable que quieres describir o predecir), incluso un 3% de nulos merece revisión antes de eliminar.",
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-2-proporciones-acumuladas",
+    "href": "practica-04/practica-04.html#ejemplo-paso-2-proporciones-acumuladas",
+    "title": "Práctica 4",
+    "section": "Ejemplo Paso 2: proporciones acumuladas",
+    "text": "Ejemplo Paso 2: proporciones acumuladas\nVamos entidad por entidad, sumando los casos como si fueran llegando en fila. En cada paso preguntamos: ¿cuántos casos llevamos acumulados hasta aquí?\n\n\nEntidad      Casos   Acumulado   Prop. acum.\nE                5           5          0.05\nD               10          15          0.15\nC               15          30          0.30\nB               30          60          0.60\nA               40         100          1.00\n\n\n\nAl llegar a la última entidad, el acumulado siempre coincide con el total (100). Eso es justo lo que confirma que no se nos perdió ningún caso en el camino.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#los-nulos-son-aleatorios-o-siguen-un-patrón",
-    "href": "practica-03/practica-03.html#los-nulos-son-aleatorios-o-siguen-un-patrón",
-    "title": "Práctica 3",
-    "section": "¿Los nulos son aleatorios o siguen un patrón?",
-    "text": "¿Los nulos son aleatorios o siguen un patrón?\n\n\nAleatorios (MCAR): la ausencia no depende de nada — un error de captura, una hoja perdida. Ej: un encuestador olvidó registrar la edad de algunas personas al azar.\nCon patrón relacionado a otra variable (MAR): la probabilidad de faltar depende de algo que sí observaste. Ej: las personas mayores de 60 años tienden a no responder la pregunta de nivel de estudios.\nCon patrón relacionado al propio valor (MNAR): la ausencia depende de lo que falta. Ej: las personas con ingresos muy altos o muy bajos prefieren no reportar su ingreso.",
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-3-coeficiente-de-gini",
+    "href": "practica-04/practica-04.html#ejemplo-paso-3-coeficiente-de-gini",
+    "title": "Práctica 4",
+    "section": "Ejemplo Paso 3: coeficiente de Gini",
+    "text": "Ejemplo Paso 3: coeficiente de Gini\n\n\nNumerador   = 180\nDenominador = 500\nCoeficiente de Gini = 0.360",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#código-hay-un-patrón-detrás-del-nulo",
-    "href": "practica-03/practica-03.html#código-hay-un-patrón-detrás-del-nulo",
-    "title": "Práctica 3",
-    "section": "Código: ¿hay un patrón detrás del nulo?",
-    "text": "Código: ¿hay un patrón detrás del nulo?\n\nUna forma simple de investigarlo: comparar otra variable entre el grupo que tiene el dato y el que no.\n\ndf_check = df.with_columns(\n    pl.col(\"ingreso\").is_null().alias(\"ingreso_es_nulo\")\n)\n\ndf_check.group_by(\"ingreso_es_nulo\").agg([\n    pl.col(\"edad\").mean().alias(\"edad_promedio\"),\n    pl.col(\"nivel_escolaridad\").mode().alias(\"escolaridad_comun\")\n])\n\nSi la edad promedio o la escolaridad más común son muy distintas entre ambos grupos, el nulo no es aleatorio — está relacionado con otra variable, y hay que documentarlo así en el reporte.",
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-4-graficar-la-curva-de-lorenz",
+    "href": "practica-04/practica-04.html#ejemplo-paso-4-graficar-la-curva-de-lorenz",
+    "title": "Práctica 4",
+    "section": "Ejemplo Paso 4: graficar la curva de Lorenz",
+    "text": "Ejemplo Paso 4: graficar la curva de Lorenz",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#normalización-de-tipos-de-datos",
-    "href": "practica-03/practica-03.html#normalización-de-tipos-de-datos",
-    "title": "Práctica 3",
-    "section": "Normalización de tipos de datos",
-    "text": "Normalización de tipos de datos\n\nLos datos crudos casi nunca vienen con el tipo correcto: números guardados como texto, fechas como strings, o categorías escritas de formas distintas.\n\n\nEjemplo típico de una columna edad mal tipada:\n\"25\", \"30\", \"N/A\", \"28 años\", \" 41 \"\n\n\n\nMientras esa columna sea texto, no puedes calcular su media, ordenarla numéricamente ni compararla con &gt; o &lt; — Polars/pandas la tratan como cadenas, no como cantidades.",
+    "objectID": "practica-04/practica-04.html#notebook-medidas-de-heterogeneidad",
+    "href": "practica-04/practica-04.html#notebook-medidas-de-heterogeneidad",
+    "title": "Práctica 4",
+    "section": "Notebook: Medidas de Heterogeneidad",
+    "text": "Notebook: Medidas de Heterogeneidad\nSobre variables cualitativas, calcular:\n\nÍndice de Variación Cualitativa (IQV)\nÍndice de Gini-Simpson\nEntropía de Shannon\n\nCon gráficos e interpretación en el contexto de violencia contra las mujeres.",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#código-normalizar-tipos-en-polars",
-    "href": "practica-03/practica-03.html#código-normalizar-tipos-en-polars",
-    "title": "Práctica 3",
-    "section": "Código: normalizar tipos en Polars",
-    "text": "Código: normalizar tipos en Polars\ndf = df.with_columns(\n    pl.col(\"edad\")\n      .str.strip_chars()                     # quita espacios\n      .str.extract(r\"(\\d+)\")                 # extrae solo el número\n      .cast(pl.Int32, strict=False)           # convierte a entero\n      .alias(\"edad\")\n)\n\n# Normalizar texto categórico (mayúsculas/espacios inconsistentes)\ndf = df.with_columns(\n    pl.col(\"nombre_categoria\").str.to_lowercase().str.strip_chars()\n)\n\nstrict=False convierte a null los valores que no se pudieron transformar (como \"N/A\") en lugar de tronar el proceso — así conservas el error como un nulo detectado, no como un dato inventado.",
+    "objectID": "practica-04/practica-04.html#notebook-medidas-de-concentración",
+    "href": "practica-04/practica-04.html#notebook-medidas-de-concentración",
+    "title": "Práctica 4",
+    "section": "Notebook: Medidas de Concentración",
+    "text": "Notebook: Medidas de Concentración\n\nAnalizar los casos reportados ponderados por el factor de expansión\nConstruir la curva de Lorenz por entidad federativa\nCalcular el coeficiente de Gini\nInterpretar: ¿concentración territorial alta o reparto homogéneo?",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#feature-engineering-crear-variables-nuevas",
-    "href": "practica-03/practica-03.html#feature-engineering-crear-variables-nuevas",
-    "title": "Práctica 3",
-    "section": "Feature Engineering: crear variables nuevas",
-    "text": "Feature Engineering: crear variables nuevas\n\nCrear columnas nuevas a partir de las existentes para que representen mejor lo que quieres analizar o modelar.\n\n\nEjemplos:\n\nA partir de una fecha: edad = año_actual − año_nacimiento\nCombinar variables en una razón: ingreso_per_capita = ingreso_hogar / num_personas\n\n\n\n\nUn análisis o modelo es tan bueno como las variables que le das. edad_en_dias casi no dice nada útil; grupo_edad en categorías interpretables sí revela patrones claros al graficar o agrupar.",
+    "objectID": "practica-04/practica-04.html#síntesis-gini-y-entropía",
+    "href": "practica-04/practica-04.html#síntesis-gini-y-entropía",
+    "title": "Práctica 4",
+    "section": "Síntesis Gini y Entropía",
+    "text": "Síntesis Gini y Entropía\n\nElegir una misma variable categórica (p. ej. tipo de violencia)\nCalcular sobre ella tanto la entropía de Shannon como una versión del Gini aplicada a las frecuencias de sus categorías\nRedactar, en no más de un párrafo, la diferencia conceptual entre ambas lecturas",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#código-ejemplo-de-feature-engineering",
-    "href": "practica-03/practica-03.html#código-ejemplo-de-feature-engineering",
-    "title": "Práctica 3",
-    "section": "Código: ejemplo de feature engineering",
-    "text": "Código: ejemplo de feature engineering\ndf = df.with_columns([\n    (pl.col(\"anio_actual\") - pl.col(\"anio_nacimiento\")).alias(\"edad\"),\n\n    pl.when(pl.col(\"edad\") &lt; 30).then(pl.lit(\"Joven\"))\n      .when(pl.col(\"edad\") &lt; 60).then(pl.lit(\"Adulto\"))\n      .otherwise(pl.lit(\"Adulto mayor\"))\n      .alias(\"grupo_edad\"),\n\n    (pl.col(\"ingreso_hogar\") / pl.col(\"num_personas\"))\n      .alias(\"ingreso_per_capita\")\n])",
+    "objectID": "practica-04/practica-04.html#tabla-de-resultados-y-reflexión",
+    "href": "practica-04/practica-04.html#tabla-de-resultados-y-reflexión",
+    "title": "Práctica 4",
+    "section": "Tabla de resultados y reflexión",
+    "text": "Tabla de resultados y reflexión\nCompletar en el reporte:\n\n\n\nFamilia de medida\nVariable(s)\nValor obtenido\nInterpretación\n\n\n\n\nLocalización\n\n\n\n\n\nVariabilidad\n\n\n\n\n\nHeterogeneidad\n\n\n\n\n\nConcentración\n\n\n\n\n\nGini vs. Entropía",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#resumen-el-flujo-completo",
-    "href": "practica-03/practica-03.html#resumen-el-flujo-completo",
-    "title": "Práctica 3",
-    "section": "Resumen: el flujo completo",
-    "text": "Resumen: el flujo completo\n\n\nDetectar nulos: qué columnas, qué porcentaje\nDecidir: &lt;5% y aleatorio → eliminar; alto % o con patrón → imputar e investigar\nNormalizar tipos: numérico a numérico, texto categórico consistente\nFeature engineering: crear variables que enriquezcan el análisis",
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-3a-de-dónde-sale-el-numerador",
+    "href": "practica-04/practica-04.html#ejemplo-paso-3a-de-dónde-sale-el-numerador",
+    "title": "Práctica 4",
+    "section": "Ejemplo Paso 3a: ¿de dónde sale el numerador?",
+    "text": "Ejemplo Paso 3a: ¿de dónde sale el numerador?\n\\[\\text{Numerador} = 2\\sum_{i=1}^{n} i\\,x_{(i)} - (n+1)\\sum_{i=1}^{n} x_{(i)}\\]\nCada entidad se multiplica por su posición en el orden (1 = la que menos casos tiene, 5 = la que más): así, las entidades con más casos pesan más.\n\n\nEntidad E: posición 1 x  5 casos = 5\nEntidad D: posición 2 x 10 casos = 20\nEntidad C: posición 3 x 15 casos = 45\nEntidad B: posición 4 x 30 casos = 120\nEntidad A: posición 5 x 40 casos = 200\n\nSuma de i*x         = 390\n2 x suma de i*x     = 780\n(n+1) x total       = 600\nNumerador           = 780 - 600 = 180\n\nSi todas tuvieran 20 casos: numerador = 0",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-qué-hago",
-    "href": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-qué-hago",
-    "title": "Práctica 3",
-    "section": "Ya tengo mis datos ¿Ahora qué hago?",
-    "text": "Ya tengo mis datos ¿Ahora qué hago?",
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-3b-qué-representan-180-y-500",
+    "href": "practica-04/practica-04.html#ejemplo-paso-3b-qué-representan-180-y-500",
+    "title": "Práctica 4",
+    "section": "Ejemplo Paso 3b: ¿qué representan 180 y 500?",
+    "text": "Ejemplo Paso 3b: ¿qué representan 180 y 500?\nNumerador (180) = suma de las diferencias absolutas entre todos los pares de entidades. Mide qué tan distintas son las entidades entre sí.\n\n\nPares de entidades: 10\nSuma de |x_i - x_j| sobre todos los pares = 180\n\n\n\nDenominador (500) = \\(n \\times \\text{total} = 5 \\times 100\\). Es un factor de escala (equivale a \\(n^2 \\times \\text{media} = 25 \\times 20\\)): sin él, el 180 crecería solo por agregar entidades o casos y no podríamos comparar problemas distintos.\n\n\nConexión con la curva de Lorenz: \\(G = \\dfrac{180}{500}\\) es lo mismo que el área entre la diagonal y la curva, dividida entre el área total bajo la diagonal (0.5).\n\n\nÁrea bajo la curva de Lorenz      = 0.32\nÁrea entre la diagonal y la curva = 0.18\nGini = área entre / 0.5           = 0.36",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#preprocesamiento",
-    "href": "practica-03/practica-03.html#preprocesamiento",
-    "title": "Práctica 3",
-    "section": "Preprocesamiento",
-    "text": "Preprocesamiento\n\nAntes de calcular cualquier medida o entrenar cualquier modelo, los datos crudos pasan por cuatro etapas:\n\n\n\nDetectar valores nulos — qué columnas los tienen y en qué porcentaje\nDecidir qué hacer con ellos — eliminar, imputar, o investigar si siguen un patrón\nNormalizar tipos de datos — que lo numérico sea numérico, lo categórico sea consistente\nFeature engineering — crear variables nuevas que representen mejor el fenómeno",
+    "objectID": "practica-04/practica-04.html#tabla-de-resultados",
+    "href": "practica-04/practica-04.html#tabla-de-resultados",
+    "title": "Práctica 4",
+    "section": "Tabla de resultados",
+    "text": "Tabla de resultados\n\n\n\nFamilia de medida\nVariable(s)\nValor obtenido\nInterpretación\n\n\n\n\nLocalización\n\n\n\n\n\nVariabilidad\n\n\n\n\n\nHeterogeneidad\n\n\n\n\n\nConcentración\n\n\n\n\n\nGini vs. Entropía",
     "crumbs": [
       "Inicio",
       "Prácticas",
-      "Práctica 3"
+      "Práctica 4"
     ]
   }
 ]

@@ -44,3 +44,4 @@ Para los laboratorios se tendrá la dinámica de que los primeros 15 minutos de 
 - [Práctica 2: Almacenes de Datos y BigQuery](practica-02/practica-02.qmd)
 - [Ejercicios DW](ejercicios-datawarehouse/ejercicios-dw.qmd)
 - [Práctica 3](practica-03/practica-03.qmd)
+- [Práctica 4: Medidas de Concentración y Heterogenidad](practica-04/practica-04.qmd)

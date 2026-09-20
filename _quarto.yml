@@ -24,6 +24,7 @@ website:
           - practica-02/practica-02.qmd
           - ejercicios-datawarehouse/ejercicios-dw.qmd
           - practica-03/practica-03.qmd
+          - practica-04/practica-04.qmd
 
 format:
   html:
