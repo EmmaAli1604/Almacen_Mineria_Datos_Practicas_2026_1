@@ -375,7 +375,7 @@ Emma Alicia Jiménez Sánchez
 <h2>¿Cómo se calcula <span class="math inline">\(E_{ij}\)</span>?</h2>
 <p><span class="math display">\[E_{ij} = \frac{(\text{total de la fila } i)\times(\text{total de la columna } j)}{N}\]</span></p>
 <p>donde <span class="math inline">\(N\)</span> es el <strong>total de casos</strong>. Es lo que esperaríamos por azar si la distribución de una variable fuera igual en todas las categorías de la otra.</p>
-<div id="1e69604c" class="cell" data-execution_count="2">
+<div id="29caebc4" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Observados (O):
                Sí  No
@@ -394,7 +394,7 @@ Licenciatura  45.0  55.0</code></pre>
 </section>
 <section id="armando-el-estadístico-celda-por-celda" class="slide level2 smaller">
 <h2>Armando el estadístico celda por celda</h2>
-<div id="ff67545a" class="cell" data-execution_count="3">
+<div id="dce9e786" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>               Sí     No
 Primaria      5.0  4.091
@@ -568,7 +568,7 @@ chi2 = suma de contribuciones = 18.182</code></pre>
 <section id="proceso-paso-a-paso-con-un-ejemplo" class="slide level2 smaller">
 <h2>Proceso paso a paso con un ejemplo</h2>
 <p>Cinco mujeres: <code>edad</code> y <code>anios_pareja</code> (años de relación).</p>
-<div id="fc8c6cfa" class="cell" data-execution_count="4">
+<div id="d747f36f" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>   edad  anios    dx    dy  dx*dy   dx^2   dy^2
 0  20.0    2.0 -20.0 -18.0  360.0  400.0  324.0
@@ -583,7 +583,7 @@ Medias: edad = 40.0, anios = 20.0</code></pre>
 </section>
 <section id="resultado-del-ejemplo" class="slide level2 smaller">
 <h2>Resultado del ejemplo</h2>
-<div id="2fcf470f" class="cell" data-execution_count="5">
+<div id="ddc104e8" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>Suma dx*dy = 960.0
 Suma dx^2  = 1000.0
@@ -641,7 +641,7 @@ Verificación con numpy: 0.997</code></pre>
 </section>
 <section id="cómo-se-ven-distintos-valores-de-r" class="slide level2 smaller">
 <h2>Cómo se ven distintos valores de <span class="math inline">\(r\)</span></h2>
-<div id="ec6f5a1b" class="cell" data-fig-height="3" data-fig-width="9" data-execution_count="6">
+<div id="29c3c830" class="cell" data-fig-height="3" data-fig-width="9" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -653,7 +653,7 @@ Verificación con numpy: 0.997</code></pre>
 </section>
 <section id="ejemplo-con-los-datos-de-la-práctica" class="slide level2 smaller">
 <h2>Ejemplo con los datos de la práctica</h2>
-<div id="0166bcbb" class="cell" data-execution_count="7">
+<div id="74230564" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>              edad  anios_pareja  num_hijos
 edad          1.00          0.98       0.09
@@ -667,7 +667,7 @@ num_hijos     0.09          0.08       1.00</code></pre>
 </section>
 <section id="heatmap-de-correlaciones" class="slide level2 smaller">
 <h2>Heatmap de correlaciones</h2>
-<div id="4b43acd5" class="cell" data-fig-height="3.6" data-fig-width="5" data-execution_count="8">
+<div id="424035a2" class="cell" data-fig-height="3.6" data-fig-width="5" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -781,7 +781,7 @@ num_hijos     0.09          0.08       1.00</code></pre>
 <li class="fragment"><strong>PC2:</strong> la siguiente dirección con más varianza, <strong>perpendicular</strong> a PC1</li>
 <li class="fragment">Y así sucesivamente, <strong>una dirección nueva por cada variable original</strong></li>
 </ul>
-<div id="1a86eee4" class="cell" data-fig-height="3.8" data-fig-width="5" data-execution_count="9">
+<div id="959de7eb" class="cell" data-fig-height="3.8" data-fig-width="5" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -932,7 +932,7 @@ num_hijos     0.09          0.08       1.00</code></pre>
 </section>
 <section id="ejemplo-población-con-clase-desbalanceada" class="slide level2 smaller">
 <h2>Ejemplo: población con clase desbalanceada</h2>
-<div id="e1da11eb" class="cell" data-execution_count="10">
+<div id="433ec4c9" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>         muestra      n  prop_violencia  edad_media
 0      población  20000           0.121      38.244
@@ -944,7 +944,7 @@ num_hijos     0.09          0.08       1.00</code></pre>
 </section>
 <section id="cuánto-varía-una-muestra-aleatoria" class="slide level2 smaller">
 <h2>¿Cuánto varía una muestra aleatoria?</h2>
-<div id="2a1ff80a" class="cell" data-execution_count="11">
+<div id="c513cf4b" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1313,7 +1313,7 @@ num_hijos     0.09          0.08       1.00</code></pre>
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/EmmaAli1604\.github\.io\/Almacen_Mineria_Datos_Practicas_2026_1\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
