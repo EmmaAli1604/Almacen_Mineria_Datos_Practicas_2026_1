@@ -1,5 +1,306 @@
 [
   {
+    "objectID": "practica-05/practica-05.html#objetivo-de-la-práctica",
+    "href": "practica-05/practica-05.html#objetivo-de-la-práctica",
+    "title": "Práctica 5",
+    "section": "Objetivo de la práctica",
+    "text": "Objetivo de la práctica\n\nAplicar normalización (numérica) a los datos ya limpios\nReducir columnas: chi-cuadrada, correlación de Pearson y PCA\nReducir filas: muestreo aleatorio, estratificado y sistemático\nJustificar técnicamente cada decisión y reflexionar sobre qué información se gana y cuál se pierde"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#por-qué-esta-práctica",
+    "href": "practica-05/practica-05.html#por-qué-esta-práctica",
+    "title": "Práctica 5",
+    "section": "¿Por qué esta práctica?",
+    "text": "¿Por qué esta práctica?\nEn prácticas anteriores los datos de la ENDIREH quedaron limpios: tipos correctos, sin duplicados, sin faltantes.\nAun así, datos limpios no significa datos listos para modelar:\n\nVariables en escalas incomparables (edad vs. ingreso)\nDemasiadas columnas, varias redundantes o irrelevantes\nDemasiadas filas para explorar o iterar rápido\n\n\nLa limpieza no se repite: se parte de data/data-processed/endireh_2021_limpio.csv."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#qué-es-y-para-qué-sirve",
+    "href": "practica-05/practica-05.html#qué-es-y-para-qué-sirve",
+    "title": "Práctica 5",
+    "section": "¿Qué es y para qué sirve?",
+    "text": "¿Qué es y para qué sirve?\n\n\nNormalización de texto (cualitativas)\n\nMinúsculas, sin espacios extra, sin acentos\nEvita que “Soltera”, “soltera” y “SOLTERA” cuenten como 3 categorías\n\n\n\n\nNormalización numérica (cuantitativas)\n\nLleva variables a una escala comparable\nNecesaria en algoritmos basados en distancias o varianza (K-Means, KNN, PCA)"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#qué-es-y-para-qué-sirve-1",
+    "href": "practica-05/practica-05.html#qué-es-y-para-qué-sirve-1",
+    "title": "Práctica 5",
+    "section": "¿Qué es y para qué sirve?",
+    "text": "¿Qué es y para qué sirve?\nNormalizar es transformar los valores de una variable para llevarla a una escala comparable con las demás.\n\nLas variables vienen en unidades distintas: años, pesos, número de hijos\nAlgoritmos basados en distancias o varianza (K-Means, KNN, PCA) dan más peso a las variables con valores grandes\nLa normalización evita que una variable domine solo por su escala"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#min-max",
+    "href": "practica-05/practica-05.html#min-max",
+    "title": "Práctica 5",
+    "section": "Min-max",
+    "text": "Min-max\n\\[x' = \\frac{x - x_{min}}{x_{max} - x_{min}}\\]\n\nReescala los datos al rango [0, 1]\nEl mínimo pasa a ser 0, el máximo pasa a ser 1\nLos demás valores quedan proporcionalmente entre ambos\n\n\nEjemplo: edades 18, 25, 40 y 60 → \\(x_{min}=18\\), \\(x_{max}=60\\), denominador \\(=42\\)\n\n\\(18 \\to 0\\)\n\\(25 \\to (25-18)/42 = 0.167\\)\n\\(40 \\to (40-18)/42 = 0.524\\)\n\\(60 \\to 1\\)"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#min-max-ventajas-y-límites",
+    "href": "practica-05/practica-05.html#min-max-ventajas-y-límites",
+    "title": "Práctica 5",
+    "section": "Min-max: ventajas y límites",
+    "text": "Min-max: ventajas y límites\n\n\nVentajas\n\nResultado fácil de interpretar (0 a 1)\nConserva la forma de la distribución\nÚtil cuando se necesita un rango acotado\n\n\n\n\nLímites\n\nMuy sensible a valores atípicos\nUn ingreso extremo de 1,000,000 comprime a casi todos los demás cerca de 0\nDatos nuevos fuera del rango original salen de [0, 1]"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#z-score-estandarización",
+    "href": "practica-05/practica-05.html#z-score-estandarización",
+    "title": "Práctica 5",
+    "section": "Z-score (estandarización)",
+    "text": "Z-score (estandarización)\n\\[z = \\frac{x - \\mu}{\\sigma}\\]\n\nExpresa cada valor como cuántas desviaciones estándar se aleja de la media\nEl resultado tiene media 0 y desviación estándar 1\n\n\n\n\nz\nInterpretación\n\n\n\n\n0\nIgual a la media\n\n\n1\nUna desviación estándar por encima de la media\n\n\n-2\nDos desviaciones estándar por debajo de la media"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#z-score-ventajas-y-límites",
+    "href": "practica-05/practica-05.html#z-score-ventajas-y-límites",
+    "title": "Práctica 5",
+    "section": "Z-score: ventajas y límites",
+    "text": "Z-score: ventajas y límites\n\n\nVentajas\n\nMenos sensible a atípicos que min-max\nEs el que exige el PCA: busca direcciones de máxima varianza y necesita que todas las variables partan con la misma varianza\nFunciona bien con datos aproximadamente normales\n\n\n\n\nLímites\n\nNo tiene rango fijo (normalmente entre -3 y 3)\nLos valores negativos son menos intuitivos para presentar"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#buenas-prácticas",
+    "href": "practica-05/practica-05.html#buenas-prácticas",
+    "title": "Práctica 5",
+    "section": "Buenas prácticas",
+    "text": "Buenas prácticas\n\nNormaliza solo variables cuantitativas; no la variable objetivo ni los identificadores\nSi luego separas entrenamiento y prueba: fit solo con entrenamiento y transform en ambos, para evitar fuga de información\nGuarda los parámetros del escalador si necesitas revertir la transformación o aplicarla a datos nuevos\nLa correlación de Pearson no cambia al normalizar (son transformaciones lineales); PCA y K-Means sí cambian mucho"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#dos-preguntas-dos-herramientas",
+    "href": "practica-05/practica-05.html#dos-preguntas-dos-herramientas",
+    "title": "Práctica 5",
+    "section": "Dos preguntas, dos herramientas",
+    "text": "Dos preguntas, dos herramientas\n\nChi-cuadrada — ¿esta variable cualitativa está asociada con x columna Si es independiente → candidata a eliminarse.\n\n\nCorrelación de Pearson — ¿estas dos variables cuantitativas dicen lo mismo? Si \\(|r| &gt; 0.8\\) → una es redundante."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#chi-cuadrada-qué-significa-cada-elemento",
+    "href": "practica-05/practica-05.html#chi-cuadrada-qué-significa-cada-elemento",
+    "title": "Práctica 5",
+    "section": "Chi-cuadrada: ¿qué significa cada elemento?",
+    "text": "Chi-cuadrada: ¿qué significa cada elemento?\n\\[\\chi^2 = \\sum_{i,j} \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}\\]"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#chi-cuadrada-qué-significa-cada-elemento-1",
+    "href": "practica-05/practica-05.html#chi-cuadrada-qué-significa-cada-elemento-1",
+    "title": "Práctica 5",
+    "section": "Chi-cuadrada: ¿qué significa cada elemento?",
+    "text": "Chi-cuadrada: ¿qué significa cada elemento?\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\chi^2\\)\nEstadístico de prueba: qué tan lejos están los datos de la independencia. Más grande = más asociación\n\n\n\\(\\sum_{i,j}\\)\nSuma sobre todas las celdas de la tabla de contingencia\n\n\n\\(O_{ij}\\)\nFrecuencia observada: casos reales en la celda \\((i,j)\\)\n\n\n\\(E_{ij}\\)\nFrecuencia esperada si \\(H_0\\) fuera cierta (sin asociación)\n\n\n\\((O_{ij}-E_{ij})\\)\nDiferencia entre lo observado y lo esperado\n\n\n\\((\\cdot)^2\\)\nEvita que diferencias positivas y negativas se cancelen\n\n\n\\(/E_{ij}\\)\nUna misma diferencia pesa más en celdas pequeñas que en celdas grandes"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#cómo-se-calcula-e_ij",
+    "href": "practica-05/practica-05.html#cómo-se-calcula-e_ij",
+    "title": "Práctica 5",
+    "section": "¿Cómo se calcula \\(E_{ij}\\)?",
+    "text": "¿Cómo se calcula \\(E_{ij}\\)?\n\\[E_{ij} = \\frac{(\\text{total de la fila } i)\\times(\\text{total de la columna } j)}{N}\\]\ndonde \\(N\\) es el total de casos. Es lo que esperaríamos por azar si la distribución de una variable fuera igual en todas las categorías de la otra.\n\n\nObservados (O):\n               Sí  No\nPrimaria      30  70\nLicenciatura  60  40 \n\nEsperados (E):\n                 Sí    No\nPrimaria      45.0  55.0\nLicenciatura  45.0  55.0\n\n\n\nSi la escolaridad fuera independiente de la violencia, esperaríamos 45 “Sí” en cada fila (el 45 % de 100). Lo observado en cada fila (30 y 60) se aleja bastante de eso."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#armando-el-estadístico-celda-por-celda",
+    "href": "practica-05/practica-05.html#armando-el-estadístico-celda-por-celda",
+    "title": "Práctica 5",
+    "section": "Armando el estadístico celda por celda",
+    "text": "Armando el estadístico celda por celda\n\n\n               Sí     No\nPrimaria      5.0  4.091\nLicenciatura  5.0  4.091\n\nchi2 = suma de contribuciones = 18.182\n\n\nCada celda aporta qué tanto se desvía de lo esperado. El \\(\\chi^2\\) final es la suma de todas."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#hipótesis-y-valor-p",
+    "href": "practica-05/practica-05.html#hipótesis-y-valor-p",
+    "title": "Práctica 5",
+    "section": "Hipótesis y valor \\(p\\)",
+    "text": "Hipótesis y valor \\(p\\)\n\n\\(H_0\\): las dos variables son independientes (la distribución de una no depende de la otra)\n\\(H_1\\): existe asociación entre ambas\nValor \\(p\\): probabilidad de obtener un \\(\\chi^2\\) al menos tan grande si \\(H_0\\) fuera cierta\n\n\nDecisión:\n\n\\(p \\le 0.05\\) → los datos son poco compatibles con la independencia → asociación significativa → conservar la variable\n\\(p &gt; 0.05\\) → no hay evidencia suficiente de asociación → candidata a eliminar"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#condiciones-y-precauciones",
+    "href": "practica-05/practica-05.html#condiciones-y-precauciones",
+    "title": "Práctica 5",
+    "section": "Condiciones y precauciones",
+    "text": "Condiciones y precauciones\n\nLas frecuencias esperadas deben ser razonablemente grandes (regla común: \\(E_{ij} \\ge 5\\) en la mayoría de las celdas). Si hay categorías con muy pocos casos, conviene agruparlas\nLa prueba indica si hay asociación, no qué tan fuerte es ni en qué dirección\nCon muestras muy grandes, el valor \\(p\\) casi siempre sale pequeño aunque la asociación sea débil\nVariables con muchas categorías (como entidad, con 32) aumentan los grados de libertad y exigen revisar bien la tabla\n\n\n\n\n\n\n\n\nLimitaciones\n\n\n\nCon muestras muy grandes, casi todo sale “significativo” (el valor \\(p\\) se vuelve diminuto aunque la asociación sea débil)\nAsociación ≠ causalidad\nUna variable puede ser estadísticamente independiente y aun así tener relevancia teórica o social: la decisión final es del analista"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#correlación-de-pearson-qué-mide",
+    "href": "practica-05/practica-05.html#correlación-de-pearson-qué-mide",
+    "title": "Práctica 5",
+    "section": "Correlación de Pearson: ¿qué mide?",
+    "text": "Correlación de Pearson: ¿qué mide?\nMide qué tan fuerte y en qué dirección se relacionan linealmente dos variables cuantitativas.\n\\[r = \\frac{\\text{cov}(X,Y)}{\\sigma_X \\, \\sigma_Y}, \\qquad -1 \\le r \\le 1\\]\n\nPregunta que responde: cuando una variable sube, ¿la otra tiende a subir, a bajar o no cambia de forma sistemática?\n\n\nUso en la práctica: si dos variables tienen \\(|r|\\) muy alto, aportan casi la misma información (son redundantes) y basta conservar una."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#las-variables-de-la-fórmula",
+    "href": "practica-05/practica-05.html#las-variables-de-la-fórmula",
+    "title": "Práctica 5",
+    "section": "Las variables de la fórmula",
+    "text": "Las variables de la fórmula\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(r\\)\nCoeficiente de correlación: el resultado final, entre \\(-1\\) y \\(1\\)\n\n\n\\(X, Y\\)\nLas dos variables cuantitativas que se comparan (por ejemplo, edad y anios_pareja)\n\n\n\\(\\text{cov}(X,Y)\\)\nCovarianza: mide si \\(X\\) y \\(Y\\) varían juntas (signo) pero depende de las unidades\n\n\n\\(\\sigma_X, \\sigma_Y\\)\nDesviación estándar de cada variable: cuánto se dispersa cada una\n\n\n\\(\\sigma_X\\sigma_Y\\)\nSe divide entre este producto para quitar las unidades y dejar un valor comparable\n\n\n\n\n\nPor eso \\(r\\) no cambia si mides la edad en años o en meses: la división elimina la escala."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#desarmando-la-covarianza-y-la-desviación",
+    "href": "practica-05/practica-05.html#desarmando-la-covarianza-y-la-desviación",
+    "title": "Práctica 5",
+    "section": "Desarmando la covarianza y la desviación",
+    "text": "Desarmando la covarianza y la desviación\n\\[\\text{cov}(X,Y) = \\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})}{n-1} \\qquad \\sigma_X = \\sqrt{\\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})^2}{n-1}}\\]\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(x_i, y_i\\)\nValores de \\(X\\) y \\(Y\\) para la persona \\(i\\)\n\n\n\\(\\bar{x}, \\bar{y}\\)\nMedia de cada variable\n\n\n\\((x_i-\\bar{x})\\)\nDesviación de la persona \\(i\\) respecto a la media: ¿está por encima o por debajo?\n\n\n\\(n\\)\nNúmero de personas (filas)\n\n\n\\(n-1\\)\nCorrección de muestra (grados de libertad)"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#desarmando-la-covarianza-y-la-desviación-1",
+    "href": "practica-05/practica-05.html#desarmando-la-covarianza-y-la-desviación-1",
+    "title": "Práctica 5",
+    "section": "Desarmando la covarianza y la desviación",
+    "text": "Desarmando la covarianza y la desviación\n\nEl \\(n-1\\) aparece arriba y abajo y se cancela, así que la fórmula práctica es:\n\\[r = \\frac{\\sum (x_i-\\bar{x})(y_i-\\bar{y})}{\\sqrt{\\sum (x_i-\\bar{x})^2 \\cdot \\sum (y_i-\\bar{y})^2}}\\]"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#la-idea-detrás-el-signo-de-cada-producto",
+    "href": "practica-05/practica-05.html#la-idea-detrás-el-signo-de-cada-producto",
+    "title": "Práctica 5",
+    "section": "La idea detrás: el signo de cada producto",
+    "text": "La idea detrás: el signo de cada producto\nPara cada persona se multiplica \\((x_i-\\bar{x})\\cdot(y_i-\\bar{y})\\):\n\nAmbas por encima de su media → producto positivo\nAmbas por debajo de su media → producto positivo\nUna por encima y otra por debajo → producto negativo\n\n\nSe suman todos los productos:\n\nSi casi todos son positivos → la suma es grande y positiva → \\(r\\) cercano a 1\nSi casi todos son negativos → \\(r\\) cercano a \\(-1\\)\nSi se compensan → la suma es cercana a 0 → \\(r\\) cercano a 0"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#proceso-paso-a-paso-con-un-ejemplo",
+    "href": "practica-05/practica-05.html#proceso-paso-a-paso-con-un-ejemplo",
+    "title": "Práctica 5",
+    "section": "Proceso paso a paso con un ejemplo",
+    "text": "Proceso paso a paso con un ejemplo\nCinco mujeres: edad y anios_pareja (años de relación).\n\n\n   edad  anios    dx    dy  dx*dy   dx^2   dy^2\n0  20.0    2.0 -20.0 -18.0  360.0  400.0  324.0\n1  30.0   10.0 -10.0 -10.0  100.0  100.0  100.0\n2  40.0   18.0   0.0  -2.0   -0.0    0.0    4.0\n3  50.0   30.0  10.0  10.0  100.0  100.0  100.0\n4  60.0   40.0  20.0  20.0  400.0  400.0  400.0\n\nMedias: edad = 40.0, anios = 20.0"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#resultado-del-ejemplo",
+    "href": "practica-05/practica-05.html#resultado-del-ejemplo",
+    "title": "Práctica 5",
+    "section": "Resultado del ejemplo",
+    "text": "Resultado del ejemplo\n\n\nSuma dx*dy = 960.0\nSuma dx^2  = 1000.0\nSuma dy^2  = 928.0\n\nr = 960.0 / sqrt(1000.0 * 928.0) = 0.997\nVerificación con numpy: 0.997\n\n\n\n\\(r \\approx 0.997\\): relación lineal positiva casi perfecta. Las dos variables dicen casi lo mismo."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#cómo-se-interpreta-r",
+    "href": "practica-05/practica-05.html#cómo-se-interpreta-r",
+    "title": "Práctica 5",
+    "section": "¿Cómo se interpreta \\(r\\)?",
+    "text": "¿Cómo se interpreta \\(r\\)?\nSigno = dirección\n\n\\(r &gt; 0\\): cuando una sube, la otra tiende a subir\n\\(r &lt; 0\\): cuando una sube, la otra tiende a bajar\n\\(r \\approx 0\\): no hay relación lineal\n\n\nMagnitud \\(|r|\\) = fuerza (guía aproximada; varía según el campo)\n\n\n\n\n\n\n\n\\(\\lvert r \\rvert\\)\nFuerza\n\n\n\n\n0.0 – 0.3\nDébil\n\n\n0.3 – 0.7\nModerada\n\n\n0.7 – 0.8\nFuerte\n\n\n&gt; 0.8\nMuy fuerte → candidata a redundancia (criterio de la práctica)"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#cómo-se-ven-distintos-valores-de-r",
+    "href": "practica-05/practica-05.html#cómo-se-ven-distintos-valores-de-r",
+    "title": "Práctica 5",
+    "section": "Cómo se ven distintos valores de \\(r\\)",
+    "text": "Cómo se ven distintos valores de \\(r\\)"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#ejemplo-con-los-datos-de-la-práctica",
+    "href": "practica-05/practica-05.html#ejemplo-con-los-datos-de-la-práctica",
+    "title": "Práctica 5",
+    "section": "Ejemplo con los datos de la práctica",
+    "text": "Ejemplo con los datos de la práctica\n\n\n              edad  anios_pareja  num_hijos\nedad          1.00          0.98       0.09\nanios_pareja  0.98          1.00       0.08\nnum_hijos     0.09          0.08       1.00\n\n\n\nedad y anios_pareja son redundantes (\\(|r| &gt; 0.8\\)): basta conservar una. num_hijos aporta información distinta."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#heatmap-de-correlaciones",
+    "href": "practica-05/practica-05.html#heatmap-de-correlaciones",
+    "title": "Práctica 5",
+    "section": "Heatmap de correlaciones",
+    "text": "Heatmap de correlaciones\n\n\n\n\n\n\n\n\n\n\nCómo leerlo: la diagonal siempre es 1 (cada variable consigo misma); la matriz es simétrica; rojo = positiva, azul = negativa; busca celdas fuera de la diagonal con \\(|r| &gt; 0.8\\)."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#qué-variable-eliminar-de-un-par-redundante",
+    "href": "practica-05/practica-05.html#qué-variable-eliminar-de-un-par-redundante",
+    "title": "Práctica 5",
+    "section": "¿Qué variable eliminar de un par redundante?",
+    "text": "¿Qué variable eliminar de un par redundante?\nCriterios para decidir:\n\nLa que tenga más valores faltantes o peor calidad\nLa menos interpretable o menos relevante para el problema\nLa que esté menos correlacionada con la variable objetivo\nLa que tenga mayor correlación media con las demás\n\n\n\n\n\n\n\nNote\n\n\nLa decisión debe justificarse en el reporte: no es solo un cálculo, también depende del conocimiento del problema."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#limitaciones-de-pearson",
+    "href": "practica-05/practica-05.html#limitaciones-de-pearson",
+    "title": "Práctica 5",
+    "section": "Limitaciones de Pearson",
+    "text": "Limitaciones de Pearson\n\nHay una relación perfecta (\\(y = x^2\\)), pero \\(r \\approx 0\\): Pearson solo detecta relaciones lineales.\n\n\n\nValores atípicos: uno solo puede inflar o desinflar \\(r\\) de forma engañosa\nSolo variables cuantitativas: para cualitativas se usa la chi-cuadrada\nCorrelación ≠ causalidad: que dos variables se muevan juntas no significa que una cause la otra\nVisualiza siempre el diagrama de dispersión antes de decidir"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#selección-vs.-extracción",
+    "href": "practica-05/practica-05.html#selección-vs.-extracción",
+    "title": "Práctica 5",
+    "section": "Selección vs. extracción",
+    "text": "Selección vs. extracción\n\n\n\n\n\n\n\n\n\nSelección (chi², Pearson)\nExtracción (PCA)\n\n\n\n\nQué hace\nElige columnas originales\nConstruye columnas nuevas\n\n\nInterpretabilidad\nAlta\nMenor (combinaciones lineales)\n\n\nVariables que admite\nCualitativas y cuantitativas\nSolo cuantitativas\n\n\nResultado\nSubconjunto de variables\nComponentes PC1, PC2, …"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#qué-problema-resuelve-el-pca",
+    "href": "practica-05/practica-05.html#qué-problema-resuelve-el-pca",
+    "title": "Práctica 5",
+    "section": "¿Qué problema resuelve el PCA?",
+    "text": "¿Qué problema resuelve el PCA?\n\nRedundancia: varias variables miden casi lo mismo (edad, anios_pareja, num_hijos crecen juntas). PCA las resume en pocas variables nuevas.\n\n\nDemasiadas dimensiones: con muchas variables los modelos se sobreajustan, tardan más y los puntos quedan “lejos” entre sí (la maldición de la dimensionalidad).\n\n\nVisualización: no se puede graficar un espacio de 20 dimensiones, pero sí un plano con PC1 vs. PC2."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#la-idea-intuitiva-girar-los-ejes",
+    "href": "practica-05/practica-05.html#la-idea-intuitiva-girar-los-ejes",
+    "title": "Práctica 5",
+    "section": "La idea intuitiva: girar los ejes",
+    "text": "La idea intuitiva: girar los ejes\nPCA no mueve los datos: gira los ejes hasta encontrar las direcciones donde los datos más se extienden.\n\nPC1: la dirección de mayor varianza\nPC2: la siguiente dirección con más varianza, perpendicular a PC1\nY así sucesivamente, una dirección nueva por cada variable original"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#qué-es-un-componente-principal",
+    "href": "practica-05/practica-05.html#qué-es-un-componente-principal",
+    "title": "Práctica 5",
+    "section": "¿Qué es un componente principal?",
+    "text": "¿Qué es un componente principal?\nCada componente es una combinación lineal de las variables originales (estandarizadas):\n\\[\\text{PC1} = w_{11}\\,z_{\\text{edad}} + w_{12}\\,z_{\\text{anios}} + w_{13}\\,z_{\\text{hijos}} + \\dots\\]\n\nLos coeficientes \\(w\\) se llaman pesos o loadings: dicen cuánto aporta cada variable al componente\nEl valor que obtiene cada persona en un componente se llama score (puntuación)\nLos componentes son ortogonales entre sí: no están correlacionados, no repiten información\n\n\nEjemplo ilustrativo: si PC1 = 0.55·edad + 0.55·años_pareja + 0.50·hijos + …, una persona mayor, con muchos años de pareja y varios hijos tendrá un PC1 alto."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#proceso-paso-a-paso",
+    "href": "practica-05/practica-05.html#proceso-paso-a-paso",
+    "title": "Práctica 5",
+    "section": "Proceso paso a paso",
+    "text": "Proceso paso a paso\n\nEstandarizar cada variable (z-score): media 0 y desviación 1\nCalcular la matriz de covarianza \\(\\Sigma\\) (con datos estandarizados es la matriz de correlación)\nObtener sus valores propios \\(\\lambda_i\\) y vectores propios \\(\\mathbf{v}_i\\)\nOrdenar de mayor a menor \\(\\lambda\\)\nElegir \\(k\\) componentes (los que acumulen suficiente varianza)\nProyectar los datos: \\(\\;Z_{nuevo} = Z \\cdot W_k\\)\n\n\n\\[\\Sigma\\,\\mathbf{v}_i = \\lambda_i\\,\\mathbf{v}_i \\qquad\\qquad \\text{Varianza explicada}_i = \\frac{\\lambda_i}{\\sum_{j=1}^{p}\\lambda_j}\\]"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#las-variables-de-la-fórmula-1",
+    "href": "practica-05/practica-05.html#las-variables-de-la-fórmula-1",
+    "title": "Práctica 5",
+    "section": "Las variables de la fórmula",
+    "text": "Las variables de la fórmula\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\Sigma\\)\nMatriz de covarianza (\\(p\\times p\\)): cómo varían juntas todas las variables\n\n\n\\(\\mathbf{v}_i\\)\nVector propio \\(i\\): la dirección del componente \\(i\\) (sus pesos)\n\n\n\\(\\lambda_i\\)\nValor propio \\(i\\): la varianza que captura ese componente\n\n\n\\(p\\)\nNúmero de variables originales\n\n\n\\(\\sum_j \\lambda_j\\)\nVarianza total; con datos estandarizados es igual a \\(p\\)\n\n\n\\(k\\)\nNúmero de componentes que se conservan (\\(k&lt;p\\))\n\n\n\\(Z\\)\nMatriz de datos estandarizados (\\(n\\times p\\))\n\n\n\\(W_k\\)\nMatriz con los primeros \\(k\\) vectores propios como columnas"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#limitaciones-y-buenas-prácticas",
+    "href": "practica-05/practica-05.html#limitaciones-y-buenas-prácticas",
+    "title": "Práctica 5",
+    "section": "Limitaciones y buenas prácticas",
+    "text": "Limitaciones y buenas prácticas\n\nSolo variables cuantitativas: no tiene sentido aplicarlo directamente a categorías nominales (entidad, estado_civil).\n\n\nSolo captura relaciones lineales: estructuras curvas o complejas no se resumen bien.\n\n\nPérdida de interpretabilidad: PC1 es una mezcla de variables, más difícil de explicar que edad.\n\n\nSensible a atípicos y a la escala: estandariza siempre, y revisa valores extremos.\n\n\nAjuste solo con entrenamiento: si habrá partición entrenamiento/prueba, haz fit solo en entrenamiento para no filtrar información."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#por-qué-muestrear",
+    "href": "practica-05/practica-05.html#por-qué-muestrear",
+    "title": "Práctica 5",
+    "section": "¿Por qué muestrear?",
+    "text": "¿Por qué muestrear?\n\nExplorar y probar modelos más rápido sobre un conjunto más pequeño\nReducir costo de cómputo y almacenamiento\nPero: la muestra debe ser representativa, o las conclusiones se sesgan\n\n\n\n\n\n\n\n\nTécnica\nIdea\n\n\n\n\nAleatorio sin reemplazo\nCada registro entra a lo más una vez\n\n\nAleatorio con reemplazo\nUn registro puede salir varias veces (bootstrap)\n\n\nEstratificado\nRespeta la proporción de cada grupo\n\n\nSistemático\nUn registro cada \\(k\\) posiciones"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#ejemplo-población-con-clase-desbalanceada",
+    "href": "practica-05/practica-05.html#ejemplo-población-con-clase-desbalanceada",
+    "title": "Práctica 5",
+    "section": "Ejemplo: población con clase desbalanceada",
+    "text": "Ejemplo: población con clase desbalanceada\n\n\n         muestra      n  prop_violencia  edad_media\n0      población  20000           0.121      38.244\n1      aleatorio   1000           0.111      38.918\n2  estratificado   1000           0.121      38.706\n3    sistemático   1000           0.107      37.804"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#cuánto-varía-una-muestra-aleatoria",
+    "href": "practica-05/practica-05.html#cuánto-varía-una-muestra-aleatoria",
+    "title": "Práctica 5",
+    "section": "¿Cuánto varía una muestra aleatoria?",
+    "text": "¿Cuánto varía una muestra aleatoria?\n\n\n\n\n\n\n\n\n\nMuestras más pequeñas → mayor variabilidad entre una muestra y otra."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#casos-de-uso-y-riesgos",
+    "href": "practica-05/practica-05.html#casos-de-uso-y-riesgos",
+    "title": "Práctica 5",
+    "section": "Casos de uso y riesgos",
+    "text": "Casos de uso y riesgos\n\nEstratificado: ideal cuando la variable objetivo está desbalanceada (pocos casos de violencia).\n\n\nSistemático: cómodo, pero peligroso si el archivo viene ordenado (por ejemplo, por entidad).\n\n\nFactor de expansión: la ENDIREH es una encuesta con diseño muestral; ignorar factor_expansion sesga la prevalencia nacional."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#flujo-de-trabajo-en-preparacion_datos.py",
+    "href": "practica-05/practica-05.html#flujo-de-trabajo-en-preparacion_datos.py",
+    "title": "Práctica 5",
+    "section": "Flujo de trabajo en preparacion_datos.py",
+    "text": "Flujo de trabajo en preparacion_datos.py\n\nCargar endireh_2021_limpio.csv\nNormalizar variables cuantitativas\nChi-cuadrada contra sufrio_violencia_pareja\nCorrelación de Pearson (≥ 5 variables cuantitativas)\nPCA\nMuestreo\nGuardar data/data-processed/endireh_2021_preparado.csv"
+  },
+  {
+    "objectID": "practica-05/practica-05.html#entregables",
+    "href": "practica-05/practica-05.html#entregables",
+    "title": "Práctica 5",
+    "section": "Entregables",
+    "text": "Entregables\n\nReporte PDF\nPresentacion ejecutiva 5 slides\nScript src/cleaning/normalizacion_datos.py completo y ejecutado\nDataset data/data-processed/endireh_2021_preparado.csv\n\n\n\n\n\n\n\nNote\n\n\nEn los últimos 15 minutos se elegirán 2 personas al azar para explicar el cómo y el por qué de sus decisiones."
+  },
+  {
+    "objectID": "practica-05/practica-05.html#referencias-clave",
+    "href": "practica-05/practica-05.html#referencias-clave",
+    "title": "Práctica 5",
+    "section": "Referencias clave",
+    "text": "Referencias clave\n\nINEGI (2022). Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021\nHan, J., Kamber, M., & Pei, J. (2012). Data Mining: Concepts and Techniques\nJolliffe, I. T., & Cadima, J. (2016). Principal component analysis: a review and recent developments\nCochran, W. G. (1977). Sampling Techniques\nPedregosa, F. et al. (2011). Scikit-learn: Machine learning in Python"
+  },
+  {
     "objectID": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
     "href": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
     "title": "Práctica 3",
@@ -516,474 +817,6 @@
     ]
   },
   {
-    "objectID": "practica-04/practica-04.html#objetivo-de-la-práctica",
-    "href": "practica-04/practica-04.html#objetivo-de-la-práctica",
-    "title": "Práctica 4",
-    "section": "Objetivo de la práctica",
-    "text": "Objetivo de la práctica\n\nCalcular e interpretar medidas de localización, variabilidad, heterogeneidad y concentración\nCalcular específicamente el coeficiente de Gini y la entropía de Shannon\nComunicar los hallazgos con visualizaciones adecuadas\nReflexionar críticamente sobre qué revelan —y qué ocultan— estas medidas sobre la violencia contra las mujeres",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#por-qué-esta-práctica",
-    "href": "practica-04/practica-04.html#por-qué-esta-práctica",
-    "title": "Práctica 4",
-    "section": "¿Por qué esta práctica?",
-    "text": "¿Por qué esta práctica?\nEn la Práctica 3 se dejaron los datos limpios, sin duplicados, con tipos correctos en data/data-processed/.\nEl siguiente paso natural en minería de datos es describir cuantitativamente esos datos antes de modelar: es el rol de la estadística descriptiva dentro del Análisis Exploratorio de Datos (EDA).\n\nNo se vuelve a descargar ni reestructurar el proyecto: se extiende la arquitectura ya existente.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#dos-preguntas-dos-familias-de-medidas",
-    "href": "practica-04/practica-04.html#dos-preguntas-dos-familias-de-medidas",
-    "title": "Práctica 4",
-    "section": "Dos preguntas, dos familias de medidas",
-    "text": "Dos preguntas, dos familias de medidas\n\nConcentración — ¿qué proporción del total se acumula en una fracción pequeña de las unidades de análisis? Herramienta clásica: curva de Lorenz y coeficiente de Gini.\n\n\nHeterogeneidad — ¿qué tan mezcladas o diversas son las categorías? Herramientas: IQV, Gini-Simpson, entropía de Shannon.\n\n\nUno mide desigualdad en cómo se reparte una cantidad; el otro mide diversidad entre categorías.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#nota-de-sensibilidad-del-tema",
-    "href": "practica-04/practica-04.html#nota-de-sensibilidad-del-tema",
-    "title": "Práctica 4",
-    "section": "Nota de sensibilidad del tema",
-    "text": "Nota de sensibilidad del tema\n\n\n\n\n\n\nNote\n\n\nEl análisis debe hacerse con rigor técnico y responsabilidad ética:\n\nEvitar conclusiones que estigmaticen personas, grupos o entidades federativas\nRecordar que los datos representan experiencias reales de violencia\nUna concentración alta en una entidad no implica automáticamente “ahí hay más violencia” — puede reflejar diferencias en denuncia, tamaño poblacional o factores de expansión",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#qué-miden",
-    "href": "practica-04/practica-04.html#qué-miden",
-    "title": "Práctica 4",
-    "section": "¿Qué miden?",
-    "text": "¿Qué miden?\n\n\nLocalización — dónde se “centra” la distribución\n\nMedia, mediana, moda\nPercentiles / cuantiles\nMedia ponderada por factor de expansión\n\n\n\n\nVariabilidad — qué tan dispersos están los datos\n\nVarianza y desviación estándar\nCoeficiente de variación (CV)\nRango intercuartílico (IQR)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#qué-miden-realmente",
-    "href": "practica-04/practica-04.html#qué-miden-realmente",
-    "title": "Práctica 4",
-    "section": "¿Qué miden realmente?",
-    "text": "¿Qué miden realmente?\nMientras que la varianza evalúa dispersión numérica, estas medidas aplican a variables cualitativas (categóricas).\nResponden a una pregunta central:\n\n¿Los datos se aglutinan en una sola categoría dominante (baja heterogeneidad) o están repartidos de forma equilibrada entre todas las opciones (alta heterogeneidad)?\n\n\nLos cimientos matemáticos: Para calcular qué tan mezclados están los datos, las fórmulas utilizan dos bloques básicos:\n\n\\(k\\) = El número total de categorías posibles. (Ej. Si analizamos el “Tipo de violencia”, tenemos Psicológica, Física, Económica y Sexual, por lo tanto \\(k = 4\\)).\n\\(p_i\\) = La proporción de casos que caen en la categoría \\(i\\). (Ej. Si el 50% de los reportes son de violencia psicológica, su \\(p_i = 0.5\\)).",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#índice-de-variación-cualitativa-iqv",
-    "href": "practica-04/practica-04.html#índice-de-variación-cualitativa-iqv",
-    "title": "Práctica 4",
-    "section": "Índice de Variación Cualitativa (IQV)",
-    "text": "Índice de Variación Cualitativa (IQV)\n\\[\\text{IQV} = \\frac{k\\left(1 - \\sum_{i=1}^{k} p_i^2\\right)}{k - 1}\\]\n\n\\(\\text{IQV} = 0\\) → toda la masa en una sola categoría (heterogeneidad nula)\n\\(\\text{IQV} = 1\\) → categorías perfectamente balanceadas (heterogeneidad máxima)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#índice-de-gini-simpson",
-    "href": "practica-04/practica-04.html#índice-de-gini-simpson",
-    "title": "Práctica 4",
-    "section": "Índice de Gini-Simpson",
-    "text": "Índice de Gini-Simpson\n\\[\\text{GS} = 1 - \\sum_{i=1}^{k} p_i^2\\]\n\nInterpretación intuitiva: probabilidad de que dos observaciones elegidas al azar pertenezcan a categorías distintas\nMismo rango de comportamiento que el IQV, pero sin reescalar por \\(k\\)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#entropía-de-shannon",
-    "href": "practica-04/practica-04.html#entropía-de-shannon",
-    "title": "Práctica 4",
-    "section": "Entropía de Shannon",
-    "text": "Entropía de Shannon\n\\[H = -\\sum_{i=1}^{k} p_i \\log_2(p_i), \\qquad 0 \\le H \\le \\log_2(k)\\]\n\nMide incertidumbre: ¿qué tan difícil es predecir la categoría de un caso elegido al azar?\n\\(H = 0\\) → nula incertidumbre (una sola categoría)\n\\(H = \\log_2(k)\\) → máxima incertidumbre (categorías balanceadas)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#cuándo-usar-cada-una",
-    "href": "practica-04/practica-04.html#cuándo-usar-cada-una",
-    "title": "Práctica 4",
-    "section": "¿Cuándo usar cada una?",
-    "text": "¿Cuándo usar cada una?\n\nUsa Entropía / Gini-Simpson / IQV cuando… La pregunta es ¿qué tan mezcladas o diversas son las categorías? Ejemplo: tipo de violencia, modalidad, relación con el agresor\n\n\nUsa el coeficiente de Gini / curva de Lorenz cuando… La pregunta es ¿qué proporción del total se concentra en pocas unidades? Ejemplo: casos de violencia por entidad federativa\n\n\n\n\n\n\n\n\nNote\n\n\nSi aplicas ambas a la misma variable categórica (cada categoría como “unidad”, su frecuencia como la “cantidad” a repartir), obtienes dos lecturas complementarias: la entropía dice qué tan mezclada está; el Gini sobre esas mismas frecuencias dice qué tan desigual es esa mezcla.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#caso-práctico",
-    "href": "practica-04/practica-04.html#caso-práctico",
-    "title": "Práctica 4",
-    "section": "Caso Práctico",
-    "text": "Caso Práctico\nImaginemos que analizamos un subconjunto de 100 casos reportados de violencia. ¿Están concentrados en un solo tipo o vemos una mezcla de todas las formas de violencia?\n\n\n- Psicológica : 50 casos\n- Física      : 30 casos\n- Económica   : 15 casos\n- Sexual      : 5 casos\n\n\n\n\n\n\n\n\n\nObservación inicial\n\n\nA simple vista notamos que la violencia “Psicológica” acapara la mitad de los casos (50), mientras que la “Sexual” es la minoría (5). Esto ya nos indica que no hay un balance perfecto.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#paso-1-las-proporciones",
-    "href": "practica-04/practica-04.html#paso-1-las-proporciones",
-    "title": "Práctica 4",
-    "section": "Paso 1: Las proporciones",
-    "text": "Paso 1: Las proporciones\nTodas las fórmulas de heterogeneidad necesitan convertir frecuencias absolutas a proporciones (\\(p_i\\)) y, fundamentalmente, elevar esas proporciones al cuadrado (\\(p_i^2\\)).\n¿Por qué al cuadrado? Porque penaliza fuertemente a las categorías minoritarias y recompensa a las mayoritarias, revelando qué tan dominante es el pico de la distribución.\n\n\nProporciones (p_i): [0.5  0.3  0.15 0.05]\nProporciones al cuadrado (p_i^2): [0.25   0.09   0.0225 0.0025]\n\nSuma de p_i^2 = 0.365\n\n\n\n▶ Si todos los casos estuvieran en “Psicológica”, la suma sería 1.\n▶ Si hubiera 25 casos de cada tipo, la suma sería 0.25 (lo mínimo posible).\n▶ Nuestro 0.365 está en un punto intermedio.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#paso-2-índices-de-gini-simpson-e-iqv",
-    "href": "practica-04/practica-04.html#paso-2-índices-de-gini-simpson-e-iqv",
-    "title": "Práctica 4",
-    "section": "Paso 2: Índices de Gini-Simpson e IQV",
-    "text": "Paso 2: Índices de Gini-Simpson e IQV\nGini-Simpson (\\(1 - \\sum p_i^2\\)) Mide la probabilidad de que, al tomar 2 reportes al azar, sean de tipos de violencia distintos.\n\n\nGini-Simpson = 0.6350\n\n\n(Hay un 63.5% de probabilidad de que dos víctimas al azar hayan sufrido distintos tipos de violencia).\n\nÍndice de Variación Cualitativa (IQV) Ajusta el valor anterior usando el número de categorías (\\(k=4\\)) para darnos una métrica de 0 a 1 (donde 1 es la máxima mezcla posible).\n\n\nIQV = 0.8467\n\n\n(Nuestros datos alcanzan casi el 85% de la máxima diversidad posible).\n\n\nFíjate que IQV es simplemente Gini-Simpson reescalado: \\(\\text{IQV} = \\frac{k}{k-1}\\,\\text{GS}\\).",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#paso-3-entropía-de-shannon",
-    "href": "practica-04/practica-04.html#paso-3-entropía-de-shannon",
-    "title": "Práctica 4",
-    "section": "Paso 3: Entropía de Shannon",
-    "text": "Paso 3: Entropía de Shannon\nSi te digo el tipo de violencia de un caso elegido al azar, ¿qué tan “sorprendido” te vas a llevar?\n\nUn evento casi seguro (p cercana a 1) no sorprende casi nada → aporta poca información\nUn evento raro (p cercana a 0) sí sorprende → aporta mucha información\nShannon mide esa sorpresa en bits, con la fórmula \\(-\\log_2(p_i)\\)\n\n\nPero la sorpresa de una sola categoría no basta: necesitamos un solo número que resuma a las 4 categorías juntas. Para eso, Shannon promedia la sorpresa de cada categoría, ponderándola por qué tan seguido ocurre.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#paso-3a-la-ocurrencia-de-cada-categoría",
-    "href": "practica-04/practica-04.html#paso-3a-la-ocurrencia-de-cada-categoría",
-    "title": "Práctica 4",
-    "section": "Paso 3a: la “ocurrencia” de cada categoría",
-    "text": "Paso 3a: la “ocurrencia” de cada categoría\nPrimero calculamos \\(-\\log_2(p_i)\\) para cada categoría: entre menos frecuente es un tipo de violencia, más bits de sorpresa aporta si aparece.\n\n\nPsicológica   p_i=0.50   -log2(p_i) = 1.0000 bits\nFísica        p_i=0.30   -log2(p_i) = 1.7370 bits\nEconómica     p_i=0.15   -log2(p_i) = 2.7370 bits\nSexual        p_i=0.05   -log2(p_i) = 4.3219 bits\n\n\n\n“Sexual” (5% de los casos) sorprende casi 4.3 bits si aparece; “Psicológica” (50% de los casos) apenas sorprende 1 bit, porque ya la esperábamos.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#paso-3b-ponderando-la-sorpresa-por-su-probabilidad",
-    "href": "practica-04/practica-04.html#paso-3b-ponderando-la-sorpresa-por-su-probabilidad",
-    "title": "Práctica 4",
-    "section": "Paso 3b: ponderando la sorpresa por su probabilidad",
-    "text": "Paso 3b: ponderando la sorpresa por su probabilidad\nAhora multiplicamos la sorpresa de cada categoría por \\(p_i\\): así las categorías raras (mucha sorpresa, pero ocurren poco) no dominan el resultado, y las comunes (poca sorpresa, pero ocurren mucho) sí pesan.\n\n\nPsicológica   p_i * (-log2 p_i) = 0.5000\nFísica        p_i * (-log2 p_i) = 0.5211\nEconómica     p_i * (-log2 p_i) = 0.4105\nSexual        p_i * (-log2 p_i) = 0.2161\n\nSuma de todas las contribuciones -&gt; H = 1.6477 bits\n\n\n\n\\(H\\) es literalmente la suma de esas 4 contribuciones: no es una fórmula misteriosa, es un promedio ponderado de “qué tan sorprendente es cada categoría”.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#paso-3c-comparando-contra-el-máximo-posible",
-    "href": "practica-04/practica-04.html#paso-3c-comparando-contra-el-máximo-posible",
-    "title": "Práctica 4",
-    "section": "Paso 3c: comparando contra el máximo posible",
-    "text": "Paso 3c: comparando contra el máximo posible\n\n\nEntropía (H)     = 1.6477 bits\nEntropía Máxima  = 2.0000 bits\n\nH / H_max = 0.8239 (82.4%)\n\n\n\\(H_{max} = \\log_2(k)\\) es la entropía que tendríamos si las 4 categorías fueran igual de probables (25% cada una): ahí ninguna te da pistas de antemano, así que la sorpresa promedio es máxima.\nLa entropía relativa (\\(H/H_{max}\\)) nos dice que tenemos el 82.4% de la incertidumbre que tendríamos en ese escenario perfectamente balanceado.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#visualizando-la-distribución",
-    "href": "practica-04/practica-04.html#visualizando-la-distribución",
-    "title": "Práctica 4",
-    "section": "Visualizando la distribución",
-    "text": "Visualizando la distribución\n\n\n\n\n\n\n\n\n\nLa barra de “Psicológica” domina visualmente el resto — la misma historia que cuentan GS=0.635, IQV=0.847 y H/H_max=0.824, pero ahora se puede ver de un vistazo.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#síntesis-del-ejemplo",
-    "href": "practica-04/practica-04.html#síntesis-del-ejemplo",
-    "title": "Práctica 4",
-    "section": "Síntesis del ejemplo",
-    "text": "Síntesis del ejemplo\n\n\n\n\n\n\n\n\nÍndice\nValor\n¿Qué significa en la realidad?\n\n\n\n\nGini-Simpson\n0.635\nProbabilidad moderada-alta de cruzar víctimas con vivencias diferentes.\n\n\nIQV\n0.847\nLa distribución está al 85% de ser perfectamente heterogénea.\n\n\nEntropía (Relativa)\n0.824\nTenemos un 82% de incertidumbre al predecir el tipo de violencia del siguiente caso.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#primos-conceptuales-no-sinónimos",
-    "href": "practica-04/practica-04.html#primos-conceptuales-no-sinónimos",
-    "title": "Práctica 4",
-    "section": "Primos conceptuales, no sinónimos",
-    "text": "Primos conceptuales, no sinónimos\n\n\n\n\n\n\n\n\n\nEntropía de Shannon (heterogeneidad)\nGini (concentración)\n\n\n\n\nMide\nDiversidad / incertidumbre entre categorías\nDesigualdad en cómo se reparte una cantidad\n\n\nRango\n\\(0\\) a \\(\\log_2(k)\\)\n\\(0\\) a \\(1\\)\n\n\nPregunta\n¿Qué tan mezcladas están las categorías?\n¿Qué proporción se concentra en pocas unidades?\n\n\nOrigen\nTeoría de la información (1948)\nEstadística económica (1912)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#qué-miden-curva-de-lorenz",
-    "href": "practica-04/practica-04.html#qué-miden-curva-de-lorenz",
-    "title": "Práctica 4",
-    "section": "¿Qué miden? — Curva de Lorenz",
-    "text": "¿Qué miden? — Curva de Lorenz\nResponde: ¿qué fracción de una cantidad total (casos de violencia) se acumula en una fracción pequeña de las unidades (entidades federativas)?\nConstrucción de la curva:\n\nOrdenar las unidades de menor a mayor en la cantidad de interés\nCalcular la proporción acumulada de la cantidad\nCalcular la proporción acumulada de unidades\nGraficar (prop. acumulada de unidades, prop. acumulada de la cantidad) contra la diagonal de igualdad perfecta\n\nMisma herramienta que usa la economía para medir desigualdad del ingreso.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#coeficiente-de-gini",
-    "href": "practica-04/practica-04.html#coeficiente-de-gini",
-    "title": "Práctica 4",
-    "section": "Coeficiente de Gini",
-    "text": "Coeficiente de Gini\n\\[G = \\frac{2\\sum_{i=1}^{n} i\\, x_{(i)} - (n+1)\\sum_{i=1}^{n} x_{(i)}}{n\\sum_{i=1}^{n} x_{(i)}}, \\quad x_{(i)} \\text{ ordenado ascendentemente}\\]\n\n\\(G = 0\\) → reparto perfectamente homogéneo entre entidades\n\\(G \\to 1\\) → casi todos los casos concentrados en muy pocas entidades",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#ejemplo-paso-1-los-datos",
-    "href": "practica-04/practica-04.html#ejemplo-paso-1-los-datos",
-    "title": "Práctica 4",
-    "section": "Ejemplo Paso 1: los datos",
-    "text": "Ejemplo Paso 1: los datos\nCasos reportados (hipotéticos) en 5 entidades, ya ordenados de menor a mayor:\n\n\nEntidad E: 5 casos\nEntidad D: 10 casos\nEntidad C: 15 casos\nEntidad B: 30 casos\nEntidad A: 40 casos\nTotal: 100",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#ejemplo-paso-2-proporciones-acumuladas",
-    "href": "practica-04/practica-04.html#ejemplo-paso-2-proporciones-acumuladas",
-    "title": "Práctica 4",
-    "section": "Ejemplo Paso 2: proporciones acumuladas",
-    "text": "Ejemplo Paso 2: proporciones acumuladas\nVamos entidad por entidad, sumando los casos como si fueran llegando en fila. En cada paso preguntamos: ¿cuántos casos llevamos acumulados hasta aquí?\n\n\nEntidad      Casos   Acumulado   Prop. acum.\nE                5           5          0.05\nD               10          15          0.15\nC               15          30          0.30\nB               30          60          0.60\nA               40         100          1.00\n\n\n\nAl llegar a la última entidad, el acumulado siempre coincide con el total (100). Eso es justo lo que confirma que no se nos perdió ningún caso en el camino.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#ejemplo-paso-3-coeficiente-de-gini",
-    "href": "practica-04/practica-04.html#ejemplo-paso-3-coeficiente-de-gini",
-    "title": "Práctica 4",
-    "section": "Ejemplo Paso 3: coeficiente de Gini",
-    "text": "Ejemplo Paso 3: coeficiente de Gini\n\n\nNumerador   = 180\nDenominador = 500\nCoeficiente de Gini = 0.360",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#ejemplo-paso-3a-de-dónde-sale-el-numerador",
-    "href": "practica-04/practica-04.html#ejemplo-paso-3a-de-dónde-sale-el-numerador",
-    "title": "Práctica 4",
-    "section": "Ejemplo Paso 3a: ¿de dónde sale el numerador?",
-    "text": "Ejemplo Paso 3a: ¿de dónde sale el numerador?\n\\[\\text{Numerador} = 2\\sum_{i=1}^{n} i\\,x_{(i)} - (n+1)\\sum_{i=1}^{n} x_{(i)}\\]\nCada entidad se multiplica por su posición en el orden (1 = la que menos casos tiene, 5 = la que más): así, las entidades con más casos pesan más.\n\n\nEntidad E: posición 1 x  5 casos = 5\nEntidad D: posición 2 x 10 casos = 20\nEntidad C: posición 3 x 15 casos = 45\nEntidad B: posición 4 x 30 casos = 120\nEntidad A: posición 5 x 40 casos = 200\n\nSuma de i*x         = 390\n2 x suma de i*x     = 780\n(n+1) x total       = 600\nNumerador           = 780 - 600 = 180\n\nSi todas tuvieran 20 casos: numerador = 0",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#ejemplo-paso-3b-qué-representan-180-y-500",
-    "href": "practica-04/practica-04.html#ejemplo-paso-3b-qué-representan-180-y-500",
-    "title": "Práctica 4",
-    "section": "Ejemplo Paso 3b: ¿qué representan 180 y 500?",
-    "text": "Ejemplo Paso 3b: ¿qué representan 180 y 500?\nNumerador (180) = suma de las diferencias absolutas entre todos los pares de entidades. Mide qué tan distintas son las entidades entre sí.\n\n\nPares de entidades: 10\nSuma de |x_i - x_j| sobre todos los pares = 180\n\n\n\nDenominador (500) = \\(n \\times \\text{total} = 5 \\times 100\\). Es un factor de escala (equivale a \\(n^2 \\times \\text{media} = 25 \\times 20\\)): sin él, el 180 crecería solo por agregar entidades o casos y no podríamos comparar problemas distintos.\n\n\nConexión con la curva de Lorenz: \\(G = \\dfrac{180}{500}\\) es lo mismo que el área entre la diagonal y la curva, dividida entre el área total bajo la diagonal (0.5).\n\n\nÁrea bajo la curva de Lorenz      = 0.32\nÁrea entre la diagonal y la curva = 0.18\nGini = área entre / 0.5           = 0.36",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#ejemplo-paso-4-graficar-la-curva-de-lorenz",
-    "href": "practica-04/practica-04.html#ejemplo-paso-4-graficar-la-curva-de-lorenz",
-    "title": "Práctica 4",
-    "section": "Ejemplo Paso 4: graficar la curva de Lorenz",
-    "text": "Ejemplo Paso 4: graficar la curva de Lorenz",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#interpretación-g-0.36",
-    "href": "practica-04/practica-04.html#interpretación-g-0.36",
-    "title": "Práctica 4",
-    "section": "Interpretación: G = 0.36",
-    "text": "Interpretación: G = 0.36\n\nEl área entre la curva de Lorenz y la diagonal de igualdad es moderada\nExiste concentración por encima de lo homogéneo, pero lejos del extremo (\\(G\\to1\\))\nEn el contexto de ENDIREH: sugiere que algunas entidades concentran más casos que otras, sin que unas pocas acaparen prácticamente todo",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#punto-de-partida-lo-que-ya-tenemos-de-la-práctica-3",
-    "href": "practica-04/practica-04.html#punto-de-partida-lo-que-ya-tenemos-de-la-práctica-3",
-    "title": "Práctica 4",
-    "section": "Punto de partida: lo que ya tenemos de la Práctica 3",
-    "text": "Punto de partida: lo que ya tenemos de la Práctica 3\n\nEstructura de carpetas del proyecto\nREADME.md y requirements.txt\ndata/data-processed/endireh_2021_limpio.csv — ya limpio, sin duplicados, tipos correctos, sin faltantes\n\n\n\n\n\n\n\nNote\n\n\nNo se descarga ni reestructura de nuevo: se extiende el proyecto existente.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#notebook-medidas-de-heterogeneidad",
-    "href": "practica-04/practica-04.html#notebook-medidas-de-heterogeneidad",
-    "title": "Práctica 4",
-    "section": "Notebook: Medidas de Heterogeneidad",
-    "text": "Notebook: Medidas de Heterogeneidad\nSobre variables cualitativas, calcular:\n\nÍndice de Variación Cualitativa (IQV)\nÍndice de Gini-Simpson\nEntropía de Shannon\n\nCon gráficos e interpretación en el contexto de violencia contra las mujeres.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#notebook-medidas-de-concentración",
-    "href": "practica-04/practica-04.html#notebook-medidas-de-concentración",
-    "title": "Práctica 4",
-    "section": "Notebook: Medidas de Concentración",
-    "text": "Notebook: Medidas de Concentración\n\nAnalizar los casos reportados ponderados por el factor de expansión\nConstruir la curva de Lorenz por entidad federativa\nCalcular el coeficiente de Gini\nInterpretar: ¿concentración territorial alta o reparto homogéneo?",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#síntesis-gini-y-entropía",
-    "href": "practica-04/practica-04.html#síntesis-gini-y-entropía",
-    "title": "Práctica 4",
-    "section": "Síntesis Gini y Entropía",
-    "text": "Síntesis Gini y Entropía\n\nElegir una misma variable categórica (p. ej. tipo de violencia)\nCalcular sobre ella tanto la entropía de Shannon como una versión del Gini aplicada a las frecuencias de sus categorías\nRedactar, en no más de un párrafo, la diferencia conceptual entre ambas lecturas",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#tabla-de-resultados",
-    "href": "practica-04/practica-04.html#tabla-de-resultados",
-    "title": "Práctica 4",
-    "section": "Tabla de resultados",
-    "text": "Tabla de resultados\n\n\n\nFamilia de medida\nVariable(s)\nValor obtenido\nInterpretación\n\n\n\n\nLocalización\n\n\n\n\n\nVariabilidad\n\n\n\n\n\nHeterogeneidad\n\n\n\n\n\nConcentración\n\n\n\n\n\nGini vs. Entropía",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#qué-se-busca-en-cada-criterio",
-    "href": "practica-04/practica-04.html#qué-se-busca-en-cada-criterio",
-    "title": "Práctica 4",
-    "section": "Qué se busca en cada criterio",
-    "text": "Qué se busca en cada criterio\n\nLocalización: media, mediana, moda y cuantiles — con media ponderada justificada por factor de expansión\nVariabilidad: varianza, SD, CV, IQR — con comparación entre grupos\nHeterogeneidad / Concentración: cálculo correcto + interpretación adecuada\nSíntesis: comparación explícita y bien argumentada\nVisualización: claridad, pertinencia e integración narrativa en el notebook\nReflexión: profundidad, limitaciones detectadas y sensibilidad ante el tema social",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#reporte-pdf",
-    "href": "practica-04/practica-04.html#reporte-pdf",
-    "title": "Práctica 4",
-    "section": "Reporte PDF",
-    "text": "Reporte PDF\nResumen ejecutivo y conciso que incluya:\n\nLa tabla de resultados completa\nLas gráficas: histograma/boxplot, barras de heterogeneidad, curva de Lorenz, prevalencia por entidad — cada una con su interpretación\nLas respuestas al cuestionario",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#repositorio-de-git-actualizado",
-    "href": "practica-04/practica-04.html#repositorio-de-git-actualizado",
-    "title": "Práctica 4",
-    "section": "Repositorio de Git actualizado",
-    "text": "Repositorio de Git actualizado\n\nMedidas de localización\nMedidas de variabilidad\nMedidas de heterogeneidad\nMedidas de concentración\nComparación de Gini y Entropía\n\nMás README.md y requirements.txt actualizados.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#recapitulación",
-    "href": "practica-04/practica-04.html#recapitulación",
-    "title": "Práctica 4",
-    "section": "Recapitulación",
-    "text": "Recapitulación\n\nHeterogeneidad (IQV, Gini-Simpson, Entropía) mide qué tan mezcladas están las categorías\nConcentración (Lorenz, Gini) mide qué tan desigual es el reparto de una cantidad",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
-    "objectID": "practica-04/practica-04.html#referencias-clave",
-    "href": "practica-04/practica-04.html#referencias-clave",
-    "title": "Práctica 4",
-    "section": "Referencias clave",
-    "text": "Referencias clave\n\nINEGI (2022). Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021\nGini, C. (1912). Variabilità e mutabilità\nShannon, C. E. (1948). A Mathematical Theory of Communication\nWilcox, A. R. (1973). Indices of Qualitative Variation and Political Measurement",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 4"
-    ]
-  },
-  {
     "objectID": "practica-01/practica-01.html#objetivo",
     "href": "practica-01/practica-01.html#objetivo",
     "title": "Práctica 1",
@@ -1401,443 +1234,6 @@
       "Inicio",
       "Prácticas",
       "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Prácticas",
-    "section": "",
-    "text": "Bienvenido/a. Aquí encontrarás el listado de prácticas del curso de Almacenes y Mineria de datos, cada práctica una en su propia carpeta. Este curso es impartido por la profesora Jessica Santizo Galicia, como ayudante teorico Diego Antonio Villalba González y ayudante de laboratorio Emma Alicia Jiménez Sánchez",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#objetivo",
-    "href": "index.html#objetivo",
-    "title": "Prácticas",
-    "section": "Objetivo:",
-    "text": "Objetivo:\nComprender los principios de los almacenes de datos y de la minería de datos, así como su aplicación al análisis y al descubrimiento de conocimiento en grandes conjuntos de datos.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#finalizar-el-curso",
-    "href": "index.html#finalizar-el-curso",
-    "title": "Prácticas",
-    "section": "Finalizar el curso:",
-    "text": "Finalizar el curso:\nComprender la arquitectura de un almacén de datos. Preparar y transformar datos reales. Analizar información mediante modelos multidimensionales. Aplicar técnicas de minería de datos. Construir modelos básicos de clasificación, predicción y agrupamiento.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#temario-general",
-    "href": "index.html#temario-general",
-    "title": "Prácticas",
-    "section": "Temario general:",
-    "text": "Temario general:\nBasado en el temario oficial: https://www.fciencias.unam.mx/sites/default/files/temario/658.pdf\n\nSQL Avanzado\nAlmacenes de datos.\nCubos de datos.\nPreprocesamiento de datos.\nMinería de patrones y asociaciones.\nClasificación y predicción.\nAgrupamiento.\nDetección de anomalías.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#plataforma-y-tecnologías",
-    "href": "index.html#plataforma-y-tecnologías",
-    "title": "Prácticas",
-    "section": "Plataforma y tecnologías:",
-    "text": "Plataforma y tecnologías:\nEl curso se llevará a cabo en Google Classroom. Se utilizarán principalmente Python, NumPy, Pandas, Matplotlib, Seaborn, Plotly, Quarto, scikit-learn y SQL\nPara los laboratorios se tendrá la dinámica de que los primeros 15 minutos de cada laboratorio se van a escoger a 2 alumnos para que expliquen parte del desarrollo de su prática. Después se explicaran los conceptos fundamentales para poder desarrollar su práctica y tener mejores conocmientos con respecto a los temas.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#avisos",
-    "href": "index.html#avisos",
-    "title": "Prácticas",
-    "section": "Avisos",
-    "text": "Avisos\n\nSolo se responden dudas de 10 am a 7 pm.\nSe puede usar la AI como HERRAMIENTA.\nA partir de la prática 2 se podrá hacer las prácticas en equipo. Los equipos son los mismos que en la clase teórica.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "index.html#índice",
-    "href": "index.html#índice",
-    "title": "Prácticas",
-    "section": "Índice",
-    "text": "Índice\n\nPráctica 1: SQL Avanzado\nPráctica 2: Almacenes de Datos y BigQuery\nEjercicios DW\nPráctica 3\nPráctica 4: Medidas de Concentración y Heterogenidad",
-    "crumbs": [
-      "Inicio",
-      "Prácticas"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#objetivo",
-    "href": "practica-02/practica-02.html#objetivo",
-    "title": "Práctica 2",
-    "section": "Objetivo",
-    "text": "Objetivo\n\nEl objetivo de esta práctica es que el alumno aplique los conceptos de modelado dimensional (hechos, dimensiones, granularidad y jerarquías) mediante el diseño e implementación de un Data Warehouse en la plataforma Google BigQuery.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#qué-es-google-bigquery",
-    "href": "practica-02/practica-02.html#qué-es-google-bigquery",
-    "title": "Práctica 2",
-    "section": "¿Qué es Google BigQuery?",
-    "text": "¿Qué es Google BigQuery?\n\n\n\nEs un data warehouse totalmente gestionado y serverless desarrollado por Google para almacenar y analizar datos a gran escala\nAyuda a administrar y analizar tus datos con funciones integradas como el aprendizaje automático, la búsqueda, el análisis geoespacial y la inteligencia empresarial\nProporciona una manera uniforme de trabajar con datos estructurados y no estructurados.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#nube-vs.-on-premise",
-    "href": "practica-02/practica-02.html#nube-vs.-on-premise",
-    "title": "Práctica 2",
-    "section": "Nube vs. On-premise",
-    "text": "Nube vs. On-premise\n\n\n\n\nOn-premise: Servidores físicos de la propia empresa. Implica altos costos iniciales, requiere un equipo experto para gestionarlo y una planificación rigurosa para crecer con la demanda, debido a la rigidez al escalar recursos en centros de datos tradicionales.\n\n\n\n\nNube: gestionada y alojada por un proveedor de servicios cloud, como Google BigQuery, Amazon Redshift o Snowflake.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#on-premise",
-    "href": "practica-02/practica-02.html#on-premise",
-    "title": "Práctica 2",
-    "section": "On-premise",
-    "text": "On-premise\n\n\n\n\n\n\n\n\n\nVentajas\n\nControl total sobre hardware y datos\nNo depende de conexión a internet\nCumplimiento normativo más sencillo en sectores muy regulados\n\nDesventajas\n\nAltos costos iniciales (CAPEX)\nRequiere equipo experto para su gestión\nEscalar es lento y rígido\nTodo esta cargo de la empresa",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#nube",
-    "href": "practica-02/practica-02.html#nube",
-    "title": "Práctica 2",
-    "section": "Nube",
-    "text": "Nube\n\n\n\nVentajas\n\nEscala y aprovecha la flexibilidad del entorno cloud\nMayor velocidad y rendimiento\nPrecios flexibles, pago por uso (OPEX) y reduce costos operativos\n\nDesventajas\n\nDependencia del proveedor (vendor lock-in)\nRequiere conexión a internet estable\nConsideraciones de seguridad y soberanía de datos\nLos costos pueden crecer si no se optimiza el uso",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#cómo-funciona-bigquery",
-    "href": "practica-02/practica-02.html#cómo-funciona-bigquery",
-    "title": "Práctica 2",
-    "section": "¿Cómo funciona BigQuery?",
-    "text": "¿Cómo funciona BigQuery?\n\nSepara el motor de cómputo del almacenamiento, de modo que cada uno puede escalar por separado\nResultado: puedes consultar terabytes en segundos y petabytes en minutos\n\n\nCuando BigQuery ejecuta una consulta, el motor distribuye el trabajo en paralelo, escanea las tablas relevantes en almacenamiento, combina los resultados y devuelve el conjunto final de datos.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#funciones-clave-de-bigquery-en-2026",
-    "href": "practica-02/practica-02.html#funciones-clave-de-bigquery-en-2026",
-    "title": "Práctica 2",
-    "section": "Funciones clave de BigQuery en 2026",
-    "text": "Funciones clave de BigQuery en 2026\n\n\n\nBigQuery ML — Crea, entrena y despliega modelos de machine learning usando SQL\nGemini en BigQuery — Asistencia con IA para escribir consultas, entender esquemas y generar insights en lenguaje natural\nBigQuery Studio — Un espacio de trabajo unificado para SQL, notebooks de Python y Spark dentro de la consola de BigQuery\n\n\n\nConsultas federadas — Consulta datos en Cloud SQL, Cloud Storage, Bigtable y otras fuentes sin moverlos a BigQuery\nBigQuery Omni — Ejecuta analítica de BigQuery sobre datos almacenados en AWS o Azure sin copiarlos a Google Cloud\nData Studio — Permite crear dashboards automatizados que resumen la data",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#base-de-datos-relacional-data-warehouse",
-    "href": "practica-02/practica-02.html#base-de-datos-relacional-data-warehouse",
-    "title": "Práctica 2",
-    "section": "Base de datos relacional –> Data Warehouse",
-    "text": "Base de datos relacional –&gt; Data Warehouse\n\n\nUna base de datos relacional (OLTP) está normalizada para garantizar integridad y evitar redundancia en transacciones día a día.\nUn Data Warehouse (OLAP) busca lo contrario: velocidad de consulta y facilidad de análisis, aunque implique redundancia.\n\n\nPara hacer esta transición existen dos metodologías clásicas de modelado, que difieren en el orden en que se construye el warehouse y en el nivel de normalización del modelo final: la de Ralph Kimball y la de Bill Inmon.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#kimball-vs.-inmon",
-    "href": "practica-02/practica-02.html#kimball-vs.-inmon",
-    "title": "Práctica 2",
-    "section": "Kimball vs. Inmon",
-    "text": "Kimball vs. Inmon\n\n\n\nRalph Kimball — Enfoque “Bottom-Up”\nSe construyen primero data marts dimensionales por proceso de negocio, modelados como esquemas estrella o copo de nieve. El Data Warehouse general emerge de la unión de estos data marts mediante un bus de dimensiones conformadas.\n\n\nBill Inmon — Enfoque “Top-Down”\nSe construye primero un Data Warehouse corporativo único que integra los datos de toda la organización. A partir de él se derivan data marts departamentales para consumo analítico.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#kimball-vs.-inmon-comparación",
-    "href": "practica-02/practica-02.html#kimball-vs.-inmon-comparación",
-    "title": "Práctica 2",
-    "section": "Kimball vs. Inmon: comparación",
-    "text": "Kimball vs. Inmon: comparación\n\n\n\n\n\n\n\n\n\nCriterio\nKimball\nInmon\n\n\n\n\nEnfoque\nBottom-Up (de los data marts al DW)\nTop-Down (del DW a los data marts)\n\n\nModelo de datos\nDimensional (estrella / copo de nieve)\nRelacional normalizado (3FN)\n\n\nTiempo de implementación\nMás rápido, entregas incrementales\nMás lento, requiere visión global primero\n\n\nRedundancia de datos\nMayor (desnormalizado)\nMenor (normalizado)\n\n\nConsultas analíticas\nMás simples y rápidas\nRequieren más JOINs\n\n\nIdeal para\nProyectos ágiles, por departamento\nOrganizaciones grandes, gobierno de datos estricto",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#por-qué-kimball-es-la-más-usada-en-la-industria",
-    "href": "practica-02/practica-02.html#por-qué-kimball-es-la-más-usada-en-la-industria",
-    "title": "Práctica 2",
-    "section": "¿Por qué Kimball es la más usada en la industria?",
-    "text": "¿Por qué Kimball es la más usada en la industria?\n\n\n\nAunque ambas metodologías son válidas, en la práctica Kimball predomina sobre Inmon en la mayoría de los proyectos actuales, por razones directamente ligadas a la tabla anterior:\n\n\n\n\nEntregas incrementales\nMenor costo y tiempo inicial\nSe adapta mejor a metodologías ágiles\n\n\n\n\nPor estas razones, en esta práctica se utiliza el enfoque de Kimball: se modela un único proceso de negocio (ventas) directamente como esquema estrella y copo de nieve, sin necesidad de construir primero un Data Warehouse corporativo normalizado.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#metodología-de-kimball-los-4-pasos",
-    "href": "practica-02/practica-02.html#metodología-de-kimball-los-4-pasos",
-    "title": "Práctica 2",
-    "section": "Metodología de Kimball: los 4 pasos",
-    "text": "Metodología de Kimball: los 4 pasos\n\n\n\nPaso 1 · Seleccionar el proceso de negocio\nElegir el proceso operativo que se quiere analizar. Suele corresponder a una tabla transaccional central de la base relacional.\n\n\nPaso 2 · Declarar la granularidad\nDefinir qué representa cada renglón de la tabla de hechos. Toda decisión posterior depende de este nivel de detalle.\n\n\n\nPaso 3 · Identificar las dimensiones\nDetectar el contexto que describe al hecho: quién, qué, cuándo, dónde. Suelen salir de las tablas “maestras” o de catálogo de la base relacional.\n\n\nPaso 4 · Identificar los hechos\nDetectar las métricas numéricas y aditivas del proceso.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#del-modelo-relacional-al-dimensional",
-    "href": "practica-02/practica-02.html#del-modelo-relacional-al-dimensional",
-    "title": "Práctica 2",
-    "section": "Del modelo relacional al dimensional",
-    "text": "Del modelo relacional al dimensional\n\n\n\n\nAnalizar el modelo entidad-relación fuente y detectar tablas transaccionales (hechos) vs. tablas de catálogo (dimensiones)\nExtraer los datos de la base relacional (proceso Extract)\n\n\n\n\n\nTransformar: desnormalizar, limpiar, generar claves sustitutas (surrogate keys) y resolver jerarquías\nCargar (Load) las tablas de hechos y dimensiones ya transformadas en el Data Warehouse (BigQuery)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#etl-vs.-elt",
-    "href": "practica-02/practica-02.html#etl-vs.-elt",
-    "title": "Práctica 2",
-    "section": "ETL vs. ELT",
-    "text": "ETL vs. ELT\n\n\n\n\n\n\n\n\n\nETL — Extract, Transform, Load\nLos datos se extraen de la fuente, se transforman en un servidor intermedio (limpieza, desnormalización, cálculo de métricas, generación de claves sustitutas) y después se cargan ya listos en el Data Warehouse.\n\n\nELT — Extract, Load, Transform\nLos datos se extraen de la fuente y se cargan crudos directamente en el Data Warehouse. La transformación ocurre después, dentro del propio motor del warehouse, usando su poder de cómputo (SQL, dbt, BigQuery ML, etc.).",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#etl-vs.-elt-1",
-    "href": "practica-02/practica-02.html#etl-vs.-elt-1",
-    "title": "Práctica 2",
-    "section": "ETL vs. ELT",
-    "text": "ETL vs. ELT\n\n\n\n\n\n\n\n\n\nCriterio\nETL\nELT\n\n\n\n\nOrden del proceso\nExtraer → Transformar → Cargar\nExtraer → Cargar → Transformar\n\n\nDónde se transforma\nServidor/motor intermedio dedicado\nDentro del propio Data Warehouse\n\n\nVelocidad de carga\nMás lenta (espera la transformación)\nMás rápida (carga datos crudos de inmediato)\n\n\nEscalabilidad de la transformación\nLimitada por el servidor ETL\nAprovecha el cómputo elástico de la nube\n\n\nDatos crudos disponibles\nNo siempre se conservan\nSí, siempre quedan en el warehouse\n\n\nFlexibilidad de análisis\nBaja\nAlta\n\n\nInfraestructura necesaria\nServidor ETL adicional\nSolo el Data Warehouse + herramienta de transformación",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#por-qué-hoy-se-usa-más-elt",
-    "href": "practica-02/practica-02.html#por-qué-hoy-se-usa-más-elt",
-    "title": "Práctica 2",
-    "section": "¿Por qué hoy se usa más ELT?",
-    "text": "¿Por qué hoy se usa más ELT?\n\n\n\n1. Cómputo elástico en la nube Motores como BigQuery o Snowflake procesan volúmenes masivos en segundos.\n\n\n2. Almacenamiento ultra barato Guardar todo el historial de datos crudos cuesta centavos.\n\n\n\n3. Preservación del dato crudo Permite re-procesar o auditar la información sin perder nada.\n\n\n4. Flexibilidad para Big Data Soporta datos no estructurados (JSON, logs, eventos) sin esquemas previos.\n\n\n\n5. Ecosistema moderno (SQL + dbt) Transforma directamente en el warehouse usando solo SQL versionado y modular.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#esquema-final",
-    "href": "practica-02/practica-02.html#esquema-final",
-    "title": "Práctica 2",
-    "section": "Esquema final",
-    "text": "Esquema final",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#algoritmo-esquema-estrella",
-    "href": "practica-02/practica-02.html#algoritmo-esquema-estrella",
-    "title": "Práctica 2",
-    "section": "Algoritmo Esquema Estrella",
-    "text": "Algoritmo Esquema Estrella\n\n\n\n1. Crear tabla de hechos (fact_*) Define la granularidad del proceso. Guarda únicamente métricas numéricas y llaves foráneas.\n\n\n\n\n2. Desnormalizar dimensiones (dim_*) Aplane la información en una sola tabla por contexto (ej. producto + categoría + departamento).\n\n\n\nPaso 3 · Generar claves sustitutas Crea llaves sintéticas (surrogate keys) en las dimensiones y vincúlalas a la tabla de hechos.\n\n\n\n\nPaso 4 · Un solo nivel de JOIN Conecta fact_* directamente con cada dim_* para lograr consultas simples y ultrarrápidas.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#algoritmo-esquema-copo-de-nieve",
-    "href": "practica-02/practica-02.html#algoritmo-esquema-copo-de-nieve",
-    "title": "Práctica 2",
-    "section": "Algoritmo Esquema Copo de Nieve",
-    "text": "Algoritmo Esquema Copo de Nieve\n\n\n\nPaso 1 · Mantener tabla de hechos (fact_*) Se conserva el mismo diseño base del esquema estrella.\n\n\n\n\nPaso 2 · Normalizar dimensiones Divide en subdimensiones según sus niveles jerárquicos (ej. producto → categoría → departamento).\n\n\n\nPaso 3 · Enlazar subdimensiones Vincula cada nivel con la siguiente subdimensión usando claves sustitutas en cadena.\n\n\n\n\nPaso 4 · Resultado final Reduce la redundancia de datos a costa de consultas con más JOINs y mayor complejidad.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#estrella-vs.-copo-de-nieve-cuál-elegir",
-    "href": "practica-02/practica-02.html#estrella-vs.-copo-de-nieve-cuál-elegir",
-    "title": "Práctica 2",
-    "section": "Estrella vs. Copo de Nieve: ¿cuál elegir?",
-    "text": "Estrella vs. Copo de Nieve: ¿cuál elegir?\n\n\n\n\n\n\n\n\n\nCriterio\nEstrella\nCopo de Nieve\n\n\n\n\nNormalización de dimensiones\nNinguna (desnormalizado)\nParcial/total (normalizado)\n\n\nComplejidad de las consultas\nBaja (pocos JOINs)\nMayor (JOINs encadenados)\n\n\nRendimiento de lectura\nGeneralmente más rápido\nPuede ser más lento\n\n\nEspacio en disco\nMayor (redundancia)\nMenor (sin redundancia)\n\n\nMantenimiento de jerarquías\nMás difícil\nMás fácil",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#esquemas",
-    "href": "practica-02/practica-02.html#esquemas",
-    "title": "Práctica 2",
-    "section": "Esquemas",
-    "text": "Esquemas",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-1-preparación-del-entorno-de-trabajo",
-    "href": "practica-02/practica-02.html#paso-1-preparación-del-entorno-de-trabajo",
-    "title": "Práctica 2",
-    "section": "Paso 1: Preparación del entorno de trabajo",
-    "text": "Paso 1: Preparación del entorno de trabajo\n\nIngresar a la consola de BigQuery: console.cloud.google.com/bigquery y seleccionar (o crear) un proyecto de GCP.\nEn el panel Explorer, hacer clic en el ícono Add → Public Datasets, dar clic en “Destacados por nombre”, escribir bigquery-public-data y fijarlo al proyecto para poder explorarlo desde el árbol de navegación. Todo debe estar en la misma región, que sería US, ya que si no se encuentran en la misma región no se van a encontrar los recursos.\nCrear dos datasets propios donde se construirá el Data Warehouse, mediante el botón de los tres puntos junto al nombre del proyecto → Create dataset → como nombre de los datasets dw_estrella y dw_copo_nieve.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-1-script-de-creación",
-    "href": "practica-02/practica-02.html#paso-1-script-de-creación",
-    "title": "Práctica 2",
-    "section": "Paso 1: Script de creación",
-    "text": "Paso 1: Script de creación\nCREATE SCHEMA IF NOT EXISTS `id_proyecto.dw_estrella`\n  OPTIONS (location = 'US');\n\nCREATE SCHEMA IF NOT EXISTS `id_proyecto.dw_copo_nieve`\n  OPTIONS (location = 'US');\n\n(Sustituir id_proyecto por el ID real del proyecto de GCP del alumno.)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-2.1-exploración-de-la-fuente-de-datos",
-    "href": "practica-02/practica-02.html#paso-2.1-exploración-de-la-fuente-de-datos",
-    "title": "Práctica 2",
-    "section": "Paso 2.1: Exploración de la fuente de datos",
-    "text": "Paso 2.1: Exploración de la fuente de datos\nEntender la estructura de las tablas fuente y definir cuál será el hecho de negocio, su granularidad y sus métricas.\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.order_items` LIMIT 10;\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.products`    LIMIT 10;\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.users`       LIMIT 10;",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-2.2-definición-del-hecho-de-negocio",
-    "href": "practica-02/practica-02.html#paso-2.2-definición-del-hecho-de-negocio",
-    "title": "Práctica 2",
-    "section": "Paso 2.2: Definición del hecho de negocio",
-    "text": "Paso 2.2: Definición del hecho de negocio\n\n\n\n\n\n\n\n\nElemento\nDefinición\n\n\n\n\nGranularidad\nUn renglón por cada producto vendido dentro de un pedido (order_items.id)\n\n\nMétricas (hechos)\nsale_price (precio de venta), cost (costo del producto), ganancia (precio − costo)\n\n\nDimensiones\nCliente, Producto, Tiempo, Centro de Distribución",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-3-diseño-del-modelo-dimensional",
-    "href": "practica-02/practica-02.html#paso-3-diseño-del-modelo-dimensional",
-    "title": "Práctica 2",
-    "section": "Paso 3: Diseño del modelo dimensional",
-    "text": "Paso 3: Diseño del modelo dimensional\nQué se debe hacer: dibujar el diagrama conceptual de cada esquema antes de programarlos.\n\nEsquema Estrella: una tabla central fact_ventas rodeada de dim_cliente, dim_producto, dim_tiempo y dim_centro_distribucion, todas desnormalizadas (un solo nivel)\nEsquema Copo de Nieve: la misma tabla fact_ventas, pero con dim_producto descompuesta en dim_categoria y dim_departamento, y dim_cliente descompuesta en dim_ciudad, dim_estado y dim_pais",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-4-consultas-analíticas-y-operaciones-olap",
-    "href": "practica-02/practica-02.html#paso-4-consultas-analíticas-y-operaciones-olap",
-    "title": "Práctica 2",
-    "section": "Paso 4: Consultas Analíticas y Operaciones OLAP",
-    "text": "Paso 4: Consultas Analíticas y Operaciones OLAP\nSe deben ejecutar las siguientes consultas:\n\nROLL-UP: ventas totales por mes y categoría\nDRILL-DOWN: de mes a día para una categoría específica\nSLICE: ventas únicamente del país “México”\nDICE: ventas de las categorías “Jeans” y “Sweaters”, en “México” y “Brasil”",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#paso-4-esquema-copo-de-nieve-consideraciones",
-    "href": "practica-02/practica-02.html#paso-4-esquema-copo-de-nieve-consideraciones",
-    "title": "Práctica 2",
-    "section": "Paso 4: Esquema Copo de Nieve — consideraciones",
-    "text": "Paso 4: Esquema Copo de Nieve — consideraciones\n\nPara las consultas sobre el esquema dw_copo_nieve se requerirá encadenar JOINs adicionales, por ejemplo:\n\n\n\ndim_producto → dim_categoria para obtener el nombre de la categoría\ndim_cliente → dim_ciudad → dim_estado → dim_pais para obtener el país",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#interfaz-de-google-query",
-    "href": "practica-02/practica-02.html#interfaz-de-google-query",
-    "title": "Práctica 2",
-    "section": "Interfaz de Google Query",
-    "text": "Interfaz de Google Query",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
-    ]
-  },
-  {
-    "objectID": "practica-02/practica-02.html#referencias",
-    "href": "practica-02/practica-02.html#referencias",
-    "title": "Práctica 2",
-    "section": "Referencias",
-    "text": "Referencias\n\nIntroducción a BigQuery — Google Cloud\nBigQuery para principiantes — DataCamp\nCalculadora de precios — Google Cloud\nGuía práctica de diseño y arquitectura de data warehouse\n¿Cuál es la diferencia entre los procesos de ETL y ELT?",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 2"
     ]
   },
   {
@@ -2378,6 +1774,911 @@
       "Inicio",
       "Prácticas",
       "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Prácticas",
+    "section": "",
+    "text": "Bienvenido/a. Aquí encontrarás el listado de prácticas del curso de Almacenes y Mineria de datos, cada práctica una en su propia carpeta. Este curso es impartido por la profesora Jessica Santizo Galicia, como ayudante teorico Diego Antonio Villalba González y ayudante de laboratorio Emma Alicia Jiménez Sánchez",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#objetivo",
+    "href": "index.html#objetivo",
+    "title": "Prácticas",
+    "section": "Objetivo:",
+    "text": "Objetivo:\nComprender los principios de los almacenes de datos y de la minería de datos, así como su aplicación al análisis y al descubrimiento de conocimiento en grandes conjuntos de datos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#finalizar-el-curso",
+    "href": "index.html#finalizar-el-curso",
+    "title": "Prácticas",
+    "section": "Finalizar el curso:",
+    "text": "Finalizar el curso:\nComprender la arquitectura de un almacén de datos. Preparar y transformar datos reales. Analizar información mediante modelos multidimensionales. Aplicar técnicas de minería de datos. Construir modelos básicos de clasificación, predicción y agrupamiento.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#temario-general",
+    "href": "index.html#temario-general",
+    "title": "Prácticas",
+    "section": "Temario general:",
+    "text": "Temario general:\nBasado en el temario oficial: https://www.fciencias.unam.mx/sites/default/files/temario/658.pdf\n\nSQL Avanzado\nAlmacenes de datos.\nCubos de datos.\nPreprocesamiento de datos.\nMinería de patrones y asociaciones.\nClasificación y predicción.\nAgrupamiento.\nDetección de anomalías.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#plataforma-y-tecnologías",
+    "href": "index.html#plataforma-y-tecnologías",
+    "title": "Prácticas",
+    "section": "Plataforma y tecnologías:",
+    "text": "Plataforma y tecnologías:\nEl curso se llevará a cabo en Google Classroom. Se utilizarán principalmente Python, NumPy, Pandas, Matplotlib, Seaborn, Plotly, Quarto, scikit-learn y SQL\nPara los laboratorios se tendrá la dinámica de que los primeros 15 minutos de cada laboratorio se van a escoger a 2 alumnos para que expliquen parte del desarrollo de su prática. Después se explicaran los conceptos fundamentales para poder desarrollar su práctica y tener mejores conocmientos con respecto a los temas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#avisos",
+    "href": "index.html#avisos",
+    "title": "Prácticas",
+    "section": "Avisos",
+    "text": "Avisos\n\nSolo se responden dudas de 10 am a 7 pm.\nSe puede usar la AI como HERRAMIENTA.\nA partir de la prática 2 se podrá hacer las prácticas en equipo. Los equipos son los mismos que en la clase teórica.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "index.html#índice",
+    "href": "index.html#índice",
+    "title": "Prácticas",
+    "section": "Índice",
+    "text": "Índice\n\nPráctica 1: SQL Avanzado\nPráctica 2: Almacenes de Datos y BigQuery\nEjercicios DW\nPráctica 3\nPráctica 4: Medidas de Concentración y Heterogenidad",
+    "crumbs": [
+      "Inicio",
+      "Prácticas"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#objetivo",
+    "href": "practica-02/practica-02.html#objetivo",
+    "title": "Práctica 2",
+    "section": "Objetivo",
+    "text": "Objetivo\n\nEl objetivo de esta práctica es que el alumno aplique los conceptos de modelado dimensional (hechos, dimensiones, granularidad y jerarquías) mediante el diseño e implementación de un Data Warehouse en la plataforma Google BigQuery.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#qué-es-google-bigquery",
+    "href": "practica-02/practica-02.html#qué-es-google-bigquery",
+    "title": "Práctica 2",
+    "section": "¿Qué es Google BigQuery?",
+    "text": "¿Qué es Google BigQuery?\n\n\n\nEs un data warehouse totalmente gestionado y serverless desarrollado por Google para almacenar y analizar datos a gran escala\nAyuda a administrar y analizar tus datos con funciones integradas como el aprendizaje automático, la búsqueda, el análisis geoespacial y la inteligencia empresarial\nProporciona una manera uniforme de trabajar con datos estructurados y no estructurados.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#nube-vs.-on-premise",
+    "href": "practica-02/practica-02.html#nube-vs.-on-premise",
+    "title": "Práctica 2",
+    "section": "Nube vs. On-premise",
+    "text": "Nube vs. On-premise\n\n\n\n\nOn-premise: Servidores físicos de la propia empresa. Implica altos costos iniciales, requiere un equipo experto para gestionarlo y una planificación rigurosa para crecer con la demanda, debido a la rigidez al escalar recursos en centros de datos tradicionales.\n\n\n\n\nNube: gestionada y alojada por un proveedor de servicios cloud, como Google BigQuery, Amazon Redshift o Snowflake.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#on-premise",
+    "href": "practica-02/practica-02.html#on-premise",
+    "title": "Práctica 2",
+    "section": "On-premise",
+    "text": "On-premise\n\n\n\n\n\n\n\n\n\nVentajas\n\nControl total sobre hardware y datos\nNo depende de conexión a internet\nCumplimiento normativo más sencillo en sectores muy regulados\n\nDesventajas\n\nAltos costos iniciales (CAPEX)\nRequiere equipo experto para su gestión\nEscalar es lento y rígido\nTodo esta cargo de la empresa",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#nube",
+    "href": "practica-02/practica-02.html#nube",
+    "title": "Práctica 2",
+    "section": "Nube",
+    "text": "Nube\n\n\n\nVentajas\n\nEscala y aprovecha la flexibilidad del entorno cloud\nMayor velocidad y rendimiento\nPrecios flexibles, pago por uso (OPEX) y reduce costos operativos\n\nDesventajas\n\nDependencia del proveedor (vendor lock-in)\nRequiere conexión a internet estable\nConsideraciones de seguridad y soberanía de datos\nLos costos pueden crecer si no se optimiza el uso",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#cómo-funciona-bigquery",
+    "href": "practica-02/practica-02.html#cómo-funciona-bigquery",
+    "title": "Práctica 2",
+    "section": "¿Cómo funciona BigQuery?",
+    "text": "¿Cómo funciona BigQuery?\n\nSepara el motor de cómputo del almacenamiento, de modo que cada uno puede escalar por separado\nResultado: puedes consultar terabytes en segundos y petabytes en minutos\n\n\nCuando BigQuery ejecuta una consulta, el motor distribuye el trabajo en paralelo, escanea las tablas relevantes en almacenamiento, combina los resultados y devuelve el conjunto final de datos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#funciones-clave-de-bigquery-en-2026",
+    "href": "practica-02/practica-02.html#funciones-clave-de-bigquery-en-2026",
+    "title": "Práctica 2",
+    "section": "Funciones clave de BigQuery en 2026",
+    "text": "Funciones clave de BigQuery en 2026\n\n\n\nBigQuery ML — Crea, entrena y despliega modelos de machine learning usando SQL\nGemini en BigQuery — Asistencia con IA para escribir consultas, entender esquemas y generar insights en lenguaje natural\nBigQuery Studio — Un espacio de trabajo unificado para SQL, notebooks de Python y Spark dentro de la consola de BigQuery\n\n\n\nConsultas federadas — Consulta datos en Cloud SQL, Cloud Storage, Bigtable y otras fuentes sin moverlos a BigQuery\nBigQuery Omni — Ejecuta analítica de BigQuery sobre datos almacenados en AWS o Azure sin copiarlos a Google Cloud\nData Studio — Permite crear dashboards automatizados que resumen la data",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#base-de-datos-relacional-data-warehouse",
+    "href": "practica-02/practica-02.html#base-de-datos-relacional-data-warehouse",
+    "title": "Práctica 2",
+    "section": "Base de datos relacional –> Data Warehouse",
+    "text": "Base de datos relacional –&gt; Data Warehouse\n\n\nUna base de datos relacional (OLTP) está normalizada para garantizar integridad y evitar redundancia en transacciones día a día.\nUn Data Warehouse (OLAP) busca lo contrario: velocidad de consulta y facilidad de análisis, aunque implique redundancia.\n\n\nPara hacer esta transición existen dos metodologías clásicas de modelado, que difieren en el orden en que se construye el warehouse y en el nivel de normalización del modelo final: la de Ralph Kimball y la de Bill Inmon.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#kimball-vs.-inmon",
+    "href": "practica-02/practica-02.html#kimball-vs.-inmon",
+    "title": "Práctica 2",
+    "section": "Kimball vs. Inmon",
+    "text": "Kimball vs. Inmon\n\n\n\nRalph Kimball — Enfoque “Bottom-Up”\nSe construyen primero data marts dimensionales por proceso de negocio, modelados como esquemas estrella o copo de nieve. El Data Warehouse general emerge de la unión de estos data marts mediante un bus de dimensiones conformadas.\n\n\nBill Inmon — Enfoque “Top-Down”\nSe construye primero un Data Warehouse corporativo único que integra los datos de toda la organización. A partir de él se derivan data marts departamentales para consumo analítico.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#kimball-vs.-inmon-comparación",
+    "href": "practica-02/practica-02.html#kimball-vs.-inmon-comparación",
+    "title": "Práctica 2",
+    "section": "Kimball vs. Inmon: comparación",
+    "text": "Kimball vs. Inmon: comparación\n\n\n\n\n\n\n\n\n\nCriterio\nKimball\nInmon\n\n\n\n\nEnfoque\nBottom-Up (de los data marts al DW)\nTop-Down (del DW a los data marts)\n\n\nModelo de datos\nDimensional (estrella / copo de nieve)\nRelacional normalizado (3FN)\n\n\nTiempo de implementación\nMás rápido, entregas incrementales\nMás lento, requiere visión global primero\n\n\nRedundancia de datos\nMayor (desnormalizado)\nMenor (normalizado)\n\n\nConsultas analíticas\nMás simples y rápidas\nRequieren más JOINs\n\n\nIdeal para\nProyectos ágiles, por departamento\nOrganizaciones grandes, gobierno de datos estricto",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#por-qué-kimball-es-la-más-usada-en-la-industria",
+    "href": "practica-02/practica-02.html#por-qué-kimball-es-la-más-usada-en-la-industria",
+    "title": "Práctica 2",
+    "section": "¿Por qué Kimball es la más usada en la industria?",
+    "text": "¿Por qué Kimball es la más usada en la industria?\n\n\n\nAunque ambas metodologías son válidas, en la práctica Kimball predomina sobre Inmon en la mayoría de los proyectos actuales, por razones directamente ligadas a la tabla anterior:\n\n\n\n\nEntregas incrementales\nMenor costo y tiempo inicial\nSe adapta mejor a metodologías ágiles\n\n\n\n\nPor estas razones, en esta práctica se utiliza el enfoque de Kimball: se modela un único proceso de negocio (ventas) directamente como esquema estrella y copo de nieve, sin necesidad de construir primero un Data Warehouse corporativo normalizado.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#metodología-de-kimball-los-4-pasos",
+    "href": "practica-02/practica-02.html#metodología-de-kimball-los-4-pasos",
+    "title": "Práctica 2",
+    "section": "Metodología de Kimball: los 4 pasos",
+    "text": "Metodología de Kimball: los 4 pasos\n\n\n\nPaso 1 · Seleccionar el proceso de negocio\nElegir el proceso operativo que se quiere analizar. Suele corresponder a una tabla transaccional central de la base relacional.\n\n\nPaso 2 · Declarar la granularidad\nDefinir qué representa cada renglón de la tabla de hechos. Toda decisión posterior depende de este nivel de detalle.\n\n\n\nPaso 3 · Identificar las dimensiones\nDetectar el contexto que describe al hecho: quién, qué, cuándo, dónde. Suelen salir de las tablas “maestras” o de catálogo de la base relacional.\n\n\nPaso 4 · Identificar los hechos\nDetectar las métricas numéricas y aditivas del proceso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#del-modelo-relacional-al-dimensional",
+    "href": "practica-02/practica-02.html#del-modelo-relacional-al-dimensional",
+    "title": "Práctica 2",
+    "section": "Del modelo relacional al dimensional",
+    "text": "Del modelo relacional al dimensional\n\n\n\n\nAnalizar el modelo entidad-relación fuente y detectar tablas transaccionales (hechos) vs. tablas de catálogo (dimensiones)\nExtraer los datos de la base relacional (proceso Extract)\n\n\n\n\n\nTransformar: desnormalizar, limpiar, generar claves sustitutas (surrogate keys) y resolver jerarquías\nCargar (Load) las tablas de hechos y dimensiones ya transformadas en el Data Warehouse (BigQuery)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#etl-vs.-elt",
+    "href": "practica-02/practica-02.html#etl-vs.-elt",
+    "title": "Práctica 2",
+    "section": "ETL vs. ELT",
+    "text": "ETL vs. ELT\n\n\n\n\n\n\n\n\n\nETL — Extract, Transform, Load\nLos datos se extraen de la fuente, se transforman en un servidor intermedio (limpieza, desnormalización, cálculo de métricas, generación de claves sustitutas) y después se cargan ya listos en el Data Warehouse.\n\n\nELT — Extract, Load, Transform\nLos datos se extraen de la fuente y se cargan crudos directamente en el Data Warehouse. La transformación ocurre después, dentro del propio motor del warehouse, usando su poder de cómputo (SQL, dbt, BigQuery ML, etc.).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#etl-vs.-elt-1",
+    "href": "practica-02/practica-02.html#etl-vs.-elt-1",
+    "title": "Práctica 2",
+    "section": "ETL vs. ELT",
+    "text": "ETL vs. ELT\n\n\n\n\n\n\n\n\n\nCriterio\nETL\nELT\n\n\n\n\nOrden del proceso\nExtraer → Transformar → Cargar\nExtraer → Cargar → Transformar\n\n\nDónde se transforma\nServidor/motor intermedio dedicado\nDentro del propio Data Warehouse\n\n\nVelocidad de carga\nMás lenta (espera la transformación)\nMás rápida (carga datos crudos de inmediato)\n\n\nEscalabilidad de la transformación\nLimitada por el servidor ETL\nAprovecha el cómputo elástico de la nube\n\n\nDatos crudos disponibles\nNo siempre se conservan\nSí, siempre quedan en el warehouse\n\n\nFlexibilidad de análisis\nBaja\nAlta\n\n\nInfraestructura necesaria\nServidor ETL adicional\nSolo el Data Warehouse + herramienta de transformación",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#por-qué-hoy-se-usa-más-elt",
+    "href": "practica-02/practica-02.html#por-qué-hoy-se-usa-más-elt",
+    "title": "Práctica 2",
+    "section": "¿Por qué hoy se usa más ELT?",
+    "text": "¿Por qué hoy se usa más ELT?\n\n\n\n1. Cómputo elástico en la nube Motores como BigQuery o Snowflake procesan volúmenes masivos en segundos.\n\n\n2. Almacenamiento ultra barato Guardar todo el historial de datos crudos cuesta centavos.\n\n\n\n3. Preservación del dato crudo Permite re-procesar o auditar la información sin perder nada.\n\n\n4. Flexibilidad para Big Data Soporta datos no estructurados (JSON, logs, eventos) sin esquemas previos.\n\n\n\n5. Ecosistema moderno (SQL + dbt) Transforma directamente en el warehouse usando solo SQL versionado y modular.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#esquema-final",
+    "href": "practica-02/practica-02.html#esquema-final",
+    "title": "Práctica 2",
+    "section": "Esquema final",
+    "text": "Esquema final",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#algoritmo-esquema-estrella",
+    "href": "practica-02/practica-02.html#algoritmo-esquema-estrella",
+    "title": "Práctica 2",
+    "section": "Algoritmo Esquema Estrella",
+    "text": "Algoritmo Esquema Estrella\n\n\n\n1. Crear tabla de hechos (fact_*) Define la granularidad del proceso. Guarda únicamente métricas numéricas y llaves foráneas.\n\n\n\n\n2. Desnormalizar dimensiones (dim_*) Aplane la información en una sola tabla por contexto (ej. producto + categoría + departamento).\n\n\n\nPaso 3 · Generar claves sustitutas Crea llaves sintéticas (surrogate keys) en las dimensiones y vincúlalas a la tabla de hechos.\n\n\n\n\nPaso 4 · Un solo nivel de JOIN Conecta fact_* directamente con cada dim_* para lograr consultas simples y ultrarrápidas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#algoritmo-esquema-copo-de-nieve",
+    "href": "practica-02/practica-02.html#algoritmo-esquema-copo-de-nieve",
+    "title": "Práctica 2",
+    "section": "Algoritmo Esquema Copo de Nieve",
+    "text": "Algoritmo Esquema Copo de Nieve\n\n\n\nPaso 1 · Mantener tabla de hechos (fact_*) Se conserva el mismo diseño base del esquema estrella.\n\n\n\n\nPaso 2 · Normalizar dimensiones Divide en subdimensiones según sus niveles jerárquicos (ej. producto → categoría → departamento).\n\n\n\nPaso 3 · Enlazar subdimensiones Vincula cada nivel con la siguiente subdimensión usando claves sustitutas en cadena.\n\n\n\n\nPaso 4 · Resultado final Reduce la redundancia de datos a costa de consultas con más JOINs y mayor complejidad.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#estrella-vs.-copo-de-nieve-cuál-elegir",
+    "href": "practica-02/practica-02.html#estrella-vs.-copo-de-nieve-cuál-elegir",
+    "title": "Práctica 2",
+    "section": "Estrella vs. Copo de Nieve: ¿cuál elegir?",
+    "text": "Estrella vs. Copo de Nieve: ¿cuál elegir?\n\n\n\n\n\n\n\n\n\nCriterio\nEstrella\nCopo de Nieve\n\n\n\n\nNormalización de dimensiones\nNinguna (desnormalizado)\nParcial/total (normalizado)\n\n\nComplejidad de las consultas\nBaja (pocos JOINs)\nMayor (JOINs encadenados)\n\n\nRendimiento de lectura\nGeneralmente más rápido\nPuede ser más lento\n\n\nEspacio en disco\nMayor (redundancia)\nMenor (sin redundancia)\n\n\nMantenimiento de jerarquías\nMás difícil\nMás fácil",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#esquemas",
+    "href": "practica-02/practica-02.html#esquemas",
+    "title": "Práctica 2",
+    "section": "Esquemas",
+    "text": "Esquemas",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-1-preparación-del-entorno-de-trabajo",
+    "href": "practica-02/practica-02.html#paso-1-preparación-del-entorno-de-trabajo",
+    "title": "Práctica 2",
+    "section": "Paso 1: Preparación del entorno de trabajo",
+    "text": "Paso 1: Preparación del entorno de trabajo\n\nIngresar a la consola de BigQuery: console.cloud.google.com/bigquery y seleccionar (o crear) un proyecto de GCP.\nEn el panel Explorer, hacer clic en el ícono Add → Public Datasets, dar clic en “Destacados por nombre”, escribir bigquery-public-data y fijarlo al proyecto para poder explorarlo desde el árbol de navegación. Todo debe estar en la misma región, que sería US, ya que si no se encuentran en la misma región no se van a encontrar los recursos.\nCrear dos datasets propios donde se construirá el Data Warehouse, mediante el botón de los tres puntos junto al nombre del proyecto → Create dataset → como nombre de los datasets dw_estrella y dw_copo_nieve.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-1-script-de-creación",
+    "href": "practica-02/practica-02.html#paso-1-script-de-creación",
+    "title": "Práctica 2",
+    "section": "Paso 1: Script de creación",
+    "text": "Paso 1: Script de creación\nCREATE SCHEMA IF NOT EXISTS `id_proyecto.dw_estrella`\n  OPTIONS (location = 'US');\n\nCREATE SCHEMA IF NOT EXISTS `id_proyecto.dw_copo_nieve`\n  OPTIONS (location = 'US');\n\n(Sustituir id_proyecto por el ID real del proyecto de GCP del alumno.)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-2.1-exploración-de-la-fuente-de-datos",
+    "href": "practica-02/practica-02.html#paso-2.1-exploración-de-la-fuente-de-datos",
+    "title": "Práctica 2",
+    "section": "Paso 2.1: Exploración de la fuente de datos",
+    "text": "Paso 2.1: Exploración de la fuente de datos\nEntender la estructura de las tablas fuente y definir cuál será el hecho de negocio, su granularidad y sus métricas.\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.order_items` LIMIT 10;\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.products`    LIMIT 10;\nSELECT * FROM `bigquery-public-data.thelook_ecommerce.users`       LIMIT 10;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-2.2-definición-del-hecho-de-negocio",
+    "href": "practica-02/practica-02.html#paso-2.2-definición-del-hecho-de-negocio",
+    "title": "Práctica 2",
+    "section": "Paso 2.2: Definición del hecho de negocio",
+    "text": "Paso 2.2: Definición del hecho de negocio\n\n\n\n\n\n\n\n\nElemento\nDefinición\n\n\n\n\nGranularidad\nUn renglón por cada producto vendido dentro de un pedido (order_items.id)\n\n\nMétricas (hechos)\nsale_price (precio de venta), cost (costo del producto), ganancia (precio − costo)\n\n\nDimensiones\nCliente, Producto, Tiempo, Centro de Distribución",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-3-diseño-del-modelo-dimensional",
+    "href": "practica-02/practica-02.html#paso-3-diseño-del-modelo-dimensional",
+    "title": "Práctica 2",
+    "section": "Paso 3: Diseño del modelo dimensional",
+    "text": "Paso 3: Diseño del modelo dimensional\nQué se debe hacer: dibujar el diagrama conceptual de cada esquema antes de programarlos.\n\nEsquema Estrella: una tabla central fact_ventas rodeada de dim_cliente, dim_producto, dim_tiempo y dim_centro_distribucion, todas desnormalizadas (un solo nivel)\nEsquema Copo de Nieve: la misma tabla fact_ventas, pero con dim_producto descompuesta en dim_categoria y dim_departamento, y dim_cliente descompuesta en dim_ciudad, dim_estado y dim_pais",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-4-consultas-analíticas-y-operaciones-olap",
+    "href": "practica-02/practica-02.html#paso-4-consultas-analíticas-y-operaciones-olap",
+    "title": "Práctica 2",
+    "section": "Paso 4: Consultas Analíticas y Operaciones OLAP",
+    "text": "Paso 4: Consultas Analíticas y Operaciones OLAP\nSe deben ejecutar las siguientes consultas:\n\nROLL-UP: ventas totales por mes y categoría\nDRILL-DOWN: de mes a día para una categoría específica\nSLICE: ventas únicamente del país “México”\nDICE: ventas de las categorías “Jeans” y “Sweaters”, en “México” y “Brasil”",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#paso-4-esquema-copo-de-nieve-consideraciones",
+    "href": "practica-02/practica-02.html#paso-4-esquema-copo-de-nieve-consideraciones",
+    "title": "Práctica 2",
+    "section": "Paso 4: Esquema Copo de Nieve — consideraciones",
+    "text": "Paso 4: Esquema Copo de Nieve — consideraciones\n\nPara las consultas sobre el esquema dw_copo_nieve se requerirá encadenar JOINs adicionales, por ejemplo:\n\n\n\ndim_producto → dim_categoria para obtener el nombre de la categoría\ndim_cliente → dim_ciudad → dim_estado → dim_pais para obtener el país",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#interfaz-de-google-query",
+    "href": "practica-02/practica-02.html#interfaz-de-google-query",
+    "title": "Práctica 2",
+    "section": "Interfaz de Google Query",
+    "text": "Interfaz de Google Query",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-02/practica-02.html#referencias",
+    "href": "practica-02/practica-02.html#referencias",
+    "title": "Práctica 2",
+    "section": "Referencias",
+    "text": "Referencias\n\nIntroducción a BigQuery — Google Cloud\nBigQuery para principiantes — DataCamp\nCalculadora de precios — Google Cloud\nGuía práctica de diseño y arquitectura de data warehouse\n¿Cuál es la diferencia entre los procesos de ETL y ELT?",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 2"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#objetivo-de-la-práctica",
+    "href": "practica-04/practica-04.html#objetivo-de-la-práctica",
+    "title": "Práctica 4",
+    "section": "Objetivo de la práctica",
+    "text": "Objetivo de la práctica\n\nCalcular e interpretar medidas de localización, variabilidad, heterogeneidad y concentración\nCalcular específicamente el coeficiente de Gini y la entropía de Shannon\nComunicar los hallazgos con visualizaciones adecuadas\nReflexionar críticamente sobre qué revelan —y qué ocultan— estas medidas sobre la violencia contra las mujeres",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#por-qué-esta-práctica",
+    "href": "practica-04/practica-04.html#por-qué-esta-práctica",
+    "title": "Práctica 4",
+    "section": "¿Por qué esta práctica?",
+    "text": "¿Por qué esta práctica?\nEn la Práctica 3 se dejaron los datos limpios, sin duplicados, con tipos correctos en data/data-processed/.\nEl siguiente paso natural en minería de datos es describir cuantitativamente esos datos antes de modelar: es el rol de la estadística descriptiva dentro del Análisis Exploratorio de Datos (EDA).\n\nNo se vuelve a descargar ni reestructurar el proyecto: se extiende la arquitectura ya existente.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#dos-preguntas-dos-familias-de-medidas",
+    "href": "practica-04/practica-04.html#dos-preguntas-dos-familias-de-medidas",
+    "title": "Práctica 4",
+    "section": "Dos preguntas, dos familias de medidas",
+    "text": "Dos preguntas, dos familias de medidas\n\nConcentración — ¿qué proporción del total se acumula en una fracción pequeña de las unidades de análisis? Herramienta clásica: curva de Lorenz y coeficiente de Gini.\n\n\nHeterogeneidad — ¿qué tan mezcladas o diversas son las categorías? Herramientas: IQV, Gini-Simpson, entropía de Shannon.\n\n\nUno mide desigualdad en cómo se reparte una cantidad; el otro mide diversidad entre categorías.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#nota-de-sensibilidad-del-tema",
+    "href": "practica-04/practica-04.html#nota-de-sensibilidad-del-tema",
+    "title": "Práctica 4",
+    "section": "Nota de sensibilidad del tema",
+    "text": "Nota de sensibilidad del tema\n\n\n\n\n\n\nNote\n\n\nEl análisis debe hacerse con rigor técnico y responsabilidad ética:\n\nEvitar conclusiones que estigmaticen personas, grupos o entidades federativas\nRecordar que los datos representan experiencias reales de violencia\nUna concentración alta en una entidad no implica automáticamente “ahí hay más violencia” — puede reflejar diferencias en denuncia, tamaño poblacional o factores de expansión",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#qué-miden",
+    "href": "practica-04/practica-04.html#qué-miden",
+    "title": "Práctica 4",
+    "section": "¿Qué miden?",
+    "text": "¿Qué miden?\n\n\nLocalización — dónde se “centra” la distribución\n\nMedia, mediana, moda\nPercentiles / cuantiles\nMedia ponderada por factor de expansión\n\n\n\n\nVariabilidad — qué tan dispersos están los datos\n\nVarianza y desviación estándar\nCoeficiente de variación (CV)\nRango intercuartílico (IQR)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#qué-miden-realmente",
+    "href": "practica-04/practica-04.html#qué-miden-realmente",
+    "title": "Práctica 4",
+    "section": "¿Qué miden realmente?",
+    "text": "¿Qué miden realmente?\nMientras que la varianza evalúa dispersión numérica, estas medidas aplican a variables cualitativas (categóricas).\nResponden a una pregunta central:\n\n¿Los datos se aglutinan en una sola categoría dominante (baja heterogeneidad) o están repartidos de forma equilibrada entre todas las opciones (alta heterogeneidad)?\n\n\nLos cimientos matemáticos: Para calcular qué tan mezclados están los datos, las fórmulas utilizan dos bloques básicos:\n\n\\(k\\) = El número total de categorías posibles. (Ej. Si analizamos el “Tipo de violencia”, tenemos Psicológica, Física, Económica y Sexual, por lo tanto \\(k = 4\\)).\n\\(p_i\\) = La proporción de casos que caen en la categoría \\(i\\). (Ej. Si el 50% de los reportes son de violencia psicológica, su \\(p_i = 0.5\\)).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#índice-de-variación-cualitativa-iqv",
+    "href": "practica-04/practica-04.html#índice-de-variación-cualitativa-iqv",
+    "title": "Práctica 4",
+    "section": "Índice de Variación Cualitativa (IQV)",
+    "text": "Índice de Variación Cualitativa (IQV)\n\\[\\text{IQV} = \\frac{k\\left(1 - \\sum_{i=1}^{k} p_i^2\\right)}{k - 1}\\]\n\n\\(\\text{IQV} = 0\\) → toda la masa en una sola categoría (heterogeneidad nula)\n\\(\\text{IQV} = 1\\) → categorías perfectamente balanceadas (heterogeneidad máxima)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#índice-de-gini-simpson",
+    "href": "practica-04/practica-04.html#índice-de-gini-simpson",
+    "title": "Práctica 4",
+    "section": "Índice de Gini-Simpson",
+    "text": "Índice de Gini-Simpson\n\\[\\text{GS} = 1 - \\sum_{i=1}^{k} p_i^2\\]\n\nInterpretación intuitiva: probabilidad de que dos observaciones elegidas al azar pertenezcan a categorías distintas\nMismo rango de comportamiento que el IQV, pero sin reescalar por \\(k\\)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#entropía-de-shannon",
+    "href": "practica-04/practica-04.html#entropía-de-shannon",
+    "title": "Práctica 4",
+    "section": "Entropía de Shannon",
+    "text": "Entropía de Shannon\n\\[H = -\\sum_{i=1}^{k} p_i \\log_2(p_i), \\qquad 0 \\le H \\le \\log_2(k)\\]\n\nMide incertidumbre: ¿qué tan difícil es predecir la categoría de un caso elegido al azar?\n\\(H = 0\\) → nula incertidumbre (una sola categoría)\n\\(H = \\log_2(k)\\) → máxima incertidumbre (categorías balanceadas)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#cuándo-usar-cada-una",
+    "href": "practica-04/practica-04.html#cuándo-usar-cada-una",
+    "title": "Práctica 4",
+    "section": "¿Cuándo usar cada una?",
+    "text": "¿Cuándo usar cada una?\n\nUsa Entropía / Gini-Simpson / IQV cuando… La pregunta es ¿qué tan mezcladas o diversas son las categorías? Ejemplo: tipo de violencia, modalidad, relación con el agresor\n\n\nUsa el coeficiente de Gini / curva de Lorenz cuando… La pregunta es ¿qué proporción del total se concentra en pocas unidades? Ejemplo: casos de violencia por entidad federativa\n\n\n\n\n\n\n\n\nNote\n\n\nSi aplicas ambas a la misma variable categórica (cada categoría como “unidad”, su frecuencia como la “cantidad” a repartir), obtienes dos lecturas complementarias: la entropía dice qué tan mezclada está; el Gini sobre esas mismas frecuencias dice qué tan desigual es esa mezcla.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#caso-práctico",
+    "href": "practica-04/practica-04.html#caso-práctico",
+    "title": "Práctica 4",
+    "section": "Caso Práctico",
+    "text": "Caso Práctico\nImaginemos que analizamos un subconjunto de 100 casos reportados de violencia. ¿Están concentrados en un solo tipo o vemos una mezcla de todas las formas de violencia?\n\n\n- Psicológica : 50 casos\n- Física      : 30 casos\n- Económica   : 15 casos\n- Sexual      : 5 casos\n\n\n\n\n\n\n\n\n\nObservación inicial\n\n\nA simple vista notamos que la violencia “Psicológica” acapara la mitad de los casos (50), mientras que la “Sexual” es la minoría (5). Esto ya nos indica que no hay un balance perfecto.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#paso-1-las-proporciones",
+    "href": "practica-04/practica-04.html#paso-1-las-proporciones",
+    "title": "Práctica 4",
+    "section": "Paso 1: Las proporciones",
+    "text": "Paso 1: Las proporciones\nTodas las fórmulas de heterogeneidad necesitan convertir frecuencias absolutas a proporciones (\\(p_i\\)) y, fundamentalmente, elevar esas proporciones al cuadrado (\\(p_i^2\\)).\n¿Por qué al cuadrado? Porque penaliza fuertemente a las categorías minoritarias y recompensa a las mayoritarias, revelando qué tan dominante es el pico de la distribución.\n\n\nProporciones (p_i): [0.5  0.3  0.15 0.05]\nProporciones al cuadrado (p_i^2): [0.25   0.09   0.0225 0.0025]\n\nSuma de p_i^2 = 0.365\n\n\n\n▶ Si todos los casos estuvieran en “Psicológica”, la suma sería 1.\n▶ Si hubiera 25 casos de cada tipo, la suma sería 0.25 (lo mínimo posible).\n▶ Nuestro 0.365 está en un punto intermedio.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#paso-2-índices-de-gini-simpson-e-iqv",
+    "href": "practica-04/practica-04.html#paso-2-índices-de-gini-simpson-e-iqv",
+    "title": "Práctica 4",
+    "section": "Paso 2: Índices de Gini-Simpson e IQV",
+    "text": "Paso 2: Índices de Gini-Simpson e IQV\nGini-Simpson (\\(1 - \\sum p_i^2\\)) Mide la probabilidad de que, al tomar 2 reportes al azar, sean de tipos de violencia distintos.\n\n\nGini-Simpson = 0.6350\n\n\n(Hay un 63.5% de probabilidad de que dos víctimas al azar hayan sufrido distintos tipos de violencia).\n\nÍndice de Variación Cualitativa (IQV) Ajusta el valor anterior usando el número de categorías (\\(k=4\\)) para darnos una métrica de 0 a 1 (donde 1 es la máxima mezcla posible).\n\n\nIQV = 0.8467\n\n\n(Nuestros datos alcanzan casi el 85% de la máxima diversidad posible).\n\n\nFíjate que IQV es simplemente Gini-Simpson reescalado: \\(\\text{IQV} = \\frac{k}{k-1}\\,\\text{GS}\\).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#paso-3-entropía-de-shannon",
+    "href": "practica-04/practica-04.html#paso-3-entropía-de-shannon",
+    "title": "Práctica 4",
+    "section": "Paso 3: Entropía de Shannon",
+    "text": "Paso 3: Entropía de Shannon\nSi te digo el tipo de violencia de un caso elegido al azar, ¿qué tan “sorprendido” te vas a llevar?\n\nUn evento casi seguro (p cercana a 1) no sorprende casi nada → aporta poca información\nUn evento raro (p cercana a 0) sí sorprende → aporta mucha información\nShannon mide esa sorpresa en bits, con la fórmula \\(-\\log_2(p_i)\\)\n\n\nPero la sorpresa de una sola categoría no basta: necesitamos un solo número que resuma a las 4 categorías juntas. Para eso, Shannon promedia la sorpresa de cada categoría, ponderándola por qué tan seguido ocurre.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#paso-3a-la-ocurrencia-de-cada-categoría",
+    "href": "practica-04/practica-04.html#paso-3a-la-ocurrencia-de-cada-categoría",
+    "title": "Práctica 4",
+    "section": "Paso 3a: la “ocurrencia” de cada categoría",
+    "text": "Paso 3a: la “ocurrencia” de cada categoría\nPrimero calculamos \\(-\\log_2(p_i)\\) para cada categoría: entre menos frecuente es un tipo de violencia, más bits de sorpresa aporta si aparece.\n\n\nPsicológica   p_i=0.50   -log2(p_i) = 1.0000 bits\nFísica        p_i=0.30   -log2(p_i) = 1.7370 bits\nEconómica     p_i=0.15   -log2(p_i) = 2.7370 bits\nSexual        p_i=0.05   -log2(p_i) = 4.3219 bits\n\n\n\n“Sexual” (5% de los casos) sorprende casi 4.3 bits si aparece; “Psicológica” (50% de los casos) apenas sorprende 1 bit, porque ya la esperábamos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#paso-3b-ponderando-la-sorpresa-por-su-probabilidad",
+    "href": "practica-04/practica-04.html#paso-3b-ponderando-la-sorpresa-por-su-probabilidad",
+    "title": "Práctica 4",
+    "section": "Paso 3b: ponderando la sorpresa por su probabilidad",
+    "text": "Paso 3b: ponderando la sorpresa por su probabilidad\nAhora multiplicamos la sorpresa de cada categoría por \\(p_i\\): así las categorías raras (mucha sorpresa, pero ocurren poco) no dominan el resultado, y las comunes (poca sorpresa, pero ocurren mucho) sí pesan.\n\n\nPsicológica   p_i * (-log2 p_i) = 0.5000\nFísica        p_i * (-log2 p_i) = 0.5211\nEconómica     p_i * (-log2 p_i) = 0.4105\nSexual        p_i * (-log2 p_i) = 0.2161\n\nSuma de todas las contribuciones -&gt; H = 1.6477 bits\n\n\n\n\\(H\\) es literalmente la suma de esas 4 contribuciones: no es una fórmula misteriosa, es un promedio ponderado de “qué tan sorprendente es cada categoría”.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#paso-3c-comparando-contra-el-máximo-posible",
+    "href": "practica-04/practica-04.html#paso-3c-comparando-contra-el-máximo-posible",
+    "title": "Práctica 4",
+    "section": "Paso 3c: comparando contra el máximo posible",
+    "text": "Paso 3c: comparando contra el máximo posible\n\n\nEntropía (H)     = 1.6477 bits\nEntropía Máxima  = 2.0000 bits\n\nH / H_max = 0.8239 (82.4%)\n\n\n\\(H_{max} = \\log_2(k)\\) es la entropía que tendríamos si las 4 categorías fueran igual de probables (25% cada una): ahí ninguna te da pistas de antemano, así que la sorpresa promedio es máxima.\nLa entropía relativa (\\(H/H_{max}\\)) nos dice que tenemos el 82.4% de la incertidumbre que tendríamos en ese escenario perfectamente balanceado.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#visualizando-la-distribución",
+    "href": "practica-04/practica-04.html#visualizando-la-distribución",
+    "title": "Práctica 4",
+    "section": "Visualizando la distribución",
+    "text": "Visualizando la distribución\n\n\n\n\n\n\n\n\n\nLa barra de “Psicológica” domina visualmente el resto — la misma historia que cuentan GS=0.635, IQV=0.847 y H/H_max=0.824, pero ahora se puede ver de un vistazo.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#síntesis-del-ejemplo",
+    "href": "practica-04/practica-04.html#síntesis-del-ejemplo",
+    "title": "Práctica 4",
+    "section": "Síntesis del ejemplo",
+    "text": "Síntesis del ejemplo\n\n\n\n\n\n\n\n\nÍndice\nValor\n¿Qué significa en la realidad?\n\n\n\n\nGini-Simpson\n0.635\nProbabilidad moderada-alta de cruzar víctimas con vivencias diferentes.\n\n\nIQV\n0.847\nLa distribución está al 85% de ser perfectamente heterogénea.\n\n\nEntropía (Relativa)\n0.824\nTenemos un 82% de incertidumbre al predecir el tipo de violencia del siguiente caso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#primos-conceptuales-no-sinónimos",
+    "href": "practica-04/practica-04.html#primos-conceptuales-no-sinónimos",
+    "title": "Práctica 4",
+    "section": "Primos conceptuales, no sinónimos",
+    "text": "Primos conceptuales, no sinónimos\n\n\n\n\n\n\n\n\n\nEntropía de Shannon (heterogeneidad)\nGini (concentración)\n\n\n\n\nMide\nDiversidad / incertidumbre entre categorías\nDesigualdad en cómo se reparte una cantidad\n\n\nRango\n\\(0\\) a \\(\\log_2(k)\\)\n\\(0\\) a \\(1\\)\n\n\nPregunta\n¿Qué tan mezcladas están las categorías?\n¿Qué proporción se concentra en pocas unidades?\n\n\nOrigen\nTeoría de la información (1948)\nEstadística económica (1912)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#qué-miden-curva-de-lorenz",
+    "href": "practica-04/practica-04.html#qué-miden-curva-de-lorenz",
+    "title": "Práctica 4",
+    "section": "¿Qué miden? — Curva de Lorenz",
+    "text": "¿Qué miden? — Curva de Lorenz\nResponde: ¿qué fracción de una cantidad total (casos de violencia) se acumula en una fracción pequeña de las unidades (entidades federativas)?\nConstrucción de la curva:\n\nOrdenar las unidades de menor a mayor en la cantidad de interés\nCalcular la proporción acumulada de la cantidad\nCalcular la proporción acumulada de unidades\nGraficar (prop. acumulada de unidades, prop. acumulada de la cantidad) contra la diagonal de igualdad perfecta\n\nMisma herramienta que usa la economía para medir desigualdad del ingreso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#coeficiente-de-gini",
+    "href": "practica-04/practica-04.html#coeficiente-de-gini",
+    "title": "Práctica 4",
+    "section": "Coeficiente de Gini",
+    "text": "Coeficiente de Gini\n\\[G = \\frac{2\\sum_{i=1}^{n} i\\, x_{(i)} - (n+1)\\sum_{i=1}^{n} x_{(i)}}{n\\sum_{i=1}^{n} x_{(i)}}, \\quad x_{(i)} \\text{ ordenado ascendentemente}\\]\n\n\\(G = 0\\) → reparto perfectamente homogéneo entre entidades\n\\(G \\to 1\\) → casi todos los casos concentrados en muy pocas entidades",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-1-los-datos",
+    "href": "practica-04/practica-04.html#ejemplo-paso-1-los-datos",
+    "title": "Práctica 4",
+    "section": "Ejemplo Paso 1: los datos",
+    "text": "Ejemplo Paso 1: los datos\nCasos reportados (hipotéticos) en 5 entidades, ya ordenados de menor a mayor:\n\n\nEntidad E: 5 casos\nEntidad D: 10 casos\nEntidad C: 15 casos\nEntidad B: 30 casos\nEntidad A: 40 casos\nTotal: 100",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-2-proporciones-acumuladas",
+    "href": "practica-04/practica-04.html#ejemplo-paso-2-proporciones-acumuladas",
+    "title": "Práctica 4",
+    "section": "Ejemplo Paso 2: proporciones acumuladas",
+    "text": "Ejemplo Paso 2: proporciones acumuladas\nVamos entidad por entidad, sumando los casos como si fueran llegando en fila. En cada paso preguntamos: ¿cuántos casos llevamos acumulados hasta aquí?\n\n\nEntidad      Casos   Acumulado   Prop. acum.\nE                5           5          0.05\nD               10          15          0.15\nC               15          30          0.30\nB               30          60          0.60\nA               40         100          1.00\n\n\n\nAl llegar a la última entidad, el acumulado siempre coincide con el total (100). Eso es justo lo que confirma que no se nos perdió ningún caso en el camino.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-3-coeficiente-de-gini",
+    "href": "practica-04/practica-04.html#ejemplo-paso-3-coeficiente-de-gini",
+    "title": "Práctica 4",
+    "section": "Ejemplo Paso 3: coeficiente de Gini",
+    "text": "Ejemplo Paso 3: coeficiente de Gini\n\n\nNumerador   = 180\nDenominador = 500\nCoeficiente de Gini = 0.360",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-3a-de-dónde-sale-el-numerador",
+    "href": "practica-04/practica-04.html#ejemplo-paso-3a-de-dónde-sale-el-numerador",
+    "title": "Práctica 4",
+    "section": "Ejemplo Paso 3a: ¿de dónde sale el numerador?",
+    "text": "Ejemplo Paso 3a: ¿de dónde sale el numerador?\n\\[\\text{Numerador} = 2\\sum_{i=1}^{n} i\\,x_{(i)} - (n+1)\\sum_{i=1}^{n} x_{(i)}\\]\nCada entidad se multiplica por su posición en el orden (1 = la que menos casos tiene, 5 = la que más): así, las entidades con más casos pesan más.\n\n\nEntidad E: posición 1 x  5 casos = 5\nEntidad D: posición 2 x 10 casos = 20\nEntidad C: posición 3 x 15 casos = 45\nEntidad B: posición 4 x 30 casos = 120\nEntidad A: posición 5 x 40 casos = 200\n\nSuma de i*x         = 390\n2 x suma de i*x     = 780\n(n+1) x total       = 600\nNumerador           = 780 - 600 = 180\n\nSi todas tuvieran 20 casos: numerador = 0",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-3b-qué-representan-180-y-500",
+    "href": "practica-04/practica-04.html#ejemplo-paso-3b-qué-representan-180-y-500",
+    "title": "Práctica 4",
+    "section": "Ejemplo Paso 3b: ¿qué representan 180 y 500?",
+    "text": "Ejemplo Paso 3b: ¿qué representan 180 y 500?\nNumerador (180) = suma de las diferencias absolutas entre todos los pares de entidades. Mide qué tan distintas son las entidades entre sí.\n\n\nPares de entidades: 10\nSuma de |x_i - x_j| sobre todos los pares = 180\n\n\n\nDenominador (500) = \\(n \\times \\text{total} = 5 \\times 100\\). Es un factor de escala (equivale a \\(n^2 \\times \\text{media} = 25 \\times 20\\)): sin él, el 180 crecería solo por agregar entidades o casos y no podríamos comparar problemas distintos.\n\n\nConexión con la curva de Lorenz: \\(G = \\dfrac{180}{500}\\) es lo mismo que el área entre la diagonal y la curva, dividida entre el área total bajo la diagonal (0.5).\n\n\nÁrea bajo la curva de Lorenz      = 0.32\nÁrea entre la diagonal y la curva = 0.18\nGini = área entre / 0.5           = 0.36",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#ejemplo-paso-4-graficar-la-curva-de-lorenz",
+    "href": "practica-04/practica-04.html#ejemplo-paso-4-graficar-la-curva-de-lorenz",
+    "title": "Práctica 4",
+    "section": "Ejemplo Paso 4: graficar la curva de Lorenz",
+    "text": "Ejemplo Paso 4: graficar la curva de Lorenz",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#interpretación-g-0.36",
+    "href": "practica-04/practica-04.html#interpretación-g-0.36",
+    "title": "Práctica 4",
+    "section": "Interpretación: G = 0.36",
+    "text": "Interpretación: G = 0.36\n\nEl área entre la curva de Lorenz y la diagonal de igualdad es moderada\nExiste concentración por encima de lo homogéneo, pero lejos del extremo (\\(G\\to1\\))\nEn el contexto de ENDIREH: sugiere que algunas entidades concentran más casos que otras, sin que unas pocas acaparen prácticamente todo",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#punto-de-partida-lo-que-ya-tenemos-de-la-práctica-3",
+    "href": "practica-04/practica-04.html#punto-de-partida-lo-que-ya-tenemos-de-la-práctica-3",
+    "title": "Práctica 4",
+    "section": "Punto de partida: lo que ya tenemos de la Práctica 3",
+    "text": "Punto de partida: lo que ya tenemos de la Práctica 3\n\nEstructura de carpetas del proyecto\nREADME.md y requirements.txt\ndata/data-processed/endireh_2021_limpio.csv — ya limpio, sin duplicados, tipos correctos, sin faltantes\n\n\n\n\n\n\n\nNote\n\n\nNo se descarga ni reestructura de nuevo: se extiende el proyecto existente.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#notebook-medidas-de-heterogeneidad",
+    "href": "practica-04/practica-04.html#notebook-medidas-de-heterogeneidad",
+    "title": "Práctica 4",
+    "section": "Notebook: Medidas de Heterogeneidad",
+    "text": "Notebook: Medidas de Heterogeneidad\nSobre variables cualitativas, calcular:\n\nÍndice de Variación Cualitativa (IQV)\nÍndice de Gini-Simpson\nEntropía de Shannon\n\nCon gráficos e interpretación en el contexto de violencia contra las mujeres.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#notebook-medidas-de-concentración",
+    "href": "practica-04/practica-04.html#notebook-medidas-de-concentración",
+    "title": "Práctica 4",
+    "section": "Notebook: Medidas de Concentración",
+    "text": "Notebook: Medidas de Concentración\n\nAnalizar los casos reportados ponderados por el factor de expansión\nConstruir la curva de Lorenz por entidad federativa\nCalcular el coeficiente de Gini\nInterpretar: ¿concentración territorial alta o reparto homogéneo?",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#síntesis-gini-y-entropía",
+    "href": "practica-04/practica-04.html#síntesis-gini-y-entropía",
+    "title": "Práctica 4",
+    "section": "Síntesis Gini y Entropía",
+    "text": "Síntesis Gini y Entropía\n\nElegir una misma variable categórica (p. ej. tipo de violencia)\nCalcular sobre ella tanto la entropía de Shannon como una versión del Gini aplicada a las frecuencias de sus categorías\nRedactar, en no más de un párrafo, la diferencia conceptual entre ambas lecturas",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#tabla-de-resultados",
+    "href": "practica-04/practica-04.html#tabla-de-resultados",
+    "title": "Práctica 4",
+    "section": "Tabla de resultados",
+    "text": "Tabla de resultados\n\n\n\nFamilia de medida\nVariable(s)\nValor obtenido\nInterpretación\n\n\n\n\nLocalización\n\n\n\n\n\nVariabilidad\n\n\n\n\n\nHeterogeneidad\n\n\n\n\n\nConcentración\n\n\n\n\n\nGini vs. Entropía",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#qué-se-busca-en-cada-criterio",
+    "href": "practica-04/practica-04.html#qué-se-busca-en-cada-criterio",
+    "title": "Práctica 4",
+    "section": "Qué se busca en cada criterio",
+    "text": "Qué se busca en cada criterio\n\nLocalización: media, mediana, moda y cuantiles — con media ponderada justificada por factor de expansión\nVariabilidad: varianza, SD, CV, IQR — con comparación entre grupos\nHeterogeneidad / Concentración: cálculo correcto + interpretación adecuada\nSíntesis: comparación explícita y bien argumentada\nVisualización: claridad, pertinencia e integración narrativa en el notebook\nReflexión: profundidad, limitaciones detectadas y sensibilidad ante el tema social",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#reporte-pdf",
+    "href": "practica-04/practica-04.html#reporte-pdf",
+    "title": "Práctica 4",
+    "section": "Reporte PDF",
+    "text": "Reporte PDF\nResumen ejecutivo y conciso que incluya:\n\nLa tabla de resultados completa\nLas gráficas: histograma/boxplot, barras de heterogeneidad, curva de Lorenz, prevalencia por entidad — cada una con su interpretación\nLas respuestas al cuestionario",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#repositorio-de-git-actualizado",
+    "href": "practica-04/practica-04.html#repositorio-de-git-actualizado",
+    "title": "Práctica 4",
+    "section": "Repositorio de Git actualizado",
+    "text": "Repositorio de Git actualizado\n\nMedidas de localización\nMedidas de variabilidad\nMedidas de heterogeneidad\nMedidas de concentración\nComparación de Gini y Entropía\n\nMás README.md y requirements.txt actualizados.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#recapitulación",
+    "href": "practica-04/practica-04.html#recapitulación",
+    "title": "Práctica 4",
+    "section": "Recapitulación",
+    "text": "Recapitulación\n\nHeterogeneidad (IQV, Gini-Simpson, Entropía) mide qué tan mezcladas están las categorías\nConcentración (Lorenz, Gini) mide qué tan desigual es el reparto de una cantidad",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-04/practica-04.html#referencias-clave",
+    "href": "practica-04/practica-04.html#referencias-clave",
+    "title": "Práctica 4",
+    "section": "Referencias clave",
+    "text": "Referencias clave\n\nINEGI (2022). Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021\nGini, C. (1912). Variabilità e mutabilità\nShannon, C. E. (1948). A Mathematical Theory of Communication\nWilcox, A. R. (1973). Indices of Qualitative Variation and Political Measurement",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 4"
     ]
   }
 ]
