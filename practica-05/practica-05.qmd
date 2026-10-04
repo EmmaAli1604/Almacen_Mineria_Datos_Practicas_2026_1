@@ -1,0 +1,702 @@
+---
+title: "Práctica 5"
+subtitle: "Preparación de Datos: Normalización, Reducción de Dimensionalidad y Reducción de Numerosidad sobre Violencia contra las Mujeres"
+author: "Emma Alicia Jiménez Sánchez"
+date: today
+format:
+  revealjs:
+    theme: night
+    slide-number: true
+    progress: true
+    transition: slide
+    incremental: true
+    code-line-numbers: false
+    code-overflow: wrap
+    highlight-style: github-dark
+    css: style.css
+    footer: "Práctica 5 · Minería de Datos"
+    width: 1280
+    height: 720
+    margin: 0.04
+    smaller: false
+    center: false
+jupyter: python3
+---
+
+```{python}
+#| include: false
+# Configuración inicial: disponible para todos los chunks de la presentación.
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+rng = np.random.default_rng(42)
+```
+
+## Objetivo de la práctica
+
+- Aplicar **normalización** (numérica) a los datos ya limpios
+- Reducir **columnas**: chi-cuadrada, correlación de Pearson y **PCA**
+- Reducir **filas**: **muestreo** aleatorio, estratificado y sistemático
+- Justificar técnicamente **cada decisión** y reflexionar sobre qué información se gana y cuál se pierde
+
+## ¿Por qué esta práctica? {.smaller}
+
+En prácticas anteriores los datos de la ENDIREH quedaron **limpios**: tipos correctos, sin duplicados, sin faltantes.
+
+Aun así, **datos limpios no significa datos listos para modelar**:
+
+- Variables en **escalas incomparables** (edad vs. ingreso)
+- **Demasiadas columnas**, varias redundantes o irrelevantes
+- **Demasiadas filas** para explorar o iterar rápido
+
+::: {.highlight-box}
+La limpieza **no** se repite: se parte de `data/data-processed/endireh_2021_limpio.csv`.
+:::
+
+# Normalización
+
+## ¿Qué es y para qué sirve? {.smaller}
+
+::: {.columns}
+::: {.column width="45%"}
+**Normalización de texto** (cualitativas)
+
+- Minúsculas, sin espacios extra, sin acentos
+- Evita que "Soltera", "soltera " y "SOLTERA" cuenten como **3 categorías**
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+**Normalización numérica** (cuantitativas)
+
+- Lleva variables a una **escala comparable**
+- Necesaria en algoritmos basados en **distancias** o **varianza** (K-Means, KNN, PCA)
+:::
+:::
+
+# Normalización
+
+## ¿Qué es y para qué sirve? {.smaller}
+
+Normalizar es **transformar los valores** de una variable para llevarla a una escala comparable con las demás.
+
+- Las variables vienen en unidades distintas: años, pesos, número de hijos
+- Algoritmos basados en **distancias o varianza** (K-Means, KNN, PCA) dan más peso a las variables con valores grandes
+- La normalización evita que una variable domine **solo por su escala**
+
+## Min-max {.smaller}
+
+$$x' = \frac{x - x_{min}}{x_{max} - x_{min}}$$
+
+- Reescala los datos al rango **[0, 1]**
+- El mínimo pasa a ser **0**, el máximo pasa a ser **1**
+- Los demás valores quedan **proporcionalmente** entre ambos
+
+::: {.fragment}
+**Ejemplo:** edades 18, 25, 40 y 60 → $x_{min}=18$, $x_{max}=60$, denominador $=42$
+
+- $18 \to 0$
+- $25 \to (25-18)/42 = 0.167$
+- $40 \to (40-18)/42 = 0.524$
+- $60 \to 1$
+:::
+
+## Min-max: ventajas y límites {.smaller}
+
+::: {.columns}
+::: {.column width="48%"}
+**Ventajas**
+
+- Resultado fácil de interpretar (0 a 1)
+- Conserva la **forma** de la distribución
+- Útil cuando se necesita un **rango acotado**
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+**Límites**
+
+- Muy sensible a **valores atípicos**
+- Un ingreso extremo de 1,000,000 comprime a casi todos los demás cerca de 0
+- Datos nuevos fuera del rango original salen de [0, 1]
+:::
+:::
+
+## Z-score (estandarización) {.smaller}
+
+$$z = \frac{x - \mu}{\sigma}$$
+
+- Expresa cada valor como **cuántas desviaciones estándar** se aleja de la media
+- El resultado tiene **media 0** y **desviación estándar 1**
+
+| z | Interpretación |
+|---|---|
+| 0 | Igual a la media |
+| 1 | Una desviación estándar **por encima** de la media |
+| -2 | Dos desviaciones estándar **por debajo** de la media |
+
+## Z-score: ventajas y límites {.smaller}
+
+::: {.columns}
+::: {.column width="48%"}
+**Ventajas**
+
+- Menos sensible a atípicos que min-max
+- Es el que **exige el PCA**: busca direcciones de máxima varianza y necesita que todas las variables partan con la misma varianza
+- Funciona bien con datos aproximadamente normales
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+**Límites**
+
+- **No tiene rango fijo** (normalmente entre -3 y 3)
+- Los valores negativos son menos intuitivos para presentar
+:::
+:::
+
+## Buenas prácticas {.smaller}
+
+- Normaliza **solo variables cuantitativas**; no la variable objetivo ni los identificadores
+- Si luego separas entrenamiento y prueba: `fit` **solo con entrenamiento** y `transform` en ambos, para evitar **fuga de información**
+- Guarda los parámetros del escalador si necesitas **revertir** la transformación o aplicarla a datos nuevos
+- La **correlación de Pearson no cambia** al normalizar (son transformaciones lineales); **PCA y K-Means sí cambian** mucho
+
+# Reducción por Selección de Variables
+
+## Dos preguntas, dos herramientas {.smaller}
+
+::: {.fragment .fade-up}
+**Chi-cuadrada** — *¿esta variable cualitativa está asociada con x columna*
+Si es independiente → candidata a eliminarse.
+:::
+
+::: {.fragment .fade-up}
+**Correlación de Pearson** — *¿estas dos variables cuantitativas dicen lo mismo?*
+Si $|r| > 0.8$ → una es redundante.
+:::
+
+## Chi-cuadrada: ¿qué significa cada elemento? {.smaller}
+
+$$\chi^2 = \sum_{i,j} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$$
+
+## Chi-cuadrada: ¿qué significa cada elemento? {.smaller}
+
+::: {style="font-size: 0.62em; line-height: 1.25;"}
+
+| Símbolo | Significado |
+|---|---|
+| $\chi^2$ | **Estadístico de prueba**: qué tan lejos están los datos de la independencia. Más grande = más asociación |
+| $\sum_{i,j}$ | **Suma** sobre todas las celdas de la tabla de contingencia |
+| $O_{ij}$ | **Frecuencia observada**: casos reales en la celda $(i,j)$ |
+| $E_{ij}$ | **Frecuencia esperada** si $H_0$ fuera cierta (sin asociación) |
+| $(O_{ij}-E_{ij})$ | **Diferencia** entre lo observado y lo esperado |
+| $(\cdot)^2$ | Evita que diferencias positivas y negativas **se cancelen** |
+| $/E_{ij}$ | Una misma diferencia pesa **más en celdas pequeñas** que en celdas grandes |
+
+:::
+## ¿Cómo se calcula $E_{ij}$? {.smaller}
+
+$$E_{ij} = \frac{(\text{total de la fila } i)\times(\text{total de la columna } j)}{N}$$
+
+donde $N$ es el **total de casos**. Es lo que esperaríamos por azar si la distribución de una variable fuera igual en todas las categorías de la otra.
+
+```{python}
+tabla = pd.DataFrame([[30, 70], [60, 40]],
+                     index=["Primaria", "Licenciatura"],
+                     columns=["Sí", "No"])
+
+N = tabla.values.sum()
+totales_fila = tabla.sum(axis=1).values.reshape(-1, 1)
+totales_col = tabla.sum(axis=0).values.reshape(1, -1)
+
+esperados = totales_fila * totales_col / N
+print("Observados (O):\n", tabla, "\n")
+print("Esperados (E):\n", pd.DataFrame(esperados, index=tabla.index, columns=tabla.columns))
+```
+
+::: {.fragment}
+Si la escolaridad fuera independiente de la violencia, esperaríamos 45 "Sí" en cada fila (el 45 % de 100). Lo observado en cada fila (30 y 60) se aleja bastante de eso.
+:::
+
+## Armando el estadístico celda por celda {.smaller}
+
+```{python}
+contribucion = (tabla.values - esperados) ** 2 / esperados
+print(pd.DataFrame(contribucion, index=tabla.index, columns=tabla.columns).round(3))
+print(f"\nchi2 = suma de contribuciones = {contribucion.sum():.3f}")
+```
+
+Cada celda aporta qué tanto se desvía de lo esperado. El $\chi^2$ final es **la suma de todas**.
+
+
+## Hipótesis y valor $p$ {.smaller}
+
+- **$H_0$:** las dos variables son **independientes** (la distribución de una no depende de la otra)
+- **$H_1$:** existe **asociación** entre ambas
+- **Valor $p$:** probabilidad de obtener un $\chi^2$ **al menos tan grande** si $H_0$ fuera cierta
+
+::: {.fragment}
+**Decisión:**
+
+- **$p \le 0.05$** → los datos son poco compatibles con la independencia → asociación significativa → **conservar** la variable
+- **$p > 0.05$** → no hay evidencia suficiente de asociación → **candidata a eliminar**
+:::
+
+## Condiciones y precauciones {.smaller}
+
+- Las frecuencias esperadas deben ser **razonablemente grandes** (regla común: $E_{ij} \ge 5$ en la mayoría de las celdas). Si hay categorías con muy pocos casos, conviene **agruparlas**
+- La prueba indica **si hay asociación**, no **qué tan fuerte** es ni **en qué dirección**
+- Con muestras muy grandes, el valor $p$ casi siempre sale pequeño aunque la asociación sea débil
+- Variables con **muchas categorías** (como `entidad`, con 32) aumentan los grados de libertad y exigen revisar bien la tabla
+
+::: {.callout-note title="Limitaciones"}
+- Con **muestras muy grandes**, casi todo sale "significativo" (el valor $p$ se vuelve diminuto aunque la asociación sea débil)
+- **Asociación ≠ causalidad**
+- Una variable puede ser estadísticamente independiente y aun así tener **relevancia teórica o social**: la decisión final es del analista
+::: 
+
+## Correlación de Pearson: ¿qué mide? {.smaller}
+
+Mide qué tan **fuerte** y en qué **dirección** se relacionan **linealmente** dos variables cuantitativas.
+
+$$r = \frac{\text{cov}(X,Y)}{\sigma_X \, \sigma_Y}, \qquad -1 \le r \le 1$$
+
+::: {.fragment}
+**Pregunta que responde:** cuando una variable sube, ¿la otra **tiende a subir**, a **bajar** o **no cambia de forma sistemática**?
+:::
+
+::: {.fragment}
+**Uso en la práctica:** si dos variables tienen $|r|$ muy alto, **aportan casi la misma información** (son redundantes) y basta conservar una.
+:::
+
+## Las variables de la fórmula {.smaller}
+
+::: {style="font-size: 0.8em;"}
+
+| Símbolo | Significado |
+|---|---|
+| $r$ | **Coeficiente de correlación**: el resultado final, entre $-1$ y $1$ |
+| $X, Y$ | Las **dos variables cuantitativas** que se comparan (por ejemplo, `edad` y `anios_pareja`) |
+| $\text{cov}(X,Y)$ | **Covarianza**: mide si $X$ y $Y$ **varían juntas** (signo) pero depende de las unidades |
+| $\sigma_X, \sigma_Y$ | **Desviación estándar** de cada variable: cuánto se dispersa cada una |
+| $\sigma_X\sigma_Y$ | Se divide entre este producto para **quitar las unidades** y dejar un valor comparable |
+
+:::
+
+::: {.fragment}
+Por eso $r$ **no cambia** si mides la edad en años o en meses: la división elimina la escala.
+:::
+
+## Desarmando la covarianza y la desviación {.smaller}
+
+$$\text{cov}(X,Y) = \frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{n-1} \qquad \sigma_X = \sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}$$
+
+::: {style="font-size: 0.8em;"}
+
+| Símbolo | Significado |
+|---|---|
+| $x_i, y_i$ | Valores de $X$ y $Y$ para la persona $i$ |
+| $\bar{x}, \bar{y}$ | **Media** de cada variable |
+| $(x_i-\bar{x})$ | **Desviación** de la persona $i$ respecto a la media: ¿está por encima o por debajo? |
+| $n$ | Número de **personas** (filas) |
+| $n-1$ | Corrección de **muestra** (grados de libertad) |
+
+:::
+
+## Desarmando la covarianza y la desviación {.smaller}
+
+::: {.fragment}
+El $n-1$ aparece arriba y abajo y **se cancela**, así que la fórmula práctica es:
+
+$$r = \frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum (x_i-\bar{x})^2 \cdot \sum (y_i-\bar{y})^2}}$$
+:::
+
+## La idea detrás: el signo de cada producto {.smaller}
+
+Para cada persona se multiplica $(x_i-\bar{x})\cdot(y_i-\bar{y})$:
+
+- **Ambas por encima** de su media → producto **positivo**
+- **Ambas por debajo** de su media → producto **positivo**
+- Una por encima y otra por debajo → producto **negativo**
+
+::: {.fragment}
+Se suman todos los productos:
+
+- Si casi todos son positivos → la suma es grande y positiva → **$r$ cercano a 1**
+- Si casi todos son negativos → **$r$ cercano a $-1$**
+- Si se **compensan** → la suma es cercana a 0 → **$r$ cercano a 0**
+:::
+
+## Proceso paso a paso con un ejemplo {.smaller}
+
+Cinco mujeres: `edad` y `anios_pareja` (años de relación).
+
+```{python}
+edad = np.array([20, 30, 40, 50, 60], dtype=float)
+anios = np.array([2, 10, 18, 30, 40], dtype=float)
+
+# Paso 1: medias
+mx, my = edad.mean(), anios.mean()
+# Paso 2: desviaciones respecto a la media
+dx, dy = edad - mx, anios - my
+# Paso 3: producto de desviaciones, y cuadrados
+prod, dx2, dy2 = dx * dy, dx ** 2, dy ** 2
+
+tabla = pd.DataFrame({"edad": edad, "anios": anios, "dx": dx, "dy": dy,
+                      "dx*dy": prod, "dx^2": dx2, "dy^2": dy2})
+print(tabla)
+print(f"\nMedias: edad = {mx}, anios = {my}")
+```
+
+## Resultado del ejemplo {.smaller}
+
+```{python}
+# Paso 4: sumas
+suma_prod, suma_dx2, suma_dy2 = prod.sum(), dx2.sum(), dy2.sum()
+# Paso 5: r
+r = suma_prod / np.sqrt(suma_dx2 * suma_dy2)
+
+print(f"Suma dx*dy = {suma_prod}")
+print(f"Suma dx^2  = {suma_dx2}")
+print(f"Suma dy^2  = {suma_dy2}")
+print(f"\nr = {suma_prod} / sqrt({suma_dx2} * {suma_dy2}) = {r:.3f}")
+print(f"Verificación con numpy: {np.corrcoef(edad, anios)[0, 1]:.3f}")
+```
+
+::: {.fragment}
+$r \approx 0.997$: relación **lineal positiva casi perfecta**. Las dos variables dicen casi lo mismo.
+:::
+
+## ¿Cómo se interpreta $r$? {.smaller}
+
+**Signo = dirección**
+
+- $r > 0$: cuando una sube, la otra **tiende a subir**
+- $r < 0$: cuando una sube, la otra **tiende a bajar**
+- $r \approx 0$: **no hay relación lineal**
+
+::: {.fragment}
+**Magnitud $|r|$ = fuerza** (guía aproximada; varía según el campo)
+
+| $\lvert r \rvert$ | Fuerza |
+|---|---|
+| 0.0 – 0.3 | Débil |
+| 0.3 – 0.7 | Moderada |
+| 0.7 – 0.8 | Fuerte |
+| **> 0.8** | **Muy fuerte → candidata a redundancia** (criterio de la práctica) |
+:::
+
+## Cómo se ven distintos valores de $r$ {.smaller}
+
+```{python}
+#| fig-align: center
+#| fig-width: 9
+#| fig-height: 3
+x = rng.normal(0, 1, 200)
+casos = [("r ≈ +0.9", x + rng.normal(0, 0.4, 200)),
+         ("r ≈ 0", rng.normal(0, 1, 200)),
+         ("r ≈ -0.9", -x + rng.normal(0, 0.4, 200))]
+
+fig, axes = plt.subplots(1, 3, figsize=(9, 3))
+for ax, (titulo, y) in zip(axes, casos):
+    ax.scatter(x, y, s=8)
+    ax.set_title(f"{titulo}  (real: {np.corrcoef(x, y)[0, 1]:.2f})")
+plt.tight_layout()
+plt.show()
+```
+
+## Ejemplo con los datos de la práctica {.smaller}
+
+```{python}
+n = 500
+edad = rng.normal(35, 10, n)
+anios_pareja = edad - 18 + rng.normal(0, 2, n)   # muy ligada a la edad
+num_hijos = rng.poisson(2, n)                     # casi independiente
+
+X = pd.DataFrame({"edad": edad, "anios_pareja": anios_pareja, "num_hijos": num_hijos})
+print(X.corr().round(2))
+```
+
+::: {.fragment}
+`edad` y `anios_pareja` son **redundantes** ($|r| > 0.8$): basta conservar una. `num_hijos` aporta información **distinta**.
+:::
+
+## Heatmap de correlaciones {.smaller}
+
+```{python}
+#| fig-align: center
+#| fig-width: 5
+#| fig-height: 3.6
+import seaborn as sns
+fig, ax = plt.subplots(figsize=(5, 3.6))
+sns.heatmap(X.corr(), annot=True, cmap="coolwarm", vmin=-1, vmax=1, ax=ax)
+ax.set_title("Matriz de correlación de Pearson")
+plt.show()
+```
+
+::: {.fragment}
+**Cómo leerlo:** la diagonal siempre es 1 (cada variable consigo misma); la matriz es **simétrica**; **rojo** = positiva, **azul** = negativa; busca celdas fuera de la diagonal con $|r| > 0.8$.
+:::
+
+## ¿Qué variable eliminar de un par redundante? {.smaller}
+
+Criterios para decidir:
+
+- La que tenga **más valores faltantes** o peor calidad
+- La **menos interpretable** o menos relevante para el problema
+- La que esté **menos correlacionada con la variable objetivo**
+- La que tenga **mayor correlación media con las demás**
+
+::: {.callout-note}
+La decisión debe **justificarse** en el reporte: no es solo un cálculo, también depende del conocimiento del problema.
+:::
+
+## Limitaciones de Pearson {.smaller}
+
+::: {.fragment}
+Hay una relación **perfecta** ($y = x^2$), pero $r \approx 0$: Pearson solo detecta relaciones **lineales**.
+:::
+
+::: {.fragment}
+- **Valores atípicos:** uno solo puede inflar o desinflar $r$ de forma engañosa
+- **Solo variables cuantitativas:** para cualitativas se usa la chi-cuadrada
+- **Correlación ≠ causalidad:** que dos variables se muevan juntas no significa que una cause la otra
+- **Visualiza siempre** el diagrama de dispersión antes de decidir
+:::
+
+# PCA
+
+## Selección vs. extracción {.smaller}
+
+| | **Selección** (chi², Pearson) | **Extracción** (PCA) |
+|---|---|---|
+| Qué hace | **Elige** columnas originales | **Construye** columnas nuevas |
+| Interpretabilidad | Alta | Menor (combinaciones lineales) |
+| Variables que admite | Cualitativas y cuantitativas | **Solo cuantitativas** |
+| Resultado | Subconjunto de variables | Componentes PC1, PC2, … |
+
+## ¿Qué problema resuelve el PCA? {.smaller}
+
+::: {.fragment .fade-up}
+**Redundancia:** varias variables miden casi lo mismo (`edad`, `anios_pareja`, `num_hijos` crecen juntas). PCA las **resume** en pocas variables nuevas.
+:::
+
+::: {.fragment .fade-up}
+**Demasiadas dimensiones:** con muchas variables los modelos se sobreajustan, tardan más y los puntos quedan "lejos" entre sí (la *maldición de la dimensionalidad*).
+:::
+
+::: {.fragment .fade-up}
+**Visualización:** no se puede graficar un espacio de 20 dimensiones, pero sí un plano con **PC1 vs. PC2**.
+:::
+
+
+## La idea intuitiva: girar los ejes {.smaller}
+
+PCA no mueve los datos: **gira los ejes** hasta encontrar las direcciones donde los datos **más se extienden**.
+
+- **PC1:** la dirección de **mayor varianza**
+- **PC2:** la siguiente dirección con más varianza, **perpendicular** a PC1
+- Y así sucesivamente, **una dirección nueva por cada variable original**
+
+```{python}
+#| fig-align: center
+#| fig-width: 5
+#| fig-height: 3.8
+x1 = rng.normal(0, 1, 200)
+x2 = 0.8 * x1 + rng.normal(0, 0.4, 200)
+Z2 = np.column_stack([x1, x2])
+Z2 = (Z2 - Z2.mean(axis=0)) / Z2.std(axis=0, ddof=1)
+
+vals, vecs = np.linalg.eigh(np.cov(Z2.T))
+orden = np.argsort(vals)[::-1]
+vals, vecs = vals[orden], vecs[:, orden]
+
+fig, ax = plt.subplots(figsize=(5, 3.8))
+ax.scatter(Z2[:, 0], Z2[:, 1], s=8, alpha=0.5)
+for i, (nombre, color) in enumerate([("PC1", "red"), ("PC2", "orange")]):
+    punta = vecs[:, i] * np.sqrt(vals[i]) * 2
+    ax.annotate("", xy=punta, xytext=(0, 0), arrowprops=dict(arrowstyle="->", color=color, lw=2))
+    ax.text(*(punta * 1.1), nombre, color=color)
+ax.set_aspect("equal")
+ax.set_xlabel("Variable 1 (estandarizada)")
+ax.set_ylabel("Variable 2 (estandarizada)")
+plt.show()
+```
+
+## ¿Qué es un componente principal? {.smaller}
+
+Cada componente es una **combinación lineal** de las variables originales (estandarizadas):
+
+$$\text{PC1} = w_{11}\,z_{\text{edad}} + w_{12}\,z_{\text{anios}} + w_{13}\,z_{\text{hijos}} + \dots$$
+
+- Los coeficientes $w$ se llaman **pesos** o **loadings**: dicen **cuánto aporta** cada variable al componente
+- El valor que obtiene cada persona en un componente se llama **score** (puntuación)
+- Los componentes son **ortogonales** entre sí: no están correlacionados, no repiten información
+
+::: {.fragment}
+**Ejemplo ilustrativo:** si PC1 = 0.55·edad + 0.55·años_pareja + 0.50·hijos + ..., una persona mayor, con muchos años de pareja y varios hijos tendrá un **PC1 alto**.
+:::
+
+## Proceso paso a paso {.smaller}
+
+1. **Estandarizar** cada variable (z-score): media 0 y desviación 1
+2. Calcular la **matriz de covarianza** $\Sigma$ (con datos estandarizados es la **matriz de correlación**)
+3. Obtener sus **valores propios** $\lambda_i$ y **vectores propios** $\mathbf{v}_i$
+4. **Ordenar** de mayor a menor $\lambda$
+5. **Elegir $k$** componentes (los que acumulen suficiente varianza)
+6. **Proyectar** los datos: $\;Z_{nuevo} = Z \cdot W_k$
+
+::: {.fragment}
+$$\Sigma\,\mathbf{v}_i = \lambda_i\,\mathbf{v}_i \qquad\qquad \text{Varianza explicada}_i = \frac{\lambda_i}{\sum_{j=1}^{p}\lambda_j}$$
+:::
+
+## Las variables de la fórmula {.smaller}
+
+::: {style="font-size: 0.75em;"}
+
+| Símbolo | Significado |
+|---|---|
+| $\Sigma$ | **Matriz de covarianza** ($p\times p$): cómo varían juntas todas las variables |
+| $\mathbf{v}_i$ | **Vector propio** $i$: la **dirección** del componente $i$ (sus pesos) |
+| $\lambda_i$ | **Valor propio** $i$: la **varianza** que captura ese componente |
+| $p$ | Número de **variables originales** |
+| $\sum_j \lambda_j$ | **Varianza total**; con datos estandarizados es igual a $p$ |
+| $k$ | Número de **componentes que se conservan** ($k<p$) |
+| $Z$ | Matriz de datos **estandarizados** ($n\times p$) |
+| $W_k$ | Matriz con los **primeros $k$ vectores propios** como columnas |
+
+:::
+
+## Limitaciones y buenas prácticas {.smaller}
+
+::: {.fragment .fade-up}
+**Solo variables cuantitativas:** no tiene sentido aplicarlo directamente a categorías nominales (`entidad`, `estado_civil`).
+:::
+
+::: {.fragment .fade-up}
+**Solo captura relaciones lineales:** estructuras curvas o complejas no se resumen bien.
+:::
+
+::: {.fragment .fade-up}
+**Pérdida de interpretabilidad:** `PC1` es una mezcla de variables, más difícil de explicar que `edad`.
+:::
+
+::: {.fragment .fade-up}
+**Sensible a atípicos y a la escala:** estandariza siempre, y revisa valores extremos.
+:::
+
+::: {.fragment .fade-up}
+**Ajuste solo con entrenamiento:** si habrá partición entrenamiento/prueba, haz `fit` solo en entrenamiento para no filtrar información.
+:::
+
+# Reducción de Numerosidad por Muestreo
+
+## ¿Por qué muestrear? {.smaller}
+
+- Explorar y probar modelos más rápido sobre un conjunto **más pequeño**
+- Reducir costo de cómputo y almacenamiento
+- Pero: la muestra debe ser **representativa**, o las conclusiones se sesgan
+
+| Técnica | Idea |
+|---|---|
+| Aleatorio sin reemplazo | Cada registro entra **a lo más una vez** |
+| Aleatorio con reemplazo | Un registro puede salir **varias veces** (*bootstrap*) |
+| Estratificado | Respeta la **proporción de cada grupo** |
+| Sistemático | Un registro cada $k$ posiciones |
+
+## Ejemplo: población con clase desbalanceada {.smaller}
+
+```{python}
+N = 20000
+poblacion = pd.DataFrame({
+    "edad": rng.normal(38, 12, N).clip(15, 90),
+    "violencia": rng.choice(["si", "no"], size=N, p=[0.12, 0.88]),
+})
+
+def resumen(d, nombre):
+    return {"muestra": nombre, "n": len(d),
+            "prop_violencia": (d["violencia"] == "si").mean(),
+            "edad_media": d["edad"].mean()}
+
+frac = 0.05
+srs = poblacion.sample(frac=frac, random_state=1)
+estrat = poblacion.groupby("violencia", group_keys=False).sample(frac=frac, random_state=1)
+k = int(1 / frac)
+sistem = poblacion.iloc[rng.integers(0, k)::k]
+
+print(pd.DataFrame([resumen(poblacion, "población"), resumen(srs, "aleatorio"),
+                    resumen(estrat, "estratificado"), resumen(sistem, "sistemático")]).round(3))
+```
+
+## ¿Cuánto varía una muestra aleatoria? {.smaller}
+
+```{python}
+#| fig-align: center
+props = [(poblacion.sample(frac=0.01, random_state=s)["violencia"] == "si").mean()
+         for s in range(200)]
+
+fig, ax = plt.subplots(figsize=(6, 3.6))
+ax.hist(props, bins=20)
+ax.axvline(0.12, color="red", linestyle="--", label="Proporción real (12 %)")
+ax.set_xlabel("Proporción muestral de violencia (muestras del 1 %)")
+ax.legend()
+plt.show()
+```
+
+Muestras más **pequeñas** → mayor **variabilidad** entre una muestra y otra.
+
+## Casos de uso y riesgos {.smaller}
+
+::: {.fragment .fade-up}
+**Estratificado**: ideal cuando la variable objetivo está **desbalanceada** (pocos casos de violencia).
+:::
+
+::: {.fragment .fade-up}
+**Sistemático**: cómodo, pero **peligroso** si el archivo viene ordenado (por ejemplo, por entidad).
+:::
+
+::: {.fragment .fade-up}
+**Factor de expansión**: la ENDIREH es una encuesta con diseño muestral; **ignorar `factor_expansion`** sesga la prevalencia nacional.
+:::
+
+# Desarrollo de la Práctica sobre ENDIREH 2021
+
+## Flujo de trabajo en `preparacion_datos.py` {.smaller}
+
+1. Cargar `endireh_2021_limpio.csv`
+2. Normalizar  variables cuantitativas
+3. Chi-cuadrada contra `sufrio_violencia_pareja`
+4. Correlación de Pearson (≥ 5 variables cuantitativas)
+5. **PCA** 
+6. **Muestreo** 
+7. Guardar `data/data-processed/endireh_2021_preparado.csv`
+
+# Formato de Entrega
+
+## Entregables
+
+- **Reporte PDF**
+- Presentacion ejecutiva 5 slides
+- **Script** `src/cleaning/normalizacion_datos.py` completo y ejecutado
+- **Dataset** `data/data-processed/endireh_2021_preparado.csv`
+
+::: {.callout-note}
+En los últimos 15 minutos se elegirán **2 personas al azar** para explicar el **cómo** y el **por qué** de sus decisiones.
+:::
+
+# ¡Gracias!
+
+## Referencias clave
+
+- INEGI (2022). *Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021*
+- Han, J., Kamber, M., & Pei, J. (2012). *Data Mining: Concepts and Techniques*
+- Jolliffe, I. T., & Cadima, J. (2016). *Principal component analysis: a review and recent developments*
+- Cochran, W. G. (1977). *Sampling Techniques*
+- Pedregosa, F. et al. (2011). *Scikit-learn: Machine learning in Python*
