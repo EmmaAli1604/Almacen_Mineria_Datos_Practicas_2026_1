@@ -4,301 +4,516 @@
     "href": "practica-05/practica-05.html#objetivo-de-la-práctica",
     "title": "Práctica 5",
     "section": "Objetivo de la práctica",
-    "text": "Objetivo de la práctica\n\nAplicar normalización (numérica) a los datos ya limpios\nReducir columnas: chi-cuadrada, correlación de Pearson y PCA\nReducir filas: muestreo aleatorio, estratificado y sistemático\nJustificar técnicamente cada decisión y reflexionar sobre qué información se gana y cuál se pierde"
+    "text": "Objetivo de la práctica\n\nPreparar un dataset de series de tiempo para entrenar modelos de aprendizaje automático\nRepetir el preprocesamiento ya visto: normalización cualitativa, deduplicación y casteo de tipos\nNormalizar las variables numéricas (min-max o z-score)\nReducir columnas: correlación de Pearson y PCA (con la chi-cuadrada como herramienta complementaria)\nConstruir un dashboard con KPIs, gráficas y tablas, y justificar cada decisión\n(Opcional) Reducir filas mediante muestreo",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#por-qué-esta-práctica",
     "href": "practica-05/practica-05.html#por-qué-esta-práctica",
     "title": "Práctica 5",
     "section": "¿Por qué esta práctica?",
-    "text": "¿Por qué esta práctica?\nEn prácticas anteriores los datos de la ENDIREH quedaron limpios: tipos correctos, sin duplicados, sin faltantes.\nAun así, datos limpios no significa datos listos para modelar:\n\nVariables en escalas incomparables (edad vs. ingreso)\nDemasiadas columnas, varias redundantes o irrelevantes\nDemasiadas filas para explorar o iterar rápido\n\n\nLa limpieza no se repite: se parte de data/data-processed/endireh_2021_limpio.csv."
+    "text": "¿Por qué esta práctica?\nLos datos pueden estar limpios y aun así no estar listos para modelar:\n\nVariables en escalas incomparables (unas valen decenas, otras miles)\nColumnas redundantes que dicen casi lo mismo\nDemasiadas filas para explorar o iterar rápido\n\n\nLas tareas del dataset (regresión y agrupamiento) dependen de esta preparación. **.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#qué-es-y-para-qué-sirve",
     "href": "practica-05/practica-05.html#qué-es-y-para-qué-sirve",
     "title": "Práctica 5",
     "section": "¿Qué es y para qué sirve?",
-    "text": "¿Qué es y para qué sirve?\n\n\nNormalización de texto (cualitativas)\n\nMinúsculas, sin espacios extra, sin acentos\nEvita que “Soltera”, “soltera” y “SOLTERA” cuenten como 3 categorías\n\n\n\n\nNormalización numérica (cuantitativas)\n\nLleva variables a una escala comparable\nNecesaria en algoritmos basados en distancias o varianza (K-Means, KNN, PCA)"
+    "text": "¿Qué es y para qué sirve?\n\n\nNormalización de texto (cualitativas)\n\nMinúsculas, sin espacios extra, sin acentos\nEvita que “Soltera”, “soltera” y “SOLTERA” cuenten como 3 categorías\n\n\n\n\nNormalización numérica (cuantitativas)\n\nLleva variables a una escala comparable\nNecesaria en algoritmos basados en distancias o varianza (K-Means, KNN, PCA)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#qué-es-y-para-qué-sirve-1",
     "href": "practica-05/practica-05.html#qué-es-y-para-qué-sirve-1",
     "title": "Práctica 5",
     "section": "¿Qué es y para qué sirve?",
-    "text": "¿Qué es y para qué sirve?\nNormalizar es transformar los valores de una variable para llevarla a una escala comparable con las demás.\n\nLas variables vienen en unidades distintas: años, pesos, número de hijos\nAlgoritmos basados en distancias o varianza (K-Means, KNN, PCA) dan más peso a las variables con valores grandes\nLa normalización evita que una variable domine solo por su escala"
+    "text": "¿Qué es y para qué sirve?\nNormalizar es transformar los valores de una variable para llevarla a una escala comparable con las demás.\n\nLas variables vienen en unidades distintas: años, pesos, número de hijos\nAlgoritmos basados en distancias o varianza (K-Means, KNN, PCA) dan más peso a las variables con valores grandes\nLa normalización evita que una variable domine solo por su escala",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#min-max",
     "href": "practica-05/practica-05.html#min-max",
     "title": "Práctica 5",
     "section": "Min-max",
-    "text": "Min-max\n\\[x' = \\frac{x - x_{min}}{x_{max} - x_{min}}\\]\n\nReescala los datos al rango [0, 1]\nEl mínimo pasa a ser 0, el máximo pasa a ser 1\nLos demás valores quedan proporcionalmente entre ambos\n\n\nEjemplo: edades 18, 25, 40 y 60 → \\(x_{min}=18\\), \\(x_{max}=60\\), denominador \\(=42\\)\n\n\\(18 \\to 0\\)\n\\(25 \\to (25-18)/42 = 0.167\\)\n\\(40 \\to (40-18)/42 = 0.524\\)\n\\(60 \\to 1\\)"
+    "text": "Min-max\n\\[x' = \\frac{x - x_{min}}{x_{max} - x_{min}}\\]\n\nReescala los datos al rango [0, 1]\nEl mínimo pasa a ser 0, el máximo pasa a ser 1\nLos demás valores quedan proporcionalmente entre ambos\n\n\nEjemplo: edades 18, 25, 40 y 60 → \\(x_{min}=18\\), \\(x_{max}=60\\), denominador \\(=42\\)\n\n\\(18 \\to 0\\)\n\\(25 \\to (25-18)/42 = 0.167\\)\n\\(40 \\to (40-18)/42 = 0.524\\)\n\\(60 \\to 1\\)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#min-max-ventajas-y-límites",
     "href": "practica-05/practica-05.html#min-max-ventajas-y-límites",
     "title": "Práctica 5",
     "section": "Min-max: ventajas y límites",
-    "text": "Min-max: ventajas y límites\n\n\nVentajas\n\nResultado fácil de interpretar (0 a 1)\nConserva la forma de la distribución\nÚtil cuando se necesita un rango acotado\n\n\n\n\nLímites\n\nMuy sensible a valores atípicos\nUn ingreso extremo de 1,000,000 comprime a casi todos los demás cerca de 0\nDatos nuevos fuera del rango original salen de [0, 1]"
+    "text": "Min-max: ventajas y límites\n\n\nVentajas\n\nResultado fácil de interpretar (0 a 1)\nConserva la forma de la distribución\nÚtil cuando se necesita un rango acotado\n\n\n\n\nLímites\n\nDepende solo del mínimo y del máximo: un valor extremo fija la escala\nDatos nuevos fuera del rango original salen de \\([0,1]\\)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#z-score-estandarización",
     "href": "practica-05/practica-05.html#z-score-estandarización",
     "title": "Práctica 5",
     "section": "Z-score (estandarización)",
-    "text": "Z-score (estandarización)\n\\[z = \\frac{x - \\mu}{\\sigma}\\]\n\nExpresa cada valor como cuántas desviaciones estándar se aleja de la media\nEl resultado tiene media 0 y desviación estándar 1\n\n\n\n\nz\nInterpretación\n\n\n\n\n0\nIgual a la media\n\n\n1\nUna desviación estándar por encima de la media\n\n\n-2\nDos desviaciones estándar por debajo de la media"
+    "text": "Z-score (estandarización)\n\\[z = \\frac{x - \\mu}{\\sigma}\\]\n\nExpresa cada valor como cuántas desviaciones estándar se aleja de la media\nEl resultado tiene media 0 y desviación estándar 1\n\n\n\n\nz\nInterpretación\n\n\n\n\n0\nIgual a la media\n\n\n1\nUna desviación estándar por encima de la media\n\n\n-2\nDos desviaciones estándar por debajo de la media",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#z-score-ventajas-y-límites",
     "href": "practica-05/practica-05.html#z-score-ventajas-y-límites",
     "title": "Práctica 5",
     "section": "Z-score: ventajas y límites",
-    "text": "Z-score: ventajas y límites\n\n\nVentajas\n\nMenos sensible a atípicos que min-max\nEs el que exige el PCA: busca direcciones de máxima varianza y necesita que todas las variables partan con la misma varianza\nFunciona bien con datos aproximadamente normales\n\n\n\n\nLímites\n\nNo tiene rango fijo (normalmente entre -3 y 3)\nLos valores negativos son menos intuitivos para presentar"
+    "text": "Z-score: ventajas y límites\n\n\nVentajas\n\nUsa toda la distribución, no solo los extremos\nEs el que exige el PCA: todas las variables deben partir con la misma varianza\nFunciona bien con datos aproximadamente normales\n\n\n\n\nLímites\n\nNo tiene rango fijo (normalmente entre -3 y 3)\nLos valores negativos son menos intuitivos para presentar\nSigue siendo afectado por atípicos extremos",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#buenas-prácticas",
     "href": "practica-05/practica-05.html#buenas-prácticas",
     "title": "Práctica 5",
     "section": "Buenas prácticas",
-    "text": "Buenas prácticas\n\nNormaliza solo variables cuantitativas; no la variable objetivo ni los identificadores\nSi luego separas entrenamiento y prueba: fit solo con entrenamiento y transform en ambos, para evitar fuga de información\nGuarda los parámetros del escalador si necesitas revertir la transformación o aplicarla a datos nuevos\nLa correlación de Pearson no cambia al normalizar (son transformaciones lineales); PCA y K-Means sí cambian mucho"
+    "text": "Buenas prácticas\n\nNormaliza solo variables cuantitativas; no la variable objetivo ni los identificadores\nSi luego separas entrenamiento y prueba: fit solo con entrenamiento y transform en ambos, para evitar fuga de información\nGuarda los parámetros del escalador si necesitas revertir la transformación o aplicarla a datos nuevos\nLa correlación de Pearson no cambia al normalizar (son transformaciones lineales); PCA y K-Means sí cambian mucho",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#dos-preguntas-dos-herramientas",
     "href": "practica-05/practica-05.html#dos-preguntas-dos-herramientas",
     "title": "Práctica 5",
     "section": "Dos preguntas, dos herramientas",
-    "text": "Dos preguntas, dos herramientas\n\nChi-cuadrada — ¿esta variable cualitativa está asociada con x columna Si es independiente → candidata a eliminarse.\n\n\nCorrelación de Pearson — ¿estas dos variables cuantitativas dicen lo mismo? Si \\(|r| &gt; 0.8\\) → una es redundante."
+    "text": "Dos preguntas, dos herramientas\n\nChi-cuadrada — ¿esta variable cualitativa está asociada con otra variable? Si resulta independiente → candidata a eliminarse.\n\n\nCorrelación de Pearson — ¿estas dos variables cuantitativas dicen lo mismo? Si \\(|r| &gt; 0.8\\) → una es redundante.\n\n\n\n\n\n\n\nNote\n\n\nEste dataset es casi totalmente numérico, así que la herramienta central de la práctica es Pearson. La chi-cuadrada se estudia como complemento para variables cualitativas (o numéricas agrupadas en rangos).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#chi-cuadrada-qué-significa-cada-elemento",
     "href": "practica-05/practica-05.html#chi-cuadrada-qué-significa-cada-elemento",
     "title": "Práctica 5",
     "section": "Chi-cuadrada: ¿qué significa cada elemento?",
-    "text": "Chi-cuadrada: ¿qué significa cada elemento?\n\\[\\chi^2 = \\sum_{i,j} \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}\\]"
+    "text": "Chi-cuadrada: ¿qué significa cada elemento?\n\\[\\chi^2 = \\sum_{i,j} \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}\\]\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\chi^2\\)\nEstadístico de prueba: qué tan lejos están los datos de la independencia. Más grande = más asociación\n\n\n\\(\\sum_{i,j}\\)\nSuma sobre todas las celdas de la tabla de contingencia\n\n\n\\(O_{ij}\\)\nFrecuencia observada: casos reales en la celda \\((i,j)\\)\n\n\n\\(E_{ij}\\)\nFrecuencia esperada si \\(H_0\\) fuera cierta (sin asociación)\n\n\n\\((O_{ij}-E_{ij})\\)\nDiferencia entre lo observado y lo esperado\n\n\n\\((\\cdot)^2\\)\nEvita que diferencias positivas y negativas se cancelen\n\n\n\\(/E_{ij}\\)\nUna misma diferencia pesa más en celdas pequeñas que en celdas grandes",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#chi-cuadrada-qué-significa-cada-elemento-1",
     "href": "practica-05/practica-05.html#chi-cuadrada-qué-significa-cada-elemento-1",
     "title": "Práctica 5",
     "section": "Chi-cuadrada: ¿qué significa cada elemento?",
-    "text": "Chi-cuadrada: ¿qué significa cada elemento?\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\chi^2\\)\nEstadístico de prueba: qué tan lejos están los datos de la independencia. Más grande = más asociación\n\n\n\\(\\sum_{i,j}\\)\nSuma sobre todas las celdas de la tabla de contingencia\n\n\n\\(O_{ij}\\)\nFrecuencia observada: casos reales en la celda \\((i,j)\\)\n\n\n\\(E_{ij}\\)\nFrecuencia esperada si \\(H_0\\) fuera cierta (sin asociación)\n\n\n\\((O_{ij}-E_{ij})\\)\nDiferencia entre lo observado y lo esperado\n\n\n\\((\\cdot)^2\\)\nEvita que diferencias positivas y negativas se cancelen\n\n\n\\(/E_{ij}\\)\nUna misma diferencia pesa más en celdas pequeñas que en celdas grandes"
+    "text": "Chi-cuadrada: ¿qué significa cada elemento?\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\chi^2\\)\nEstadístico de prueba: qué tan lejos están los datos de la independencia. Más grande = más asociación\n\n\n\\(\\sum_{i,j}\\)\nSuma sobre todas las celdas de la tabla de contingencia\n\n\n\\(O_{ij}\\)\nFrecuencia observada: casos reales en la celda \\((i,j)\\)\n\n\n\\(E_{ij}\\)\nFrecuencia esperada si \\(H_0\\) fuera cierta (sin asociación)\n\n\n\\((O_{ij}-E_{ij})\\)\nDiferencia entre lo observado y lo esperado\n\n\n\\((\\cdot)^2\\)\nEvita que diferencias positivas y negativas se cancelen\n\n\n\\(/E_{ij}\\)\nUna misma diferencia pesa más en celdas pequeñas que en celdas grandes",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#cómo-se-calcula-e_ij",
     "href": "practica-05/practica-05.html#cómo-se-calcula-e_ij",
     "title": "Práctica 5",
     "section": "¿Cómo se calcula \\(E_{ij}\\)?",
-    "text": "¿Cómo se calcula \\(E_{ij}\\)?\n\\[E_{ij} = \\frac{(\\text{total de la fila } i)\\times(\\text{total de la columna } j)}{N}\\]\ndonde \\(N\\) es el total de casos. Es lo que esperaríamos por azar si la distribución de una variable fuera igual en todas las categorías de la otra.\n\n\nObservados (O):\n               Sí  No\nPrimaria      30  70\nLicenciatura  60  40 \n\nEsperados (E):\n                 Sí    No\nPrimaria      45.0  55.0\nLicenciatura  45.0  55.0\n\n\n\nSi la escolaridad fuera independiente de la violencia, esperaríamos 45 “Sí” en cada fila (el 45 % de 100). Lo observado en cada fila (30 y 60) se aleja bastante de eso."
+    "text": "¿Cómo se calcula \\(E_{ij}\\)?\n\\[E_{ij} = \\frac{(\\text{total de la fila } i)\\times(\\text{total de la columna } j)}{N}\\]\nEjemplo: 200 viviendas, tipo de vivienda vs. si tienen consumo alto.\n\n\nObservados (O):\n               Consumo alto  Consumo bajo\nCasa                    30            70\nDepartamento            60            40 \n\nEsperados (E):\n               Consumo alto  Consumo bajo\nCasa                  45.0          55.0\nDepartamento          45.0          55.0\n\n\n\nSi el tipo de vivienda no influyera, el 45 % de cada fila tendría consumo alto (90 de 200). Lo observado (30 % y 60 %) se aleja bastante.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#armando-el-estadístico-celda-por-celda",
     "href": "practica-05/practica-05.html#armando-el-estadístico-celda-por-celda",
     "title": "Práctica 5",
     "section": "Armando el estadístico celda por celda",
-    "text": "Armando el estadístico celda por celda\n\n\n               Sí     No\nPrimaria      5.0  4.091\nLicenciatura  5.0  4.091\n\nchi2 = suma de contribuciones = 18.182\n\n\nCada celda aporta qué tanto se desvía de lo esperado. El \\(\\chi^2\\) final es la suma de todas."
+    "text": "Armando el estadístico celda por celda\n\n\n              Consumo alto  Consumo bajo\nCasa                   5.0         4.091\nDepartamento           5.0         4.091\n\nchi2 = suma de contribuciones = 18.182\n\n\nCada celda aporta qué tanto se desvía de lo esperado. El \\(\\chi^2\\) final es la suma de todas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#hipótesis-y-valor-p",
     "href": "practica-05/practica-05.html#hipótesis-y-valor-p",
     "title": "Práctica 5",
     "section": "Hipótesis y valor \\(p\\)",
-    "text": "Hipótesis y valor \\(p\\)\n\n\\(H_0\\): las dos variables son independientes (la distribución de una no depende de la otra)\n\\(H_1\\): existe asociación entre ambas\nValor \\(p\\): probabilidad de obtener un \\(\\chi^2\\) al menos tan grande si \\(H_0\\) fuera cierta\n\n\nDecisión:\n\n\\(p \\le 0.05\\) → los datos son poco compatibles con la independencia → asociación significativa → conservar la variable\n\\(p &gt; 0.05\\) → no hay evidencia suficiente de asociación → candidata a eliminar"
+    "text": "Hipótesis y valor \\(p\\)\n\n\\(H_0\\): las dos variables son independientes\n\\(H_1\\): existe asociación entre ambas\nValor \\(p\\): probabilidad de obtener un \\(\\chi^2\\) al menos tan grande si \\(H_0\\) fuera cierta\n\n\nDecisión:\n\n\\(p \\le 0.05\\) → asociación significativa → conservar la variable\n\\(p &gt; 0.05\\) → no hay evidencia de asociación → candidata a eliminar",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#condiciones-y-precauciones",
     "href": "practica-05/practica-05.html#condiciones-y-precauciones",
     "title": "Práctica 5",
     "section": "Condiciones y precauciones",
-    "text": "Condiciones y precauciones\n\nLas frecuencias esperadas deben ser razonablemente grandes (regla común: \\(E_{ij} \\ge 5\\) en la mayoría de las celdas). Si hay categorías con muy pocos casos, conviene agruparlas\nLa prueba indica si hay asociación, no qué tan fuerte es ni en qué dirección\nCon muestras muy grandes, el valor \\(p\\) casi siempre sale pequeño aunque la asociación sea débil\nVariables con muchas categorías (como entidad, con 32) aumentan los grados de libertad y exigen revisar bien la tabla\n\n\n\n\n\n\n\n\nLimitaciones\n\n\n\nCon muestras muy grandes, casi todo sale “significativo” (el valor \\(p\\) se vuelve diminuto aunque la asociación sea débil)\nAsociación ≠ causalidad\nUna variable puede ser estadísticamente independiente y aun así tener relevancia teórica o social: la decisión final es del analista"
+    "text": "Condiciones y precauciones\n\nLas frecuencias esperadas deben ser razonablemente grandes (\\(E_{ij} \\ge 5\\) en la mayoría de las celdas); si no, agrupa categorías\nIndica si hay asociación, no qué tan fuerte es. Para la fuerza se usa V de Cramér:\n\n\\[V = \\sqrt{\\frac{\\chi^2}{N\\cdot\\min(f-1,\\,c-1)}}\\]\n\n\nV de Cramér = 0.30   (0 = nada, 1 = asociación perfecta)\n\n\n\nCon muestras muy grandes casi todo sale “significativo” aunque la asociación sea débil: mira \\(V\\) y no solo \\(p\\)\nUna variable numérica se puede usar agrupándola en rangos",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#correlación-de-pearson-qué-mide",
     "href": "practica-05/practica-05.html#correlación-de-pearson-qué-mide",
     "title": "Práctica 5",
     "section": "Correlación de Pearson: ¿qué mide?",
-    "text": "Correlación de Pearson: ¿qué mide?\nMide qué tan fuerte y en qué dirección se relacionan linealmente dos variables cuantitativas.\n\\[r = \\frac{\\text{cov}(X,Y)}{\\sigma_X \\, \\sigma_Y}, \\qquad -1 \\le r \\le 1\\]\n\nPregunta que responde: cuando una variable sube, ¿la otra tiende a subir, a bajar o no cambia de forma sistemática?\n\n\nUso en la práctica: si dos variables tienen \\(|r|\\) muy alto, aportan casi la misma información (son redundantes) y basta conservar una."
+    "text": "Correlación de Pearson: ¿qué mide?\nMide qué tan fuerte y en qué dirección se relacionan linealmente dos variables cuantitativas.\n\\[r = \\frac{\\text{cov}(X,Y)}{\\sigma_X \\, \\sigma_Y}, \\qquad -1 \\le r \\le 1\\]\n\nPregunta que responde: cuando una variable sube, ¿la otra tiende a subir, a bajar o no cambia de forma sistemática?\n\n\nUso en la práctica: si dos variables tienen \\(|r|\\) muy alto, aportan casi la misma información y basta conservar una.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#las-variables-de-la-fórmula",
     "href": "practica-05/practica-05.html#las-variables-de-la-fórmula",
     "title": "Práctica 5",
     "section": "Las variables de la fórmula",
-    "text": "Las variables de la fórmula\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(r\\)\nCoeficiente de correlación: el resultado final, entre \\(-1\\) y \\(1\\)\n\n\n\\(X, Y\\)\nLas dos variables cuantitativas que se comparan (por ejemplo, edad y anios_pareja)\n\n\n\\(\\text{cov}(X,Y)\\)\nCovarianza: mide si \\(X\\) y \\(Y\\) varían juntas (signo) pero depende de las unidades\n\n\n\\(\\sigma_X, \\sigma_Y\\)\nDesviación estándar de cada variable: cuánto se dispersa cada una\n\n\n\\(\\sigma_X\\sigma_Y\\)\nSe divide entre este producto para quitar las unidades y dejar un valor comparable\n\n\n\n\n\nPor eso \\(r\\) no cambia si mides la edad en años o en meses: la división elimina la escala."
+    "text": "Las variables de la fórmula\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(r\\)\nCoeficiente de correlación: el resultado final, entre \\(-1\\) y \\(1\\)\n\n\n\\(X, Y\\)\nLas dos variables cuantitativas que se comparan\n\n\n\\(\\text{cov}(X,Y)\\)\nCovarianza: mide si \\(X\\) y \\(Y\\) varían juntas (signo), pero depende de las unidades\n\n\n\\(\\sigma_X, \\sigma_Y\\)\nDesviación estándar de cada variable: cuánto se dispersa cada una\n\n\n\\(\\sigma_X\\sigma_Y\\)\nSe divide entre este producto para quitar las unidades y dejar un valor comparable\n\n\n\n\n\nPor eso \\(r\\) no cambia si mides la temperatura en °C o en °F: la división elimina la escala.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#desarmando-la-covarianza-y-la-desviación",
     "href": "practica-05/practica-05.html#desarmando-la-covarianza-y-la-desviación",
     "title": "Práctica 5",
     "section": "Desarmando la covarianza y la desviación",
-    "text": "Desarmando la covarianza y la desviación\n\\[\\text{cov}(X,Y) = \\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})}{n-1} \\qquad \\sigma_X = \\sqrt{\\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})^2}{n-1}}\\]\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(x_i, y_i\\)\nValores de \\(X\\) y \\(Y\\) para la persona \\(i\\)\n\n\n\\(\\bar{x}, \\bar{y}\\)\nMedia de cada variable\n\n\n\\((x_i-\\bar{x})\\)\nDesviación de la persona \\(i\\) respecto a la media: ¿está por encima o por debajo?\n\n\n\\(n\\)\nNúmero de personas (filas)\n\n\n\\(n-1\\)\nCorrección de muestra (grados de libertad)"
+    "text": "Desarmando la covarianza y la desviación\n\\[\\text{cov}(X,Y) = \\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})}{n-1} \\qquad \\sigma_X = \\sqrt{\\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})^2}{n-1}}\\]\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(x_i, y_i\\)\nValores de \\(X\\) y \\(Y\\) en la observación \\(i\\)\n\n\n\\(\\bar{x}, \\bar{y}\\)\nMedia de cada variable\n\n\n\\((x_i-\\bar{x})\\)\nDesviación respecto a la media: ¿está por encima o por debajo?\n\n\n\\(n\\)\nNúmero de observaciones (filas)\n\n\n\\(n-1\\)\nCorrección de muestra (grados de libertad)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#desarmando-la-covarianza-y-la-desviación-1",
     "href": "practica-05/practica-05.html#desarmando-la-covarianza-y-la-desviación-1",
     "title": "Práctica 5",
     "section": "Desarmando la covarianza y la desviación",
-    "text": "Desarmando la covarianza y la desviación\n\nEl \\(n-1\\) aparece arriba y abajo y se cancela, así que la fórmula práctica es:\n\\[r = \\frac{\\sum (x_i-\\bar{x})(y_i-\\bar{y})}{\\sqrt{\\sum (x_i-\\bar{x})^2 \\cdot \\sum (y_i-\\bar{y})^2}}\\]"
+    "text": "Desarmando la covarianza y la desviación\n\nEl \\(n-1\\) aparece arriba y abajo y se cancela, así que la fórmula práctica es:\n\\[r = \\frac{\\sum (x_i-\\bar{x})(y_i-\\bar{y})}{\\sqrt{\\sum (x_i-\\bar{x})^2 \\cdot \\sum (y_i-\\bar{y})^2}}\\]",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#la-idea-detrás-el-signo-de-cada-producto",
     "href": "practica-05/practica-05.html#la-idea-detrás-el-signo-de-cada-producto",
     "title": "Práctica 5",
     "section": "La idea detrás: el signo de cada producto",
-    "text": "La idea detrás: el signo de cada producto\nPara cada persona se multiplica \\((x_i-\\bar{x})\\cdot(y_i-\\bar{y})\\):\n\nAmbas por encima de su media → producto positivo\nAmbas por debajo de su media → producto positivo\nUna por encima y otra por debajo → producto negativo\n\n\nSe suman todos los productos:\n\nSi casi todos son positivos → la suma es grande y positiva → \\(r\\) cercano a 1\nSi casi todos son negativos → \\(r\\) cercano a \\(-1\\)\nSi se compensan → la suma es cercana a 0 → \\(r\\) cercano a 0"
+    "text": "La idea detrás: el signo de cada producto\nPara cada observación se multiplica \\((x_i-\\bar{x})\\cdot(y_i-\\bar{y})\\):\n\nAmbas por encima de su media → producto positivo\nAmbas por debajo de su media → producto positivo\nUna por encima y otra por debajo → producto negativo\n\n\nSe suman todos los productos:\n\nCasi todos positivos → \\(r\\) cercano a 1\nCasi todos negativos → \\(r\\) cercano a \\(-1\\)\nSe compensan → \\(r\\) cercano a 0",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#proceso-paso-a-paso-con-un-ejemplo",
     "href": "practica-05/practica-05.html#proceso-paso-a-paso-con-un-ejemplo",
     "title": "Práctica 5",
     "section": "Proceso paso a paso con un ejemplo",
-    "text": "Proceso paso a paso con un ejemplo\nCinco mujeres: edad y anios_pareja (años de relación).\n\n\n   edad  anios    dx    dy  dx*dy   dx^2   dy^2\n0  20.0    2.0 -20.0 -18.0  360.0  400.0  324.0\n1  30.0   10.0 -10.0 -10.0  100.0  100.0  100.0\n2  40.0   18.0   0.0  -2.0   -0.0    0.0    4.0\n3  50.0   30.0  10.0  10.0  100.0  100.0  100.0\n4  60.0   40.0  20.0  20.0  400.0  400.0  400.0\n\nMedias: edad = 40.0, anios = 20.0"
+    "text": "Proceso paso a paso con un ejemplo\nCinco días: temperatura exterior (°C) y consumo de calefacción (kWh).\n\n\n   temp  calef    dx    dy  dx*dy   dx^2   dy^2\n0   5.0   30.0 -10.0  14.0 -140.0  100.0  196.0\n1  10.0   24.0  -5.0   8.0  -40.0   25.0   64.0\n2  15.0   15.0   0.0  -1.0   -0.0    0.0    1.0\n3  20.0    9.0   5.0  -7.0  -35.0   25.0   49.0\n4  25.0    2.0  10.0 -14.0 -140.0  100.0  196.0\n\nMedias: temp = 15.0, calef = 16.0\n\n\n\n\nSuma dx*dy = -355.0   Suma dx^2 = 250.0   Suma dy^2 = 506.0\nr = -355.0 / sqrt(250.0 * 506.0) = -0.998\nVerificación con numpy: -0.998\n\n\n\n\\(r \\approx -0.998\\): relación lineal negativa casi perfecta. Al subir la temperatura, la calefacción baja.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#resultado-del-ejemplo",
     "href": "practica-05/practica-05.html#resultado-del-ejemplo",
     "title": "Práctica 5",
     "section": "Resultado del ejemplo",
-    "text": "Resultado del ejemplo\n\n\nSuma dx*dy = 960.0\nSuma dx^2  = 1000.0\nSuma dy^2  = 928.0\n\nr = 960.0 / sqrt(1000.0 * 928.0) = 0.997\nVerificación con numpy: 0.997\n\n\n\n\\(r \\approx 0.997\\): relación lineal positiva casi perfecta. Las dos variables dicen casi lo mismo."
+    "text": "Resultado del ejemplo\n\n\nSuma dx*dy = -355.0   Suma dx^2 = 250.0   Suma dy^2 = 506.0\nr = -355.0 / sqrt(250.0 * 506.0) = -0.998\nVerificación con numpy: -0.998\n\n\n\n\\(r \\approx -0.998\\): relación lineal negativa casi perfecta. Al subir la temperatura, la calefacción baja.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#cómo-se-interpreta-r",
     "href": "practica-05/practica-05.html#cómo-se-interpreta-r",
     "title": "Práctica 5",
     "section": "¿Cómo se interpreta \\(r\\)?",
-    "text": "¿Cómo se interpreta \\(r\\)?\nSigno = dirección\n\n\\(r &gt; 0\\): cuando una sube, la otra tiende a subir\n\\(r &lt; 0\\): cuando una sube, la otra tiende a bajar\n\\(r \\approx 0\\): no hay relación lineal\n\n\nMagnitud \\(|r|\\) = fuerza (guía aproximada; varía según el campo)\n\n\n\n\n\n\n\n\\(\\lvert r \\rvert\\)\nFuerza\n\n\n\n\n0.0 – 0.3\nDébil\n\n\n0.3 – 0.7\nModerada\n\n\n0.7 – 0.8\nFuerte\n\n\n&gt; 0.8\nMuy fuerte → candidata a redundancia (criterio de la práctica)"
+    "text": "¿Cómo se interpreta \\(r\\)?\nSigno = dirección\n\n\\(r &gt; 0\\): cuando una sube, la otra tiende a subir\n\\(r &lt; 0\\): cuando una sube, la otra tiende a bajar\n\\(r \\approx 0\\): no hay relación lineal\n\n\nMagnitud \\(|r|\\) = fuerza (guía aproximada; varía según el campo)\n\n\n\n\n\n\n\n\\(\\lvert r \\rvert\\)\nFuerza\n\n\n\n\n0.0 – 0.3\nDébil\n\n\n0.3 – 0.7\nModerada\n\n\n0.7 – 0.8\nFuerte\n\n\n&gt; 0.8\nMuy fuerte → candidata a redundancia (criterio de la práctica)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#cómo-se-ven-distintos-valores-de-r",
     "href": "practica-05/practica-05.html#cómo-se-ven-distintos-valores-de-r",
     "title": "Práctica 5",
     "section": "Cómo se ven distintos valores de \\(r\\)",
-    "text": "Cómo se ven distintos valores de \\(r\\)"
+    "text": "Cómo se ven distintos valores de \\(r\\)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#ejemplo-con-los-datos-de-la-práctica",
     "href": "practica-05/practica-05.html#ejemplo-con-los-datos-de-la-práctica",
     "title": "Práctica 5",
     "section": "Ejemplo con los datos de la práctica",
-    "text": "Ejemplo con los datos de la práctica\n\n\n              edad  anios_pareja  num_hijos\nedad          1.00          0.98       0.09\nanios_pareja  0.98          1.00       0.08\nnum_hijos     0.09          0.08       1.00\n\n\n\nedad y anios_pareja son redundantes (\\(|r| &gt; 0.8\\)): basta conservar una. num_hijos aporta información distinta."
+    "text": "Ejemplo con los datos de la práctica\n\n\n              edad  anios_pareja  num_hijos\nedad          1.00          0.98       0.09\nanios_pareja  0.98          1.00       0.08\nnum_hijos     0.09          0.08       1.00\n\n\n\nedad y anios_pareja son redundantes (\\(|r| &gt; 0.8\\)): basta conservar una. num_hijos aporta información distinta.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#heatmap-de-correlaciones",
     "href": "practica-05/practica-05.html#heatmap-de-correlaciones",
     "title": "Práctica 5",
     "section": "Heatmap de correlaciones",
-    "text": "Heatmap de correlaciones\n\n\n\n\n\n\n\n\n\n\nCómo leerlo: la diagonal siempre es 1 (cada variable consigo misma); la matriz es simétrica; rojo = positiva, azul = negativa; busca celdas fuera de la diagonal con \\(|r| &gt; 0.8\\)."
+    "text": "Heatmap de correlaciones\n\n\n\n\n\n\n\n\n\nCómo leerlo: la diagonal siempre es 1; la matriz es simétrica; rojo = positiva, azul = negativa; busca celdas fuera de la diagonal con \\(|r| &gt; 0.8\\).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#qué-variable-eliminar-de-un-par-redundante",
     "href": "practica-05/practica-05.html#qué-variable-eliminar-de-un-par-redundante",
     "title": "Práctica 5",
     "section": "¿Qué variable eliminar de un par redundante?",
-    "text": "¿Qué variable eliminar de un par redundante?\nCriterios para decidir:\n\nLa que tenga más valores faltantes o peor calidad\nLa menos interpretable o menos relevante para el problema\nLa que esté menos correlacionada con la variable objetivo\nLa que tenga mayor correlación media con las demás\n\n\n\n\n\n\n\nNote\n\n\nLa decisión debe justificarse en el reporte: no es solo un cálculo, también depende del conocimiento del problema."
+    "text": "¿Qué variable eliminar de un par redundante?\nCriterios para decidir:\n\nLa que tenga más valores faltantes o peor calidad\nLa menos interpretable o menos relevante para el problema\nLa que esté menos correlacionada con la variable a predecir\nLa que tenga mayor correlación media con las demás\n\n\n\n\n\n\n\nNote\n\n\nLa decisión debe justificarse en la presentación: no es solo un cálculo, también depende del conocimiento del problema.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#limitaciones-de-pearson",
     "href": "practica-05/practica-05.html#limitaciones-de-pearson",
     "title": "Práctica 5",
     "section": "Limitaciones de Pearson",
-    "text": "Limitaciones de Pearson\n\nHay una relación perfecta (\\(y = x^2\\)), pero \\(r \\approx 0\\): Pearson solo detecta relaciones lineales.\n\n\n\nValores atípicos: uno solo puede inflar o desinflar \\(r\\) de forma engañosa\nSolo variables cuantitativas: para cualitativas se usa la chi-cuadrada\nCorrelación ≠ causalidad: que dos variables se muevan juntas no significa que una cause la otra\nVisualiza siempre el diagrama de dispersión antes de decidir"
+    "text": "Limitaciones de Pearson\n\n\n\n\n\n\n\n\n\n\nSolo detecta relaciones lineales y es sensible a atípicos\nCorrelación ≠ causalidad\nVisualiza siempre el diagrama de dispersión antes de decidir",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#selección-vs.-extracción",
     "href": "practica-05/practica-05.html#selección-vs.-extracción",
     "title": "Práctica 5",
     "section": "Selección vs. extracción",
-    "text": "Selección vs. extracción\n\n\n\n\n\n\n\n\n\nSelección (chi², Pearson)\nExtracción (PCA)\n\n\n\n\nQué hace\nElige columnas originales\nConstruye columnas nuevas\n\n\nInterpretabilidad\nAlta\nMenor (combinaciones lineales)\n\n\nVariables que admite\nCualitativas y cuantitativas\nSolo cuantitativas\n\n\nResultado\nSubconjunto de variables\nComponentes PC1, PC2, …"
+    "text": "Selección vs. extracción\n\n\n\n\n\n\n\n\n\nSelección (chi², Pearson)\nExtracción (PCA)\n\n\n\n\nQué hace\nElige columnas originales\nConstruye columnas nuevas\n\n\nInterpretabilidad\nAlta\nMenor (combinaciones lineales)\n\n\nVariables que admite\nCualitativas y cuantitativas\nSolo cuantitativas\n\n\nResultado\nSubconjunto de variables\nComponentes PC1, PC2, …",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#qué-problema-resuelve-el-pca",
     "href": "practica-05/practica-05.html#qué-problema-resuelve-el-pca",
     "title": "Práctica 5",
     "section": "¿Qué problema resuelve el PCA?",
-    "text": "¿Qué problema resuelve el PCA?\n\nRedundancia: varias variables miden casi lo mismo (edad, anios_pareja, num_hijos crecen juntas). PCA las resume en pocas variables nuevas.\n\n\nDemasiadas dimensiones: con muchas variables los modelos se sobreajustan, tardan más y los puntos quedan “lejos” entre sí (la maldición de la dimensionalidad).\n\n\nVisualización: no se puede graficar un espacio de 20 dimensiones, pero sí un plano con PC1 vs. PC2."
+    "text": "¿Qué problema resuelve el PCA?\n\nRedundancia: varias variables miden casi lo mismo (superficie, habitaciones y número de aparatos crecen juntas). PCA las resume en pocas variables nuevas.\n\n\nDemasiadas dimensiones: con muchas variables los modelos se sobreajustan, tardan más y los puntos quedan “lejos” entre sí (la maldición de la dimensionalidad).\n\n\nVisualización: no se puede graficar un espacio de 20 dimensiones, pero sí un plano con PC1 vs. PC2.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#la-idea-intuitiva-girar-los-ejes",
     "href": "practica-05/practica-05.html#la-idea-intuitiva-girar-los-ejes",
     "title": "Práctica 5",
     "section": "La idea intuitiva: girar los ejes",
-    "text": "La idea intuitiva: girar los ejes\nPCA no mueve los datos: gira los ejes hasta encontrar las direcciones donde los datos más se extienden.\n\nPC1: la dirección de mayor varianza\nPC2: la siguiente dirección con más varianza, perpendicular a PC1\nY así sucesivamente, una dirección nueva por cada variable original"
+    "text": "La idea intuitiva: girar los ejes\nPCA no mueve los datos: gira los ejes hasta encontrar la dirección donde los datos más se extienden.\nAnimación: usa el deslizador o el botón ▶ para girar el eje. Observa cómo cambia la varianza de las proyecciones.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#qué-es-un-componente-principal",
     "href": "practica-05/practica-05.html#qué-es-un-componente-principal",
     "title": "Práctica 5",
     "section": "¿Qué es un componente principal?",
-    "text": "¿Qué es un componente principal?\nCada componente es una combinación lineal de las variables originales (estandarizadas):\n\\[\\text{PC1} = w_{11}\\,z_{\\text{edad}} + w_{12}\\,z_{\\text{anios}} + w_{13}\\,z_{\\text{hijos}} + \\dots\\]\n\nLos coeficientes \\(w\\) se llaman pesos o loadings: dicen cuánto aporta cada variable al componente\nEl valor que obtiene cada persona en un componente se llama score (puntuación)\nLos componentes son ortogonales entre sí: no están correlacionados, no repiten información\n\n\nEjemplo ilustrativo: si PC1 = 0.55·edad + 0.55·años_pareja + 0.50·hijos + …, una persona mayor, con muchos años de pareja y varios hijos tendrá un PC1 alto."
+    "text": "¿Qué es un componente principal?\nCada componente es una combinación lineal de las variables originales (estandarizadas):\n\\[\\text{PC1} = w_{11}\\,z_{\\text{superficie}} + w_{12}\\,z_{\\text{habitaciones}} + w_{13}\\,z_{\\text{aparatos}} + \\dots\\]\n\nLos coeficientes \\(w\\) se llaman pesos o loadings: dicen cuánto aporta cada variable al componente\nEl valor que obtiene cada observación en un componente se llama score (puntuación)\nLos componentes son ortogonales: no están correlacionados, no repiten información\n\n\nEjemplo ilustrativo: si PC1 = 0.55·superficie + 0.55·habitaciones + 0.50·aparatos + …, un hogar grande tendrá un PC1 alto.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#proceso-paso-a-paso",
     "href": "practica-05/practica-05.html#proceso-paso-a-paso",
     "title": "Práctica 5",
     "section": "Proceso paso a paso",
-    "text": "Proceso paso a paso\n\nEstandarizar cada variable (z-score): media 0 y desviación 1\nCalcular la matriz de covarianza \\(\\Sigma\\) (con datos estandarizados es la matriz de correlación)\nObtener sus valores propios \\(\\lambda_i\\) y vectores propios \\(\\mathbf{v}_i\\)\nOrdenar de mayor a menor \\(\\lambda\\)\nElegir \\(k\\) componentes (los que acumulen suficiente varianza)\nProyectar los datos: \\(\\;Z_{nuevo} = Z \\cdot W_k\\)\n\n\n\\[\\Sigma\\,\\mathbf{v}_i = \\lambda_i\\,\\mathbf{v}_i \\qquad\\qquad \\text{Varianza explicada}_i = \\frac{\\lambda_i}{\\sum_{j=1}^{p}\\lambda_j}\\]"
+    "text": "Proceso paso a paso\n\nEstandarizar cada variable (z-score): media 0 y desviación 1\nCalcular la matriz de covarianza \\(\\Sigma\\) (con datos estandarizados es la matriz de correlación)\nObtener sus valores propios \\(\\lambda_i\\) y vectores propios \\(\\mathbf{v}_i\\)\nOrdenar de mayor a menor \\(\\lambda\\)\nElegir \\(k\\) componentes (los que acumulen suficiente varianza)\nProyectar los datos: \\(\\;Z_{nuevo} = Z \\cdot W_k\\)\n\n\n\\[\\Sigma\\,\\mathbf{v}_i = \\lambda_i\\,\\mathbf{v}_i \\qquad\\qquad \\text{Varianza explicada}_i = \\frac{\\lambda_i}{\\sum_{j=1}^{p}\\lambda_j}\\]",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#las-variables-de-la-fórmula-1",
     "href": "practica-05/practica-05.html#las-variables-de-la-fórmula-1",
     "title": "Práctica 5",
     "section": "Las variables de la fórmula",
-    "text": "Las variables de la fórmula\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\Sigma\\)\nMatriz de covarianza (\\(p\\times p\\)): cómo varían juntas todas las variables\n\n\n\\(\\mathbf{v}_i\\)\nVector propio \\(i\\): la dirección del componente \\(i\\) (sus pesos)\n\n\n\\(\\lambda_i\\)\nValor propio \\(i\\): la varianza que captura ese componente\n\n\n\\(p\\)\nNúmero de variables originales\n\n\n\\(\\sum_j \\lambda_j\\)\nVarianza total; con datos estandarizados es igual a \\(p\\)\n\n\n\\(k\\)\nNúmero de componentes que se conservan (\\(k&lt;p\\))\n\n\n\\(Z\\)\nMatriz de datos estandarizados (\\(n\\times p\\))\n\n\n\\(W_k\\)\nMatriz con los primeros \\(k\\) vectores propios como columnas"
+    "text": "Las variables de la fórmula\n\n\n\n\n\n\n\n\nSímbolo\nSignificado\n\n\n\n\n\\(\\Sigma\\)\nMatriz de covarianza (\\(p\\times p\\)): cómo varían juntas todas las variables\n\n\n\\(\\mathbf{v}_i\\)\nVector propio \\(i\\): la dirección del componente \\(i\\) (sus pesos)\n\n\n\\(\\lambda_i\\)\nValor propio \\(i\\): la varianza que captura ese componente\n\n\n\\(p\\)\nNúmero de variables originales\n\n\n\\(\\sum_j \\lambda_j\\)\nVarianza total; con datos estandarizados es igual a \\(p\\)\n\n\n\\(k\\)\nNúmero de componentes que se conservan (\\(k&lt;p\\))\n\n\n\\(Z\\)\nMatriz de datos estandarizados (\\(n\\times p\\))\n\n\n\\(W_k\\)\nMatriz con los primeros \\(k\\) vectores propios como columnas",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#limitaciones-y-buenas-prácticas",
     "href": "practica-05/practica-05.html#limitaciones-y-buenas-prácticas",
     "title": "Práctica 5",
     "section": "Limitaciones y buenas prácticas",
-    "text": "Limitaciones y buenas prácticas\n\nSolo variables cuantitativas: no tiene sentido aplicarlo directamente a categorías nominales (entidad, estado_civil).\n\n\nSolo captura relaciones lineales: estructuras curvas o complejas no se resumen bien.\n\n\nPérdida de interpretabilidad: PC1 es una mezcla de variables, más difícil de explicar que edad.\n\n\nSensible a atípicos y a la escala: estandariza siempre, y revisa valores extremos.\n\n\nAjuste solo con entrenamiento: si habrá partición entrenamiento/prueba, haz fit solo en entrenamiento para no filtrar información."
+    "text": "Limitaciones y buenas prácticas\n\nSolo variables cuantitativas: no tiene sentido aplicarlo directamente a categorías nominales.\n\n\nSolo captura relaciones lineales: estructuras curvas o complejas no se resumen bien.\n\n\nPérdida de interpretabilidad: PC1 es una mezcla de variables, más difícil de explicar que una variable original.\n\n\nSensible a atípicos y a la escala: estandariza siempre y revisa valores extremos.\n\n\nAjuste solo con entrenamiento: con series de tiempo, haz fit solo con el pasado para no filtrar información.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#por-qué-muestrear",
     "href": "practica-05/practica-05.html#por-qué-muestrear",
     "title": "Práctica 5",
     "section": "¿Por qué muestrear?",
-    "text": "¿Por qué muestrear?\n\nExplorar y probar modelos más rápido sobre un conjunto más pequeño\nReducir costo de cómputo y almacenamiento\nPero: la muestra debe ser representativa, o las conclusiones se sesgan\n\n\n\n\n\n\n\n\nTécnica\nIdea\n\n\n\n\nAleatorio sin reemplazo\nCada registro entra a lo más una vez\n\n\nAleatorio con reemplazo\nUn registro puede salir varias veces (bootstrap)\n\n\nEstratificado\nRespeta la proporción de cada grupo\n\n\nSistemático\nUn registro cada \\(k\\) posiciones"
+    "text": "¿Por qué muestrear?\n\nExplorar y probar modelos más rápido sobre un conjunto más pequeño\nReducir costo de cómputo y almacenamiento\nPero: la muestra debe ser representativa, o las conclusiones se sesgan\n\n\n\n\n\n\n\n\nTécnica\nIdea\n\n\n\n\nAleatorio sin reemplazo\nCada registro entra a lo más una vez\n\n\nAleatorio con reemplazo\nUn registro puede salir varias veces (bootstrap)\n\n\nEstratificado\nRespeta la proporción de cada grupo\n\n\nSistemático\nUn registro cada \\(k\\) posiciones",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#ejemplo-población-con-clase-desbalanceada",
     "href": "practica-05/practica-05.html#ejemplo-población-con-clase-desbalanceada",
     "title": "Práctica 5",
     "section": "Ejemplo: población con clase desbalanceada",
-    "text": "Ejemplo: población con clase desbalanceada\n\n\n         muestra      n  prop_violencia  edad_media\n0      población  20000           0.121      38.244\n1      aleatorio   1000           0.111      38.918\n2  estratificado   1000           0.121      38.706\n3    sistemático   1000           0.107      37.804"
+    "text": "Ejemplo: población con clase desbalanceada\n\n\n         muestra      n  prop_violencia  edad_media\n0      población  20000           0.121      38.244\n1      aleatorio   1000           0.111      38.918\n2  estratificado   1000           0.121      38.706\n3    sistemático   1000           0.107      37.804",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#cuánto-varía-una-muestra-aleatoria",
     "href": "practica-05/practica-05.html#cuánto-varía-una-muestra-aleatoria",
     "title": "Práctica 5",
     "section": "¿Cuánto varía una muestra aleatoria?",
-    "text": "¿Cuánto varía una muestra aleatoria?\n\n\n\n\n\n\n\n\n\nMuestras más pequeñas → mayor variabilidad entre una muestra y otra."
+    "text": "¿Cuánto varía una muestra aleatoria?\n\n\n\n\n\n\n\n\n\nMuestras más pequeñas → mayor variabilidad entre una muestra y otra.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#casos-de-uso-y-riesgos",
     "href": "practica-05/practica-05.html#casos-de-uso-y-riesgos",
     "title": "Práctica 5",
     "section": "Casos de uso y riesgos",
-    "text": "Casos de uso y riesgos\n\nEstratificado: ideal cuando la variable objetivo está desbalanceada (pocos casos de violencia).\n\n\nSistemático: cómodo, pero peligroso si el archivo viene ordenado (por ejemplo, por entidad).\n\n\nFactor de expansión: la ENDIREH es una encuesta con diseño muestral; ignorar factor_expansion sesga la prevalencia nacional."
+    "text": "Casos de uso y riesgos\n\nEstratificado: ideal cuando la variable objetivo está desbalanceada (pocos casos de violencia).\n\n\nSistemático: cómodo, pero peligroso si el archivo viene ordenado (por ejemplo, por entidad).\n\n\nFactor de expansión: la ENDIREH es una encuesta con diseño muestral; ignorar factor_expansion sesga la prevalencia nacional.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#flujo-de-trabajo-en-preparacion_datos.py",
     "href": "practica-05/practica-05.html#flujo-de-trabajo-en-preparacion_datos.py",
     "title": "Práctica 5",
     "section": "Flujo de trabajo en preparacion_datos.py",
-    "text": "Flujo de trabajo en preparacion_datos.py\n\nCargar endireh_2021_limpio.csv\nNormalizar variables cuantitativas\nChi-cuadrada contra sufrio_violencia_pareja\nCorrelación de Pearson (≥ 5 variables cuantitativas)\nPCA\nMuestreo\nGuardar data/data-processed/endireh_2021_preparado.csv"
+    "text": "Flujo de trabajo en preparacion_datos.py\n\nCargar endireh_2021_limpio.csv\nNormalizar variables cuantitativas\nChi-cuadrada contra sufrio_violencia_pareja\nCorrelación de Pearson (≥ 5 variables cuantitativas)\nPCA\nMuestreo\nGuardar data/data-processed/endireh_2021_preparado.csv",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#entregables",
     "href": "practica-05/practica-05.html#entregables",
     "title": "Práctica 5",
     "section": "Entregables",
-    "text": "Entregables\n\nReporte PDF\nPresentacion ejecutiva 5 slides\nScript src/cleaning/normalizacion_datos.py completo y ejecutado\nDataset data/data-processed/endireh_2021_preparado.csv\n\n\n\n\n\n\n\nNote\n\n\nEn los últimos 15 minutos se elegirán 2 personas al azar para explicar el cómo y el por qué de sus decisiones."
+    "text": "Entregables\n\nDashboard en Streamlit, como se explicó el 30 de septiembre\nRepositorio de GitHub con README.md y requirements.txt\nPresentación técnica de máximo 10 diapositivas\n\n\n\n\n\n\n\nNote\n\n\nNo hay cuestionario: solo se pide la justificación del proceso del proyecto. Con un día de anticipación se avisará a las personas seleccionadas para proyectar su trabajo y explicar sus hallazgos mediante storytelling.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-05/practica-05.html#referencias-clave",
     "href": "practica-05/practica-05.html#referencias-clave",
     "title": "Práctica 5",
     "section": "Referencias clave",
-    "text": "Referencias clave\n\nINEGI (2022). Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021\nHan, J., Kamber, M., & Pei, J. (2012). Data Mining: Concepts and Techniques\nJolliffe, I. T., & Cadima, J. (2016). Principal component analysis: a review and recent developments\nCochran, W. G. (1977). Sampling Techniques\nPedregosa, F. et al. (2011). Scikit-learn: Machine learning in Python"
+    "text": "Referencias clave\n\nHebrail, G., & Berard, A. (2006). Individual Household Electric Power Consumption. UCI Machine Learning Repository\nHan, J., Kamber, M., & Pei, J. (2012). Data Mining: Concepts and Techniques\nJolliffe, I. T., & Cadima, J. (2016). Principal component analysis: a review and recent developments\nCochran, W. G. (1977). Sampling Techniques\nPedregosa, F. et al. (2011). Scikit-learn: Machine learning in Python\nStreamlit Inc. Streamlit Documentation. https://docs.streamlit.io/",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
   },
   {
     "objectID": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
@@ -1847,7 +2062,7 @@
     "href": "index.html#índice",
     "title": "Prácticas",
     "section": "Índice",
-    "text": "Índice\n\nPráctica 1: SQL Avanzado\nPráctica 2: Almacenes de Datos y BigQuery\nEjercicios DW\nPráctica 3\nPráctica 4: Medidas de Concentración y Heterogenidad",
+    "text": "Índice\n\nPráctica 1: SQL Avanzado\nPráctica 2: Almacenes de Datos y BigQuery\nEjercicios DW\nPráctica 3\nPráctica 4: Medidas de Concentración y Heterogenidad\nPráctica 5: Normalizacion, Coeficiente de Pearson y PCA",
     "crumbs": [
       "Inicio",
       "Prácticas"
@@ -2679,6 +2894,606 @@
       "Inicio",
       "Prácticas",
       "Práctica 4"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#el-dataset-consumo-eléctrico-doméstico",
+    "href": "practica-05/practica-05.html#el-dataset-consumo-eléctrico-doméstico",
+    "title": "Práctica 5",
+    "section": "El dataset: consumo eléctrico doméstico",
+    "text": "El dataset: consumo eléctrico doméstico\nIndividual Household Electric Power Consumption · UCI Machine Learning Repository\n\n\n\nCaracterística\nValor\n\n\n\n\nTipo de dataset\nMultivariado, series de tiempo\n\n\nÁrea temática\nFísica y Química\n\n\nTareas asociadas\nRegresión, agrupamiento (clustering)\n\n\nTamaño\nMás de dos millones de registros\n\n\n\n\nFuente: https://archive.ics.uci.edu/dataset/235/individual+household+electric+power+consumption",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#qué-significa-serie-de-tiempo",
+    "href": "practica-05/practica-05.html#qué-significa-serie-de-tiempo",
+    "title": "Práctica 5",
+    "section": "¿Qué significa “serie de tiempo”?",
+    "text": "¿Qué significa “serie de tiempo”?\n\n\n\n\n\n\n\n\n\n\nCada registro tiene un instante de tiempo: el orden importa\nEsto afectará cómo normalizamos, muestreamos e interpretamos",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#flujo-de-trabajo-de-la-práctica",
+    "href": "practica-05/practica-05.html#flujo-de-trabajo-de-la-práctica",
+    "title": "Práctica 5",
+    "section": "Flujo de trabajo de la práctica",
+    "text": "Flujo de trabajo de la práctica\n\n\n\n\n\n%%{init: {'theme':'dark'}}%%\nflowchart LR\n  A[Datos originales] --&gt; B[Preprocesamiento]\n  B --&gt; C[Normalización numérica]\n  B --&gt; G[Dashboard]\n  C --&gt; D[Correlación de Pearson]\n  D --&gt; E[PCA]\n  E --&gt; F[Dataset preparado]\n\n\n\n\n\n\n\nTodo el proyecto vive en un repositorio nuevo de GitHub con la arquitectura ya vista, un README.md y un requirements.txt.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#repaso-limpieza-ya-vista-sobre-un-dataset-nuevo",
+    "href": "practica-05/practica-05.html#repaso-limpieza-ya-vista-sobre-un-dataset-nuevo",
+    "title": "Práctica 5",
+    "section": "Repaso: limpieza ya vista, sobre un dataset nuevo",
+    "text": "Repaso: limpieza ya vista, sobre un dataset nuevo\nTres tareas, en este orden:\n\nNormalizar texto (minúsculas, sin espacios extra, sin acentos)\nDeduplicar registros\nCastear cada columna a su tipo correcto (número, fecha, categoría)\n\n\n\n     zona       fecha consumo\n0  Norte   2024-01-01     1.5\n1   NORTE  2024-01-01     1.5\n2     Sur  2024-01-02     2.0\n3    sur   2024-01-02     2.5\n4     Sur  2024-01-02     2.5 \n {'zona': 'str', 'fecha': 'str', 'consumo': 'str'}",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#resultado-del-preprocesamiento",
+    "href": "practica-05/practica-05.html#resultado-del-preprocesamiento",
+    "title": "Práctica 5",
+    "section": "Resultado del preprocesamiento",
+    "text": "Resultado del preprocesamiento\n\n\n    zona      fecha  consumo\n0  norte 2024-01-01      1.5\n2    sur 2024-01-02      2.0\n3    sur 2024-01-02      2.5 \n {'zona': 'str', 'fecha': 'datetime64[us]', 'consumo': 'float64'}\n\n\n\n“Norte”, “NORTE” y “norte” eran la misma categoría; tras normalizar aparecieron duplicados que antes no se veían. Por eso el orden importa. Los valores faltantes se tratan como en prácticas anteriores.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#el-problema-de-la-escala",
+    "href": "practica-05/practica-05.html#el-problema-de-la-escala",
+    "title": "Práctica 5",
+    "section": "El problema de la escala",
+    "text": "El problema de la escala\nTres personas con (edad, ingreso). ¿Quién está más cerca de A?\n\n\nSin normalizar:  d(A,B) =    501.2   d(A,C) =  10000.0\nCon min-max:     d(A,B) =    1.001   d(A,C) =    1.000\n\n\n\n\nSin normalizar: B parece “cercana” a A aunque tiene 35 años más, porque el ingreso domina la distancia\nCon min-max: ambas distancias son casi iguales; las dos variables pesan lo mismo",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#qué-es-normalizar",
+    "href": "practica-05/practica-05.html#qué-es-normalizar",
+    "title": "Práctica 5",
+    "section": "¿Qué es normalizar?",
+    "text": "¿Qué es normalizar?\nTransformar los valores de una variable para llevarla a una escala comparable con las demás.\n\n\n\n\nTécnica\nIdea\nResultado\n\n\n\n\nMin-max\nComprime al rango \\([0,1]\\)\nMínimo = 0, máximo = 1\n\n\nZ-score\nMide en desviaciones estándar\nMedia 0, desviación 1\n\n\n\n\n\nSe aplica solo a variables cuantitativas\nEs indispensable en métodos basados en distancias (K-Means, KNN) o en varianza (PCA)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#min-max-fórmula",
+    "href": "practica-05/practica-05.html#min-max-fórmula",
+    "title": "Práctica 5",
+    "section": "Min-max: fórmula",
+    "text": "Min-max: fórmula\n\\[x' = \\frac{x - x_{min}}{x_{max} - x_{min}}\\]\n\nEl mínimo pasa a ser 0, el máximo pasa a ser 1\nLos demás quedan proporcionalmente entre ambos\n\n\n\n edad    cálculo  min-max\n   18 (18-18)/42    0.000\n   25 (25-18)/42    0.167\n   40 (40-18)/42    0.524\n   60 (60-18)/42    1.000",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#min-max-antes-y-después",
+    "href": "practica-05/practica-05.html#min-max-antes-y-después",
+    "title": "Práctica 5",
+    "section": "Min-max: antes y después",
+    "text": "Min-max: antes y después\n\n\n\n\n\n\n\n\n\nLa forma relativa (las distancias proporcionales entre puntos) se conserva; solo cambia la escala.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#el-efecto-de-un-valor-atípico",
+    "href": "practica-05/practica-05.html#el-efecto-de-un-valor-atípico",
+    "title": "Práctica 5",
+    "section": "El efecto de un valor atípico",
+    "text": "El efecto de un valor atípico\n\n\n ingreso  min-max  z-score  robusto\n     8.0    0.000   -0.418     -1.0\n     9.0    0.002   -0.413     -0.6\n    10.0    0.004   -0.408     -0.2\n    11.0    0.006   -0.403      0.2\n    12.0    0.008   -0.398      0.6\n   500.0    1.000    2.041    195.8\n\n\n\nMin-max deja a los cinco valores normales casi pegados al 0\nZ-score usa todos los datos, pero el atípico también infla la media y la desviación\nCon atípicos fuertes, conviene el escalado robusto (mediana y rango intercuartílico) o tratar el atípico antes",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#z-score-estandarización-fórmula",
+    "href": "practica-05/practica-05.html#z-score-estandarización-fórmula",
+    "title": "Práctica 5",
+    "section": "Z-score (estandarización): fórmula",
+    "text": "Z-score (estandarización): fórmula\n\\[z = \\frac{x - \\mu}{\\sigma}\\]\n\nExpresa cada valor como cuántas desviaciones estándar se aleja de la media\nEl resultado tiene media 0 y desviación estándar 1",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#z-score-ejemplo",
+    "href": "practica-05/practica-05.html#z-score-ejemplo",
+    "title": "Práctica 5",
+    "section": "Z-score: ejemplo",
+    "text": "Z-score: ejemplo\n\n\nmedia = 35.75   desviación (n-1) = 18.59\n edad  z-score\n   18   -0.955\n   25   -0.578\n   40    0.229\n   60    1.304\n\nStandardScaler (usa n): [-1.103 -0.668  0.264  1.506]\n\n\n\n\n\n\n\n\nNote\n\n\nExisten dos desviaciones: con \\(n-1\\) (pandas, muestra) y con \\(n\\) (StandardScaler). Las diferencias son pequeñas con muchos datos, pero hay que saber cuál se usó.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#z-score-antes-y-después",
+    "href": "practica-05/practica-05.html#z-score-antes-y-después",
+    "title": "Práctica 5",
+    "section": "Z-score: antes y después",
+    "text": "Z-score: antes y después\n\n\n\n\n\n\n\n\n\nLa forma de la distribución es idéntica; solo cambian centro y escala.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#min-max-o-z-score",
+    "href": "practica-05/practica-05.html#min-max-o-z-score",
+    "title": "Práctica 5",
+    "section": "¿Min-max o z-score?",
+    "text": "¿Min-max o z-score?\n\n\n\n\n\n\n\n\n\nCriterio\nMin-max\nZ-score\n\n\n\n\nRango resultante\n\\([0,1]\\) fijo\nSin límites (≈ -3 a 3)\n\n\nSensible a atípicos\nMucho\nModeradamente\n\n\nRecomendado para\nRango acotado, datos sin atípicos\nPCA, K-Means, datos con forma de campana\n\n\nInterpretación\n“% del recorrido”\n“Desviaciones de la media”\n\n\n\n\n\nLo importante: elegir una, justificar por qué (atípicos, escalas, uso posterior) y aplicar la misma a todas las variables numéricas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#buenas-prácticas-con-series-de-tiempo",
+    "href": "practica-05/practica-05.html#buenas-prácticas-con-series-de-tiempo",
+    "title": "Práctica 5",
+    "section": "Buenas prácticas con series de tiempo",
+    "text": "Buenas prácticas con series de tiempo\n\nNormaliza solo variables cuantitativas (no identificadores ni fechas)\nCalcula media, desviación, mínimo y máximo solo con el pasado (entrenamiento) y aplica esos parámetros al futuro (prueba): así no se filtra información del futuro\nGuarda los parámetros del escalador para revertir la transformación o usarla con datos nuevos",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#cómo-se-ve-la-asociación",
+    "href": "practica-05/practica-05.html#cómo-se-ve-la-asociación",
+    "title": "Práctica 5",
+    "section": "¿Cómo se ve la asociación?",
+    "text": "¿Cómo se ve la asociación?\n\n\n\n\n\n\n\n\n\nLa línea punteada es lo esperado si no hubiera asociación. Mientras más se alejan las barras de ella, mayor \\(\\chi^2\\).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#el-valor-p-en-una-gráfica",
+    "href": "practica-05/practica-05.html#el-valor-p-en-una-gráfica",
+    "title": "Práctica 5",
+    "section": "El valor \\(p\\) en una gráfica",
+    "text": "El valor \\(p\\) en una gráfica\n\n\n\n\n\n\n\n\n\nNuestro \\(\\chi^2\\) cae muy adentro de la zona de rechazo → \\(p\\) diminuto → hay asociación.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#con-asociación-vs.-sin-asociación",
+    "href": "practica-05/practica-05.html#con-asociación-vs.-sin-asociación",
+    "title": "Práctica 5",
+    "section": "Con asociación vs. sin asociación",
+    "text": "Con asociación vs. sin asociación\n\n\nAsociadas       chi2 =  18.18   gl = 1   p = 0.0000   -&gt; CONSERVAR\nIndependientes  chi2 =   0.02   gl = 1   p = 0.8874   -&gt; candidata a eliminar\n\n\n\nchi2_contingency calcula \\(E_{ij}\\), \\(\\chi^2\\), grados de libertad y \\(p\\) de una sola vez\nGrados de libertad: \\((\\text{filas}-1)\\times(\\text{columnas}-1)\\)\ncorrection=False reproduce la fórmula vista (para tablas 2×2 SciPy aplica por defecto la corrección de Yates)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#los-productos-en-una-gráfica",
+    "href": "practica-05/practica-05.html#los-productos-en-una-gráfica",
+    "title": "Práctica 5",
+    "section": "Los productos, en una gráfica",
+    "text": "Los productos, en una gráfica",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#ejemplo-con-varias-variables",
+    "href": "practica-05/practica-05.html#ejemplo-con-varias-variables",
+    "title": "Práctica 5",
+    "section": "Ejemplo con varias variables",
+    "text": "Ejemplo con varias variables\n\n\n                     temp_exterior  consumo_calefaccion  consumo_total  num_ventanas\ntemp_exterior                 1.00                -0.96          -0.95         -0.02\nconsumo_calefaccion          -0.96                 1.00           0.99          0.04\nconsumo_total                -0.95                 0.99           1.00          0.05\nnum_ventanas                 -0.02                 0.04           0.05          1.00\n\n\n\n\n\n\n\n\n\n\n\nCómo leerlo: la diagonal siempre es 1; la matriz es simétrica; rojo = positiva, azul = negativa; busca celdas fuera de la diagonal con \\(|r| &gt; 0.8\\).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#detectar-pares-redundantes-con-código",
+    "href": "practica-05/practica-05.html#detectar-pares-redundantes-con-código",
+    "title": "Práctica 5",
+    "section": "Detectar pares redundantes con código",
+    "text": "Detectar pares redundantes con código\n\n\nconsumo_calefaccion  consumo_total          0.99\ntemp_exterior        consumo_calefaccion    0.96\n                     consumo_total          0.95\ndtype: float64\n\n\n\nSe revisa solo el triángulo superior para no contar cada par dos veces\nEl umbral (aquí 0.8) es una decisión del analista y debe justificarse",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#pearson-no-cambia-al-normalizar",
+    "href": "practica-05/practica-05.html#pearson-no-cambia-al-normalizar",
+    "title": "Práctica 5",
+    "section": "Pearson no cambia al normalizar",
+    "text": "Pearson no cambia al normalizar\n\n\nr original : -0.964\nr z-score  : -0.964\nr min-max  : -0.964\n\n\n\nNormalizar es una transformación lineal, y \\(r\\) no la nota. En cambio, PCA y K-Means sí cambian mucho: por eso se normaliza antes de ellos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#la-dirección-de-mayor-varianza",
+    "href": "practica-05/practica-05.html#la-dirección-de-mayor-varianza",
+    "title": "Práctica 5",
+    "section": "La dirección de mayor varianza",
+    "text": "La dirección de mayor varianza\n\nPC1: la dirección de mayor varianza (el ángulo donde la animación llega al máximo)\nPC2: la siguiente dirección con más varianza, perpendicular a PC1\nY así sucesivamente: una dirección nueva por cada variable original",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#el-ejemplo-más-pequeño-dos-variables",
+    "href": "practica-05/practica-05.html#el-ejemplo-más-pequeño-dos-variables",
+    "title": "Práctica 5",
+    "section": "El ejemplo más pequeño: dos variables",
+    "text": "El ejemplo más pequeño: dos variables\nCon dos variables estandarizadas y correlación \\(r\\), la matriz de correlación es \\(\\begin{pmatrix}1 & r\\\\ r & 1\\end{pmatrix}\\) y sus valores propios son simplemente \\(\\lambda_1 = 1+r\\) y \\(\\lambda_2 = 1-r\\).\n\n\nValores propios: [1.8 0.2]  (= 1+r y 1-r)\nVarianza explicada: [90. 10.] %\nPesos de PC1 (signo arbitrario): [0.707 0.707]\n\n\n\nCon \\(r=0.8\\), PC1 retiene el 90 % de la información: dos variables casi redundantes se resumen en una. Los pesos iguales indican que PC1 es el promedio de ambas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#un-ejemplo-con-5-variables",
+    "href": "practica-05/practica-05.html#un-ejemplo-con-5-variables",
+    "title": "Práctica 5",
+    "section": "Un ejemplo con 5 variables",
+    "text": "Un ejemplo con 5 variables\nHogares simulados: unas variables dependen del tamaño del hogar, otras del clima.\n\n\n      superficie_m2  habitaciones  aparatos  temp_exterior  horas_calefaccion\nmean           89.5           3.5      11.9           14.3                5.1\nstd            25.6           1.1       4.3            6.1                1.6",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#pca-paso-a-paso-con-código",
+    "href": "practica-05/practica-05.html#pca-paso-a-paso-con-código",
+    "title": "Práctica 5",
+    "section": "PCA paso a paso con código",
+    "text": "PCA paso a paso con código\n\n\n PC  valor propio  % varianza  % acumulada\nPC1          2.58        51.5         51.5\nPC2          1.88        37.5         89.0\nPC3          0.30         5.9         95.0\nPC4          0.14         2.7         97.7\nPC5          0.12         2.3        100.0\n\n\n\nLa suma de los valores propios es 5 (= número de variables): es la varianza total.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#cuántos-componentes-conservar",
+    "href": "practica-05/practica-05.html#cuántos-componentes-conservar",
+    "title": "Práctica 5",
+    "section": "¿Cuántos componentes conservar?",
+    "text": "¿Cuántos componentes conservar?\n\n\n\n\n\n\n\n\n\nTres criterios comunes: codo del scree plot, λ &gt; 1 (Kaiser) y varianza acumulada (por ejemplo ≥ 80 %). Hay que justificar el elegido.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#interpretar-los-loadings",
+    "href": "practica-05/practica-05.html#interpretar-los-loadings",
+    "title": "Práctica 5",
+    "section": "Interpretar los loadings",
+    "text": "Interpretar los loadings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPC1: superficie, habitaciones y aparatos pesan igual y con el mismo signo → un eje de tamaño del hogar\nPC2: temperatura y calefacción pesan con signos opuestos → un eje de clima\nEl signo de un componente completo es arbitrario; lo que importa es la comparación entre pesos",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#proyección-en-2d",
+    "href": "practica-05/practica-05.html#proyección-en-2d",
+    "title": "Práctica 5",
+    "section": "Proyección en 2D",
+    "text": "Proyección en 2D\n\n\n\n\n\n\n\n\n\nEl color cambia a lo largo de PC1: confirma que PC1 captura el tamaño del hogar.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#qué-pasa-si-no-se-estandariza",
+    "href": "practica-05/practica-05.html#qué-pasa-si-no-se-estandariza",
+    "title": "Práctica 5",
+    "section": "¿Qué pasa si NO se estandariza?",
+    "text": "¿Qué pasa si NO se estandariza?\n\n\n     sin estandarizar (%)  estandarizado (%)\nPC1                  93.2               51.5\nPC2                   5.5               37.5\nPC3                   1.1                5.9\nPC4                   0.1                2.7\nPC5                   0.0                2.3\n\n\n\nSin estandarizar, PC1 se lleva casi todo solo porque la superficie (en m²) tiene una escala enorme: PCA “ve” una sola variable.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#un-paso-opcional",
+    "href": "practica-05/practica-05.html#un-paso-opcional",
+    "title": "Práctica 5",
+    "section": "Un paso opcional",
+    "text": "Un paso opcional\n\n\n\n\n\n\nNote\n\n\nEl muestreo no es obligatorio para la entrega. Se presenta como ejercicio adicional para quien quiera explorar cómo reducir filas.\n\n\n\n\n\n\n\n\n\n\nTécnica\nIdea\n\n\n\n\nAleatorio sin reemplazo\nCada registro entra a lo más una vez\n\n\nAleatorio con reemplazo\nUn registro puede salir varias veces (bootstrap)\n\n\nEstratificado\nRespeta la proporción de cada grupo (por ejemplo, cada mes)\n\n\nSistemático\nUn registro cada \\(k\\) posiciones\n\n\n\nCuidado con las series de tiempo: un muestreo puede alterar o sesgar la estructura temporal.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#ejemplo-un-año-de-datos-por-hora",
+    "href": "practica-05/practica-05.html#ejemplo-un-año-de-datos-por-hora",
+    "title": "Práctica 5",
+    "section": "Ejemplo: un año de datos por hora",
+    "text": "Ejemplo: un año de datos por hora\n\n\n              muestra    n  media  desv. est.\n            población 8760  1.201       0.497\n            aleatorio  365  1.214       0.500\n     sistemático k=24  365  0.764       0.255\n     sistemático k=23  381  1.202       0.487\nestratificado por mes  365  1.216       0.516",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#por-qué-falla-el-sistemático-con-k-24",
+    "href": "practica-05/practica-05.html#por-qué-falla-el-sistemático-con-k-24",
+    "title": "Práctica 5",
+    "section": "¿Por qué falla el sistemático con k = 24?",
+    "text": "¿Por qué falla el sistemático con k = 24?\n\n\n\n\n\n\n\n\n\nEl período de muestreo coincide con el ciclo diario: todos los puntos caen a la misma hora y la media sale sesgada. Con un \\(k\\) que no coincide con el ciclo, el problema desaparece.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#para-qué-sirve-el-dashboard",
+    "href": "practica-05/practica-05.html#para-qué-sirve-el-dashboard",
+    "title": "Práctica 5",
+    "section": "¿Para qué sirve el dashboard?",
+    "text": "¿Para qué sirve el dashboard?\n\nResume el dataset en indicadores, gráficas y tablas que se pueden explorar\nPermite encontrar patrones y comunicar hallazgos (storytelling)\nLee el dataset procesado de los pasos anteriores; nunca modifica el original\n\nContenido mínimo:\n\nKPIs esenciales: métricas resumen para entender el dataset de un vistazo\nGráficas: comportamiento en el tiempo, distribuciones y relaciones entre variables\nTablas detalladas: para consultar la información con más detalle\nFiltros interactivos: por ejemplo, rango de fechas y nivel de agregación temporal",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#maqueta-de-un-dashboard",
+    "href": "practica-05/practica-05.html#maqueta-de-un-dashboard",
+    "title": "Práctica 5",
+    "section": "Maqueta de un dashboard",
+    "text": "Maqueta de un dashboard\n\n  🎛️ Filtros: rango de fechas · agregación (hora / día / mes)\n  KPI 1—\n  KPI 2—\n  KPI 3—\n  KPI 4—\n  📈 Gráfica temporal\n  📊 Distribución / comparación\n  🔥 Correlaciones / PCA\n  📋 Tabla detallada",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#arquitectura-del-proyecto",
+    "href": "practica-05/practica-05.html#arquitectura-del-proyecto",
+    "title": "Práctica 5",
+    "section": "Arquitectura del proyecto",
+    "text": "Arquitectura del proyecto\nproyecto/\n├── data/\n│   ├── data-raw/          # dato original, sin modificar\n│   └── data-processed/    # dato preparado\n├── src/\n│   ├── cleaning/          # preprocesamiento y normalización\n│   └── ...                # módulos auxiliares del dashboard\n├── visualization/\n│   └── app.py             # código principal del dashboard\n├── README.md\n└── requirements.txt\n\nvisualization/ contiene solo el código que ejecuta el dashboard\nsrc/ contiene todo el código auxiliar (carga, métricas, gráficos); app.py lo importa",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#flujo-de-trabajo-del-proyecto",
+    "href": "practica-05/practica-05.html#flujo-de-trabajo-del-proyecto",
+    "title": "Práctica 5",
+    "section": "Flujo de trabajo del proyecto",
+    "text": "Flujo de trabajo del proyecto\n\nCrear el repositorio en GitHub (misma arquitectura, README.md, requirements.txt)\nCargar e inspeccionar los datos\nPreprocesar: normalización cualitativa, deduplicación, casteo (y faltantes)\nNormalizar variables numéricas\nCorrelación de Pearson y decisión de qué variables conservar\nPCA: número de componentes, loadings y proyección en 2D\nGuardar el dataset preparado en data/data-processed/\nDashboard en Streamlit (pueden usar otra herramienta que no sea streamlit)\n(Opcional) Muestreo",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#estructura-de-la-presentación-técnica",
+    "href": "practica-05/practica-05.html#estructura-de-la-presentación-técnica",
+    "title": "Práctica 5",
+    "section": "Estructura de la presentación técnica",
+    "text": "Estructura de la presentación técnica\n\n\n\n\n\n\n\n\n\nSección\nContenido\nDiapositivas\n\n\n\n\nContexto del dataset\nOrigen, tamaño, naturaleza temporal, tareas\n1\n\n\nPreprocesamiento\nLimpieza aplicada y decisiones\n2\n\n\nHallazgos del dashboard\nInsights observados\n3\n\n\nNormalización numérica\nMétodo elegido y por qué\n1\n\n\nCorrelación de Pearson\nResultados y variables descartadas\n1\n\n\nPCA\nComponentes, varianza explicada, interpretación\n1\n\n\nConclusiones\nCierre del proyecto\n1",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#evaluación",
+    "href": "practica-05/practica-05.html#evaluación",
+    "title": "Práctica 5",
+    "section": "Evaluación",
+    "text": "Evaluación\n\n\n\n\nCriterio\nPonderación\n\n\n\n\nRepositorio y preprocesamiento\n15 %\n\n\nNormalización numérica\n15 %\n\n\nCorrelación de Pearson\n15 %\n\n\nPCA\n20 %\n\n\nDashboard\n25 %\n\n\nPresentación técnica\n10 %\n\n\n\n\nEl muestreo es opcional y no es requisito de entrega.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#resumen-de-técnicas",
+    "href": "practica-05/practica-05.html#resumen-de-técnicas",
+    "title": "Práctica 5",
+    "section": "Resumen de técnicas",
+    "text": "Resumen de técnicas\n\n\n\n\n\n\n\n\n\n\nTécnica\nTipo\nPregunta que responde\nCuándo usarla\n\n\n\n\nMin-max\nNormalización\n¿Cómo llevo todo a \\([0,1]\\)?\nSin atípicos fuertes; rango acotado\n\n\nZ-score\nNormalización\n¿A cuántas desviaciones está cada valor?\nAntes de PCA o K-Means\n\n\nChi-cuadrada\nSelección\n¿Hay asociación entre dos cualitativas?\nVariables categóricas\n\n\nPearson\nSelección\n¿Dos cuantitativas son redundantes?\nPares con \\(\\lvert r\\rvert &gt; 0.8\\)\n\n\nPCA\nExtracción\n¿Puedo resumir muchas variables en pocas?\nMuchas variables correlacionadas\n\n\nMuestreo\nNumerosidad\n¿Puedo trabajar con menos filas?\nExploración rápida (opcional)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#consumo-eléctrico-doméstico",
+    "href": "practica-05/practica-05.html#consumo-eléctrico-doméstico",
+    "title": "Práctica 5",
+    "section": "Consumo eléctrico doméstico",
+    "text": "Consumo eléctrico doméstico\nIndividual Household Electric Power Consumption · UCI Machine Learning Repository\n\n\n\nCaracterística\nValor\n\n\n\n\nTipo de dataset\nMultivariado, series de tiempo\n\n\nÁrea temática\nFísica y Química\n\n\nTareas asociadas\nRegresión, agrupamiento (clustering)\n\n\nTamaño\nMás de dos millones de registros\n\n\n\n\nFuente: https://archive.ics.uci.edu/dataset/235/individual+household+electric+power+consumption",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#flujo-de-trabajo-de-la-práctica-1",
+    "href": "practica-05/practica-05.html#flujo-de-trabajo-de-la-práctica-1",
+    "title": "Práctica 5",
+    "section": "Flujo de trabajo de la práctica",
+    "text": "Flujo de trabajo de la práctica\n\n\n\n\n\n%%{init: {'theme':'dark'}}%%\nflowchart LR\n  A[Datos originales] --&gt; B[Preprocesamiento]\n  B --&gt; C[Normalización numérica]\n  B --&gt; G[Dashboard]\n  C --&gt; D[Correlación de Pearson]\n  D --&gt; E[PCA]\n  E --&gt; F[Dataset preparado]\n\n\n\n\n\n\n\nTodo el proyecto vive en un repositorio nuevo de GitHub con la arquitectura ya vista, un README.md y un requirements.txt.\n\n\nTodo el proyecto vive en un repositorio nuevo de GitHub con la arquitectura ya vista, un README.md y un requirements.txt.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#z-score-por-qué-esta-fórmula",
+    "href": "practica-05/practica-05.html#z-score-por-qué-esta-fórmula",
+    "title": "Práctica 5",
+    "section": "Z-score: ¿por qué esta fórmula?",
+    "text": "Z-score: ¿por qué esta fórmula?\n\\[z = \\frac{x - \\mu}{\\sigma}\\]\n\n\n1. Numerador: \\(x-\\mu\\)\n\nResta la media: centra los datos en 0\nSigno + = por encima de la media; − = por debajo\n\n\n\n\n2. Denominador: \\(\\sigma\\)\n\nMide el tamaño típico de la dispersión\nDividir entre \\(\\sigma\\) da cuántas desviaciones caben en la distancia\nLas unidades se cancelan",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#por-qué-media-0-y-desviación-1",
+    "href": "practica-05/practica-05.html#por-qué-media-0-y-desviación-1",
+    "title": "Práctica 5",
+    "section": "¿Por qué media 0 y desviación 1?",
+    "text": "¿Por qué media 0 y desviación 1?\n\nMedia 0: los valores por encima y por debajo de \\(\\mu\\) se compensan al restar\nDesviación 1: dividir todo entre \\(\\sigma\\) deja la dispersión en \\(\\sigma/\\sigma = 1\\)\n\n\n\n\nz\nInterpretación\n\n\n\n\n0\nIgual a la media\n\n\n1\nUna desviación estándar por encima de la media\n\n\n-2\nDos desviaciones estándar por debajo de la media\n\n\n3\nMuy lejos de la media: posible valor atípico\n\n\n\n\nComparar lo incomparable: 70 en Matemáticas (media 60, \\(\\sigma=10\\)) → \\(z=1.0\\); 80 en Español (media 78, \\(\\sigma=8\\)) → \\(z=0.25\\). Le fue mejor en Matemáticas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#buenas-prácticas-con-series-de-tiempo-12",
+    "href": "practica-05/practica-05.html#buenas-prácticas-con-series-de-tiempo-12",
+    "title": "Práctica 5",
+    "section": "Buenas prácticas con series de tiempo (1/2)",
+    "text": "Buenas prácticas con series de tiempo (1/2)\n\nNormaliza solo variables cuantitativas: un identificador es un número, pero su tamaño no significa nada; la fecha es el índice temporal, no un valor a escalar\nCalcula los parámetros solo con el pasado (entrenamiento) y aplícalos al futuro (prueba)\nLa partición debe ser cronológica, no aleatoria",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#buenas-prácticas-con-series-de-tiempo-22",
+    "href": "practica-05/practica-05.html#buenas-prácticas-con-series-de-tiempo-22",
+    "title": "Práctica 5",
+    "section": "Buenas prácticas con series de tiempo (2/2)",
+    "text": "Buenas prácticas con series de tiempo (2/2)\nSerie: 10, 12, 14, 16, 18, 20 · entrenamiento = primeros cuatro\n\n\n\n\nParámetros\nPrueba (18 y 20) escalada\n\n\n\n\nCorrecto (solo entrenamiento)\nmín = 10, máx = 16\n1.33 y 1.67\n\n\nCon fuga (todo el dataset)\nmín = 10, máx = 20\n0.8 y 1.0\n\n\n\n\nLa versión con fuga se ve más ordenada porque ya conocía el máximo del futuro. Valores fuera de \\([0,1]\\) en prueba no son un error: indican que el futuro se salió del rango conocido.\n\n\nGuarda los parámetros del escalador: sirven para escalar datos nuevos, revertir la transformación y hacer el proceso reproducible.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#la-idea-detrás",
+    "href": "practica-05/practica-05.html#la-idea-detrás",
+    "title": "Práctica 5",
+    "section": "La idea detrás",
+    "text": "La idea detrás\nPara cada observación se multiplica \\((x_i-\\bar{x})\\cdot(y_i-\\bar{y})\\):\n\nAmbas por encima de su media → producto positivo\nAmbas por debajo de su media → producto positivo\nUna por encima y otra por debajo → producto negativo\n\n\nSe suman todos los productos:\n\nCasi todos positivos → \\(r\\) cercano a 1\nCasi todos negativos → \\(r\\) cercano a \\(-1\\)\nSe compensan → \\(r\\) cercano a 0",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#el-ejemplo",
+    "href": "practica-05/practica-05.html#el-ejemplo",
+    "title": "Práctica 5",
+    "section": "El ejemplo",
+    "text": "El ejemplo\nCon dos variables estandarizadas y correlación \\(r\\), la matriz de correlación es \\(\\begin{pmatrix}1 & r\\\\ r & 1\\end{pmatrix}\\) y sus valores propios son simplemente \\(\\lambda_1 = 1+r\\) y \\(\\lambda_2 = 1-r\\).\n\n\nValores propios: [1.8 0.2]  (= 1+r y 1-r)\nVarianza explicada: [90. 10.] %\nPesos de PC1 (signo arbitrario): [0.707 0.707]\n\n\n\nCon \\(r=0.8\\), PC1 retiene el 90 % de la información: dos variables casi redundantes se resumen en una. Los pesos iguales indican que PC1 es el promedio de ambas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#por-qué-ocurre",
+    "href": "practica-05/practica-05.html#por-qué-ocurre",
+    "title": "Práctica 5",
+    "section": "¿Por qué ocurre?",
+    "text": "¿Por qué ocurre?\nPCA mide varianza, y la varianza depende de las unidades.\n\n\n\n\n\n\n\n\n\nLa superficie concentra más del 90 % de la varianza total, así que la dirección de máxima varianza es casi su propio eje.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
+    ]
+  },
+  {
+    "objectID": "practica-05/practica-05.html#la-prueba-cambiar-las-unidades",
+    "href": "practica-05/practica-05.html#la-prueba-cambiar-las-unidades",
+    "title": "Práctica 5",
+    "section": "La prueba: cambiar las unidades",
+    "text": "La prueba: cambiar las unidades\n\n\nunidad de la superficie  % PC1    domina PC1\n                     m²   93.2 superficie_m2\n                    ft²   99.9 superficie_m2\n                    km²   66.4 temp_exterior\n\n\n\nMismos datos, conclusiones distintas. Con km², la que domina es la temperatura. Estandarizar da siempre el mismo resultado, sin importar la unidad.\n\n\n\n\n\n\n\nNote\n\n\nEstandarizar iguala las varianzas (que es lo que mide el PCA): la matriz de covarianza se convierte en la de correlación, y el PCA analiza cómo se relacionan las variables, no sus escalas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 5"
     ]
   }
 ]
