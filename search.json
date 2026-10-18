@@ -1,5 +1,348 @@
 [
   {
+    "objectID": "practica-06/practica-06.html#objetivo-de-la-práctica",
+    "href": "practica-06/practica-06.html#objetivo-de-la-práctica",
+    "title": "Práctica 6",
+    "section": "Objetivo de la práctica",
+    "text": "Objetivo de la práctica\n\nEntender qué es una regla de asociación y para qué sirve\nCalcular e interpretar soporte, confianza y lift\nComprender y ejecutar los algoritmos Apriori y FP-Growth paso a paso\nComparar ambos algoritmos y aplicarlos al consumo eléctrico de un hogar"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#por-qué-esta-práctica",
+    "href": "practica-06/practica-06.html#por-qué-esta-práctica",
+    "title": "Práctica 6",
+    "section": "¿Por qué esta práctica?",
+    "text": "¿Por qué esta práctica?\nEn las prácticas anteriores se describieron y prepararon los datos (normalización, reducción de dimensionalidad y de numerosidad).\nAhora pasamos a una pregunta distinta: ¿qué cosas ocurren juntas?\n\nNo hay una variable objetivo que predecir\nSe buscan patrones de co-ocurrencia dentro de los datos\nEs minería descriptiva (aprendizaje no supervisado)\n\n\nClásico: “los clientes que compran pan y leche también suelen comprar mantequilla”. En esta práctica: “cuando se usa la cocina y el calentador, el consumo del hogar suele ser alto”."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#mapa-de-la-práctica",
+    "href": "practica-06/practica-06.html#mapa-de-la-práctica",
+    "title": "Práctica 6",
+    "section": "Mapa de la práctica",
+    "text": "Mapa de la práctica\n\nConcepto → Transacciones, itemsets y reglas\n\n\nMedidas → Soporte, confianza y lift\n\n\nAlgoritmos → Apriori (candidatos y poda) y FP-Growth (árbol de patrones)\n\n\nAplicación → Consumo eléctrico del hogar (UCI) y reflexión"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#dónde-se-usan",
+    "href": "practica-06/practica-06.html#dónde-se-usan",
+    "title": "Práctica 6",
+    "section": "¿Dónde se usan?",
+    "text": "¿Dónde se usan?\n\n\n\n\n\n\n\nCampo\nPregunta que responde\n\n\n\n\nComercio (canasta de mercado)\n¿Qué productos se compran juntos? → ubicación en tienda, promociones\n\n\nRecomendación\nQuien vio la película A, ¿qué otras suele ver?\n\n\nSalud\n¿Qué síntomas o diagnósticos aparecen juntos?\n\n\nWeb\n¿Qué páginas se visitan en una misma sesión?\n\n\nCiencias sociales\n¿Qué condiciones del hogar suelen darse a la vez?\n\n\nEnergía\n¿Qué aparatos y momentos del día se asocian con un consumo alto?"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#vocabulario-básico",
+    "href": "practica-06/practica-06.html#vocabulario-básico",
+    "title": "Práctica 6",
+    "section": "Vocabulario básico",
+    "text": "Vocabulario básico\n\n\n\n\n\n\n\n\nTérmino\nSignificado\n\n\n\n\nÍtem\nUn elemento individual (un producto, una condición, un atributo)\n\n\nTransacción\nUn conjunto de ítems que ocurren juntos (una compra, una hora de consumo)\n\n\nItemset\nUn conjunto de uno o más ítems, por ejemplo \\(\\{\\text{pan}, \\text{leche}\\}\\)\n\n\n\\(k\\)-itemset\nItemset con exactamente \\(k\\) ítems\n\n\nRegla\n\\(A \\Rightarrow B\\), con \\(A\\) y \\(B\\) itemsets y \\(A \\cap B = \\emptyset\\)\n\n\nAntecedente\nEl lado izquierdo (\\(A\\)): “si ocurre esto…”\n\n\nConsecuente\nEl lado derecho (\\(B\\)): “…entonces tiende a ocurrir esto”\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nUna regla no implica causalidad ni orden temporal: solo indica que \\(A\\) y \\(B\\) co-ocurren con cierta frecuencia."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#nuestro-ejemplo-10-canastas",
+    "href": "practica-06/practica-06.html#nuestro-ejemplo-10-canastas",
+    "title": "Práctica 6",
+    "section": "Nuestro ejemplo: 10 canastas",
+    "text": "Nuestro ejemplo: 10 canastas\n\n\nTransacción  1: ['pan', 'leche', 'mantequilla']\nTransacción  2: ['pan', 'mantequilla']\nTransacción  3: ['leche', 'cafe', 'azucar']\nTransacción  4: ['pan', 'leche', 'mantequilla', 'huevos']\nTransacción  5: ['cafe', 'azucar']\nTransacción  6: ['pan', 'leche', 'huevos']\nTransacción  7: ['pan', 'mantequilla', 'huevos']\nTransacción  8: ['leche', 'cafe', 'azucar', 'pan']\nTransacción  9: ['pan', 'leche', 'mantequilla']\nTransacción 10: ['cafe', 'azucar', 'huevos']"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#representación-binaria",
+    "href": "practica-06/practica-06.html#representación-binaria",
+    "title": "Práctica 6",
+    "section": "Representación binaria",
+    "text": "Representación binaria\nPara trabajar con los datos, cada transacción se convierte en una fila de unos y ceros (presente o ausente).\n\n\n   azucar  cafe  huevos  leche  mantequilla  pan\n0       0     0       0      1            1    1\n1       0     0       0      0            1    1\n2       1     1       0      1            0    0\n3       0     0       1      1            1    1\n4       1     1       0      0            0    0\n5       0     0       1      1            0    1\n6       0     0       1      0            1    1\n7       1     1       0      1            0    1\n8       0     0       0      1            1    1\n9       1     1       1      0            0    0\n\n\n\nEs el mismo formato que usarás con los datos de la práctica: una columna por ítem, una fila por transacción."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#soporte",
+    "href": "practica-06/practica-06.html#soporte",
+    "title": "Práctica 6",
+    "section": "Soporte",
+    "text": "Soporte\n\\[\\text{soporte}(A) = \\frac{\\text{transacciones que contienen } A}{\\text{total de transacciones}} = P(A)\\]\n\\[\\text{soporte}(A \\Rightarrow B) = \\text{soporte}(A \\cup B) = P(A \\cap B)\\]\n\nMide qué tan frecuente es el itemset en los datos\nValor entre 0 y 1 (o como porcentaje)\nUn soporte bajo indica un patrón raro, posiblemente por azar"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#soporte-cálculo",
+    "href": "practica-06/practica-06.html#soporte-cálculo",
+    "title": "Práctica 6",
+    "section": "Soporte: cálculo",
+    "text": "Soporte: cálculo\n\n\nsoporte(pan               ) = 7/10 = 0.70\nsoporte(leche             ) = 6/10 = 0.60\nsoporte(pan y leche       ) = 5/10 = 0.50\nsoporte(pan y mantequilla ) = 5/10 = 0.50\n\n\n\npan aparece en 7 de las 10 canastas → soporte \\(0.7\\). pan y leche juntos aparecen en 5 → soporte \\(0.5\\)."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#confianza",
+    "href": "practica-06/practica-06.html#confianza",
+    "title": "Práctica 6",
+    "section": "Confianza",
+    "text": "Confianza\n\\[\\text{confianza}(A \\Rightarrow B) = \\frac{\\text{soporte}(A \\cup B)}{\\text{soporte}(A)} = P(B \\mid A)\\]\n\nMide qué tan seguido aparece \\(B\\) dado que ya apareció \\(A\\)\nEs una probabilidad condicional\nNo es simétrica: \\(\\text{conf}(A\\Rightarrow B) \\neq \\text{conf}(B\\Rightarrow A)\\)"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#confianza-cálculo",
+    "href": "practica-06/practica-06.html#confianza-cálculo",
+    "title": "Práctica 6",
+    "section": "Confianza: cálculo",
+    "text": "Confianza: cálculo\n\n\nconf(pan -&gt; leche)        = 0.5 / 0.7 = 0.714\nconf(leche -&gt; pan)        = 0.5 / 0.6 = 0.833\nconf(mantequilla -&gt; pan)  = 0.5 / 0.5 = 1.000\n\n\n\n\nDe los que compran pan, el 71 % compra también leche.\nDe los que compran leche, el 83 % compra pan: la regla no es simétrica.\nTodos los que compran mantequilla compran pan (confianza \\(=1\\))."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#soporte-vs.-confianza",
+    "href": "practica-06/practica-06.html#soporte-vs.-confianza",
+    "title": "Práctica 6",
+    "section": "Soporte vs. confianza",
+    "text": "Soporte vs. confianza\n\n\n\n\n\n\n\n\n\n\nSoporte\nConfianza\n\n\n\n\nPregunta\n¿Qué tan común es el patrón?\n¿Qué tan confiable es la regla?\n\n\nFórmula\n\\(P(A \\cap B)\\)\n\\(P(B \\mid A)\\)\n\n\nSimétrica\nSí\nNo\n\n\nSirve para\nDescartar patrones raros\nDescartar reglas débiles\n\n\nUmbral\nmin_support\nmin_confidence\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nUna regla es fuerte cuando cumple ambos umbrales: es frecuente (soporte) y confiable (confianza)."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#el-problema-de-la-confianza",
+    "href": "practica-06/practica-06.html#el-problema-de-la-confianza",
+    "title": "Práctica 6",
+    "section": "El problema de la confianza",
+    "text": "El problema de la confianza\nUna confianza alta puede engañar si el consecuente ya es muy común por sí solo.\n\n\nconfianza(A -&gt; B) = 0.90   ← parece una regla excelente\nlift(A -&gt; B)      = 1.00   ← pero A no aporta nada\n\n\n\nComo \\(B\\) aparece en el 90 % de todas las canastas, decir “si compra \\(A\\), compra \\(B\\) el 90 % de las veces” no es información nueva."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#lift-1",
+    "href": "practica-06/practica-06.html#lift-1",
+    "title": "Práctica 6",
+    "section": "Lift",
+    "text": "Lift\n\\[\\text{lift}(A \\Rightarrow B) = \\frac{\\text{confianza}(A \\Rightarrow B)}{\\text{soporte}(B)} = \\frac{P(A \\cap B)}{P(A)\\,P(B)}\\]\nCompara lo observado contra lo que se esperaría si \\(A\\) y \\(B\\) fueran independientes.\n\n\n\n\n\n\n\nValor\nInterpretación\n\n\n\n\n\\(\\text{lift} &gt; 1\\)\nAsociación positiva: \\(A\\) y \\(B\\) aparecen juntos más de lo esperado por azar\n\n\n\\(\\text{lift} = 1\\)\nIndependencia: la regla no aporta información\n\n\n\\(\\text{lift} &lt; 1\\)\nAsociación negativa: \\(A\\) y \\(B\\) tienden a excluirse"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#lift-cálculo",
+    "href": "practica-06/practica-06.html#lift-cálculo",
+    "title": "Práctica 6",
+    "section": "Lift: cálculo",
+    "text": "Lift: cálculo\n\n\npan          -&gt; leche     sop=0.50  conf=0.71  lift=1.19\nmantequilla  -&gt; pan       sop=0.50  conf=1.00  lift=1.43\ncafe         -&gt; azucar    sop=0.40  conf=1.00  lift=2.50\nhuevos       -&gt; pan       sop=0.30  conf=0.75  lift=1.07\n\n\n\ncafe → azucar tiene \\(\\text{lift}=2.5\\): aparecen juntos 2.5 veces más de lo esperado por azar. huevos → pan casi no se aleja de la independencia (\\(1.07\\))."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#el-reto-demasiadas-combinaciones",
+    "href": "practica-06/practica-06.html#el-reto-demasiadas-combinaciones",
+    "title": "Práctica 6",
+    "section": "El reto: demasiadas combinaciones",
+    "text": "El reto: demasiadas combinaciones\nCon \\(n\\) ítems existen \\(2^n - 1\\) itemsets posibles. Probarlos todos es inviable.\n\n\n  6 ítems -&gt; 63 itemsets posibles\n 20 ítems -&gt; 1,048,575 itemsets posibles\n 50 ítems -&gt; 1,125,899,906,842,623 itemsets posibles\n100 ítems -&gt; 1,267,650,600,228,229,401,496,703,205,375 itemsets posibles\n\n\n\nCon nuestros 6 ítems son 63; con 100 ítems ya son más de \\(10^{30}\\). Se necesita una forma de podar el espacio de búsqueda."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#la-propiedad-apriori",
+    "href": "practica-06/practica-06.html#la-propiedad-apriori",
+    "title": "Práctica 6",
+    "section": "La propiedad Apriori",
+    "text": "La propiedad Apriori\n\nSi un itemset es frecuente, todos sus subconjuntos también lo son. Equivalente: si un itemset es infrecuente, ningún superconjunto suyo puede ser frecuente.\n\n\nSi \\(\\{\\text{azucar}, \\text{mantequilla}\\}\\) no alcanza el soporte mínimo, entonces \\(\\{\\text{azucar}, \\text{mantequilla}, \\text{pan}\\}\\) tampoco\nNo hace falta contarlo: se descarta (poda)\nEs lo que vuelve práctico al algoritmo"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#dos-fases-del-algoritmo",
+    "href": "practica-06/practica-06.html#dos-fases-del-algoritmo",
+    "title": "Práctica 6",
+    "section": "Dos fases del algoritmo",
+    "text": "Dos fases del algoritmo\n\nFase 1: encontrar los itemsets frecuentes (la parte costosa)\n\nContar el soporte de cada ítem y conservar los que cumplen min_support → \\(L_1\\)\nGenerar candidatos de tamaño \\(k\\) combinando los frecuentes de tamaño \\(k-1\\)\nPodar los candidatos que tengan algún subconjunto no frecuente\nContar el soporte de los candidatos y conservar los frecuentes → \\(L_k\\)\nRepetir hasta que no queden candidatos\n\n\n\nFase 2: generar las reglas\nPara cada itemset frecuente, formar todas las reglas \\(A \\Rightarrow B\\) posibles y conservar las que cumplen min_confidence."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#paso-1-itemsets-de-tamaño-1",
+    "href": "practica-06/practica-06.html#paso-1-itemsets-de-tamaño-1",
+    "title": "Práctica 6",
+    "section": "Paso 1: itemsets de tamaño 1",
+    "text": "Paso 1: itemsets de tamaño 1\nSoporte mínimo: min_support = 0.3 (al menos 3 de las 10 transacciones).\n\n\n{'azucar'}       soporte = 0.4  frecuente\n{'cafe'}         soporte = 0.4  frecuente\n{'huevos'}       soporte = 0.4  frecuente\n{'leche'}        soporte = 0.6  frecuente\n{'mantequilla'}  soporte = 0.5  frecuente\n{'pan'}          soporte = 0.7  frecuente\n\n|L1| = 6"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#paso-2-candidatos-de-tamaño-2",
+    "href": "practica-06/practica-06.html#paso-2-candidatos-de-tamaño-2",
+    "title": "Práctica 6",
+    "section": "Paso 2: candidatos de tamaño 2",
+    "text": "Paso 2: candidatos de tamaño 2\nSe combinan todos los pares de \\(L_1\\) y se calcula su soporte.\n\n\n            itemset  soporte  frecuente\n         leche, pan      0.5       True\n   mantequilla, pan      0.5       True\n       azucar, cafe      0.4       True\n leche, mantequilla      0.3       True\n        huevos, pan      0.3       True\n      azucar, leche      0.2      False\n        cafe, leche      0.2      False\n      huevos, leche      0.2      False\nhuevos, mantequilla      0.2      False\n        azucar, pan      0.1      False\n     azucar, huevos      0.1      False\n          cafe, pan      0.1      False\n       cafe, huevos      0.1      False\nazucar, mantequilla      0.0      False\n  cafe, mantequilla      0.0      False\n\n\n\nDe los 15 candidatos, solo 5 son frecuentes: \\(L_2\\)."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#paso-3-candidatos-de-tamaño-3-y-poda",
+    "href": "practica-06/practica-06.html#paso-3-candidatos-de-tamaño-3-y-poda",
+    "title": "Práctica 6",
+    "section": "Paso 3: candidatos de tamaño 3 y poda",
+    "text": "Paso 3: candidatos de tamaño 3 y poda\nUn candidato de tamaño 3 solo sobrevive si todos sus subconjuntos de tamaño 2 están en \\(L_2\\).\n\n\nCandidatos de tamaño 3 que pasan la poda:\n  ['leche', 'mantequilla', 'pan']  soporte = 0.30\n\n\n\nSin la poda habría \\(\\binom{6}{3}=20\\) candidatos por contar; con ella queda uno: \\(\\{\\text{leche}, \\text{mantequilla}, \\text{pan}\\}\\), con soporte \\(0.3\\)."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#resumen-de-las-iteraciones",
+    "href": "practica-06/practica-06.html#resumen-de-las-iteraciones",
+    "title": "Práctica 6",
+    "section": "Resumen de las iteraciones",
+    "text": "Resumen de las iteraciones\n\n\n\n\nIteración\nCandidatos\nFrecuentes\nEjemplos\n\n\n\n\n\\(k=1\\)\n6\n6\ntodos los ítems\n\n\n\\(k=2\\)\n15\n5\n{leche, pan} (0.5), {mantequilla, pan} (0.5)\n\n\n\\(k=3\\)\n1\n1\n{leche, mantequilla, pan} (0.3)\n\n\n\\(k=4\\)\n0\n0\nel algoritmo termina\n\n\n\n\n\nLos itemsets frecuentes son la unión de todos los \\(L_k\\) encontrados."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#apriori-completo-en-una-función",
+    "href": "practica-06/practica-06.html#apriori-completo-en-una-función",
+    "title": "Práctica 6",
+    "section": "Apriori completo en una función",
+    "text": "Apriori completo en una función\n\n\nItemsets frecuentes: 12"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#fase-2-generar-las-reglas",
+    "href": "practica-06/practica-06.html#fase-2-generar-las-reglas",
+    "title": "Práctica 6",
+    "section": "Fase 2: generar las reglas",
+    "text": "Fase 2: generar las reglas\nPara cada itemset frecuente con 2 o más ítems, se prueban todas las divisiones en antecedente y consecuente.\n\n\n       antecedente consecuente  soporte  confianza  lift\n              cafe      azucar      0.4       1.00  2.50\n            azucar        cafe      0.4       1.00  2.50\n       mantequilla         pan      0.5       1.00  1.43\n               pan mantequilla      0.5       0.71  1.43\nleche, mantequilla         pan      0.3       1.00  1.43\n               pan       leche      0.5       0.71  1.19\n             leche         pan      0.5       0.83  1.19\n            huevos         pan      0.3       0.75  1.07"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#interpretando-las-reglas",
+    "href": "practica-06/practica-06.html#interpretando-las-reglas",
+    "title": "Práctica 6",
+    "section": "Interpretando las reglas",
+    "text": "Interpretando las reglas\n\ncafe → azucar y azucar → cafe: soporte 0.4, confianza 1.0, lift 2.5 → la asociación más fuerte del conjunto (siempre se compran juntos)\nmantequilla → pan: confianza 1.0, lift 1.43 → quien lleva mantequilla siempre lleva pan\nleche, mantequilla → pan: regla con dos ítems en el antecedente, también con confianza 1.0\nhuevos → pan: lift cercano a 1 → casi independientes, regla poco interesante\n\n\n\n\n\n\n\nNote\n\n\nOrdenar solo por confianza favorece reglas obvias. Conviene ordenar por lift y revisar también el soporte."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#visualizando-las-reglas",
+    "href": "practica-06/practica-06.html#visualizando-las-reglas",
+    "title": "Práctica 6",
+    "section": "Visualizando las reglas",
+    "text": "Visualizando las reglas"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#elegir-los-umbrales",
+    "href": "practica-06/practica-06.html#elegir-los-umbrales",
+    "title": "Práctica 6",
+    "section": "Elegir los umbrales",
+    "text": "Elegir los umbrales\n\n\n\n\n\n\n\n\n\n\n\nSoporte mínimo muy bajo → explosión de itemsets y reglas, muchas por puro azar\nSoporte mínimo muy alto → solo reglas obvias, se pierden patrones raros pero valiosos"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#ventajas-y-limitaciones-de-apriori",
+    "href": "practica-06/practica-06.html#ventajas-y-limitaciones-de-apriori",
+    "title": "Práctica 6",
+    "section": "Ventajas y limitaciones de Apriori",
+    "text": "Ventajas y limitaciones de Apriori\n\n\nVentajas\n\nFácil de entender e implementar\nLa propiedad Apriori poda mucho el espacio de búsqueda\nResultados interpretables (“si… entonces…”)\n\n\n\n\nLimitaciones\n\nCon muchos ítems genera demasiados candidatos\nRequiere varias pasadas sobre los datos\nPueden salir muchas reglas, la mayoría triviales\nSolo trabaja con datos binarios (presente/ausente)\n\n\n\nAlternativas más eficientes: FP-Growth y Eclat."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#la-idea",
+    "href": "practica-06/practica-06.html#la-idea",
+    "title": "Práctica 6",
+    "section": "La idea",
+    "text": "La idea\nFP-Growth (Frequent Pattern Growth, Han, Pei y Yin, 2000) encuentra los mismos itemsets frecuentes que Apriori, pero:\n\nNo genera candidatos\nLee los datos solo dos veces\nComprime la base de datos en una estructura de árbol: el FP-tree\n\n\nApriori: “genera y prueba” candidatos. FP-Growth: “comprime y divide”: construye un árbol y lo explora por partes."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#las-dos-fases",
+    "href": "practica-06/practica-06.html#las-dos-fases",
+    "title": "Práctica 6",
+    "section": "Las dos fases",
+    "text": "Las dos fases\n\nFase 1: construir el FP-tree\n\nPrimera pasada: contar el soporte de cada ítem y descartar los no frecuentes\nOrdenar los ítems de cada transacción de mayor a menor frecuencia\nSegunda pasada: insertar cada transacción como un camino en el árbol; los prefijos comunes se comparten y suman su contador\n\n\n\nFase 2: minar el árbol\nPara cada ítem (de menos a más frecuente): tomar los caminos donde aparece (base de patrones condicional), construir un árbol condicional y repetir de forma recursiva."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#paso-1-contar-y-ordenar-los-ítems",
+    "href": "practica-06/practica-06.html#paso-1-contar-y-ordenar-los-ítems",
+    "title": "Práctica 6",
+    "section": "Paso 1: contar y ordenar los ítems",
+    "text": "Paso 1: contar y ordenar los ítems\nMismo ejemplo de 10 canastas, min_support = 0.3 → conteo mínimo de 3 transacciones.\n\n\nÍtems frecuentes, ordenados por frecuencia:\n  pan          7\n  leche        6\n  mantequilla  5\n  azucar       4\n  cafe         4\n  huevos       4"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#paso-2-reordenar-cada-transacción",
+    "href": "practica-06/practica-06.html#paso-2-reordenar-cada-transacción",
+    "title": "Práctica 6",
+    "section": "Paso 2: reordenar cada transacción",
+    "text": "Paso 2: reordenar cada transacción\nCada transacción se reescribe con sus ítems en el orden de frecuencia (los más comunes primero).\n\n\n1. ['pan', 'leche', 'mantequilla']\n   -&gt; ['pan', 'leche', 'mantequilla']\n2. ['pan', 'mantequilla']\n   -&gt; ['pan', 'mantequilla']\n3. ['leche', 'cafe', 'azucar']\n   -&gt; ['leche', 'azucar', 'cafe']\n4. ['pan', 'leche', 'mantequilla', 'huevos']\n   -&gt; ['pan', 'leche', 'mantequilla', 'huevos']\n5. ['cafe', 'azucar']\n   -&gt; ['azucar', 'cafe']\n\n\n\nOrdenar así hace que las transacciones compartan prefijos (casi todas empiezan con pan o leche), y por eso el árbol queda compacto."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#paso-3-construir-el-fp-tree",
+    "href": "practica-06/practica-06.html#paso-3-construir-el-fp-tree",
+    "title": "Práctica 6",
+    "section": "Paso 3: construir el FP-tree",
+    "text": "Paso 3: construir el FP-tree\n\nclass Nodo:\n    def __init__(self, item, padre):\n        self.item, self.padre = item, padre\n        self.cuenta, self.hijos = 0, {}\n\ndef construir_arbol(transacciones, min_cuenta):\n    \"\"\"transacciones: lista de (lista_de_items, peso). Devuelve raíz, enlaces y conteos.\"\"\"\n    cont = defaultdict(int)\n    for t, w in transacciones:\n        for i in t:\n            cont[i] += w\n    cont = {i: c for i, c in cont.items() if c &gt;= min_cuenta}\n    raiz, enlaces = Nodo(None, None), defaultdict(list)\n    for t, w in transacciones:\n        t = sorted([i for i in t if i in cont], key=lambda i: (-cont[i], i))\n        nodo = raiz\n        for i in t:\n            if i not in nodo.hijos:                    # crear nodo nuevo\n                nodo.hijos[i] = Nodo(i, nodo)\n                enlaces[i].append(nodo.hijos[i])       # tabla de enlaces por ítem\n            nodo = nodo.hijos[i]\n            nodo.cuenta += w                           # prefijo compartido: sumar\n\n    return raiz, enlaces, cont\n\nraiz, enlaces, cont = construir_arbol([(t, 1) for t in T], min_cuenta=3)"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#el-árbol-resultante",
+    "href": "practica-06/practica-06.html#el-árbol-resultante",
+    "title": "Práctica 6",
+    "section": "El árbol resultante",
+    "text": "El árbol resultante\n\ndef imprimir_arbol(nodo, nivel=0):\n    for h in nodo.hijos.values():\n        print(\"   \" * nivel + f\"{h.item} ({h.cuenta})\")\n        imprimir_arbol(h, nivel + 1)\n\nimprimir_arbol(raiz)\n\npan (7)\n   leche (5)\n      mantequilla (3)\n         huevos (1)\n      huevos (1)\n      azucar (1)\n         cafe (1)\n   mantequilla (2)\n      huevos (1)\nleche (1)\n   azucar (1)\n      cafe (1)\nazucar (2)\n   cafe (2)\n      huevos (1)"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#el-árbol-resultante-vista-gráfica",
+    "href": "practica-06/practica-06.html#el-árbol-resultante-vista-gráfica",
+    "title": "Práctica 6",
+    "section": "El árbol resultante: vista gráfica",
+    "text": "El árbol resultante: vista gráfica\n\n\n\n\n\n\n\n\n\n\n\npan (7): 7 transacciones empiezan con pan y comparten ese nodo\npan → leche (5): 5 de ellas continúan con leche\nLos ítems poco frecuentes quedan al fondo del árbol"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#paso-4-la-base-de-patrones-condicional",
+    "href": "practica-06/practica-06.html#paso-4-la-base-de-patrones-condicional",
+    "title": "Práctica 6",
+    "section": "Paso 4: la base de patrones condicional",
+    "text": "Paso 4: la base de patrones condicional\nPregunta: ¿con qué ítems suele aparecer mantequilla?\n\nIdea: el árbol ya contiene la respuesta. Basta con mirar lo que hay arriba de cada nodo mantequilla.\n\n\n\n\n\n\n\n\n\nQué hacemos\nCómo\n\n\n\n\n1. Localizar el ítem\nUsar la tabla de enlaces: lista todos los nodos mantequilla del árbol\n\n\n2. Subir hasta la raíz\nRecoger el camino de ancestros, sin incluir el ítem\n\n\n3. Asignar peso\nEl camino pesa lo que vale la cuenta de ese nodo\n\n\n\n\n\nEl resultado es una mini base de datos: solo las transacciones que contienen mantequilla, y solo lo que viene antes de ella."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#paso-4-visualización-en-el-árbol",
+    "href": "practica-06/practica-06.html#paso-4-visualización-en-el-árbol",
+    "title": "Práctica 6",
+    "section": "Paso 4: visualización en el árbol",
+    "text": "Paso 4: visualización en el árbol\n\n\n\n\n\n\n\n\n\n\n🟥 ítem a minar   🟧 su camino (prefijo)   ⬜ resto del árbol"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#paso-4-minar-mantequilla-de-dónde-sale-la-base",
+    "href": "practica-06/practica-06.html#paso-4-minar-mantequilla-de-dónde-sale-la-base",
+    "title": "Práctica 6",
+    "section": "Paso 4: minar mantequilla — de dónde sale la base",
+    "text": "Paso 4: minar mantequilla — de dónde sale la base\nmantequilla aparece en 2 lugares del árbol. Cada aparición aporta un camino, y el camino pesa lo que vale ese nodo.\n\n\n\n\n\n\n\nflowchart TD\n    R((raíz)) --&gt; P[\"pan (7)\"]\n    P --&gt; L[\"leche (5)\"]\n    P --&gt; M2[\"mantequilla (2)\"]\n    L --&gt; M1[\"mantequilla (3)\"]\n    style R fill:#f3f4f6,stroke:#9ca3af,color:#000\n    style M1 fill:#fecaca,stroke:#b91c1c,color:#000\n    style M2 fill:#fecaca,stroke:#b91c1c,color:#000\n    style P fill:#fed7aa,stroke:#ea580c,color:#000\n    style L fill:#fed7aa,stroke:#ea580c,color:#000\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAparición de mantequilla\nCamino hacia arriba (sin incluirla)\nPeso\n\n\n\n\nRama pan → leche → mantequilla\n[pan, leche]\n3\n\n\nRama pan → mantequilla\n[pan]\n2\n\n\n\n\n\nEsa tabla es la base condicional: [pan, leche] x3 y [pan] x2."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#paso-4-contar-los-ítems-de-la-base",
+    "href": "practica-06/practica-06.html#paso-4-contar-los-ítems-de-la-base",
+    "title": "Práctica 6",
+    "section": "Paso 4: contar los ítems de la base",
+    "text": "Paso 4: contar los ítems de la base\nSumamos el peso de cada camino donde aparece el ítem:\n\n\n\n\n\n\n\n\n\n\n\nÍtem\nDónde aparece\nCuenta\n¿≥ 3?\nItemset resultante\n\n\n\n\npan\n[pan, leche] x3 + [pan] x2\n3 + 2 = 5\nSí\n{mantequilla, pan} → 5\n\n\nleche\n[pan, leche] x3\n3\nSí\n{mantequilla, leche} → 3\n\n\n\n\n\nDos ítems pasan el mínimo, así que ya tenemos 2 itemsets de tamaño 2. Si alguno hubiera quedado por debajo de 3, se descartaba aquí mismo."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#paso-4-recursión-sobre-mantequilla-leche",
+    "href": "practica-06/practica-06.html#paso-4-recursión-sobre-mantequilla-leche",
+    "title": "Práctica 6",
+    "section": "Paso 4: recursión sobre {mantequilla, leche}",
+    "text": "Paso 4: recursión sobre {mantequilla, leche}\nAhora repetimos el mismo procedimiento, pero dentro de {mantequilla, leche}: solo miramos lo que hay arriba de leche en los caminos de la base.\n\n\n\n\n\n\n\nflowchart TD\n    R((raíz)) --&gt; P[\"pan (3)\"]\n    P --&gt; L[\"leche (3)\"]\n    style L fill:#fecaca,stroke:#b91c1c\n    style P fill:#fed7aa,stroke:#ea580c\n\n\n\n\n\n\nÁrbol condicional de mantequilla: solo pan → leche, con los pesos de esos caminos.\n\n\n\n\nPaso\nResultado\n\n\n\n\nBase de leche en este árbol\n[pan] x3\n\n\nConteo de pan\n3\n\n\n¿≥ 3?\nSí\n\n\nNuevo itemset\n{mantequilla, leche, pan} → 3\n\n\n\n\n\nComo ya no quedan ítems por encima de pan, la recursión termina."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#paso-4-resultado-para-mantequilla",
+    "href": "practica-06/practica-06.html#paso-4-resultado-para-mantequilla",
+    "title": "Práctica 6",
+    "section": "Paso 4: resultado para mantequilla",
+    "text": "Paso 4: resultado para mantequilla\n\n\n\n\n\n\n\n\n\nItemset frecuente\nSoporte (cuenta)\nCómo se obtuvo\n\n\n\n\n{mantequilla, pan}\n5\nConteo de pan en la base\n\n\n{mantequilla, leche}\n3\nConteo de leche en la base\n\n\n{mantequilla, leche, pan}\n3\nRecursión sobre {mantequilla, leche}\n\n\n\n\n\nSin generar candidatos ni volver a leer las 10 transacciones: todo salió de recorrer caminos del árbol, ya resumidos con sus pesos."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#apriori-vs.-fp-growth",
+    "href": "practica-06/practica-06.html#apriori-vs.-fp-growth",
+    "title": "Práctica 6",
+    "section": "Apriori vs. FP-Growth",
+    "text": "Apriori vs. FP-Growth\n\n\n\n\n\n\n\n\n\n\n\n\nApriori\nFP-Growth\n\n\n\n\nEstrategia\nGenerar y probar candidatos\nComprimir en árbol y dividir\n\n\nCandidatos\nSí, muchos\nNo\n\n\nLecturas de los datos\nUna por cada tamaño \\(k\\)\nDos en total\n\n\nMemoria\nBaja (lista de candidatos)\nMayor (almacena el árbol)\n\n\nDatos muy dispersos\nFunciona bien\nEl árbol se comprime menos\n\n\nSoporte mínimo muy bajo\nMuy lento\nMucho más rápido\n\n\nFacilidad\nMás sencillo\nMás complejo de implementar\n\n\nResultado\nMismos itemsets frecuentes\nMismos itemsets frecuentes\n\n\n\n\n\n\nApriori: conjuntos pequeños, fines didácticos, o cuando se quiere entender cada paso.\n\n\nFP-Growth: conjuntos grandes, muchos ítems o soporte mínimo bajo. Es la opción habitual en la práctica.\n\n\n\n\n\n\n\n\nNote\n\n\nEn conjuntos muy pequeños FP-Growth puede incluso ser más lento por el costo de construir el árbol. Su ventaja aparece al crecer los datos o bajar el soporte mínimo."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#dataset-household-electric-power-consumption",
+    "href": "practica-06/practica-06.html#dataset-household-electric-power-consumption",
+    "title": "Práctica 6",
+    "section": "Dataset: Household Electric Power Consumption",
+    "text": "Dataset: Household Electric Power Consumption\nUCI Machine Learning Repository (Hebrail y Berard, 2012).\n\n\n\n\n\n\n\n\n\nVariable\nUnidad\nDescripción\n\n\n\n\nGlobal_active_power\nkW\nPotencia activa promedio del hogar\n\n\nGlobal_reactive_power\nkW\nPotencia reactiva promedio\n\n\nVoltage\nV\nVoltaje promedio\n\n\nGlobal_intensity\nA\nIntensidad de corriente promedio\n\n\nSub_metering_1\nWh\nCocina (lavavajillas, horno, microondas)\n\n\nSub_metering_2\nWh\nLavandería (lavadora, secadora, refrigerador, luz)\n\n\nSub_metering_3\nWh\nCalentador de agua y aire acondicionado"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#el-reto-no-hay-canastas",
+    "href": "practica-06/practica-06.html#el-reto-no-hay-canastas",
+    "title": "Práctica 6",
+    "section": "El reto: no hay “canastas”",
+    "text": "El reto: no hay “canastas”\nLos datos originales son numéricos y continuos, pero los algoritmos de reglas de asociación requieren ítems categóricos agrupados en transacciones.\n\nPaso A — Definir la transacción\nUna transacción equivale a una hora de actividad en el hogar (se resumen los registros minuto a minuto de esa hora).\n\n\nPaso B — Convertir variables numéricas en ítems\nLas sub-mediciones definen las habitaciones activas de la hora:\n\nSub_metering_1 &gt; 0 \\(\\rightarrow\\) ítem Cocina\nSub_metering_2 &gt; 0 \\(\\rightarrow\\) ítem Lavandería\nSub_metering_3 &gt; 0 \\(\\rightarrow\\) ítem Climatización"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#el-reto-no-hay-canastas-cont.",
+    "href": "practica-06/practica-06.html#el-reto-no-hay-canastas-cont.",
+    "title": "Práctica 6",
+    "section": "El reto: no hay “canastas” (cont.)",
+    "text": "El reto: no hay “canastas” (cont.)\n\nPaso B — Ítems temporales\nAdemás, derivamos ítems a partir de la marca de tiempo: tiempo del día (Madrugada, Mañana, Mediodía, Tarde, Noche) y día de la semana (Lunes, Martes, …).\nEjemplo de transacción: {Cocina, Climatización, Noche, Sábado}\n\n\n\n\n\n\n\n\nNote\n\n\nAcción: consolidar las métricas globales, las sub-mediciones y las nuevas variables categóricas, y guardar el dataset en data/data-processed/ como input_reglas_asociacion."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#ejemplo-estructura-del-dataset-procesado",
+    "href": "practica-06/practica-06.html#ejemplo-estructura-del-dataset-procesado",
+    "title": "Práctica 6",
+    "section": "Ejemplo: Estructura del dataset procesado",
+    "text": "Ejemplo: Estructura del dataset procesado\nPara 1 año de registros, input_reglas_asociacion transforma el consumo numérico en listas de ítems:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHora\nGlobal_active_power\nSub_1\nSub_2\nSub_3\nHabitaciones_Activas\nDía\nTiempo\n\n\n\n\n08:00\n1.52\n38.0\n0.0\n0.0\n{Cocina}\nLunes\nMañana\n\n\n13:00\n0.45\n0.0\n45.0\n0.0\n{Lavandería}\nMartes\nMediodía\n\n\n20:00\n3.10\n25.0\n0.0\n18.0\n{Cocina, Climatización}\nSábado\nNoche\n\n\n03:00\n0.20\n0.0\n0.0\n0.0\n{}\nDomingo\nMadrugada\n\n\n18:00\n2.80\n0.0\n30.0\n40.0\n{Lavandería, Climatización}\nMiércoles\nTarde\n\n\n\n\n\n\nNota: Habitaciones_Activas actúa como nuestra “canasta”. Junto con Día y Tiempo, el algoritmo puede descubrir patrones como: {Sábado, Noche} =&gt; {Cocina, Climatización}."
+  },
+  {
+    "objectID": "practica-06/practica-06.html#flujo-de-trabajo-propuesto",
+    "href": "practica-06/practica-06.html#flujo-de-trabajo-propuesto",
+    "title": "Práctica 6",
+    "section": "Flujo de trabajo propuesto",
+    "text": "Flujo de trabajo propuesto\n\nCargar household_power_consumption.txt (sep=\";\", na_values=[\"?\"]) y construir la marca de tiempo\nConstruir los ítem\nEjecutar Apriori y FP-Growth con distintos min_support y comparar resultados y tiempos\nGenerar reglas, calcular el lift y filtrar lift \\(&gt; 1\\)\nInterpretar las reglas más relevantes y guardar tablas y gráficas"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#entregables",
+    "href": "practica-06/practica-06.html#entregables",
+    "title": "Práctica 6",
+    "section": "Entregables",
+    "text": "Entregables\n\nPresentación: Presentación de 7 slides explicando las reglas que encontraron y como nos beneficia saber esto.\nScript con el código completo y ejecutado, integrado al proyecto existente\nTabla de reglas guardada como CSV en data/data-processed/"
+  },
+  {
+    "objectID": "practica-06/practica-06.html#referencias-clave",
+    "href": "practica-06/practica-06.html#referencias-clave",
+    "title": "Práctica 6",
+    "section": "Referencias clave",
+    "text": "Referencias clave\n\nAgrawal, R., & Srikant, R. (1994). Fast Algorithms for Mining Association Rules. VLDB\nHan, J., Pei, J., & Yin, Y. (2000). Mining Frequent Patterns without Candidate Generation. SIGMOD\nHan, J., Kamber, M., & Pei, J. (2012). Data Mining: Concepts and Techniques (3.ª ed.). Morgan Kaufmann\nHebrail, G., & Berard, A. (2012). Individual Household Electric Power Consumption. UCI Machine Learning Repository. https://doi.org/10.24432/C58K54\nRaschka, S. (2018). MLxtend: Providing machine learning and data science utilities and extensions to Python’s scientific computing stack. JOSS"
+  },
+  {
     "objectID": "practica-04/practica-04.html#objetivo-de-la-práctica",
     "href": "practica-04/practica-04.html#objetivo-de-la-práctica",
     "title": "Práctica 4",
@@ -468,522 +811,6 @@
     ]
   },
   {
-    "objectID": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
-    "href": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
-    "title": "Práctica 3",
-    "section": "De la teoría al modelo: el proceso completo",
-    "text": "De la teoría al modelo: el proceso completo\nEn un proyecto real, entrenar un modelo es apenas la última fase. Antes hace falta:\n\n\nOrganizar el proyecto con una arquitectura de carpetas clara y reproducible\nSeleccionar el framework de análisis adecuado según el volumen de datos\nEjecutar un preprocesamiento que garantice datos consistentes, únicos y del tipo correcto\nDescribir cuantitativamente los datos con medidas de localización y variabilidad",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#el-caso-de-estudio-endireh-2021",
-    "href": "practica-03/practica-03.html#el-caso-de-estudio-endireh-2021",
-    "title": "Práctica 3",
-    "section": "El caso de estudio: ENDIREH 2021",
-    "text": "El caso de estudio: ENDIREH 2021\n\nLa Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021, del INEGI, genera información representativa a nivel nacional y estatal sobre las experiencias de violencia física, sexual, emocional, económica y patrimonial que enfrentan las mujeres de 15 años y más.\n\n\nCombina de forma natural variables cualitativas y cuantitativas, además de valores faltantes, duplicados y columnas que requieren conversión de tipo — un escenario idéntico al de un proyecto profesional real.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#nota-de-sensibilidad-del-tema",
-    "href": "practica-03/practica-03.html#nota-de-sensibilidad-del-tema",
-    "title": "Práctica 3",
-    "section": "Nota de sensibilidad del tema",
-    "text": "Nota de sensibilidad del tema\n\nAl tratarse de un tema social sensible, el análisis debe realizarse con rigor técnico y responsabilidad ética, evitando conclusiones que estigmaticen a personas o grupos, y reconociendo que los datos representan experiencias reales de violencia reportadas por las encuestadas.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#por-qué-una-arquitectura-de-carpetas",
-    "href": "practica-03/practica-03.html#por-qué-una-arquitectura-de-carpetas",
-    "title": "Práctica 3",
-    "section": "¿Por qué una arquitectura de carpetas?",
-    "text": "¿Por qué una arquitectura de carpetas?\n\nAntes de escribir una sola línea de análisis, el proyecto necesita una estructura ordenada y reproducible\nSe basa en el estándar de la industria Cookiecutter Data Science\n\n\nSepara claramente:\n\nDatos crudos (nunca se editan)\nDatos procesados (limpios, tipados, imputados)\nDatos listos para modelar\nCódigo fuente por responsabilidad (limpieza, visualización, modelos)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#pandas-vs.-polars-vs.-pyspark",
-    "href": "practica-03/practica-03.html#pandas-vs.-polars-vs.-pyspark",
-    "title": "Práctica 3",
-    "section": "Pandas vs. Polars vs. PySpark",
-    "text": "Pandas vs. Polars vs. PySpark\n\n\n\n\n\n\n\n\n\n\nFramework\nMotor / Diseño\nCuándo usarlo\nUso en la industria\n\n\n\n\nPandas\nUn solo hilo, basado en NumPy. API muy madura\nDatasets pequeños/medianos que caben en memoria\nEstándar histórico, el más enseñado\n\n\nPolars\nMotor en Rust, multihilo, evaluación lazy\nDatasets medianos/grandes en una sola máquina\nAdopción creciente 2024-2025\n\n\nPySpark\nMotor distribuido (Apache Spark) sobre clúster\nDatasets que no caben en una sola máquina (Big Data)\nEstándar para procesamiento distribuido",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#introducción-a-polars-modo-eager",
-    "href": "practica-03/practica-03.html#introducción-a-polars-modo-eager",
-    "title": "Práctica 3",
-    "section": "Introducción a Polars: Modo Eager",
-    "text": "Introducción a Polars: Modo Eager\n\n\n⚡ Eager (pl.read_csv)\nEjecución instantánea: Lee el archivo completo e interactúa inmediatamente en memoria RAM.\nCarga todas las columnas y filas de inmediato, aunque luego descartes el 90% mediante filtros o selecciones posteriores.\n# Lee 700k filas y 50 columnas ya\ndf = pl.read_csv(\"endireh_2021.csv\")\nres = df.filter(pl.col(\"edad\") &gt; 30)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#introducción-a-polars-modo-lazy",
-    "href": "practica-03/practica-03.html#introducción-a-polars-modo-lazy",
-    "title": "Práctica 3",
-    "section": "Introducción a Polars: Modo Lazy",
-    "text": "Introducción a Polars: Modo Lazy\n\n\n◐ Lazy (pl.scan_csv)\nEvaluación diferida: No carga datos a memoria. Solo lee metadatos e inspecciona el esquema (tipos de datos).\nCrea un grafo lógico de transformaciones y espera hasta que el usuario decida materializar con .collect().\n# Solo genera un LazyFrame (0 datos en RAM)\nq = (\n    pl.scan_csv(\"endireh_2021.csv\")\n    .filter(pl.col(\"edad\") &gt; 30)\n)\n\n\n\nCon 700,000 registros, trabajar en modo lazy evita procesar columnas que ni siquiera se van a usar en el análisis.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#introducción-a-polars-sintaxis-básica",
-    "href": "practica-03/practica-03.html#introducción-a-polars-sintaxis-básica",
-    "title": "Práctica 3",
-    "section": "Introducción a Polars: sintaxis básica",
-    "text": "Introducción a Polars: sintaxis básica\nimport polars as pl\n\n# Seleccionar columnas\ndf.select([\"edad_primer_union\", \"num_hijos\", \"nom_entidad\"])\n\n# Filtrar renglones\ndf.filter(pl.col(\"nom_entidad\") == \"Ciudad de Mexico\")\n\n# Agrupar y agregar\ndf.group_by(\"nom_entidad\").agg([\n    pl.col(\"edad_primer_union\").mean().alias(\"edad_promedio\")\n])\n\nLas expresiones pl.col(...) describen qué hacer con una columna; no se ejecuta nada hasta que se pide el resultado (.collect() en modo lazy).",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#sintaxis-de-select",
-    "href": "practica-03/practica-03.html#sintaxis-de-select",
-    "title": "Práctica 3",
-    "section": "Sintaxis de Select()",
-    "text": "Sintaxis de Select()\n\nselect() devuelve un nuevo DataFrame solo con las columnas (o expresiones) que le indiques.\n\n# Una columna\ndf.select(\"edad\")\n\n# Varias columnas\ndf.select([\"edad\", \"nom_entidad\", \"factor_expansion\"])\n\n# Con expresiones: renombrar o transformar al vuelo\ndf.select([\n    pl.col(\"edad\"),\n    (pl.col(\"edad\") * 2).alias(\"edad_doble\")\n])\n\n\nRecibe una lista de nombres de columna o de expresiones pl.col(...). Con .alias() puedes renombrar o crear columnas calculadas sin salir del select().",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#sintaxis-de-filter",
-    "href": "practica-03/practica-03.html#sintaxis-de-filter",
-    "title": "Práctica 3",
-    "section": "Sintaxis de Filter()",
-    "text": "Sintaxis de Filter()\n\nfilter() conserva solo los renglones donde la condición es True.\n\n# Una condición\ndf.filter(pl.col(\"edad\") &gt; 30)\n\n# Varias condiciones (AND)\ndf.filter(\n    (pl.col(\"edad\") &gt; 30) & (pl.col(\"nom_entidad\") == \"Jalisco\")\n)\n\n# Condición OR\ndf.filter(\n    (pl.col(\"nivel_escolaridad\") == \"Primaria\")\n    | (pl.col(\"nivel_escolaridad\") == \"Secundaria\")\n)\n\n\nCada condición se escribe como pl.col(\"columna\") operador valor. Para combinar condiciones usa & (AND), | (OR) o ~ (NOT) — siempre con cada condición entre paréntesis.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#sintaxis-de-group_by",
-    "href": "practica-03/practica-03.html#sintaxis-de-group_by",
-    "title": "Práctica 3",
-    "section": "Sintaxis de Group_By()",
-    "text": "Sintaxis de Group_By()\n\ngroup_by() agrupa los renglones; por sí solo no calcula nada — siempre va seguido de .agg().\n\n# Agrupar por una columna y agregar\ndf.group_by(\"nom_entidad\").agg([\n    pl.col(\"edad\").mean().alias(\"edad_promedio\"),\n    pl.col(\"factor_expansion\").sum().alias(\"poblacion_total\")\n])\n\n# Agrupar por varias columnas\ndf.group_by([\"nom_entidad\", \"nivel_escolaridad\"]).agg(\n    pl.len().alias(\"num_encuestadas\")\n)\n\n\nDentro de .agg([...]) defines qué operación aplicar por grupo (mean, sum, len, etc.). Puedes agrupar por una o varias columnas, y encadenar .sort() después para ordenar el resultado.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#materializando-con-collect",
-    "href": "practica-03/practica-03.html#materializando-con-collect",
-    "title": "Práctica 3",
-    "section": "Materializando con collect()",
-    "text": "Materializando con collect()\n\nTodo lo anterior (select, filter, group_by) no ejecuta nada si vienes de pl.scan_csv(...) — solo arma el plan. .collect() es quien finalmente corre la consulta completa y te regresa un DataFrame real en memoria.\n\n\n\n\n\nAntes de .collect(), Polars optimiza el plan completo: junta el select y el filter para leer del CSV solo las columnas y filas necesarias, .collect() es el único punto donde realmente se toca el disco y se gasta memoria.\n\n\n\n\nresultado = (\n    pl.scan_csv(\"endireh_2021.csv\")        # 1. LazyFrame: aún no lee nada\n    .select([\"edad\", \"nom_entidad\",\n             \"nivel_escolaridad\", \"factor_expansion\"])\n    .filter(pl.col(\"edad\") &gt; 30)            # 2. Se agrega al plan\n    .group_by(\"nom_entidad\")\n    .agg([\n        pl.col(\"edad\").mean().alias(\"edad_promedio\"),\n        pl.len().alias(\"num_encuestadas\")\n    ])\n    .sort(\"num_encuestadas\", descending=True)\n    .collect()                               # 3. AQUI se ejecuta todo\n)\n\nprint(resultado)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-qué-hago",
-    "href": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-qué-hago",
-    "title": "Práctica 3",
-    "section": "Ya tengo mis datos ¿Ahora qué hago?",
-    "text": "Ya tengo mis datos ¿Ahora qué hago?",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#preprocesamiento",
-    "href": "practica-03/practica-03.html#preprocesamiento",
-    "title": "Práctica 3",
-    "section": "Preprocesamiento",
-    "text": "Preprocesamiento\n\nAntes de calcular cualquier medida o entrenar cualquier modelo, los datos crudos pasan por cuatro etapas:\n\n\n\nDetectar valores nulos — qué columnas los tienen y en qué porcentaje\nDecidir qué hacer con ellos — eliminar, imputar, o investigar si siguen un patrón\nNormalizar tipos de datos — que lo numérico sea numérico, lo categórico sea consistente\nFeature engineering — crear variables nuevas que representen mejor el fenómeno",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#eliminar-o-imputar-la-regla-del-5",
-    "href": "practica-03/practica-03.html#eliminar-o-imputar-la-regla-del-5",
-    "title": "Práctica 3",
-    "section": "¿Eliminar o imputar? La regla del 5%",
-    "text": "¿Eliminar o imputar? La regla del 5%\n\nHeurística común en la industria: si una columna tiene menos del 5% de valores nulos, eliminar esos renglones rara vez sesga la muestra de forma importante — es más simple que imputar y el costo de perder esos datos es bajo.\n\n\n\nEl 5% es una guía, no una ley. Si esa columna es central para tu análisis (por ejemplo, la variable que quieres describir o predecir), incluso un 3% de nulos merece revisión antes de eliminar.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#los-nulos-son-aleatorios-o-siguen-un-patrón",
-    "href": "practica-03/practica-03.html#los-nulos-son-aleatorios-o-siguen-un-patrón",
-    "title": "Práctica 3",
-    "section": "¿Los nulos son aleatorios o siguen un patrón?",
-    "text": "¿Los nulos son aleatorios o siguen un patrón?\n\n\nAleatorios (MCAR): la ausencia no depende de nada — un error de captura, una hoja perdida. Ej: un encuestador olvidó registrar la edad de algunas personas al azar.\nCon patrón relacionado a otra variable (MAR): la probabilidad de faltar depende de algo que sí observaste. Ej: las personas mayores de 60 años tienden a no responder la pregunta de nivel de estudios.\nCon patrón relacionado al propio valor (MNAR): la ausencia depende de lo que falta. Ej: las personas con ingresos muy altos o muy bajos prefieren no reportar su ingreso.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#normalización-de-tipos-de-datos",
-    "href": "practica-03/practica-03.html#normalización-de-tipos-de-datos",
-    "title": "Práctica 3",
-    "section": "Normalización de tipos de datos",
-    "text": "Normalización de tipos de datos\n\nLos datos crudos casi nunca vienen con el tipo correcto: números guardados como texto, fechas como strings, o categorías escritas de formas distintas.\n\n\nEjemplo típico de una columna edad mal tipada:\n\"25\", \"30\", \"N/A\", \"28 años\", \" 41 \"\n\n\n\nMientras esa columna sea texto, no puedes calcular su media, ordenarla numéricamente ni compararla con &gt; o &lt; — Polars/pandas la tratan como cadenas, no como cantidades.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#código-normalizar-tipos-en-polars",
-    "href": "practica-03/practica-03.html#código-normalizar-tipos-en-polars",
-    "title": "Práctica 3",
-    "section": "Código: normalizar tipos en Polars",
-    "text": "Código: normalizar tipos en Polars\ndf = df.with_columns(\n    pl.col(\"edad\")\n      .str.strip_chars()                     # quita espacios\n      .str.extract(r\"(\\d+)\")                 # extrae solo el número\n      .cast(pl.Int32, strict=False)           # convierte a entero\n      .alias(\"edad\")\n)\n\n# Normalizar texto categórico (mayúsculas/espacios inconsistentes)\ndf = df.with_columns(\n    pl.col(\"nombre_categoria\").str.to_lowercase().str.strip_chars()\n)\n\nstrict=False convierte a null los valores que no se pudieron transformar (como \"N/A\") en lugar de tronar el proceso — así conservas el error como un nulo detectado, no como un dato inventado.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#feature-engineering-crear-variables-nuevas",
-    "href": "practica-03/practica-03.html#feature-engineering-crear-variables-nuevas",
-    "title": "Práctica 3",
-    "section": "Feature Engineering: crear variables nuevas",
-    "text": "Feature Engineering: crear variables nuevas\n\nCrear columnas nuevas a partir de las existentes para que representen mejor lo que quieres analizar o modelar.\n\n\nEjemplos:\n\nA partir de una fecha: edad = año_actual − año_nacimiento\nCombinar variables en una razón: ingreso_per_capita = ingreso_hogar / num_personas\n\n\n\n\nUn análisis o modelo es tan bueno como las variables que le das. edad_en_dias casi no dice nada útil; grupo_edad en categorías interpretables sí revela patrones claros al graficar o agrupar.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#resumen-el-flujo-completo",
-    "href": "practica-03/practica-03.html#resumen-el-flujo-completo",
-    "title": "Práctica 3",
-    "section": "Resumen: el flujo completo",
-    "text": "Resumen: el flujo completo\n\n\nDetectar nulos: qué columnas, qué porcentaje\nDecidir: &lt;5% y aleatorio → eliminar; alto % o con patrón → imputar e investigar\nNormalizar tipos: numérico a numérico, texto categórico consistente\nFeature engineering: crear variables que enriquezcan el análisis",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#medidas-de-localización-qué-responden",
-    "href": "practica-03/practica-03.html#medidas-de-localización-qué-responden",
-    "title": "Práctica 3",
-    "section": "Medidas de Localización: ¿qué responden?",
-    "text": "Medidas de Localización: ¿qué responden?\n\nResponden a la pregunta: ¿alrededor de qué valor se agrupan los datos?\n\n\nSon la base para construir un “perfil típico” de las encuestadas — por ejemplo, la edad promedio de una población, o el nivel de escolaridad más común. Sin ellas, no hay un punto de referencia para comparar grupos ni para detectar qué tan “normal” o “atípico” es un caso.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#la-media-promedio-aritmético",
-    "href": "practica-03/practica-03.html#la-media-promedio-aritmético",
-    "title": "Práctica 3",
-    "section": "La Media: promedio aritmético",
-    "text": "La Media: promedio aritmético\n\n\\[\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\]\n\n\nCuándo usarla: variables cuantitativas con distribución razonablemente simétrica, sin valores extremos que la distorsionen.\n\n\n\nLimitación clave: es muy sensible a outliers. Un solo valor extremo (por ejemplo, una edad de unión reportada erróneamente como 99) puede desplazar la media completa, dando una imagen falsa del “promedio” real.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#la-mediana-el-valor-de-en-medio",
-    "href": "practica-03/practica-03.html#la-mediana-el-valor-de-en-medio",
-    "title": "Práctica 3",
-    "section": "La Mediana: el valor de en medio",
-    "text": "La Mediana: el valor de en medio\n\n\\[Me = \\begin{cases} x_{(\\frac{n+1}{2})} & n \\text{ impar} \\\\[4pt] \\dfrac{x_{(n/2)} + x_{(n/2+1)}}{2} & n \\text{ par} \\end{cases}\\]\n\n\nCuándo usarla: cuando la variable tiene una distribución asimétrica o contiene valores extremos — la mediana no se mueve por ellos, porque solo depende de la posición central, no de la magnitud de los valores.\n\n\n\nRegla práctica: si la media es mucho mayor que la mediana, la distribución está sesgada hacia la derecha (hay valores altos poco frecuentes que la “jalan”). Comparar ambas ya te dice algo sobre la forma de los datos.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#la-moda-el-valor-más-frecuente",
-    "href": "practica-03/practica-03.html#la-moda-el-valor-más-frecuente",
-    "title": "Práctica 3",
-    "section": "La Moda: el valor más frecuente",
-    "text": "La Moda: el valor más frecuente\n\nLa moda es el valor (o categoría) que más veces se repite en los datos.\n\n\nCuándo usarla: es la única medida de tendencia central válida para variables cualitativas nominales — no tiene sentido calcular un “promedio” de nom_entidad o de sufrio_violencia_pareja, pero sí preguntar cuál es la categoría más común.\n\n\n\nEn ENDIREH, la moda es clave para variables como nivel_escolaridad o estado_civil_desc: te dice cuál es la situación más frecuente entre las encuestadas, algo que la media no puede responder.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#qué-es-un-percentil",
-    "href": "practica-03/practica-03.html#qué-es-un-percentil",
-    "title": "Práctica 3",
-    "section": "¿Qué es un percentil?",
-    "text": "¿Qué es un percentil?\n\nUn percentil es un valor que divide un conjunto de datos ordenados en 100 partes iguales. El percentil \\(P_k\\) indica el valor por debajo del cual queda el \\(k\\%\\) de las observaciones.\n\n\n\nNo es lo mismo que un porcentaje. Un porcentaje describe qué proporción de algo representa un valor; un percentil describe qué posición ocupa un valor dentro de todo el conjunto de datos, comparado con los demás.\n\n\n\nLos cuartiles (Q1, Q2, Q3) son casos particulares: Q1 = P25, Q2 = P50 (la mediana), Q3 = P75.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#ejemplo-percentiles-en-un-examen",
-    "href": "practica-03/practica-03.html#ejemplo-percentiles-en-un-examen",
-    "title": "Práctica 3",
-    "section": "Ejemplo: percentiles en un examen",
-    "text": "Ejemplo: percentiles en un examen\n\nUn grupo de 20 estudiantes presenta un examen. Se ordenan sus calificaciones de menor a mayor:\n45, 50, 52, 55, 58, 60, 61, 63, 65, 67, 68, 70, 72, 74, 76, 78, 80, 85, 90, 95\n\n\n¿Cuál es el percentil 25 (P25)?\nBuscamos la posición que deja el 25% de los datos por debajo. Con 20 valores, esa posición cae entre el 5° y 6° dato: 58 y 60 → P25 ≈ 59.\nInterpretación: el 25% de los estudiantes sacó 59 puntos o menos.\n\n\n¿Cuál es el percentil 90 (P90)?\nCae cerca de la posición 18: P90 ≈ 85.\nInterpretación: el 90% de los estudiantes sacó 85 puntos o menos — solo el 10% sacó más de 85.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#qué-es-una-media-ponderada",
-    "href": "practica-03/practica-03.html#qué-es-una-media-ponderada",
-    "title": "Práctica 3",
-    "section": "¿Qué es una media ponderada?",
-    "text": "¿Qué es una media ponderada?\n\nEn una media simple, todos los valores pesan lo mismo. En una media ponderada, cada valor se multiplica por un peso que refleja qué tanto debe contar — porque representa más casos, más importancia, o más frecuencia que los demás.\n\n\n\\[\\bar{x}_w = \\frac{\\sum_{i=1}^{n} w_i x_i}{\\sum_{i=1}^{n} w_i}\\]\n\n\nSi todos los pesos \\(w_i\\) son iguales, la fórmula se reduce exactamente a la media simple — la media ponderada no es una fórmula distinta, es la versión general de la media.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#ejemplo-el-promedio-que-engaña",
-    "href": "practica-03/practica-03.html#ejemplo-el-promedio-que-engaña",
-    "title": "Práctica 3",
-    "section": "Ejemplo: el promedio que engaña",
-    "text": "Ejemplo: el promedio que engaña\n\nTres salones presentan el mismo examen. Se reporta el promedio de cada salón:\n\n\n\nSalón\nN.º de estudiantes\nPromedio del salón\n\n\n\n\nA\n30\n70\n\n\nB\n10\n90\n\n\nC\n50\n60\n\n\n\n\n\nTrata a los tres salones como si tuvieran el mismo peso — como si el salón de 10 estudiantes contara igual que el de 50.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#ejemplo-el-promedio-correcto",
-    "href": "practica-03/practica-03.html#ejemplo-el-promedio-correcto",
-    "title": "Práctica 3",
-    "section": "Ejemplo: el promedio correcto",
-    "text": "Ejemplo: el promedio correcto\n\nPromedio ponderado por número de estudiantes:\n\\[\\bar{x}_w = \\frac{(30)(70) + (10)(90) + (50)(60)}{30 + 10 + 50} = \\frac{6000}{90} = 66.7\\]\n\n\n\nLa diferencia (73.3 vs. 66.7) no es un error de redondeo: el salón C tiene 50 estudiantes con promedio bajo, así que debe pesar más en el resultado final. Ignorar eso hace parecer que el desempeño general fue mejor de lo que realmente fue.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#medidas-de-variabilidad-qué-responden",
-    "href": "practica-03/practica-03.html#medidas-de-variabilidad-qué-responden",
-    "title": "Práctica 3",
-    "section": "Medidas de Variabilidad: ¿qué responden?",
-    "text": "Medidas de Variabilidad: ¿qué responden?\n\nResponden a la pregunta: ¿qué tan dispersos están los datos respecto al valor central?\n\n\n\nDos variables pueden tener la misma media y comportarse de forma totalmente distinta. Una alta variabilidad advierte que un solo valor central puede ser engañoso, y que conviene segmentar a la población antes de sacar conclusiones.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#varianza-y-desviación-estándar",
-    "href": "practica-03/practica-03.html#varianza-y-desviación-estándar",
-    "title": "Práctica 3",
-    "section": "Varianza y Desviación Estándar",
-    "text": "Varianza y Desviación Estándar\n\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\qquad s = \\sqrt{s^2}\\]\n\n\nLa varianza promedia qué tan lejos está cada valor de la media (al cuadrado, para que las diferencias negativas y positivas no se cancelen). Se divide entre \\(n-1\\), no entre \\(n\\), porque estamos estimando la variabilidad de la población a partir de una muestra.\n\n\n\nCuándo usarla: la desviación estándar (\\(s\\)) es más interpretable que la varianza porque queda en las mismas unidades que la variable original (años, si hablamos de edad). Úsala para describir qué tan homogénea o heterogénea es una variable cuantitativa.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#rango-intercuartílico-iqr",
-    "href": "practica-03/practica-03.html#rango-intercuartílico-iqr",
-    "title": "Práctica 3",
-    "section": "Rango Intercuartílico (IQR)",
-    "text": "Rango Intercuartílico (IQR)\n\n\\[IQR = Q_3 - Q_1\\]\n\n\nEs el rango que cubre el 50% central de los datos, ignorando el 25% más bajo y el 25% más alto.\n\n\n\nCuándo usarlo: cuando la variable tiene valores extremos o una distribución sesgada — a diferencia de la varianza o el rango total, el IQR no se ve afectado por outliers, porque ni siquiera los considera en su cálculo. También es la base para detectar valores atípicos (fuera de \\(Q1 - 1.5 \\times IQR\\) o \\(Q3 + 1.5 \\times IQR\\)) y para construir boxplots.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#paso-1-obtención-de-la-fuente-de-datos",
-    "href": "practica-03/practica-03.html#paso-1-obtención-de-la-fuente-de-datos",
-    "title": "Práctica 3",
-    "section": "Paso 1: Obtención de la fuente de datos",
-    "text": "Paso 1: Obtención de la fuente de datos\n\nDescargar del classroom el .csv",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#paso-2-arquitectura-del-proyecto",
-    "href": "practica-03/practica-03.html#paso-2-arquitectura-del-proyecto",
-    "title": "Práctica 3",
-    "section": "Paso 2: Arquitectura del proyecto",
-    "text": "Paso 2: Arquitectura del proyecto\nproyecto-endireh-violencia/\n├── config/\n│   └── rutas.py              # Rutas de archivos estaticos\n├── data/\n│   ├── data-raw/             # Datos originales (nunca se editan)\n│   ├── data-processed/       # Datos limpios: sin duplicados, tipados, imputados\n│   ├── data-input-model/     # Datos transformados, listos para modelar\n│   └── data-model/           # Salidas: predicciones, clusters, reglas\n├── src/\n│   ├── cleaning/              # Scripts de limpieza y preprocesamiento\n│   ├── visualization/         # Scripts de graficas y EDA\n│   └── models/                 # Entrenamiento y evaluacion de modelos\n├── notebooks/                  # Notebooks exploratorios (no productivos)\n├── README.md\n└── requirements.txt",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#paso-2-readme-y-requirements.txt",
-    "href": "practica-03/practica-03.html#paso-2-readme-y-requirements.txt",
-    "title": "Práctica 3",
-    "section": "Paso 2: README y requirements.txt",
-    "text": "Paso 2: README y requirements.txt\n\n\nEl README.md debe documentar, como mínimo: el objetivo del proyecto, la fuente de los datos, cómo instalar el entorno y cómo ejecutar el pipeline.\n\n\n\n\nEl requirements.txt debe fijar versiones exactas: polars==1.9.0, pandas==2.2.2, pyarrow==17.0.0, numpy==2.0.1, matplotlib, seaborn, scikit-learn, jupyter…\n\n\n\nSin README.md ni requirements.txt la práctica no se evalúa.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#paso-3-selección-del-framework",
-    "href": "practica-03/practica-03.html#paso-3-selección-del-framework",
-    "title": "Práctica 3",
-    "section": "Paso 3: Selección del framework",
-    "text": "Paso 3: Selección del framework\n\nDado que la ENDIREH 2021 es un archivo manejable en una sola máquina (algunos cientos de miles de registros), se recomienda polars para todo el pipeline de la práctica.\n\n\n\nOpcionalmente, se puede replicar el preprocesamiento también en pandas, para documentar en el reporte las diferencias de sintaxis y de tiempo de ejecución entre ambos frameworks.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#paso-4-carga-de-los-datos-crudos",
-    "href": "practica-03/practica-03.html#paso-4-carga-de-los-datos-crudos",
-    "title": "Práctica 3",
-    "section": "Paso 4: Carga de los datos crudos",
-    "text": "Paso 4: Carga de los datos crudos\nimport polars as pl\nfrom config.rutas import RUTA_DATA_RAW\n\ndf_crudo = pl.read_csv(RUTA_DATA_RAW / \"endireh_2021.csv\")\nprint(df_crudo.shape)\nprint(df_crudo.head())\n\nCon ~700,000 renglones, conviene explorar también la versión lazy:\ndf_lazy = pl.scan_csv(RUTA_DATA_RAW / \"endireh_2021.csv\")\nprint(df_lazy.collect_schema())",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#paso-5-clasificación-de-variables",
-    "href": "practica-03/practica-03.html#paso-5-clasificación-de-variables",
-    "title": "Práctica 3",
-    "section": "Paso 5: Clasificación de variables",
-    "text": "Paso 5: Clasificación de variables\n\n\n\n\n\n\n\n\n\nVariable\nTipo de dato\nJustificación (ejemplo)\n\n\n\n\nedad_primer_union\nCuantitativa continua\nToma cualquier valor numérico en un rango de edades\n\n\nnum_hijos\n\n\n\n\nnom_entidad\n\n\n\n\nnivel_escolaridad\n\n\n\n\nsufrio_violencia_pareja\n\n\n\n\nfactor_expansion\n\n\n\n\n\n\n\n(Completar las variables restantes del dataset siguiendo esta misma lógica — si falta alguna, el equipo la agrega.)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#paso-5-preprocesamiento-duplicados-y-tipos",
-    "href": "practica-03/practica-03.html#paso-5-preprocesamiento-duplicados-y-tipos",
-    "title": "Práctica 3",
-    "section": "Paso 5: Preprocesamiento — duplicados y tipos",
-    "text": "Paso 5: Preprocesamiento — duplicados y tipos\n\n\nEliminar (drop_nulls): válido cuando los nulos son pocos y no sesgan la muestra\nImputar con media/mediana: para variables cuantitativas, cuidando el efecto en la variabilidad\nImputar con moda: para variables categóricas\nMarcar como “No especificado”: cuando la ausencia de dato es en sí informativa",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#paso-6-código",
-    "href": "practica-03/practica-03.html#paso-6-código",
-    "title": "Práctica 3",
-    "section": "Paso 6: Código",
-    "text": "Paso 6: Código\n\nPreprocesamiento de los datos\nMedidas de Localizacion\nMedidas de Variabilidad",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#rumbo-a-la-entrega",
-    "href": "practica-03/practica-03.html#rumbo-a-la-entrega",
-    "title": "Práctica 3",
-    "section": "Rumbo a la entrega",
-    "text": "Rumbo a la entrega",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#qué-debe-incluir-el-reporte",
-    "href": "practica-03/practica-03.html#qué-debe-incluir-el-reporte",
-    "title": "Práctica 3",
-    "section": "Qué debe incluir el reporte",
-    "text": "Qué debe incluir el reporte\n\n\nComparación de frameworks (pandas / polars / PySpark) y justificación de la elección Solo se debe de implementar un solo framework\nDocumentación del preprocesamiento: duplicados eliminados, columnas convertidas, estrategia de imputación\nTabla de clasificación de variables completa\nResultados de medidas de localización y variabilidad, con capturas del EDA\nRespuestas al cuestionario\n\n\n\nRepositorio de Git con README.md y requirements.txt (solo el link; nada de código en el classroom). data/data-raw/ no va en el repositorio.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
-    "objectID": "practica-03/practica-03.html#referencias",
-    "href": "practica-03/practica-03.html#referencias",
-    "title": "Práctica 3",
-    "section": "Referencias",
-    "text": "Referencias\n\nINEGI — ENDIREH 2021\nDescriptor de archivos ENDIREH 2021\nPolars User Guide\npandas documentation\nPySpark documentation\nCookiecutter Data Science",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 3"
-    ]
-  },
-  {
     "objectID": "practica-02/practica-02.html#objetivo",
     "href": "practica-02/practica-02.html#objetivo",
     "title": "Práctica 2",
@@ -1418,426 +1245,6 @@
     "crumbs": [
       "Inicio",
       "Prácticas"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#objetivo",
-    "href": "practica-01/practica-01.html#objetivo",
-    "title": "Práctica 1",
-    "section": "Objetivo",
-    "text": "Objetivo\n\nEl objetivo de esta práctica es repasar, consolidar y evaluar las habilidades de diseño, escritura y optimización de consultas en SQL mediante la resolución de cuatro problemas con niveles de complejidad progresivos (Fácil, Medio y Difícil) en la plataforma LeetCode.\n\n\nSe hará especial énfasis en la validez funcional de las soluciones y en la eficiencia computacional de los queries implementados.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#conceptos-principales",
-    "href": "practica-01/practica-01.html#conceptos-principales",
-    "title": "Práctica 1",
-    "section": "Conceptos Principales",
-    "text": "Conceptos Principales\n\nFunciones de ventana\nExpresiones de tabla comunes (CTEs)\nCTEs recursivas\nOptimización de consultas (EXPLAIN / Query Plan)",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#función-de-ventana",
-    "href": "practica-01/practica-01.html#función-de-ventana",
-    "title": "Práctica 1",
-    "section": "Función de ventana",
-    "text": "Función de ventana\nSon funciones SQL que realizan cálculos sobre el conjunto de filas relacionadas con la fila actual (ventana).\n\nPor ejemplo, calcular una suma acumulada:\n\n\n\n\n\nFecha\nVentas\nSuma Acumulada\n\n\n\n\n2023-10-01\n4,241\n4,241\n\n\n2023-10-02\n2,389\n6,630\n\n\n2023-10-03\n1,580\n8,210\n\n\n2023-10-04\n3,395\n11,605\n\n\n2023-10-05\n1,265\n12,870",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#cómo-se-desliza-la-ventana",
-    "href": "practica-01/practica-01.html#cómo-se-desliza-la-ventana",
-    "title": "Práctica 1",
-    "section": "Cómo se desliza la ventana",
-    "text": "Cómo se desliza la ventana\n\nCalculando la fila actual\nLa ventana para la suma acumulada del 2023-10-04 incluye la fila actual y todas las filas anteriores.\nCálculo: 4,241 + 2,389 + 1,580 + 3,395 = 11,605\n\n\nAvanzando a la siguiente\nCuando pasamos a la fila siguiente, la ventana también se desplaza. Ahora incluirá todas las filas anteriores y la fila actual.\nNuevo cálculo: 11,605 + 1,265 = 12,870",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#sintaxis",
-    "href": "practica-01/practica-01.html#sintaxis",
-    "title": "Práctica 1",
-    "section": "Sintaxis",
-    "text": "Sintaxis\nSELECT column_1,\n       column_2,\n       &lt;window_function&gt; OVER(PARTITION BY … ORDER BY … &lt;window_frame&gt;) AS column_alias\nFROM table;\n\nLa cláusula OVER() es el corazón de cualquier función de ventana.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#componentes-de-over",
-    "href": "practica-01/practica-01.html#componentes-de-over",
-    "title": "Práctica 1",
-    "section": "Componentes de OVER()",
-    "text": "Componentes de OVER()\n\n&lt;window_function&gt;: la operación matemática o lógica que vas a realizar.\nOVER (...): convierte tu función en una “función de ventana”.\nPARTITION BY ... (opcional): divide los datos en subgrupos o “particiones” independientes.\nORDER BY ... (opcional): define en qué orden se evaluarán las filas dentro de cada partición.\n&lt;window_frame&gt; (opcional): define los límites exactos de tu ventana relativos a la fila evaluada.\nAS column_alias: el nombre de la nueva columna calculada.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#funciones-de-ventana-agregación",
-    "href": "practica-01/practica-01.html#funciones-de-ventana-agregación",
-    "title": "Práctica 1",
-    "section": "Funciones de Ventana: Agregación",
-    "text": "Funciones de Ventana: Agregación\n\nCOUNT() — cuenta el número de filas dentro de una ventana.\nSUM() — totaliza valores dentro de una ventana.\nAVG() — calcula la media de los valores dentro de una ventana.\nMIN() — encuentra el valor más pequeño dentro de una ventana.\nMAX() — encuentra el valor más grande dentro de una ventana.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#funciones-de-ventana-clasificación",
-    "href": "practica-01/practica-01.html#funciones-de-ventana-clasificación",
-    "title": "Práctica 1",
-    "section": "Funciones de Ventana: Clasificación",
-    "text": "Funciones de Ventana: Clasificación\n\nROW_NUMBER() — clasifica valores secuencialmente, con diferentes rangos para los valores empatados.\nRANK() — usa el mismo rango para empates; omite el siguiente rango después de un empate (1, 2, 2, 4).\nDENSE_RANK() — usa el mismo rango para empates; no omite el rango siguiente (1, 2, 2, 3, 4).",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#funciones-de-ventana-analíticas",
-    "href": "practica-01/practica-01.html#funciones-de-ventana-analíticas",
-    "title": "Práctica 1",
-    "section": "Funciones de Ventana: Analíticas",
-    "text": "Funciones de Ventana: Analíticas\n\nLEAD() — obtiene datos a partir de un desplazamiento definido después de la fila actual.\nLAG() — obtiene datos de un desplazamiento definido antes de la fila actual.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#ejemplo",
-    "href": "practica-01/practica-01.html#ejemplo",
-    "title": "Práctica 1",
-    "section": "Ejemplo",
-    "text": "Ejemplo\nTenemos la tabla empleados. Queremos saber quién es el mejor pagado de cada departamento, asignando una posición (ranking) según su salario.\n\n\n\nid\nnombre\ndepartamento\nsalario\n\n\n\n\n1\nSofía\nTI\n9000\n\n\n2\nCarlos\nTI\n8000\n\n\n3\nMarta\nTI\n8000\n\n\n4\nAna\nVentas\n5000\n\n\n5\nLuis\nVentas\n3000",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#la-solución-query-con-función-de-ventana",
-    "href": "practica-01/practica-01.html#la-solución-query-con-función-de-ventana",
-    "title": "Práctica 1",
-    "section": "La Solución: Query con Función de Ventana",
-    "text": "La Solución: Query con Función de Ventana\nUsaremos RANK() combinada con la cláusula OVER():\nSELECT \n    nombre, \n    departamento, \n    salario, \n    RANK() OVER(\n        PARTITION BY departamento \n        ORDER BY salario DESC\n    ) AS ranking_depto\nFROM empleados;\n\n\nPARTITION BY departamento crea ventanas separadas para ‘TI’ y ‘Ventas’. ORDER BY salario DESC ordena los salarios de mayor a menor dentro de cada ventana.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#el-resultado",
-    "href": "practica-01/practica-01.html#el-resultado",
-    "title": "Práctica 1",
-    "section": "El Resultado",
-    "text": "El Resultado\n\n\n\n\n\nnombre\ndepto\nsalario\nranking\n\n\n\n\nSofía\nTI\n9000\n1\n\n\nCarlos\nTI\n8000\n2\n\n\nMarta\nTI\n8000\n2\n\n\nAna\nVentas\n5000\n1\n\n\nLuis\nVentas\n3000\n2\n\n\n\n\n\nA diferencia de GROUP BY, la función de ventana devuelve todas las filas originales, con una nueva columna de cálculo dinámico.\n\n\n💡 Carlos y Marta empatan en 8000 y RANK() les asigna a ambos el puesto 2.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#cte-expresiones-de-tabla-comunes",
-    "href": "practica-01/practica-01.html#cte-expresiones-de-tabla-comunes",
-    "title": "Práctica 1",
-    "section": "CTE: Expresiones de Tabla Comunes",
-    "text": "CTE: Expresiones de Tabla Comunes\nPermiten definir una subconsulta con nombre, reutilizable dentro de la consulta principal.\nWITH cte_name AS (\n   SELECT\n     column1,\n     column2, …\n   FROM table …\n)\nSELECT …\nFROM cte_name, …;",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#ejemplo-salario-por-encima-del-promedio",
-    "href": "practica-01/practica-01.html#ejemplo-salario-por-encima-del-promedio",
-    "title": "Práctica 1",
-    "section": "Ejemplo: salario por encima del promedio",
-    "text": "Ejemplo: salario por encima del promedio\nQueremos saber qué personas ganan por encima del promedio de su departamento.\n\n\n\nid\nnombre\ndepartamento\nsalario\n\n\n\n\n1\nAna\nVentas\n5000\n\n\n2\nLuis\nVentas\n3000\n\n\n3\nCarlos\nTI\n8000\n\n\n4\nMarta\nTI\n7000\n\n\n5\nSofía\nTI\n9000\n\n\n\n\n(El promedio en Ventas es 4000 y en TI es 8000).",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#la-solución-query-con-cte",
-    "href": "practica-01/practica-01.html#la-solución-query-con-cte",
-    "title": "Práctica 1",
-    "section": "La Solución: Query con CTE",
-    "text": "La Solución: Query con CTE\nWITH PromedioDepto AS (\n    -- 1. La CTE calcula el salario promedio por departamento\n    SELECT \n        departamento, \n        AVG(salario) AS salario_promedio\n    FROM empleados\n    GROUP BY departamento\n)\n-- 2. La consulta principal usa la CTE como si fuera una tabla real\nSELECT \n    e.nombre, e.departamento, e.salario, p.salario_promedio\nFROM empleados e\nJOIN PromedioDepto p ON e.departamento = p.departamento\nWHERE e.salario &gt; p.salario_promedio;",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#el-resultado-1",
-    "href": "practica-01/practica-01.html#el-resultado-1",
-    "title": "Práctica 1",
-    "section": "El Resultado",
-    "text": "El Resultado\n\n\n\nnombre\ndepartamento\nsalario\npromedio\n\n\n\n\nAna\nVentas\n5000\n4000\n\n\nSofía\nTI\n9000\n8000\n\n\n\n\n\n\n💡 ¿Por qué usar una CTE? Podríamos resolverlo con subconsultas anidadas, pero la CTE hace que el código sea más limpio, lógico y fácil de leer paso a paso.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#ctes-recursivas",
-    "href": "practica-01/practica-01.html#ctes-recursivas",
-    "title": "Práctica 1",
-    "section": "CTEs Recursivas",
-    "text": "CTEs Recursivas\n\nUna CTE recursiva hace referencia a sí misma dentro del SELECT, creando un bucle.\n\n\nSe utilizan para recorrer estructuras de datos jerárquicas, como organigramas o redes.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#sintaxis-1",
-    "href": "practica-01/practica-01.html#sintaxis-1",
-    "title": "Práctica 1",
-    "section": "Sintaxis",
-    "text": "Sintaxis\nRequiere la palabra RECURSIVE y se compone de: ancla, UNION y miembro recursivo.\nWITH RECURSIVE cte_name AS (\n    -- 1. Consulta Ancla (caso base)\n    SELECT column_1, column_2\n    FROM table_name\n    WHERE condition\n\n    UNION ALL\n\n    -- 2. Consulta Recursiva (referencia a cte_name)\n    SELECT t.column_1, t.column_2\n    FROM table_name t\n    JOIN cte_name c ON t.parent_column = c.column_1\n)\nSELECT * FROM cte_name;",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#ejemplo-jerarquía-de-una-empresa",
-    "href": "practica-01/practica-01.html#ejemplo-jerarquía-de-una-empresa",
-    "title": "Práctica 1",
-    "section": "Ejemplo: Jerarquía de una Empresa",
-    "text": "Ejemplo: Jerarquía de una Empresa\nCada persona tiene un jefe (jefe_id), excepto la CEO, con valor NULL.\n\n\n\nid\nnombre\njefe_id\npuesto\n\n\n\n\n1\nElena\nNULL\nCEO\n\n\n2\nRoberto\n1\nDirector TI\n\n\n3\nLaura\n2\nDesarrolladora\n\n\n4\nTomás\n3\nBecario\n\n\n\n\nObjetivo: ver la jerarquía completa por nivel (Nivel 1 = CEO, Nivel 2 = Director, etc.).",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#la-solución-query-recursiva",
-    "href": "practica-01/practica-01.html#la-solución-query-recursiva",
-    "title": "Práctica 1",
-    "section": "La Solución: Query Recursiva",
-    "text": "La Solución: Query Recursiva\nWITH RECURSIVE Jerarquia AS (\n    -- 1. Ancla: empezamos por la CEO (nivel más alto)\n    SELECT id, nombre, jefe_id, 1 AS nivel\n    FROM empleados\n    WHERE jefe_id IS NULL\n    \n    UNION ALL\n    \n    -- 2. Recursividad: buscamos a quienes reportan al nivel anterior\n    SELECT e.id, e.nombre, e.jefe_id, j.nivel + 1\n    FROM empleados e\n    JOIN Jerarquia j ON e.jefe_id = j.id\n)\nSELECT nombre, nivel FROM Jerarquia;",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#el-resultado-2",
-    "href": "practica-01/practica-01.html#el-resultado-2",
-    "title": "Práctica 1",
-    "section": "El Resultado",
-    "text": "El Resultado\n\n\n\n\n\nnombre\nnivel\n\n\n\n\nElena\n1\n\n\nRoberto\n2\n\n\nLaura\n3\n\n\nTomás\n4\n\n\n\n\n\nEl motor ejecutó el caso base (Elena). En el primer bucle encontró a Roberto (nivel 2), luego a Laura (nivel 3), y así hasta que nadie reportó a Tomás.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#el-proceso-de-optimización-de-consultas",
-    "href": "practica-01/practica-01.html#el-proceso-de-optimización-de-consultas",
-    "title": "Práctica 1",
-    "section": "El Proceso de Optimización de Consultas",
-    "text": "El Proceso de Optimización de Consultas\n\nOptimizar código SQL no se trata de adivinar, sino de seguir un método científico.\n\n\nEste es el flujo de trabajo estándar en la industria de datos para transformar una consulta lenta en una eficiente.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#identificar-y-entender",
-    "href": "practica-01/practica-01.html#identificar-y-entender",
-    "title": "Práctica 1",
-    "section": "1. Identificar y Entender",
-    "text": "1. Identificar y Entender\nAntes de tocar una sola línea de código, debes entender el contexto.\n\nEntender el objetivo: ¿qué intentaba lograr el autor original? A veces es más rápido replantear la lógica desde cero que emparchar una consulta mal diseñada.\nIdentificar el cuello de botella: ¿el problema es el tiempo de ejecución, el alto consumo de CPU, o que bloquea otras transacciones?\nRevisar la volumetría: ¿estás consultando una tabla de 1,000 registros o de 500 millones? Las estrategias cambian según el tamaño de los datos.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#analizar-el-plan-de-ejecución",
-    "href": "practica-01/practica-01.html#analizar-el-plan-de-ejecución",
-    "title": "Práctica 1",
-    "section": "2. Analizar el Plan de Ejecución",
-    "text": "2. Analizar el Plan de Ejecución\nNunca optimices a ciegas.\n\nEXPLAIN o EXPLAIN ANALYZE muestra el plan de ejecución que el motor va a usar para resolver una consulta: qué índices utiliza, en qué orden accede a las tablas y qué método de join aplica.\n\n\nSirve para detectar table scans innecesarios, elegir mejores índices y reescribir consultas costosas antes de llevarlas a producción.\n\n\nEXPLAIN\nSELECT nombre, salario\nFROM empleados\nWHERE departamento = 'TI';",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#red-flags-en-el-plan-de-ejecución",
-    "href": "practica-01/practica-01.html#red-flags-en-el-plan-de-ejecución",
-    "title": "Práctica 1",
-    "section": "Red Flags en el Plan de Ejecución",
-    "text": "Red Flags en el Plan de Ejecución\n\nFull Table Scans — escaneos completos de tabla.\nNested Loops muy grandes — bucles anidados costosos.\nUso de memoria temporal en disco en lugar de en RAM.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#revisar-índices-y-estructura",
-    "href": "practica-01/practica-01.html#revisar-índices-y-estructura",
-    "title": "Práctica 1",
-    "section": "3. Revisar Índices y Estructura",
-    "text": "3. Revisar Índices y Estructura\nEl código SQL puede ser perfecto, pero sin la estructura física adecuada, seguirá siendo lento.\n\nRevisa las llaves: ¿las columnas usadas en JOIN, WHERE y ORDER BY están indexadas?\nTipos de datos: ¿estás comparando un texto (VARCHAR) con un número (INT)? Las conversiones implícitas destruyen el rendimiento.\nEquilibrio: los índices aceleran la lectura (SELECT), pero ralentizan la escritura (INSERT/UPDATE). No crees índices “por si acaso”.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#refactorizar-el-código",
-    "href": "practica-01/practica-01.html#refactorizar-el-código",
-    "title": "Práctica 1",
-    "section": "4. Refactorizar el Código",
-    "text": "4. Refactorizar el Código\n\nSustituye subconsultas complejas por CTEs para mejorar la legibilidad y ejecución.\nMueve los filtros WHERE lo más “arriba” posible para reducir el volumen de datos antes de los JOINs.\nAsegúrate de que tus filtros sean sargables (no apliques funciones matemáticas o de texto directamente sobre la columna en la cláusula WHERE).\nElimina SELECT * y DISTINCT innecesarios.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#pruebas-y-benchmarking",
-    "href": "practica-01/practica-01.html#pruebas-y-benchmarking",
-    "title": "Práctica 1",
-    "section": "5. Pruebas y Benchmarking",
-    "text": "5. Pruebas y Benchmarking\nEl último paso es validar con datos duros que tu nueva versión es mejor.\n\nMide el antes y el después: ejecuta ambas consultas y compara sus tiempos de respuesta y su costo en el plan de ejecución.\nLimpia la caché: vacía la caché de la base de datos antes de probar. Ejecutar la misma consulta dos veces da falsos positivos, porque la segunda siempre es más rápida al tener los datos en memoria.\nImplementa: si los resultados son sólidos, la consulta está lista para producción.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#fuente",
-    "href": "practica-01/practica-01.html#fuente",
-    "title": "Práctica 1",
-    "section": "Fuente",
-    "text": "Fuente\n\nDataCamp — Optimización de consultas SQL",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#desarrollo-1",
-    "href": "practica-01/practica-01.html#desarrollo-1",
-    "title": "Práctica 1",
-    "section": "Desarrollo",
-    "text": "Desarrollo\nA continuación se presentan los cuatro ejercicios seleccionados para el repaso avanzado de SQL. Cada uno deberá codificarse y probarse directamente en LeetCode utilizando el motor relacional de su elección (MySQL, PostgreSQL o MS SQL Server).",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#ejercicio-1-combine-two-tables",
-    "href": "practica-01/practica-01.html#ejercicio-1-combine-two-tables",
-    "title": "Práctica 1",
-    "section": "Ejercicio 1: Combine Two Tables",
-    "text": "Ejercicio 1: Combine Two Tables\nNivel: Fácil\n\nEnfoque: uso correcto de combinaciones externas (Outer Joins).\n\n\nDescripción: dadas las tablas Person y Address, el script debe reportar el primer nombre, apellido, ciudad y estado de cada persona. Si la dirección de un ID de persona no está presente en Address, se reporta como null.\n\n\nLink: leetcode.com/problems/combine-two-tables",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#ejercicio-2-second-highest-salary",
-    "href": "practica-01/practica-01.html#ejercicio-2-second-highest-salary",
-    "title": "Práctica 1",
-    "section": "Ejercicio 2: Second Highest Salary",
-    "text": "Ejercicio 2: Second Highest Salary\nNivel: Medio\n\nEnfoque: subconsultas, manejo de valores vacíos y cláusulas de filtrado condicional.\n\n\nDescripción: encontrar el segundo salario más alto de la tabla Employee. Si no existe, la consulta debe retornar null en una sola columna.\n\n\nLink: leetcode.com/problems/second-highest-salary",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#ejercicio-3-consecutive-numbers",
-    "href": "practica-01/practica-01.html#ejercicio-3-consecutive-numbers",
-    "title": "Práctica 1",
-    "section": "Ejercicio 3: Consecutive Numbers",
-    "text": "Ejercicio 3: Consecutive Numbers\nNivel: Medio\n\nEnfoque: funciones de ventana analíticas (LEAD/LAG) o combinaciones múltiples sobre la misma tabla (Self-JOINs).\n\n\nDescripción: encontrar todos los números que aparecen al menos tres veces consecutivas de manera ininterrumpida dentro de la tabla Logs.\n\n\nLink: leetcode.com/problems/consecutive-numbers",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#ejercicio-4-department-top-three-salaries",
-    "href": "practica-01/practica-01.html#ejercicio-4-department-top-three-salaries",
-    "title": "Práctica 1",
-    "section": "Ejercicio 4: Department Top Three Salaries",
-    "text": "Ejercicio 4: Department Top Three Salaries\nNivel: Difícil\n\nEnfoque: expresiones de tabla comunes (CTEs) y funciones de ventana avanzadas de clasificación.\n\n\nDescripción: una empresa considera “alto asalariado” a un empleado si su salario está entre los tres primeros salarios únicos de su departamento. Escriba una consulta para encontrar a esos empleados en cada departamento.\n\n\nLink: leetcode.com/problems/department-top-three-salaries",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
-    ]
-  },
-  {
-    "objectID": "practica-01/practica-01.html#gracias",
-    "href": "practica-01/practica-01.html#gracias",
-    "title": "Práctica 1",
-    "section": "¡Gracias!",
-    "text": "¡Gracias!\n\nPreguntas y comentarios son bienvenidos.",
-    "crumbs": [
-      "Inicio",
-      "Prácticas",
-      "Práctica 1"
     ]
   },
   {
@@ -2378,6 +1785,942 @@
       "Inicio",
       "Prácticas",
       "Modelado Dimensional con Metodología Kimball"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#objetivo",
+    "href": "practica-01/practica-01.html#objetivo",
+    "title": "Práctica 1",
+    "section": "Objetivo",
+    "text": "Objetivo\n\nEl objetivo de esta práctica es repasar, consolidar y evaluar las habilidades de diseño, escritura y optimización de consultas en SQL mediante la resolución de cuatro problemas con niveles de complejidad progresivos (Fácil, Medio y Difícil) en la plataforma LeetCode.\n\n\nSe hará especial énfasis en la validez funcional de las soluciones y en la eficiencia computacional de los queries implementados.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#conceptos-principales",
+    "href": "practica-01/practica-01.html#conceptos-principales",
+    "title": "Práctica 1",
+    "section": "Conceptos Principales",
+    "text": "Conceptos Principales\n\nFunciones de ventana\nExpresiones de tabla comunes (CTEs)\nCTEs recursivas\nOptimización de consultas (EXPLAIN / Query Plan)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#función-de-ventana",
+    "href": "practica-01/practica-01.html#función-de-ventana",
+    "title": "Práctica 1",
+    "section": "Función de ventana",
+    "text": "Función de ventana\nSon funciones SQL que realizan cálculos sobre el conjunto de filas relacionadas con la fila actual (ventana).\n\nPor ejemplo, calcular una suma acumulada:\n\n\n\n\n\nFecha\nVentas\nSuma Acumulada\n\n\n\n\n2023-10-01\n4,241\n4,241\n\n\n2023-10-02\n2,389\n6,630\n\n\n2023-10-03\n1,580\n8,210\n\n\n2023-10-04\n3,395\n11,605\n\n\n2023-10-05\n1,265\n12,870",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#cómo-se-desliza-la-ventana",
+    "href": "practica-01/practica-01.html#cómo-se-desliza-la-ventana",
+    "title": "Práctica 1",
+    "section": "Cómo se desliza la ventana",
+    "text": "Cómo se desliza la ventana\n\nCalculando la fila actual\nLa ventana para la suma acumulada del 2023-10-04 incluye la fila actual y todas las filas anteriores.\nCálculo: 4,241 + 2,389 + 1,580 + 3,395 = 11,605\n\n\nAvanzando a la siguiente\nCuando pasamos a la fila siguiente, la ventana también se desplaza. Ahora incluirá todas las filas anteriores y la fila actual.\nNuevo cálculo: 11,605 + 1,265 = 12,870",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#sintaxis",
+    "href": "practica-01/practica-01.html#sintaxis",
+    "title": "Práctica 1",
+    "section": "Sintaxis",
+    "text": "Sintaxis\nSELECT column_1,\n       column_2,\n       &lt;window_function&gt; OVER(PARTITION BY … ORDER BY … &lt;window_frame&gt;) AS column_alias\nFROM table;\n\nLa cláusula OVER() es el corazón de cualquier función de ventana.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#componentes-de-over",
+    "href": "practica-01/practica-01.html#componentes-de-over",
+    "title": "Práctica 1",
+    "section": "Componentes de OVER()",
+    "text": "Componentes de OVER()\n\n&lt;window_function&gt;: la operación matemática o lógica que vas a realizar.\nOVER (...): convierte tu función en una “función de ventana”.\nPARTITION BY ... (opcional): divide los datos en subgrupos o “particiones” independientes.\nORDER BY ... (opcional): define en qué orden se evaluarán las filas dentro de cada partición.\n&lt;window_frame&gt; (opcional): define los límites exactos de tu ventana relativos a la fila evaluada.\nAS column_alias: el nombre de la nueva columna calculada.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#funciones-de-ventana-agregación",
+    "href": "practica-01/practica-01.html#funciones-de-ventana-agregación",
+    "title": "Práctica 1",
+    "section": "Funciones de Ventana: Agregación",
+    "text": "Funciones de Ventana: Agregación\n\nCOUNT() — cuenta el número de filas dentro de una ventana.\nSUM() — totaliza valores dentro de una ventana.\nAVG() — calcula la media de los valores dentro de una ventana.\nMIN() — encuentra el valor más pequeño dentro de una ventana.\nMAX() — encuentra el valor más grande dentro de una ventana.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#funciones-de-ventana-clasificación",
+    "href": "practica-01/practica-01.html#funciones-de-ventana-clasificación",
+    "title": "Práctica 1",
+    "section": "Funciones de Ventana: Clasificación",
+    "text": "Funciones de Ventana: Clasificación\n\nROW_NUMBER() — clasifica valores secuencialmente, con diferentes rangos para los valores empatados.\nRANK() — usa el mismo rango para empates; omite el siguiente rango después de un empate (1, 2, 2, 4).\nDENSE_RANK() — usa el mismo rango para empates; no omite el rango siguiente (1, 2, 2, 3, 4).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#funciones-de-ventana-analíticas",
+    "href": "practica-01/practica-01.html#funciones-de-ventana-analíticas",
+    "title": "Práctica 1",
+    "section": "Funciones de Ventana: Analíticas",
+    "text": "Funciones de Ventana: Analíticas\n\nLEAD() — obtiene datos a partir de un desplazamiento definido después de la fila actual.\nLAG() — obtiene datos de un desplazamiento definido antes de la fila actual.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejemplo",
+    "href": "practica-01/practica-01.html#ejemplo",
+    "title": "Práctica 1",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nTenemos la tabla empleados. Queremos saber quién es el mejor pagado de cada departamento, asignando una posición (ranking) según su salario.\n\n\n\nid\nnombre\ndepartamento\nsalario\n\n\n\n\n1\nSofía\nTI\n9000\n\n\n2\nCarlos\nTI\n8000\n\n\n3\nMarta\nTI\n8000\n\n\n4\nAna\nVentas\n5000\n\n\n5\nLuis\nVentas\n3000",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#la-solución-query-con-función-de-ventana",
+    "href": "practica-01/practica-01.html#la-solución-query-con-función-de-ventana",
+    "title": "Práctica 1",
+    "section": "La Solución: Query con Función de Ventana",
+    "text": "La Solución: Query con Función de Ventana\nUsaremos RANK() combinada con la cláusula OVER():\nSELECT \n    nombre, \n    departamento, \n    salario, \n    RANK() OVER(\n        PARTITION BY departamento \n        ORDER BY salario DESC\n    ) AS ranking_depto\nFROM empleados;\n\n\nPARTITION BY departamento crea ventanas separadas para ‘TI’ y ‘Ventas’. ORDER BY salario DESC ordena los salarios de mayor a menor dentro de cada ventana.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#el-resultado",
+    "href": "practica-01/practica-01.html#el-resultado",
+    "title": "Práctica 1",
+    "section": "El Resultado",
+    "text": "El Resultado\n\n\n\n\n\nnombre\ndepto\nsalario\nranking\n\n\n\n\nSofía\nTI\n9000\n1\n\n\nCarlos\nTI\n8000\n2\n\n\nMarta\nTI\n8000\n2\n\n\nAna\nVentas\n5000\n1\n\n\nLuis\nVentas\n3000\n2\n\n\n\n\n\nA diferencia de GROUP BY, la función de ventana devuelve todas las filas originales, con una nueva columna de cálculo dinámico.\n\n\n💡 Carlos y Marta empatan en 8000 y RANK() les asigna a ambos el puesto 2.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#cte-expresiones-de-tabla-comunes",
+    "href": "practica-01/practica-01.html#cte-expresiones-de-tabla-comunes",
+    "title": "Práctica 1",
+    "section": "CTE: Expresiones de Tabla Comunes",
+    "text": "CTE: Expresiones de Tabla Comunes\nPermiten definir una subconsulta con nombre, reutilizable dentro de la consulta principal.\nWITH cte_name AS (\n   SELECT\n     column1,\n     column2, …\n   FROM table …\n)\nSELECT …\nFROM cte_name, …;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejemplo-salario-por-encima-del-promedio",
+    "href": "practica-01/practica-01.html#ejemplo-salario-por-encima-del-promedio",
+    "title": "Práctica 1",
+    "section": "Ejemplo: salario por encima del promedio",
+    "text": "Ejemplo: salario por encima del promedio\nQueremos saber qué personas ganan por encima del promedio de su departamento.\n\n\n\nid\nnombre\ndepartamento\nsalario\n\n\n\n\n1\nAna\nVentas\n5000\n\n\n2\nLuis\nVentas\n3000\n\n\n3\nCarlos\nTI\n8000\n\n\n4\nMarta\nTI\n7000\n\n\n5\nSofía\nTI\n9000\n\n\n\n\n(El promedio en Ventas es 4000 y en TI es 8000).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#la-solución-query-con-cte",
+    "href": "practica-01/practica-01.html#la-solución-query-con-cte",
+    "title": "Práctica 1",
+    "section": "La Solución: Query con CTE",
+    "text": "La Solución: Query con CTE\nWITH PromedioDepto AS (\n    -- 1. La CTE calcula el salario promedio por departamento\n    SELECT \n        departamento, \n        AVG(salario) AS salario_promedio\n    FROM empleados\n    GROUP BY departamento\n)\n-- 2. La consulta principal usa la CTE como si fuera una tabla real\nSELECT \n    e.nombre, e.departamento, e.salario, p.salario_promedio\nFROM empleados e\nJOIN PromedioDepto p ON e.departamento = p.departamento\nWHERE e.salario &gt; p.salario_promedio;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#el-resultado-1",
+    "href": "practica-01/practica-01.html#el-resultado-1",
+    "title": "Práctica 1",
+    "section": "El Resultado",
+    "text": "El Resultado\n\n\n\nnombre\ndepartamento\nsalario\npromedio\n\n\n\n\nAna\nVentas\n5000\n4000\n\n\nSofía\nTI\n9000\n8000\n\n\n\n\n\n\n💡 ¿Por qué usar una CTE? Podríamos resolverlo con subconsultas anidadas, pero la CTE hace que el código sea más limpio, lógico y fácil de leer paso a paso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ctes-recursivas",
+    "href": "practica-01/practica-01.html#ctes-recursivas",
+    "title": "Práctica 1",
+    "section": "CTEs Recursivas",
+    "text": "CTEs Recursivas\n\nUna CTE recursiva hace referencia a sí misma dentro del SELECT, creando un bucle.\n\n\nSe utilizan para recorrer estructuras de datos jerárquicas, como organigramas o redes.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#sintaxis-1",
+    "href": "practica-01/practica-01.html#sintaxis-1",
+    "title": "Práctica 1",
+    "section": "Sintaxis",
+    "text": "Sintaxis\nRequiere la palabra RECURSIVE y se compone de: ancla, UNION y miembro recursivo.\nWITH RECURSIVE cte_name AS (\n    -- 1. Consulta Ancla (caso base)\n    SELECT column_1, column_2\n    FROM table_name\n    WHERE condition\n\n    UNION ALL\n\n    -- 2. Consulta Recursiva (referencia a cte_name)\n    SELECT t.column_1, t.column_2\n    FROM table_name t\n    JOIN cte_name c ON t.parent_column = c.column_1\n)\nSELECT * FROM cte_name;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejemplo-jerarquía-de-una-empresa",
+    "href": "practica-01/practica-01.html#ejemplo-jerarquía-de-una-empresa",
+    "title": "Práctica 1",
+    "section": "Ejemplo: Jerarquía de una Empresa",
+    "text": "Ejemplo: Jerarquía de una Empresa\nCada persona tiene un jefe (jefe_id), excepto la CEO, con valor NULL.\n\n\n\nid\nnombre\njefe_id\npuesto\n\n\n\n\n1\nElena\nNULL\nCEO\n\n\n2\nRoberto\n1\nDirector TI\n\n\n3\nLaura\n2\nDesarrolladora\n\n\n4\nTomás\n3\nBecario\n\n\n\n\nObjetivo: ver la jerarquía completa por nivel (Nivel 1 = CEO, Nivel 2 = Director, etc.).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#la-solución-query-recursiva",
+    "href": "practica-01/practica-01.html#la-solución-query-recursiva",
+    "title": "Práctica 1",
+    "section": "La Solución: Query Recursiva",
+    "text": "La Solución: Query Recursiva\nWITH RECURSIVE Jerarquia AS (\n    -- 1. Ancla: empezamos por la CEO (nivel más alto)\n    SELECT id, nombre, jefe_id, 1 AS nivel\n    FROM empleados\n    WHERE jefe_id IS NULL\n    \n    UNION ALL\n    \n    -- 2. Recursividad: buscamos a quienes reportan al nivel anterior\n    SELECT e.id, e.nombre, e.jefe_id, j.nivel + 1\n    FROM empleados e\n    JOIN Jerarquia j ON e.jefe_id = j.id\n)\nSELECT nombre, nivel FROM Jerarquia;",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#el-resultado-2",
+    "href": "practica-01/practica-01.html#el-resultado-2",
+    "title": "Práctica 1",
+    "section": "El Resultado",
+    "text": "El Resultado\n\n\n\n\n\nnombre\nnivel\n\n\n\n\nElena\n1\n\n\nRoberto\n2\n\n\nLaura\n3\n\n\nTomás\n4\n\n\n\n\n\nEl motor ejecutó el caso base (Elena). En el primer bucle encontró a Roberto (nivel 2), luego a Laura (nivel 3), y así hasta que nadie reportó a Tomás.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#el-proceso-de-optimización-de-consultas",
+    "href": "practica-01/practica-01.html#el-proceso-de-optimización-de-consultas",
+    "title": "Práctica 1",
+    "section": "El Proceso de Optimización de Consultas",
+    "text": "El Proceso de Optimización de Consultas\n\nOptimizar código SQL no se trata de adivinar, sino de seguir un método científico.\n\n\nEste es el flujo de trabajo estándar en la industria de datos para transformar una consulta lenta en una eficiente.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#identificar-y-entender",
+    "href": "practica-01/practica-01.html#identificar-y-entender",
+    "title": "Práctica 1",
+    "section": "1. Identificar y Entender",
+    "text": "1. Identificar y Entender\nAntes de tocar una sola línea de código, debes entender el contexto.\n\nEntender el objetivo: ¿qué intentaba lograr el autor original? A veces es más rápido replantear la lógica desde cero que emparchar una consulta mal diseñada.\nIdentificar el cuello de botella: ¿el problema es el tiempo de ejecución, el alto consumo de CPU, o que bloquea otras transacciones?\nRevisar la volumetría: ¿estás consultando una tabla de 1,000 registros o de 500 millones? Las estrategias cambian según el tamaño de los datos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#analizar-el-plan-de-ejecución",
+    "href": "practica-01/practica-01.html#analizar-el-plan-de-ejecución",
+    "title": "Práctica 1",
+    "section": "2. Analizar el Plan de Ejecución",
+    "text": "2. Analizar el Plan de Ejecución\nNunca optimices a ciegas.\n\nEXPLAIN o EXPLAIN ANALYZE muestra el plan de ejecución que el motor va a usar para resolver una consulta: qué índices utiliza, en qué orden accede a las tablas y qué método de join aplica.\n\n\nSirve para detectar table scans innecesarios, elegir mejores índices y reescribir consultas costosas antes de llevarlas a producción.\n\n\nEXPLAIN\nSELECT nombre, salario\nFROM empleados\nWHERE departamento = 'TI';",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#red-flags-en-el-plan-de-ejecución",
+    "href": "practica-01/practica-01.html#red-flags-en-el-plan-de-ejecución",
+    "title": "Práctica 1",
+    "section": "Red Flags en el Plan de Ejecución",
+    "text": "Red Flags en el Plan de Ejecución\n\nFull Table Scans — escaneos completos de tabla.\nNested Loops muy grandes — bucles anidados costosos.\nUso de memoria temporal en disco en lugar de en RAM.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#revisar-índices-y-estructura",
+    "href": "practica-01/practica-01.html#revisar-índices-y-estructura",
+    "title": "Práctica 1",
+    "section": "3. Revisar Índices y Estructura",
+    "text": "3. Revisar Índices y Estructura\nEl código SQL puede ser perfecto, pero sin la estructura física adecuada, seguirá siendo lento.\n\nRevisa las llaves: ¿las columnas usadas en JOIN, WHERE y ORDER BY están indexadas?\nTipos de datos: ¿estás comparando un texto (VARCHAR) con un número (INT)? Las conversiones implícitas destruyen el rendimiento.\nEquilibrio: los índices aceleran la lectura (SELECT), pero ralentizan la escritura (INSERT/UPDATE). No crees índices “por si acaso”.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#refactorizar-el-código",
+    "href": "practica-01/practica-01.html#refactorizar-el-código",
+    "title": "Práctica 1",
+    "section": "4. Refactorizar el Código",
+    "text": "4. Refactorizar el Código\n\nSustituye subconsultas complejas por CTEs para mejorar la legibilidad y ejecución.\nMueve los filtros WHERE lo más “arriba” posible para reducir el volumen de datos antes de los JOINs.\nAsegúrate de que tus filtros sean sargables (no apliques funciones matemáticas o de texto directamente sobre la columna en la cláusula WHERE).\nElimina SELECT * y DISTINCT innecesarios.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#pruebas-y-benchmarking",
+    "href": "practica-01/practica-01.html#pruebas-y-benchmarking",
+    "title": "Práctica 1",
+    "section": "5. Pruebas y Benchmarking",
+    "text": "5. Pruebas y Benchmarking\nEl último paso es validar con datos duros que tu nueva versión es mejor.\n\nMide el antes y el después: ejecuta ambas consultas y compara sus tiempos de respuesta y su costo en el plan de ejecución.\nLimpia la caché: vacía la caché de la base de datos antes de probar. Ejecutar la misma consulta dos veces da falsos positivos, porque la segunda siempre es más rápida al tener los datos en memoria.\nImplementa: si los resultados son sólidos, la consulta está lista para producción.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#fuente",
+    "href": "practica-01/practica-01.html#fuente",
+    "title": "Práctica 1",
+    "section": "Fuente",
+    "text": "Fuente\n\nDataCamp — Optimización de consultas SQL",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#desarrollo-1",
+    "href": "practica-01/practica-01.html#desarrollo-1",
+    "title": "Práctica 1",
+    "section": "Desarrollo",
+    "text": "Desarrollo\nA continuación se presentan los cuatro ejercicios seleccionados para el repaso avanzado de SQL. Cada uno deberá codificarse y probarse directamente en LeetCode utilizando el motor relacional de su elección (MySQL, PostgreSQL o MS SQL Server).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejercicio-1-combine-two-tables",
+    "href": "practica-01/practica-01.html#ejercicio-1-combine-two-tables",
+    "title": "Práctica 1",
+    "section": "Ejercicio 1: Combine Two Tables",
+    "text": "Ejercicio 1: Combine Two Tables\nNivel: Fácil\n\nEnfoque: uso correcto de combinaciones externas (Outer Joins).\n\n\nDescripción: dadas las tablas Person y Address, el script debe reportar el primer nombre, apellido, ciudad y estado de cada persona. Si la dirección de un ID de persona no está presente en Address, se reporta como null.\n\n\nLink: leetcode.com/problems/combine-two-tables",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejercicio-2-second-highest-salary",
+    "href": "practica-01/practica-01.html#ejercicio-2-second-highest-salary",
+    "title": "Práctica 1",
+    "section": "Ejercicio 2: Second Highest Salary",
+    "text": "Ejercicio 2: Second Highest Salary\nNivel: Medio\n\nEnfoque: subconsultas, manejo de valores vacíos y cláusulas de filtrado condicional.\n\n\nDescripción: encontrar el segundo salario más alto de la tabla Employee. Si no existe, la consulta debe retornar null en una sola columna.\n\n\nLink: leetcode.com/problems/second-highest-salary",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejercicio-3-consecutive-numbers",
+    "href": "practica-01/practica-01.html#ejercicio-3-consecutive-numbers",
+    "title": "Práctica 1",
+    "section": "Ejercicio 3: Consecutive Numbers",
+    "text": "Ejercicio 3: Consecutive Numbers\nNivel: Medio\n\nEnfoque: funciones de ventana analíticas (LEAD/LAG) o combinaciones múltiples sobre la misma tabla (Self-JOINs).\n\n\nDescripción: encontrar todos los números que aparecen al menos tres veces consecutivas de manera ininterrumpida dentro de la tabla Logs.\n\n\nLink: leetcode.com/problems/consecutive-numbers",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#ejercicio-4-department-top-three-salaries",
+    "href": "practica-01/practica-01.html#ejercicio-4-department-top-three-salaries",
+    "title": "Práctica 1",
+    "section": "Ejercicio 4: Department Top Three Salaries",
+    "text": "Ejercicio 4: Department Top Three Salaries\nNivel: Difícil\n\nEnfoque: expresiones de tabla comunes (CTEs) y funciones de ventana avanzadas de clasificación.\n\n\nDescripción: una empresa considera “alto asalariado” a un empleado si su salario está entre los tres primeros salarios únicos de su departamento. Escriba una consulta para encontrar a esos empleados en cada departamento.\n\n\nLink: leetcode.com/problems/department-top-three-salaries",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-01/practica-01.html#gracias",
+    "href": "practica-01/practica-01.html#gracias",
+    "title": "Práctica 1",
+    "section": "¡Gracias!",
+    "text": "¡Gracias!\n\nPreguntas y comentarios son bienvenidos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 1"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
+    "href": "practica-03/practica-03.html#de-la-teoría-al-modelo-el-proceso-completo",
+    "title": "Práctica 3",
+    "section": "De la teoría al modelo: el proceso completo",
+    "text": "De la teoría al modelo: el proceso completo\nEn un proyecto real, entrenar un modelo es apenas la última fase. Antes hace falta:\n\n\nOrganizar el proyecto con una arquitectura de carpetas clara y reproducible\nSeleccionar el framework de análisis adecuado según el volumen de datos\nEjecutar un preprocesamiento que garantice datos consistentes, únicos y del tipo correcto\nDescribir cuantitativamente los datos con medidas de localización y variabilidad",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#el-caso-de-estudio-endireh-2021",
+    "href": "practica-03/practica-03.html#el-caso-de-estudio-endireh-2021",
+    "title": "Práctica 3",
+    "section": "El caso de estudio: ENDIREH 2021",
+    "text": "El caso de estudio: ENDIREH 2021\n\nLa Encuesta Nacional sobre la Dinámica de las Relaciones en los Hogares (ENDIREH) 2021, del INEGI, genera información representativa a nivel nacional y estatal sobre las experiencias de violencia física, sexual, emocional, económica y patrimonial que enfrentan las mujeres de 15 años y más.\n\n\nCombina de forma natural variables cualitativas y cuantitativas, además de valores faltantes, duplicados y columnas que requieren conversión de tipo — un escenario idéntico al de un proyecto profesional real.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#nota-de-sensibilidad-del-tema",
+    "href": "practica-03/practica-03.html#nota-de-sensibilidad-del-tema",
+    "title": "Práctica 3",
+    "section": "Nota de sensibilidad del tema",
+    "text": "Nota de sensibilidad del tema\n\nAl tratarse de un tema social sensible, el análisis debe realizarse con rigor técnico y responsabilidad ética, evitando conclusiones que estigmaticen a personas o grupos, y reconociendo que los datos representan experiencias reales de violencia reportadas por las encuestadas.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#por-qué-una-arquitectura-de-carpetas",
+    "href": "practica-03/practica-03.html#por-qué-una-arquitectura-de-carpetas",
+    "title": "Práctica 3",
+    "section": "¿Por qué una arquitectura de carpetas?",
+    "text": "¿Por qué una arquitectura de carpetas?\n\nAntes de escribir una sola línea de análisis, el proyecto necesita una estructura ordenada y reproducible\nSe basa en el estándar de la industria Cookiecutter Data Science\n\n\nSepara claramente:\n\nDatos crudos (nunca se editan)\nDatos procesados (limpios, tipados, imputados)\nDatos listos para modelar\nCódigo fuente por responsabilidad (limpieza, visualización, modelos)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#pandas-vs.-polars-vs.-pyspark",
+    "href": "practica-03/practica-03.html#pandas-vs.-polars-vs.-pyspark",
+    "title": "Práctica 3",
+    "section": "Pandas vs. Polars vs. PySpark",
+    "text": "Pandas vs. Polars vs. PySpark\n\n\n\n\n\n\n\n\n\n\nFramework\nMotor / Diseño\nCuándo usarlo\nUso en la industria\n\n\n\n\nPandas\nUn solo hilo, basado en NumPy. API muy madura\nDatasets pequeños/medianos que caben en memoria\nEstándar histórico, el más enseñado\n\n\nPolars\nMotor en Rust, multihilo, evaluación lazy\nDatasets medianos/grandes en una sola máquina\nAdopción creciente 2024-2025\n\n\nPySpark\nMotor distribuido (Apache Spark) sobre clúster\nDatasets que no caben en una sola máquina (Big Data)\nEstándar para procesamiento distribuido",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#introducción-a-polars-modo-eager",
+    "href": "practica-03/practica-03.html#introducción-a-polars-modo-eager",
+    "title": "Práctica 3",
+    "section": "Introducción a Polars: Modo Eager",
+    "text": "Introducción a Polars: Modo Eager\n\n\n⚡ Eager (pl.read_csv)\nEjecución instantánea: Lee el archivo completo e interactúa inmediatamente en memoria RAM.\nCarga todas las columnas y filas de inmediato, aunque luego descartes el 90% mediante filtros o selecciones posteriores.\n# Lee 700k filas y 50 columnas ya\ndf = pl.read_csv(\"endireh_2021.csv\")\nres = df.filter(pl.col(\"edad\") &gt; 30)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#introducción-a-polars-modo-lazy",
+    "href": "practica-03/practica-03.html#introducción-a-polars-modo-lazy",
+    "title": "Práctica 3",
+    "section": "Introducción a Polars: Modo Lazy",
+    "text": "Introducción a Polars: Modo Lazy\n\n\n◐ Lazy (pl.scan_csv)\nEvaluación diferida: No carga datos a memoria. Solo lee metadatos e inspecciona el esquema (tipos de datos).\nCrea un grafo lógico de transformaciones y espera hasta que el usuario decida materializar con .collect().\n# Solo genera un LazyFrame (0 datos en RAM)\nq = (\n    pl.scan_csv(\"endireh_2021.csv\")\n    .filter(pl.col(\"edad\") &gt; 30)\n)\n\n\n\nCon 700,000 registros, trabajar en modo lazy evita procesar columnas que ni siquiera se van a usar en el análisis.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#introducción-a-polars-sintaxis-básica",
+    "href": "practica-03/practica-03.html#introducción-a-polars-sintaxis-básica",
+    "title": "Práctica 3",
+    "section": "Introducción a Polars: sintaxis básica",
+    "text": "Introducción a Polars: sintaxis básica\nimport polars as pl\n\n# Seleccionar columnas\ndf.select([\"edad_primer_union\", \"num_hijos\", \"nom_entidad\"])\n\n# Filtrar renglones\ndf.filter(pl.col(\"nom_entidad\") == \"Ciudad de Mexico\")\n\n# Agrupar y agregar\ndf.group_by(\"nom_entidad\").agg([\n    pl.col(\"edad_primer_union\").mean().alias(\"edad_promedio\")\n])\n\nLas expresiones pl.col(...) describen qué hacer con una columna; no se ejecuta nada hasta que se pide el resultado (.collect() en modo lazy).",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#sintaxis-de-select",
+    "href": "practica-03/practica-03.html#sintaxis-de-select",
+    "title": "Práctica 3",
+    "section": "Sintaxis de Select()",
+    "text": "Sintaxis de Select()\n\nselect() devuelve un nuevo DataFrame solo con las columnas (o expresiones) que le indiques.\n\n# Una columna\ndf.select(\"edad\")\n\n# Varias columnas\ndf.select([\"edad\", \"nom_entidad\", \"factor_expansion\"])\n\n# Con expresiones: renombrar o transformar al vuelo\ndf.select([\n    pl.col(\"edad\"),\n    (pl.col(\"edad\") * 2).alias(\"edad_doble\")\n])\n\n\nRecibe una lista de nombres de columna o de expresiones pl.col(...). Con .alias() puedes renombrar o crear columnas calculadas sin salir del select().",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#sintaxis-de-filter",
+    "href": "practica-03/practica-03.html#sintaxis-de-filter",
+    "title": "Práctica 3",
+    "section": "Sintaxis de Filter()",
+    "text": "Sintaxis de Filter()\n\nfilter() conserva solo los renglones donde la condición es True.\n\n# Una condición\ndf.filter(pl.col(\"edad\") &gt; 30)\n\n# Varias condiciones (AND)\ndf.filter(\n    (pl.col(\"edad\") &gt; 30) & (pl.col(\"nom_entidad\") == \"Jalisco\")\n)\n\n# Condición OR\ndf.filter(\n    (pl.col(\"nivel_escolaridad\") == \"Primaria\")\n    | (pl.col(\"nivel_escolaridad\") == \"Secundaria\")\n)\n\n\nCada condición se escribe como pl.col(\"columna\") operador valor. Para combinar condiciones usa & (AND), | (OR) o ~ (NOT) — siempre con cada condición entre paréntesis.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#sintaxis-de-group_by",
+    "href": "practica-03/practica-03.html#sintaxis-de-group_by",
+    "title": "Práctica 3",
+    "section": "Sintaxis de Group_By()",
+    "text": "Sintaxis de Group_By()\n\ngroup_by() agrupa los renglones; por sí solo no calcula nada — siempre va seguido de .agg().\n\n# Agrupar por una columna y agregar\ndf.group_by(\"nom_entidad\").agg([\n    pl.col(\"edad\").mean().alias(\"edad_promedio\"),\n    pl.col(\"factor_expansion\").sum().alias(\"poblacion_total\")\n])\n\n# Agrupar por varias columnas\ndf.group_by([\"nom_entidad\", \"nivel_escolaridad\"]).agg(\n    pl.len().alias(\"num_encuestadas\")\n)\n\n\nDentro de .agg([...]) defines qué operación aplicar por grupo (mean, sum, len, etc.). Puedes agrupar por una o varias columnas, y encadenar .sort() después para ordenar el resultado.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#materializando-con-collect",
+    "href": "practica-03/practica-03.html#materializando-con-collect",
+    "title": "Práctica 3",
+    "section": "Materializando con collect()",
+    "text": "Materializando con collect()\n\nTodo lo anterior (select, filter, group_by) no ejecuta nada si vienes de pl.scan_csv(...) — solo arma el plan. .collect() es quien finalmente corre la consulta completa y te regresa un DataFrame real en memoria.\n\n\n\n\n\nAntes de .collect(), Polars optimiza el plan completo: junta el select y el filter para leer del CSV solo las columnas y filas necesarias, .collect() es el único punto donde realmente se toca el disco y se gasta memoria.\n\n\n\n\nresultado = (\n    pl.scan_csv(\"endireh_2021.csv\")        # 1. LazyFrame: aún no lee nada\n    .select([\"edad\", \"nom_entidad\",\n             \"nivel_escolaridad\", \"factor_expansion\"])\n    .filter(pl.col(\"edad\") &gt; 30)            # 2. Se agrega al plan\n    .group_by(\"nom_entidad\")\n    .agg([\n        pl.col(\"edad\").mean().alias(\"edad_promedio\"),\n        pl.len().alias(\"num_encuestadas\")\n    ])\n    .sort(\"num_encuestadas\", descending=True)\n    .collect()                               # 3. AQUI se ejecuta todo\n)\n\nprint(resultado)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-qué-hago",
+    "href": "practica-03/practica-03.html#ya-tengo-mis-datos-ahora-qué-hago",
+    "title": "Práctica 3",
+    "section": "Ya tengo mis datos ¿Ahora qué hago?",
+    "text": "Ya tengo mis datos ¿Ahora qué hago?",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#preprocesamiento",
+    "href": "practica-03/practica-03.html#preprocesamiento",
+    "title": "Práctica 3",
+    "section": "Preprocesamiento",
+    "text": "Preprocesamiento\n\nAntes de calcular cualquier medida o entrenar cualquier modelo, los datos crudos pasan por cuatro etapas:\n\n\n\nDetectar valores nulos — qué columnas los tienen y en qué porcentaje\nDecidir qué hacer con ellos — eliminar, imputar, o investigar si siguen un patrón\nNormalizar tipos de datos — que lo numérico sea numérico, lo categórico sea consistente\nFeature engineering — crear variables nuevas que representen mejor el fenómeno",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#eliminar-o-imputar-la-regla-del-5",
+    "href": "practica-03/practica-03.html#eliminar-o-imputar-la-regla-del-5",
+    "title": "Práctica 3",
+    "section": "¿Eliminar o imputar? La regla del 5%",
+    "text": "¿Eliminar o imputar? La regla del 5%\n\nHeurística común en la industria: si una columna tiene menos del 5% de valores nulos, eliminar esos renglones rara vez sesga la muestra de forma importante — es más simple que imputar y el costo de perder esos datos es bajo.\n\n\n\nEl 5% es una guía, no una ley. Si esa columna es central para tu análisis (por ejemplo, la variable que quieres describir o predecir), incluso un 3% de nulos merece revisión antes de eliminar.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#los-nulos-son-aleatorios-o-siguen-un-patrón",
+    "href": "practica-03/practica-03.html#los-nulos-son-aleatorios-o-siguen-un-patrón",
+    "title": "Práctica 3",
+    "section": "¿Los nulos son aleatorios o siguen un patrón?",
+    "text": "¿Los nulos son aleatorios o siguen un patrón?\n\n\nAleatorios (MCAR): la ausencia no depende de nada — un error de captura, una hoja perdida. Ej: un encuestador olvidó registrar la edad de algunas personas al azar.\nCon patrón relacionado a otra variable (MAR): la probabilidad de faltar depende de algo que sí observaste. Ej: las personas mayores de 60 años tienden a no responder la pregunta de nivel de estudios.\nCon patrón relacionado al propio valor (MNAR): la ausencia depende de lo que falta. Ej: las personas con ingresos muy altos o muy bajos prefieren no reportar su ingreso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#normalización-de-tipos-de-datos",
+    "href": "practica-03/practica-03.html#normalización-de-tipos-de-datos",
+    "title": "Práctica 3",
+    "section": "Normalización de tipos de datos",
+    "text": "Normalización de tipos de datos\n\nLos datos crudos casi nunca vienen con el tipo correcto: números guardados como texto, fechas como strings, o categorías escritas de formas distintas.\n\n\nEjemplo típico de una columna edad mal tipada:\n\"25\", \"30\", \"N/A\", \"28 años\", \" 41 \"\n\n\n\nMientras esa columna sea texto, no puedes calcular su media, ordenarla numéricamente ni compararla con &gt; o &lt; — Polars/pandas la tratan como cadenas, no como cantidades.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#código-normalizar-tipos-en-polars",
+    "href": "practica-03/practica-03.html#código-normalizar-tipos-en-polars",
+    "title": "Práctica 3",
+    "section": "Código: normalizar tipos en Polars",
+    "text": "Código: normalizar tipos en Polars\ndf = df.with_columns(\n    pl.col(\"edad\")\n      .str.strip_chars()                     # quita espacios\n      .str.extract(r\"(\\d+)\")                 # extrae solo el número\n      .cast(pl.Int32, strict=False)           # convierte a entero\n      .alias(\"edad\")\n)\n\n# Normalizar texto categórico (mayúsculas/espacios inconsistentes)\ndf = df.with_columns(\n    pl.col(\"nombre_categoria\").str.to_lowercase().str.strip_chars()\n)\n\nstrict=False convierte a null los valores que no se pudieron transformar (como \"N/A\") en lugar de tronar el proceso — así conservas el error como un nulo detectado, no como un dato inventado.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#feature-engineering-crear-variables-nuevas",
+    "href": "practica-03/practica-03.html#feature-engineering-crear-variables-nuevas",
+    "title": "Práctica 3",
+    "section": "Feature Engineering: crear variables nuevas",
+    "text": "Feature Engineering: crear variables nuevas\n\nCrear columnas nuevas a partir de las existentes para que representen mejor lo que quieres analizar o modelar.\n\n\nEjemplos:\n\nA partir de una fecha: edad = año_actual − año_nacimiento\nCombinar variables en una razón: ingreso_per_capita = ingreso_hogar / num_personas\n\n\n\n\nUn análisis o modelo es tan bueno como las variables que le das. edad_en_dias casi no dice nada útil; grupo_edad en categorías interpretables sí revela patrones claros al graficar o agrupar.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#resumen-el-flujo-completo",
+    "href": "practica-03/practica-03.html#resumen-el-flujo-completo",
+    "title": "Práctica 3",
+    "section": "Resumen: el flujo completo",
+    "text": "Resumen: el flujo completo\n\n\nDetectar nulos: qué columnas, qué porcentaje\nDecidir: &lt;5% y aleatorio → eliminar; alto % o con patrón → imputar e investigar\nNormalizar tipos: numérico a numérico, texto categórico consistente\nFeature engineering: crear variables que enriquezcan el análisis",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#medidas-de-localización-qué-responden",
+    "href": "practica-03/practica-03.html#medidas-de-localización-qué-responden",
+    "title": "Práctica 3",
+    "section": "Medidas de Localización: ¿qué responden?",
+    "text": "Medidas de Localización: ¿qué responden?\n\nResponden a la pregunta: ¿alrededor de qué valor se agrupan los datos?\n\n\nSon la base para construir un “perfil típico” de las encuestadas — por ejemplo, la edad promedio de una población, o el nivel de escolaridad más común. Sin ellas, no hay un punto de referencia para comparar grupos ni para detectar qué tan “normal” o “atípico” es un caso.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#la-media-promedio-aritmético",
+    "href": "practica-03/practica-03.html#la-media-promedio-aritmético",
+    "title": "Práctica 3",
+    "section": "La Media: promedio aritmético",
+    "text": "La Media: promedio aritmético\n\n\\[\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\]\n\n\nCuándo usarla: variables cuantitativas con distribución razonablemente simétrica, sin valores extremos que la distorsionen.\n\n\n\nLimitación clave: es muy sensible a outliers. Un solo valor extremo (por ejemplo, una edad de unión reportada erróneamente como 99) puede desplazar la media completa, dando una imagen falsa del “promedio” real.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#la-mediana-el-valor-de-en-medio",
+    "href": "practica-03/practica-03.html#la-mediana-el-valor-de-en-medio",
+    "title": "Práctica 3",
+    "section": "La Mediana: el valor de en medio",
+    "text": "La Mediana: el valor de en medio\n\n\\[Me = \\begin{cases} x_{(\\frac{n+1}{2})} & n \\text{ impar} \\\\[4pt] \\dfrac{x_{(n/2)} + x_{(n/2+1)}}{2} & n \\text{ par} \\end{cases}\\]\n\n\nCuándo usarla: cuando la variable tiene una distribución asimétrica o contiene valores extremos — la mediana no se mueve por ellos, porque solo depende de la posición central, no de la magnitud de los valores.\n\n\n\nRegla práctica: si la media es mucho mayor que la mediana, la distribución está sesgada hacia la derecha (hay valores altos poco frecuentes que la “jalan”). Comparar ambas ya te dice algo sobre la forma de los datos.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#la-moda-el-valor-más-frecuente",
+    "href": "practica-03/practica-03.html#la-moda-el-valor-más-frecuente",
+    "title": "Práctica 3",
+    "section": "La Moda: el valor más frecuente",
+    "text": "La Moda: el valor más frecuente\n\nLa moda es el valor (o categoría) que más veces se repite en los datos.\n\n\nCuándo usarla: es la única medida de tendencia central válida para variables cualitativas nominales — no tiene sentido calcular un “promedio” de nom_entidad o de sufrio_violencia_pareja, pero sí preguntar cuál es la categoría más común.\n\n\n\nEn ENDIREH, la moda es clave para variables como nivel_escolaridad o estado_civil_desc: te dice cuál es la situación más frecuente entre las encuestadas, algo que la media no puede responder.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#qué-es-un-percentil",
+    "href": "practica-03/practica-03.html#qué-es-un-percentil",
+    "title": "Práctica 3",
+    "section": "¿Qué es un percentil?",
+    "text": "¿Qué es un percentil?\n\nUn percentil es un valor que divide un conjunto de datos ordenados en 100 partes iguales. El percentil \\(P_k\\) indica el valor por debajo del cual queda el \\(k\\%\\) de las observaciones.\n\n\n\nNo es lo mismo que un porcentaje. Un porcentaje describe qué proporción de algo representa un valor; un percentil describe qué posición ocupa un valor dentro de todo el conjunto de datos, comparado con los demás.\n\n\n\nLos cuartiles (Q1, Q2, Q3) son casos particulares: Q1 = P25, Q2 = P50 (la mediana), Q3 = P75.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ejemplo-percentiles-en-un-examen",
+    "href": "practica-03/practica-03.html#ejemplo-percentiles-en-un-examen",
+    "title": "Práctica 3",
+    "section": "Ejemplo: percentiles en un examen",
+    "text": "Ejemplo: percentiles en un examen\n\nUn grupo de 20 estudiantes presenta un examen. Se ordenan sus calificaciones de menor a mayor:\n45, 50, 52, 55, 58, 60, 61, 63, 65, 67, 68, 70, 72, 74, 76, 78, 80, 85, 90, 95\n\n\n¿Cuál es el percentil 25 (P25)?\nBuscamos la posición que deja el 25% de los datos por debajo. Con 20 valores, esa posición cae entre el 5° y 6° dato: 58 y 60 → P25 ≈ 59.\nInterpretación: el 25% de los estudiantes sacó 59 puntos o menos.\n\n\n¿Cuál es el percentil 90 (P90)?\nCae cerca de la posición 18: P90 ≈ 85.\nInterpretación: el 90% de los estudiantes sacó 85 puntos o menos — solo el 10% sacó más de 85.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#qué-es-una-media-ponderada",
+    "href": "practica-03/practica-03.html#qué-es-una-media-ponderada",
+    "title": "Práctica 3",
+    "section": "¿Qué es una media ponderada?",
+    "text": "¿Qué es una media ponderada?\n\nEn una media simple, todos los valores pesan lo mismo. En una media ponderada, cada valor se multiplica por un peso que refleja qué tanto debe contar — porque representa más casos, más importancia, o más frecuencia que los demás.\n\n\n\\[\\bar{x}_w = \\frac{\\sum_{i=1}^{n} w_i x_i}{\\sum_{i=1}^{n} w_i}\\]\n\n\nSi todos los pesos \\(w_i\\) son iguales, la fórmula se reduce exactamente a la media simple — la media ponderada no es una fórmula distinta, es la versión general de la media.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ejemplo-el-promedio-que-engaña",
+    "href": "practica-03/practica-03.html#ejemplo-el-promedio-que-engaña",
+    "title": "Práctica 3",
+    "section": "Ejemplo: el promedio que engaña",
+    "text": "Ejemplo: el promedio que engaña\n\nTres salones presentan el mismo examen. Se reporta el promedio de cada salón:\n\n\n\nSalón\nN.º de estudiantes\nPromedio del salón\n\n\n\n\nA\n30\n70\n\n\nB\n10\n90\n\n\nC\n50\n60\n\n\n\n\n\nTrata a los tres salones como si tuvieran el mismo peso — como si el salón de 10 estudiantes contara igual que el de 50.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#ejemplo-el-promedio-correcto",
+    "href": "practica-03/practica-03.html#ejemplo-el-promedio-correcto",
+    "title": "Práctica 3",
+    "section": "Ejemplo: el promedio correcto",
+    "text": "Ejemplo: el promedio correcto\n\nPromedio ponderado por número de estudiantes:\n\\[\\bar{x}_w = \\frac{(30)(70) + (10)(90) + (50)(60)}{30 + 10 + 50} = \\frac{6000}{90} = 66.7\\]\n\n\n\nLa diferencia (73.3 vs. 66.7) no es un error de redondeo: el salón C tiene 50 estudiantes con promedio bajo, así que debe pesar más en el resultado final. Ignorar eso hace parecer que el desempeño general fue mejor de lo que realmente fue.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#medidas-de-variabilidad-qué-responden",
+    "href": "practica-03/practica-03.html#medidas-de-variabilidad-qué-responden",
+    "title": "Práctica 3",
+    "section": "Medidas de Variabilidad: ¿qué responden?",
+    "text": "Medidas de Variabilidad: ¿qué responden?\n\nResponden a la pregunta: ¿qué tan dispersos están los datos respecto al valor central?\n\n\n\nDos variables pueden tener la misma media y comportarse de forma totalmente distinta. Una alta variabilidad advierte que un solo valor central puede ser engañoso, y que conviene segmentar a la población antes de sacar conclusiones.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#varianza-y-desviación-estándar",
+    "href": "practica-03/practica-03.html#varianza-y-desviación-estándar",
+    "title": "Práctica 3",
+    "section": "Varianza y Desviación Estándar",
+    "text": "Varianza y Desviación Estándar\n\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 \\qquad s = \\sqrt{s^2}\\]\n\n\nLa varianza promedia qué tan lejos está cada valor de la media (al cuadrado, para que las diferencias negativas y positivas no se cancelen). Se divide entre \\(n-1\\), no entre \\(n\\), porque estamos estimando la variabilidad de la población a partir de una muestra.\n\n\n\nCuándo usarla: la desviación estándar (\\(s\\)) es más interpretable que la varianza porque queda en las mismas unidades que la variable original (años, si hablamos de edad). Úsala para describir qué tan homogénea o heterogénea es una variable cuantitativa.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#rango-intercuartílico-iqr",
+    "href": "practica-03/practica-03.html#rango-intercuartílico-iqr",
+    "title": "Práctica 3",
+    "section": "Rango Intercuartílico (IQR)",
+    "text": "Rango Intercuartílico (IQR)\n\n\\[IQR = Q_3 - Q_1\\]\n\n\nEs el rango que cubre el 50% central de los datos, ignorando el 25% más bajo y el 25% más alto.\n\n\n\nCuándo usarlo: cuando la variable tiene valores extremos o una distribución sesgada — a diferencia de la varianza o el rango total, el IQR no se ve afectado por outliers, porque ni siquiera los considera en su cálculo. También es la base para detectar valores atípicos (fuera de \\(Q1 - 1.5 \\times IQR\\) o \\(Q3 + 1.5 \\times IQR\\)) y para construir boxplots.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-1-obtención-de-la-fuente-de-datos",
+    "href": "practica-03/practica-03.html#paso-1-obtención-de-la-fuente-de-datos",
+    "title": "Práctica 3",
+    "section": "Paso 1: Obtención de la fuente de datos",
+    "text": "Paso 1: Obtención de la fuente de datos\n\nDescargar del classroom el .csv",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-2-arquitectura-del-proyecto",
+    "href": "practica-03/practica-03.html#paso-2-arquitectura-del-proyecto",
+    "title": "Práctica 3",
+    "section": "Paso 2: Arquitectura del proyecto",
+    "text": "Paso 2: Arquitectura del proyecto\nproyecto-endireh-violencia/\n├── config/\n│   └── rutas.py              # Rutas de archivos estaticos\n├── data/\n│   ├── data-raw/             # Datos originales (nunca se editan)\n│   ├── data-processed/       # Datos limpios: sin duplicados, tipados, imputados\n│   ├── data-input-model/     # Datos transformados, listos para modelar\n│   └── data-model/           # Salidas: predicciones, clusters, reglas\n├── src/\n│   ├── cleaning/              # Scripts de limpieza y preprocesamiento\n│   ├── visualization/         # Scripts de graficas y EDA\n│   └── models/                 # Entrenamiento y evaluacion de modelos\n├── notebooks/                  # Notebooks exploratorios (no productivos)\n├── README.md\n└── requirements.txt",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-2-readme-y-requirements.txt",
+    "href": "practica-03/practica-03.html#paso-2-readme-y-requirements.txt",
+    "title": "Práctica 3",
+    "section": "Paso 2: README y requirements.txt",
+    "text": "Paso 2: README y requirements.txt\n\n\nEl README.md debe documentar, como mínimo: el objetivo del proyecto, la fuente de los datos, cómo instalar el entorno y cómo ejecutar el pipeline.\n\n\n\n\nEl requirements.txt debe fijar versiones exactas: polars==1.9.0, pandas==2.2.2, pyarrow==17.0.0, numpy==2.0.1, matplotlib, seaborn, scikit-learn, jupyter…\n\n\n\nSin README.md ni requirements.txt la práctica no se evalúa.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-3-selección-del-framework",
+    "href": "practica-03/practica-03.html#paso-3-selección-del-framework",
+    "title": "Práctica 3",
+    "section": "Paso 3: Selección del framework",
+    "text": "Paso 3: Selección del framework\n\nDado que la ENDIREH 2021 es un archivo manejable en una sola máquina (algunos cientos de miles de registros), se recomienda polars para todo el pipeline de la práctica.\n\n\n\nOpcionalmente, se puede replicar el preprocesamiento también en pandas, para documentar en el reporte las diferencias de sintaxis y de tiempo de ejecución entre ambos frameworks.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-4-carga-de-los-datos-crudos",
+    "href": "practica-03/practica-03.html#paso-4-carga-de-los-datos-crudos",
+    "title": "Práctica 3",
+    "section": "Paso 4: Carga de los datos crudos",
+    "text": "Paso 4: Carga de los datos crudos\nimport polars as pl\nfrom config.rutas import RUTA_DATA_RAW\n\ndf_crudo = pl.read_csv(RUTA_DATA_RAW / \"endireh_2021.csv\")\nprint(df_crudo.shape)\nprint(df_crudo.head())\n\nCon ~700,000 renglones, conviene explorar también la versión lazy:\ndf_lazy = pl.scan_csv(RUTA_DATA_RAW / \"endireh_2021.csv\")\nprint(df_lazy.collect_schema())",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-5-clasificación-de-variables",
+    "href": "practica-03/practica-03.html#paso-5-clasificación-de-variables",
+    "title": "Práctica 3",
+    "section": "Paso 5: Clasificación de variables",
+    "text": "Paso 5: Clasificación de variables\n\n\n\n\n\n\n\n\n\nVariable\nTipo de dato\nJustificación (ejemplo)\n\n\n\n\nedad_primer_union\nCuantitativa continua\nToma cualquier valor numérico en un rango de edades\n\n\nnum_hijos\n\n\n\n\nnom_entidad\n\n\n\n\nnivel_escolaridad\n\n\n\n\nsufrio_violencia_pareja\n\n\n\n\nfactor_expansion\n\n\n\n\n\n\n\n(Completar las variables restantes del dataset siguiendo esta misma lógica — si falta alguna, el equipo la agrega.)",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-5-preprocesamiento-duplicados-y-tipos",
+    "href": "practica-03/practica-03.html#paso-5-preprocesamiento-duplicados-y-tipos",
+    "title": "Práctica 3",
+    "section": "Paso 5: Preprocesamiento — duplicados y tipos",
+    "text": "Paso 5: Preprocesamiento — duplicados y tipos\n\n\nEliminar (drop_nulls): válido cuando los nulos son pocos y no sesgan la muestra\nImputar con media/mediana: para variables cuantitativas, cuidando el efecto en la variabilidad\nImputar con moda: para variables categóricas\nMarcar como “No especificado”: cuando la ausencia de dato es en sí informativa",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#paso-6-código",
+    "href": "practica-03/practica-03.html#paso-6-código",
+    "title": "Práctica 3",
+    "section": "Paso 6: Código",
+    "text": "Paso 6: Código\n\nPreprocesamiento de los datos\nMedidas de Localizacion\nMedidas de Variabilidad",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#rumbo-a-la-entrega",
+    "href": "practica-03/practica-03.html#rumbo-a-la-entrega",
+    "title": "Práctica 3",
+    "section": "Rumbo a la entrega",
+    "text": "Rumbo a la entrega",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#qué-debe-incluir-el-reporte",
+    "href": "practica-03/practica-03.html#qué-debe-incluir-el-reporte",
+    "title": "Práctica 3",
+    "section": "Qué debe incluir el reporte",
+    "text": "Qué debe incluir el reporte\n\n\nComparación de frameworks (pandas / polars / PySpark) y justificación de la elección Solo se debe de implementar un solo framework\nDocumentación del preprocesamiento: duplicados eliminados, columnas convertidas, estrategia de imputación\nTabla de clasificación de variables completa\nResultados de medidas de localización y variabilidad, con capturas del EDA\nRespuestas al cuestionario\n\n\n\nRepositorio de Git con README.md y requirements.txt (solo el link; nada de código en el classroom). data/data-raw/ no va en el repositorio.",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
+    ]
+  },
+  {
+    "objectID": "practica-03/practica-03.html#referencias",
+    "href": "practica-03/practica-03.html#referencias",
+    "title": "Práctica 3",
+    "section": "Referencias",
+    "text": "Referencias\n\nINEGI — ENDIREH 2021\nDescriptor de archivos ENDIREH 2021\nPolars User Guide\npandas documentation\nPySpark documentation\nCookiecutter Data Science",
+    "crumbs": [
+      "Inicio",
+      "Prácticas",
+      "Práctica 3"
     ]
   },
   {
