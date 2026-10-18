@@ -26,6 +26,7 @@ website:
           - practica-03/practica-03.qmd
           - practica-04/practica-04.qmd
           - practica-05/practica-05.qmd
+          - practica-06/practica-06.qmd
 
 format:
   html:
