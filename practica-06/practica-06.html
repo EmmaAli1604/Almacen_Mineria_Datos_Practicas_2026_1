@@ -362,7 +362,7 @@ Emma Alicia Jiménez Sánchez
 </section>
 <section id="nuestro-ejemplo-10-canastas" class="slide level2 smaller">
 <h2>Nuestro ejemplo: 10 canastas</h2>
-<div id="3239b790" class="cell" data-execution_count="2">
+<div id="e0512598" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Transacción  1: ['pan', 'leche', 'mantequilla']
 Transacción  2: ['pan', 'mantequilla']
@@ -380,7 +380,7 @@ Transacción 10: ['cafe', 'azucar', 'huevos']</code></pre>
 <section id="representación-binaria" class="slide level2 smaller">
 <h2>Representación binaria</h2>
 <p>Para trabajar con los datos, cada transacción se convierte en una fila de <strong>unos y ceros</strong> (presente o ausente).</p>
-<div id="04814e22" class="cell" data-execution_count="3">
+<div id="9b98ee33" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>   azucar  cafe  huevos  leche  mantequilla  pan
 0       0     0       0      1            1    1
@@ -416,7 +416,7 @@ Transacción 10: ['cafe', 'azucar', 'huevos']</code></pre>
 </section>
 <section id="soporte-cálculo" class="slide level2 smaller">
 <h2>Soporte: cálculo</h2>
-<div id="192ea625" class="cell" data-execution_count="4">
+<div id="b23b8db0" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>soporte(pan               ) = 7/10 = 0.70
 soporte(leche             ) = 6/10 = 0.60
@@ -439,7 +439,7 @@ soporte(pan y mantequilla ) = 5/10 = 0.50</code></pre>
 </section>
 <section id="confianza-cálculo" class="slide level2 smaller">
 <h2>Confianza: cálculo</h2>
-<div id="47ad0ec1" class="cell" data-execution_count="5">
+<div id="1558a406" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>conf(pan -&gt; leche)        = 0.5 / 0.7 = 0.714
 conf(leche -&gt; pan)        = 0.5 / 0.6 = 0.833
@@ -521,7 +521,7 @@ conf(mantequilla -&gt; pan)  = 0.5 / 0.5 = 1.000</code></pre>
 <section id="el-problema-de-la-confianza" class="slide level2 smaller">
 <h2>El problema de la confianza</h2>
 <p>Una confianza alta puede <strong>engañar</strong> si el consecuente ya es muy común por sí solo.</p>
-<div id="98c54e0a" class="cell" data-execution_count="6">
+<div id="b164cad2" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>confianza(A -&gt; B) = 0.90   ← parece una regla excelente
 lift(A -&gt; B)      = 1.00   ← pero A no aporta nada</code></pre>
@@ -564,7 +564,7 @@ lift(A -&gt; B)      = 1.00   ← pero A no aporta nada</code></pre>
 </section>
 <section id="lift-cálculo" class="slide level2 smaller">
 <h2>Lift: cálculo</h2>
-<div id="7700ac5b" class="cell" data-execution_count="7">
+<div id="66f52c79" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>pan          -&gt; leche     sop=0.50  conf=0.71  lift=1.19
 mantequilla  -&gt; pan       sop=0.50  conf=1.00  lift=1.43
@@ -584,7 +584,7 @@ huevos       -&gt; pan       sop=0.30  conf=0.75  lift=1.07</code></pre>
 <section id="el-reto-demasiadas-combinaciones" class="slide level2 smaller">
 <h2>El reto: demasiadas combinaciones</h2>
 <p>Con <span class="math inline">\(n\)</span> ítems existen <span class="math inline">\(2^n - 1\)</span> itemsets posibles. Probarlos todos es inviable.</p>
-<div id="6d177b61" class="cell" data-execution_count="8">
+<div id="44cbe0fd" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>  6 ítems -&gt; 63 itemsets posibles
  20 ítems -&gt; 1,048,575 itemsets posibles
@@ -627,7 +627,7 @@ huevos       -&gt; pan       sop=0.30  conf=0.75  lift=1.07</code></pre>
 <section id="paso-1-itemsets-de-tamaño-1" class="slide level2 smaller">
 <h2>Paso 1: itemsets de tamaño 1</h2>
 <p>Soporte mínimo: <code>min_support = 0.3</code> (al menos 3 de las 10 transacciones).</p>
-<div id="3d95b797" class="cell" data-execution_count="9">
+<div id="74d41f57" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>{'azucar'}       soporte = 0.4  frecuente
 {'cafe'}         soporte = 0.4  frecuente
@@ -643,7 +643,7 @@ huevos       -&gt; pan       sop=0.30  conf=0.75  lift=1.07</code></pre>
 <section id="paso-2-candidatos-de-tamaño-2" class="slide level2 smaller">
 <h2>Paso 2: candidatos de tamaño 2</h2>
 <p>Se combinan todos los pares de <span class="math inline">\(L_1\)</span> y se calcula su soporte.</p>
-<div id="70f4f27c" class="cell" data-execution_count="10">
+<div id="9a094e85" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>            itemset  soporte  frecuente
          leche, pan      0.5       True
@@ -670,7 +670,7 @@ azucar, mantequilla      0.0      False
 <section id="paso-3-candidatos-de-tamaño-3-y-poda" class="slide level2 smaller">
 <h2>Paso 3: candidatos de tamaño 3 y poda</h2>
 <p>Un candidato de tamaño 3 solo sobrevive si <strong>todos</strong> sus subconjuntos de tamaño 2 están en <span class="math inline">\(L_2\)</span>.</p>
-<div id="385bc94a" class="cell" data-execution_count="11">
+<div id="5d6b3174" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>Candidatos de tamaño 3 que pasan la poda:
   ['leche', 'mantequilla', 'pan']  soporte = 0.30</code></pre>
@@ -726,7 +726,7 @@ azucar, mantequilla      0.0      False
 </section>
 <section id="apriori-completo-en-una-función" class="slide level2 smaller">
 <h2>Apriori completo en una función</h2>
-<div id="308b2254" class="cell" data-execution_count="12">
+<div id="32947ac7" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>Itemsets frecuentes: 12</code></pre>
 </div>
@@ -735,7 +735,7 @@ azucar, mantequilla      0.0      False
 <section id="fase-2-generar-las-reglas" class="slide level2 smaller">
 <h2>Fase 2: generar las reglas</h2>
 <p>Para cada itemset frecuente con 2 o más ítems, se prueban todas las divisiones en antecedente y consecuente.</p>
-<div id="14d2e3b0" class="cell" data-execution_count="13">
+<div id="99087a25" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <pre><code>       antecedente consecuente  soporte  confianza  lift
               cafe      azucar      0.4       1.00  2.50
@@ -773,7 +773,7 @@ leche, mantequilla         pan      0.3       1.00  1.43
 </section>
 <section id="visualizando-las-reglas" class="slide level2 smaller">
 <h2>Visualizando las reglas</h2>
-<div id="f0509b50" class="cell" data-fig-height="3.8" data-fig-width="7" data-execution_count="14">
+<div id="b2518ead" class="cell" data-fig-height="3.8" data-fig-width="7" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -785,7 +785,7 @@ leche, mantequilla         pan      0.3       1.00  1.43
 </section>
 <section id="elegir-los-umbrales" class="slide level2 smaller">
 <h2>Elegir los umbrales</h2>
-<div id="86eefec0" class="cell" data-fig-height="3.4" data-fig-width="6" data-execution_count="15">
+<div id="b3eef252" class="cell" data-fig-height="3.4" data-fig-width="6" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -861,7 +861,7 @@ leche, mantequilla         pan      0.3       1.00  1.43
 <section id="paso-1-contar-y-ordenar-los-ítems" class="slide level2 smaller">
 <h2>Paso 1: contar y ordenar los ítems</h2>
 <p>Mismo ejemplo de 10 canastas, <code>min_support = 0.3</code> → conteo mínimo de <strong>3</strong> transacciones.</p>
-<div id="74518ffb" class="cell" data-execution_count="16">
+<div id="1d52d144" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-stdout">
 <pre><code>Ítems frecuentes, ordenados por frecuencia:
   pan          7
@@ -876,7 +876,7 @@ leche, mantequilla         pan      0.3       1.00  1.43
 <section id="paso-2-reordenar-cada-transacción" class="slide level2 smaller">
 <h2>Paso 2: reordenar cada transacción</h2>
 <p>Cada transacción se reescribe con sus ítems en el <strong>orden de frecuencia</strong> (los más comunes primero).</p>
-<div id="8a8d3fdb" class="cell" data-execution_count="17">
+<div id="78a0bacc" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-stdout">
 <pre><code>1. ['pan', 'leche', 'mantequilla']
    -&gt; ['pan', 'leche', 'mantequilla']
@@ -896,7 +896,7 @@ leche, mantequilla         pan      0.3       1.00  1.43
 </section>
 <section id="paso-3-construir-el-fp-tree" class="slide level2 smaller">
 <h2>Paso 3: construir el FP-tree</h2>
-<div id="e846e2eb" class="cell" data-execution_count="18">
+<div id="278afb10" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-code-line-numbers="1-3|4-11|12-20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="kw">class</span> Nodo:</span>
 <span id="cb15-2"><a aria-label="2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, item, padre):</span>
 <span id="cb15-3"><a aria-label="3"></a>        <span class="va">self</span>.item, <span class="va">self</span>.padre <span class="op">=</span> item, padre</span>
@@ -927,7 +927,7 @@ leche, mantequilla         pan      0.3       1.00  1.43
 </section>
 <section id="el-árbol-resultante" class="slide level2 smaller">
 <h2>El árbol resultante</h2>
-<div id="54d61c4c" class="cell" data-execution_count="19">
+<div id="3df7d078" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> imprimir_arbol(nodo, nivel<span class="op">=</span><span class="dv">0</span>):</span>
 <span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> h <span class="kw">in</span> nodo.hijos.values():</span>
 <span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"   "</span> <span class="op">*</span> nivel <span class="op">+</span> <span class="ss">f"</span><span class="sc">{</span>h<span class="sc">.</span>item<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>h<span class="sc">.</span>cuenta<span class="sc">}</span><span class="ss">)"</span>)</span>
@@ -955,7 +955,7 @@ azucar (2)
 </section>
 <section id="el-árbol-resultante-vista-gráfica" class="slide level2 smaller">
 <h2>El árbol resultante: vista gráfica</h2>
-<div id="d67ac096" class="cell" data-execution_count="20">
+<div id="b605e43e" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1012,7 +1012,7 @@ azucar (2)
 </section>
 <section id="paso-4-visualización-en-el-árbol" class="slide level2 smaller">
 <h2>Paso 4: visualización en el árbol</h2>
-<div id="8ed1620c" class="cell" data-execution_count="21">
+<div id="14e7a8bc" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
